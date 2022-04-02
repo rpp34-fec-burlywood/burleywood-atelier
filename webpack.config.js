@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
 
-  entry: path.join(__dirname, '/client/app.jsx'),
+  entry: path.join(__dirname, '/client/index.jsx'),
   output: {
     path: path.join(__dirname, '/public/dist/'),
     filename: 'bundle.js',
