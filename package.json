@@ -1,4 +1,4 @@
- {
+{
   "name": "burleywood-atelier",
   "version": "1.0.0",
   "description": "Project Atelier comprises a complete redesign of the retail portal designed to address this concern and modernize the s",
@@ -19,23 +19,23 @@
     "url": "https://github.com/rpp34-fec-burlywood/burleywood-atelier/issues"
   },
   "homepage": "https://github.com/rpp34-fec-burlywood/burleywood-atelier#readme",
-
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
+    "@testing-library/dom": "^8.12.0",
     "babel-loader": "^8.2.4",
-    "webpack": "^5.70.0",
-    "webpack-cli": "^4.9.2",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.12.0",
+    "eslint-plugin-react": "^7.29.4",
+    "jest": "^27.5.1",
     "style-loader": "^3.3.1",
-    "css-loader": "^6.7.1"
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
   },
-
-
-  "dependencies" : {
+  "dependencies": {
     "express": "^4.17.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   }
-
 }
