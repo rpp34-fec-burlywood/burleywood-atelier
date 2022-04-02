@@ -4,7 +4,9 @@
   "description": "Project Atelier comprises a complete redesign of the retail portal designed to address this concern and modernize the s",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js",
+    "server-dev": "npx nodemon server/server.js",
+    "react-dev": "npx webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -32,7 +34,6 @@
 
   "dependencies" : {
     "express": "^4.17.3",
-    "jquery": "^3.6.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   }
