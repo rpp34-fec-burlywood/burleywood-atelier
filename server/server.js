@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 
 require('dotenv').config();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const API_KEY = process.env.API_KEY;
 
 
