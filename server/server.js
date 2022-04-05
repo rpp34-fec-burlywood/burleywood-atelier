@@ -38,3 +38,4 @@ app.get('/api/products', (req, res) => {
 app.listen(PORT, () => {
   console.log('Listening on port: ', PORT);
 })
+
