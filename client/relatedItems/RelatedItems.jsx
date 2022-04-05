@@ -1,13 +1,10 @@
 import React from 'react';
-import ProductCard from './components/productCard';
-import YourOutfit from './components/yourOutfit';
 
+import Card from './components/Card';
 
 class RelatedItems extends React.Component {
   constructor(props) {
     super(props);
-
-
   }
 
   render() {
@@ -15,11 +12,11 @@ class RelatedItems extends React.Component {
       <div>
         <div className='related-items-container'>
           RELATED PRODUCTS
-          <ProductCard/>
+          <Card/>
         </div>
         <div className='your-outfit-container'>
           YOUR OUTFIT
-          <YourOutfit/>
+          <Card/>
         </div>
       </div>
     );
