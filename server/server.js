@@ -1,6 +1,5 @@
 const express = require('express');
-const axios = require('axios');
-const overview = require('./overviewAPI.js');
+const atelierRouter = require('./router.js');
 
 require('dotenv').config();
 const PORT = process.env.PORT || 3000;
@@ -28,15 +27,12 @@ const logger = (req, res, next) => {
   next();
 }
 
+//Mount the router as middleware at path /products
+app.use('/products', atelierRouter)
 app.use(logger);
 
-app.get('/ping', (req, res) => {
-  res.send('pong')
-});
-
-app.get('/products', overview.getProducts);
-app.get('/products/:product_id', overview.getProductById);
-
+// app.get('/products', overview.getProducts);
+// app.get('/products/:product_id', overview.getProductById);
 
 app.listen(PORT, () => {
   console.log('Listening on port: ', PORT);

@@ -13,6 +13,10 @@ class App extends React.Component {
     API.getProducts();
   }
 
+  componentDidMount() {
+    API.getRelatedProducts(64620);
+  }
+
   render() {
     return (
       <div>
