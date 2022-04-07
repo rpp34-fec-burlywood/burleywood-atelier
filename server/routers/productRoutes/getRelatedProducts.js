@@ -2,7 +2,7 @@ const axios = require('axios');
 require('dotenv').config();
 const API_KEY = process.env.API_KEY;
 
-const getProductById = (req, res) => {
+const getRelatedProductById = (req, res) => {
   var product_id = req.params.product_id;
   console.log(product_id);
   axios({
@@ -16,12 +16,12 @@ const getProductById = (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      console.log('Failed to get related products', err.response.data);
+      console.log('Failed to get related products by Id', err.response.data);
       res.status(500);
       res.send(err);
     });
 }
 
 module.exports = {
-  getProductById
+  getRelatedProductById
 }
