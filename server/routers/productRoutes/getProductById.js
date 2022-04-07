@@ -15,7 +15,7 @@ const getProductById = (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      console.log('-- Get Product by ID FAILED:', err.response.data);
+      console.log('-- Get Product by ID FAILED: ', err.response.data);
       res.status(500);
       res.send(err);
     });

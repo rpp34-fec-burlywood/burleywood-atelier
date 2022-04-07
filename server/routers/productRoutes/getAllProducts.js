@@ -15,7 +15,7 @@ const getAllProducts = (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      console.log('-- Get All Products FAILED:', err.response.data);
+      console.log('-- Get All Products FAILED: ', err.response.data);
       res.status(500);
       res.send(err);
     });
