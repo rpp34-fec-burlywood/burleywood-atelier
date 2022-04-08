@@ -3,14 +3,32 @@ import ReactDOM from 'react-dom';
 import Overview from './overview/overview.jsx';
 import QuestionsAndAnswers from './Q&A/QuestionsAndAnswers.jsx';
 import API from './utils/APIRequests.js';
+import overviewHandler from './utils/overviewUtils.js';
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
 
-    // example request upon initiation.
-    API.getProducts();
+    this.state = {
+      currProd: undefined,
+      currStyles: undefined,
+      selectedStyle: undefined,
+      // relatedProds: [];
+    }
+
+    // Binding all App state modifiers to App
+    this.initialize = this.initialize.bind(this);
+    this.getOverviewProduct = overviewHandler.getProduct.bind(this);
+    this.getProductStyleById = overviewHandler.getProductStyleById.bind(this);
+
+    this.initialize();
+  }
+
+  initialize() {
+    // Initializes Overview by selecting 1 of 15 products
+    this.getOverviewProduct(15)
+    // also calls this.getProductStyleById
   }
 
   componentDidMount() {
@@ -23,7 +41,7 @@ class App extends React.Component {
 
         <h1>Starter app</h1>
         <Overview />
-        <QuestionsAndAnswers/>
+        <QuestionsAndAnswers />
       </div>
     )
   }
