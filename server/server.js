@@ -1,10 +1,9 @@
 const express = require('express');
-const atelierRouter = require('./router.js');
+const productRouter = require('./routers/productRouter.js');
+const cartRouter = require('./routers/cartRouter')
 
 require('dotenv').config();
 const PORT = process.env.PORT || 3000;
-const API_KEY = process.env.API_KEY;
-
 
 const app = express();
 
@@ -27,12 +26,10 @@ const logger = (req, res, next) => {
   next();
 }
 
-//Mount the router as middleware at path /products
-app.use('/products', atelierRouter)
+//Mount the routers to their routes
+app.use('/products', productRouter)
+app.use('/cart', cartRouter)
 app.use(logger);
-
-// app.get('/products', overview.getProducts);
-// app.get('/products/:product_id', overview.getProductById);
 
 app.listen(PORT, () => {
   console.log('Listening on port: ', PORT);
