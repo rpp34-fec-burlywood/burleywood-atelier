@@ -1,8 +1,19 @@
 
+#productGallery {
+  width: 500px;
+  height: 500px;
+}
+
 .mainImage {
   width: 500px;
   height: 500px;
   object-fit: cover;
+}
+
+.carousel {
+  position: relative;
+  top: -500px;
+  left: 20px;
 }
 
 
