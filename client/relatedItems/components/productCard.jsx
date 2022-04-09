@@ -6,16 +6,14 @@ class ProductCard extends React.Component {
   constructor(props) {
     super(props);
 
-
   }
-
 
   render() {
     return(
       <div>
         <div className='related-items-container'>
-          {this.props.num.map((n,i) => (
-            <Card key={i} />
+          {this.props.relatedArr.map((product,i) => (
+            <Card key={product.id + i} product={product} />
           ))}
         </div>
       </div>

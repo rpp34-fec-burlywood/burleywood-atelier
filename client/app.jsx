@@ -1,10 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Overview from './overview/overview.jsx';
 import QuestionsAndAnswers from './Q&A/QuestionsAndAnswers.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
-import API from './utils/APIRequests.js';
 import overviewHandler from './utils/overviewUtils.js';
+import relatedHandlers  from './utils/relatedItemsUtils.js';
 
 class App extends React.Component {
 
@@ -15,25 +14,25 @@ class App extends React.Component {
       currProd: undefined,
       currStyles: undefined,
       selectedStyle: undefined,
-      // relatedProds: [];
+      relatedProducts: []
     }
 
     // Binding all App state modifiers to App
     this.initialize = this.initialize.bind(this);
     this.getOverviewProduct = overviewHandler.getProduct.bind(this);
     this.getProductStyleById = overviewHandler.getProductStyleById.bind(this);
-
+    this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
   }
 
   initialize() {
     // Initializes Overview by selecting 1 of 15 products
     this.getOverviewProduct(15)
     // also calls this.getProductStyleById
+    this.getRelatedProductArray(64632)
   }
 
   componentDidMount() {
     this.initialize();
-    API.getRelatedProducts(64620);
   }
 
   render() {
@@ -41,7 +40,7 @@ class App extends React.Component {
       <div>
         <h1>Starter app</h1>
         <Overview />
-        <RelatedItems />
+        <RelatedItems relatedArr ={this.state.relatedProducts}/>
         <QuestionsAndAnswers/>
       </div>
     )

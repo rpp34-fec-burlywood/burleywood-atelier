@@ -13,9 +13,9 @@ class YourOutfit extends React.Component {
     return(
       <div>
         <div className='your-outfit-container'>
-          {this.props.num.map((n,i) => (
+          {/* {this.props.num.map((n,i) => (
             <Card key={i} />
-          ))}
+          ))} */}
         </div>
       </div>
     );

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import ProductCard from './components/productCard.jsx';
 import YourOutfit from './components/yourOutfit.jsx';
@@ -6,12 +7,14 @@ class RelatedItems extends React.Component {
     super(props);
   }
 
+
+
   render() {
     return (
       <div>
         <div className='related-items-container'>
           RELATED PRODUCTS
-         <ProductCard num={[1,2,3]}/>
+          <ProductCard relatedArr={this.props.relatedArr}/>
           YOUR OUTFIT
           <YourOutfit num={[1,2,3]}/>
         </div>
