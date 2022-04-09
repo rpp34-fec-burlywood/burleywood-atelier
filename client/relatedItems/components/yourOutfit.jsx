@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card';
+import Card from './Card.jsx';
 
 class YourOutfit extends React.Component {
   constructor(props) {
@@ -12,7 +12,11 @@ class YourOutfit extends React.Component {
   render() {
     return(
       <div>
-        <Card />
+        <div className='your-outfit-container'>
+          {this.props.num.map((n,i) => (
+            <Card key={i} />
+          ))}
+        </div>
       </div>
     );
   }

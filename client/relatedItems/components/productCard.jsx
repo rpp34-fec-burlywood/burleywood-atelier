@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import Card from './Card';
+import Card from './Card.jsx';
 
 class ProductCard extends React.Component {
   constructor(props) {
@@ -12,7 +13,11 @@ class ProductCard extends React.Component {
   render() {
     return(
       <div>
-        <Card />
+        <div className='related-items-container'>
+          {this.props.num.map((n,i) => (
+            <Card key={i} />
+          ))}
+        </div>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './related.css';
 
 class Card extends React.Component {
   constructor(props) {
@@ -10,7 +11,9 @@ class Card extends React.Component {
 
   render() {
     return(
-      <div>this component will build out each individual card</div>
+      <div className='box'>
+        <div>this component will build out each individual card</div>
+      </div>
     );
   }
 

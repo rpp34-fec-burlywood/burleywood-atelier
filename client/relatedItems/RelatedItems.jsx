@@ -1,7 +1,6 @@
 import React from 'react';
-
-import Card from './components/Card';
-
+import ProductCard from './components/productCard.jsx';
+import YourOutfit from './components/yourOutfit.jsx';
 class RelatedItems extends React.Component {
   constructor(props) {
     super(props);
@@ -12,11 +11,9 @@ class RelatedItems extends React.Component {
       <div>
         <div className='related-items-container'>
           RELATED PRODUCTS
-          <Card/>
-        </div>
-        <div className='your-outfit-container'>
+         <ProductCard num={[1,2,3]}/>
           YOUR OUTFIT
-          <Card/>
+          <YourOutfit num={[1,2,3]}/>
         </div>
       </div>
     );

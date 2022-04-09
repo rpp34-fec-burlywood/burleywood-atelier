@@ -32,12 +32,13 @@ const getProductById = (id) => {
 }
 
 const getRelatedProducts = (id) =>{
-  axios({
+  return axios({
     method: 'GET',
     url:`/products/${id}/related`
   })
   .then((response) =>{
     console.log('-- Received related products ', response.data);
+    return response.data;
   })
   .catch((err) => {
     console.log('-- Get Related products failed ' , err.response.data);
