@@ -35,7 +35,7 @@ const getProductStyleById = function (prodId) {
       }
 
       this.setState({
-        currStyles: results,
+        currProdStyles: results,
         selectedStyle: selectedStyle,
       })
     })

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import Gallery from './components/gallery.jsx';
 import ProductInfo from './components/productInfo.jsx';
@@ -14,13 +15,20 @@ class Overview extends React.Component {
   render() {
     return (
       <div id="overview">
-        <div className="leftOverview">
-          <Gallery />
+        <div className="overviewLeft">
+          <Gallery
+            selectedStyle={this.props.selectedStyle}
+            currProdStyles={this.props.currProdStyles} />
         </div>
-        <div className="rightOverview">
-          <ProductInfo />
+        <div className="rightOverRight">
+          <ProductInfo
+            productInfo={this.props.currProd}
+            selectedStyle={this.props.selectedStyle}
+             />
           <div>
-            <StyleSelector />
+            <StyleSelector
+              selectedStyle={this.props.selectedStyle}
+              currProdStyles={this.props.currProdStyles}/>
             <AddToCart />
           </div>
         </div>

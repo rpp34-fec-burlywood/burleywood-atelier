@@ -4,6 +4,7 @@ import Overview from './overview/overview.jsx';
 import QuestionsAndAnswers from './Q&A/QuestionsAndAnswers.jsx';
 import API from './utils/APIRequests.js';
 import overviewHandler from './utils/overviewUtils.js';
+import './styles.css';
 
 class App extends React.Component {
 
@@ -12,7 +13,7 @@ class App extends React.Component {
 
     this.state = {
       currProd: undefined,
-      currStyles: undefined,
+      currProdStyles: undefined,
       selectedStyle: undefined,
       // relatedProds: [];
     }
@@ -40,7 +41,10 @@ class App extends React.Component {
       <div>
 
         <h1>Starter app</h1>
-        <Overview />
+        <Overview
+          currProd={this.state.currProd}
+          currProdStyles={this.state.currProdStyles}
+          selectedStyle={this.state.selectedStyle} />
         <QuestionsAndAnswers />
       </div>
     )
