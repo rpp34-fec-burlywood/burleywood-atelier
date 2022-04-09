@@ -22,7 +22,6 @@ class App extends React.Component {
     this.getOverviewProduct = overviewHandler.getProduct.bind(this);
     this.getProductStyleById = overviewHandler.getProductStyleById.bind(this);
 
-    this.initialize();
   }
 
   initialize() {
@@ -32,6 +31,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.initialize();
     API.getRelatedProducts(64620);
   }
 
