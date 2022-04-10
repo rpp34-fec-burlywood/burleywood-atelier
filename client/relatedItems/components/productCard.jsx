@@ -12,8 +12,9 @@ class ProductCard extends React.Component {
     return(
       <div>
         <div className='related-items-container'>
+          {console.log(this.props.relatedArr)}
           {this.props.relatedArr.map((product,i) => (
-            <Card key={product.id + i} product={product} />
+            <Card key={product.value.id + i} product={product.value} />
           ))}
         </div>
       </div>
