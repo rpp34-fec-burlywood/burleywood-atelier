@@ -1,18 +1,21 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import Card from './Card';
+import Card from './Card.jsx';
 
 class ProductCard extends React.Component {
   constructor(props) {
     super(props);
 
-
   }
-
 
   render() {
     return(
       <div>
-        <Card />
+        <div className='related-items-container'>
+          {this.props.relatedArr.map((product,i) => (
+            <Card key={product.value.id + i} product={product.value} />
+          ))}
+        </div>
       </div>
     );
   }
