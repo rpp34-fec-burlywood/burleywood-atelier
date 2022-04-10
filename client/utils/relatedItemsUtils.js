@@ -10,7 +10,7 @@ async function getRelatedProductArray (productID) {
       console.log(err)
     }
   }))
-  let stylesArr = await Promise.all(productsArr.map(async (product) => {
+  let relatedProductsArr = await Promise.all(productsArr.map(async (product) => {
     try {
       const stylesList = API.getProductStyleById(product.id);
       return stylesList.then((styles) =>{
@@ -22,7 +22,7 @@ async function getRelatedProductArray (productID) {
       console.log(err)
     }
   }))
-  this.setState({relatedProducts: stylesArr})
+  this.setState({relatedProducts: relatedProductsArr})
 }
 
 var relatedHandlers = {
