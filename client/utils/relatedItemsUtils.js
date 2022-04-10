@@ -13,7 +13,7 @@ async function getCardInfo(productArr) {
       return API.getProductById(id)
   }));
   //returns an array of products with their styles attached to product.value.style
-  let relatedProductsArr = await Promise.allSettled(productsArr.filter(product => product.status === 'fulfilled').map(async (product) => {
+  let productAndStyles = await Promise.allSettled(productsArr.filter(product => product.status === 'fulfilled').map(async (product) => {
     const stylesList = API.getProductStyleById(product.value.id);
       return stylesList.then((styles) =>{
         product.value.styles = styles;
@@ -21,7 +21,7 @@ async function getCardInfo(productArr) {
       })
   }));
   //get fulfilled promises.
-  const fulfilled = relatedProductsArr.filter(result => result.status === 'fulfilled').map(result => result.value);
+  const fulfilled = productAndStyles.filter(result => result.status === 'fulfilled').map(result => result.value);
   return fulfilled;
 }
 
