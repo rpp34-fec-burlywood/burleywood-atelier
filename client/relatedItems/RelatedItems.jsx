@@ -14,7 +14,6 @@ class RelatedItems extends React.Component {
       <div>
         <div className='related-items-container'>
           RELATED PRODUCTS
-          {console.log(this.props.relatedArr)}
           <ProductCard relatedArr={this.props.relatedArr}/>
           YOUR OUTFIT
           <YourOutfit num={[1,2,3]}/>

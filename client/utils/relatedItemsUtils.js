@@ -5,7 +5,7 @@ async function getRelatedProductArray (productID) {
   let relatedArr = await API.getRelatedProducts(productID);
   let productsArr = await Promise.all(relatedArr.map( async (id) => {
     try {
-      return await API.getProductById(id)
+      return API.getProductById(id)
     } catch (err) {
       console.log(err)
     }
@@ -14,7 +14,6 @@ async function getRelatedProductArray (productID) {
     try {
       const stylesList = API.getProductStyleById(product.id);
       return stylesList.then((styles) =>{
-        const results = styles.results
         product.styles = styles;
         return product
       })
