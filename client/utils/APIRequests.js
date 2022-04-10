@@ -33,7 +33,7 @@ const getProductById = (id) => {
     });
 }
 
-const getRelatedProducts = (id) =>{
+const getRelatedProducts = (id) => {
   return axios({
     method: 'GET',
     url: `/products/${id}/related`

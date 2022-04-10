@@ -1,33 +1,28 @@
 import API from './APIRequests.js';
 
-
-  async function getRelatedProductArray (productID)  {
-  var styleArr = [];
-  let relatedArr = await API.getRelatedProducts(productID)
-  for(let i = 0; i < relatedArr.length; i++) {
-    API.getProductById(relatedArr[i])
-      .then((product) => {
-        API.getProductStyleById(product.id)
-        .then((stylesList) => {
-          var styleObj = {}
-          var results = stylesList.results;
-          for (let style of results) {
-            var styleObj = {}
-            if (style['default?'] === true) {
-              styleObj.id = stylesList.product_id,
-              styleObj.name = product.name,
-              styleObj.original_price = style.original_price,
-              styleObj.sale_price = style.sale_price,
-              styleObj.photos = style.photos,
-              styleArr.push(styleObj)
-            }
-          }
-          this.setState({
-            relatedProducts: styleArr
-          })
+async function getRelatedProductArray (productID) {
+  //returns an array of product IDs
+  let relatedArr = await API.getRelatedProducts(productID);
+  let productsArr = await Promise.all(relatedArr.map( async (id) => {
+    try {
+      return await API.getProductById(id)
+    } catch (err) {
+      console.log(err)
+    }
+  }))
+  let stylesArr = await Promise.all(productsArr.map(async (product) => {
+    try {
+      const stylesList = API.getProductStyleById(product.id);
+      return stylesList.then((styles) =>{
+        const results = styles.results
+        product.styles = styles;
+        return product
       })
-    })
-  }
+    } catch(err) {
+      console.log(err)
+    }
+  }))
+  this.setState({relatedProducts: stylesArr})
 }
 
 var relatedHandlers = {
