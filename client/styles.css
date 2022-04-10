@@ -2,8 +2,10 @@
 #productGallery {
   width: 500px;
   height: 500px;
+  overflow: hidden;
 }
 
+.productImageBlock,
 .mainImage {
   width: 500px;
   height: 500px;
@@ -14,12 +16,24 @@
   position: relative;
   top: -500px;
   left: 20px;
+  width: fit-content;
+  height: auto;
 }
 
+.galleryThumb,
+.galleryThumbsBox {
+  height: 60px;
+  width: 60px;
+}
 
+.galleryThumbsBox {
+  border: solid black 1px;
+  margin-bottom: 5px;
+  padding: 0;
+}
 
 .galleryThumb {
   object-fit: cover;
-  width: 100px;
-  height: 100px;
+  margin: 0;
+  padding: 0;
 }

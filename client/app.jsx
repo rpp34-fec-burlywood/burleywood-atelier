@@ -27,7 +27,7 @@ class App extends React.Component {
 
   initialize() {
     // Initializes Overview by selecting 1 of 15 products
-    this.getOverviewProduct(15)
+    this.getOverviewProduct(30)
     // also calls this.getProductStyleById
   }
 
