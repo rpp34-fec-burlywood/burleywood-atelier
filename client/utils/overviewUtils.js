@@ -5,7 +5,7 @@ const getProduct = function (numProd = 1) {
   // Randomize to select 1 product to show
   // Get features and set app state to current product
 
-  API.getProducts(numProd)
+  return API.getProducts(numProd)
     .then(itemsList => {
       var selectProd = itemsList[Math.floor(Math.random() * numProd)];
       API.getProductById(selectProd.id)
@@ -15,6 +15,7 @@ const getProduct = function (numProd = 1) {
           });
           this.getProductStyleById(selectProd.id)
         })
+      return selectProd;
     })
     .catch(err => {
       console.log('Fetch Featured Product FAILED', err);

@@ -1,8 +1,13 @@
-
 #productGallery {
   width: 500px;
   height: 500px;
   overflow: hidden;
+}
+
+.overviewLeft,
+.rightOverRight {
+  display: inline-block;
+  vertical-align: top;
 }
 
 .productImageBlock,
@@ -10,6 +15,7 @@
   width: 500px;
   height: 500px;
   object-fit: cover;
+  object-position: 50% 100%;
 }
 
 .carousel {

@@ -4,7 +4,7 @@ import QuestionsAndAnswers from './Q&A/QuestionsAndAnswers.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
 import overviewHandler from './utils/overviewUtils.js';
 import './styles.css';
-import relatedHandlers  from './utils/relatedItemsUtils.js';
+import relatedHandlers from './utils/relatedItemsUtils.js';
 
 class App extends React.Component {
 
@@ -27,9 +27,13 @@ class App extends React.Component {
 
   initialize() {
     // Initializes Overview by selecting 1 of 15 products
-    this.getOverviewProduct(30)
     // also calls this.getProductStyleById
-    this.getRelatedProductArray(64632)
+
+    this.getOverviewProduct(30)
+      .then(currProd => {
+        this.getRelatedProductArray(currProd.id);
+      })
+
   }
 
   componentDidMount() {
@@ -44,8 +48,8 @@ class App extends React.Component {
           currProd={this.state.currProd}
           currProdStyles={this.state.currProdStyles}
           selectedStyle={this.state.selectedStyle} />
-        <RelatedItems relatedArr ={this.state.relatedProducts}/>
-        <QuestionsAndAnswers/>
+        <RelatedItems relatedArr={this.state.relatedProducts} />
+        <QuestionsAndAnswers />
       </div>
     )
   }
