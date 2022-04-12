@@ -2,7 +2,6 @@ import React from 'react';
 import Overview from './overview/overview.jsx';
 import QuestionsAndAnswers from './Q&A/QuestionsAndAnswers.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
-import Reviews from './reviews/reviewsWidget.jsx';
 import overviewHandler from './utils/overviewUtils.js';
 import './styles.css';
 import relatedHandlers from './utils/relatedItemsUtils.js';
@@ -31,9 +30,9 @@ class App extends React.Component {
     // also calls this.getProductStyleById
 
     this.getOverviewProduct(30)
-      .then(currProd => {
-        this.getRelatedProductArray(currProd.id);
-      })
+      // .then(currProd => {
+      //   this.getRelatedProductArray(currProd.id);
+      // })
 
   }
 
@@ -49,7 +48,10 @@ class App extends React.Component {
           currProd={this.state.currProd}
           currProdStyles={this.state.currProdStyles}
           selectedStyle={this.state.selectedStyle} />
-        <RelatedItems relatedArr={this.state.relatedProducts} />
+        <RelatedItems
+          relatedArr={this.state.relatedProducts}
+          currProd = {this.state.currProd}
+          initialize={this.getRelatedProductArray} />
         <QuestionsAndAnswers />
       </div>
     )
