@@ -7,16 +7,20 @@ class RelatedItems extends React.Component {
     super(props);
   }
 
-
+  componentDidUpdate(prevProps) {
+    if (prevProps.currProd !== this.props.currProd) {
+      this.props.initialize(this.props.currProd.id);
+    }
+  }
 
   render() {
     return (
       <div>
         <div className='related-items-container'>
           RELATED PRODUCTS
-          <ProductCard relatedArr={this.props.relatedArr}/>
+          <ProductCard relatedArr={this.props.relatedArr} />
           YOUR OUTFIT
-          <YourOutfit num={[1,2,3]}/>
+          <YourOutfit num={[1, 2, 3]} />
         </div>
       </div>
     );

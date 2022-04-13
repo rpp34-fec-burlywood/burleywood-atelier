@@ -2,7 +2,7 @@ import API from './APIRequests.js';
 
 async function getRelatedProductArray (productID) {
   //returns an array of related Product IDs
-  let relatedArr = await API.getRelatedProducts(productID);
+  let relatedArr = [...new Set (await API.getRelatedProducts(productID))];
   const fulfilled = await getCardInfo(relatedArr);
   this.setState({relatedProducts: fulfilled});
 }
