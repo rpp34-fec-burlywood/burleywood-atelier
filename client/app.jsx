@@ -2,9 +2,10 @@ import React from 'react';
 import Overview from './overview/overview.jsx';
 import QuestionsAndAnswers from './Q&A/QuestionsAndAnswers.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
-import Reviews from './reviews/reviewsWidget.jsx';
+import ReviewsWidget from './reviews/reviewsWidget.jsx';
 import overviewHandler from './utils/overviewUtils.js';
 import relatedHandlers  from './utils/relatedItemsUtils.js';
+import reviewHandlers from './utils/reviewUtils.js';
 
 class App extends React.Component {
 
@@ -15,7 +16,8 @@ class App extends React.Component {
       currProd: undefined,
       currStyles: undefined,
       selectedStyle: undefined,
-      relatedProducts: []
+      relatedProducts: [],
+      reviews: []
     }
 
     // Binding all App state modifiers to App
@@ -23,13 +25,16 @@ class App extends React.Component {
     this.getOverviewProduct = overviewHandler.getProduct.bind(this);
     this.getProductStyleById = overviewHandler.getProductStyleById.bind(this);
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
+    this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
   }
 
   initialize() {
     // Initializes Overview by selecting 1 of 15 products
-    this.getOverviewProduct(15)
+    this.getOverviewProduct(15);
     // also calls this.getProductStyleById
-    this.getRelatedProductArray(64632)
+    this.getRelatedProductArray(64632);
+    // call 64632 reviews
+    this.getReviewsById(64632);
   }
 
   componentDidMount() {
@@ -43,7 +48,7 @@ class App extends React.Component {
         <Overview />
         <RelatedItems relatedArr ={this.state.relatedProducts}/>
         <QuestionsAndAnswers/>
-        <Reviews/>
+        <ReviewsWidget reviews={this.state.reviews}/>
       </div>
     )
   }

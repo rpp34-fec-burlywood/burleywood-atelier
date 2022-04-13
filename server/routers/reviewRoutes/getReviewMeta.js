@@ -7,7 +7,7 @@ const getReviewMeta = (req, res) => {
 
   axios({
     method: 'GET',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?=${product_id}`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/meta?product_id=${product_id}`,
     headers: { Authorization: API_KEY }
     })
     .then((response) => {

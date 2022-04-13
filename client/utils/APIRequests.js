@@ -61,11 +61,26 @@ const getProductStyleById = (id) => {
     });
 }
 
+const getReviewsById = (id) => {
+  return axios({
+    method: 'GET',
+    url: `/reviews/${id}`
+  })
+    .then((response) => {
+      console.log('-- Get Reviews OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Get Reviews failed ', err.response.data);
+    });
+}
+
 var api = {
   getProducts,
   getProductById,
   getRelatedProducts,
   getProductStyleById,
+  getReviewsById
 };
 
 export default api;

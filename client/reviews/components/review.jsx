@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react';
 
 class Review extends React.Component {
@@ -7,8 +9,12 @@ class Review extends React.Component {
 
 
   render() {
+    var review = this.props.data;
     return(
-      <div>Review</div>
+      <div>
+        <div> {review.summary} </div>
+        <div> {review.body} </div>
+      </div>
     );
   }
 
