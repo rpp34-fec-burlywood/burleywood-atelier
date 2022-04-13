@@ -9,14 +9,12 @@ const getCart = (req, res) => {
     headers: { Authorization: API_KEY },
   })
     .then((response) => {
-      console.log('-- Get Cart OK\n', response.data);
-      res.status(200);
+      console.log('-- Get Cart OK: \n', response.data);
       res.send(response.data);
     })
     .catch((err) => {
-      console.log('-- Get Cart FAILED:', err.response.data);
-      res.status(500);
-      res.send(err);
+      console.error('-- Get Cart FAILED: \n', err.response.data);
+      res.status(500).send(err);
     });
 }
 
