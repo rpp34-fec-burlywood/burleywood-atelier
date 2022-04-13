@@ -3,7 +3,7 @@ require('dotenv').config();
 const API_KEY = process.env.API_KEY;
 
 const addToCart = (req, res) => {
-  var sku_id = req.params.sku_id;
+  let sku_id = req.params.sku_id;
   axios({
     method: 'POST',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/cart`, 
@@ -11,12 +11,10 @@ const addToCart = (req, res) => {
     params: {sku_id: sku_id}
   })
     .then((response) => {
-      console.log('-- Add to Cart OK: \n', response);
-      res.send(response);
+      console.log('-- Get All Products OK\n', response);
     })
     .catch((err) => {
-      console.error('-- Add to Cart FAILED: \n', err.response.data);
-      res.status(500).send(err);
+      console.log('-- Get All Products FAILED:', err.response.data);
     });
 }
 
