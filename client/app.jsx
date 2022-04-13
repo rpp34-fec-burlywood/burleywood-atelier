@@ -6,6 +6,7 @@ import ReviewsWidget from './reviews/reviewsWidget.jsx';
 import overviewHandler from './utils/overviewUtils.js';
 import relatedHandlers  from './utils/relatedItemsUtils.js';
 import reviewHandlers from './utils/reviewUtils.js';
+import './styles.css';
 
 class App extends React.Component {
 
@@ -14,7 +15,7 @@ class App extends React.Component {
 
     this.state = {
       currProd: undefined,
-      currStyles: undefined,
+      currProdStyles: undefined,
       selectedStyle: undefined,
       relatedProducts: [],
       reviews: []
@@ -30,10 +31,12 @@ class App extends React.Component {
 
   initialize() {
     // Initializes Overview by selecting 1 of 15 products
-    this.getOverviewProduct(15);
     // also calls this.getProductStyleById
-    this.getRelatedProductArray(64632);
-    // call 64632 reviews
+
+    this.getOverviewProduct(30)
+      // .then(currProd => {
+      //   this.getRelatedProductArray(currProd.id);
+      // })
     this.getReviewsById(64632);
   }
 
@@ -45,9 +48,15 @@ class App extends React.Component {
     return (
       <div>
         <h1>Starter app</h1>
-        <Overview />
-        <RelatedItems relatedArr ={this.state.relatedProducts}/>
-        <QuestionsAndAnswers/>
+        <Overview
+          currProd={this.state.currProd}
+          currProdStyles={this.state.currProdStyles}
+          selectedStyle={this.state.selectedStyle} />
+        <RelatedItems
+          relatedArr={this.state.relatedProducts}
+          currProd = {this.state.currProd}
+          initialize={this.getRelatedProductArray} />
+        <QuestionsAndAnswers />
         <ReviewsWidget reviews={this.state.reviews}/>
       </div>
     )
