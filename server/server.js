@@ -1,7 +1,7 @@
 const express = require('express');
 const productRouter = require('./routers/productRouter.js');
 const cartRouter = require('./routers/cartRouter');
-
+const qAndARouter = require('./routers/qAndARouter');
 const reviewRouter = require('./routers/reviewRouter');
 
 require('dotenv').config();
