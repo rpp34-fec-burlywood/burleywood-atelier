@@ -2,9 +2,11 @@ import React from 'react';
 import Overview from './overview/overview.jsx';
 import QuestionsAndAnswers from './Q&A/QuestionsAndAnswers.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
+import ReviewsWidget from './reviews/reviewsWidget.jsx';
 import overviewHandler from './utils/overviewUtils.js';
+import relatedHandlers  from './utils/relatedItemsUtils.js';
+import reviewHandlers from './utils/reviewUtils.js';
 import './styles.css';
-import relatedHandlers from './utils/relatedItemsUtils.js';
 
 class App extends React.Component {
 
@@ -15,7 +17,8 @@ class App extends React.Component {
       currProd: undefined,
       currProdStyles: undefined,
       selectedStyle: undefined,
-      relatedProducts: []
+      relatedProducts: [],
+      reviews: []
     }
 
     // Binding all App state modifiers to App
@@ -23,6 +26,7 @@ class App extends React.Component {
     this.getOverviewProduct = overviewHandler.getProduct.bind(this);
     this.getProductStyleById = overviewHandler.getProductStyleById.bind(this);
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
+    this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
   }
 
   initialize() {
@@ -33,7 +37,7 @@ class App extends React.Component {
       // .then(currProd => {
       //   this.getRelatedProductArray(currProd.id);
       // })
-
+    this.getReviewsById(64632);
   }
 
   componentDidMount() {
@@ -53,6 +57,7 @@ class App extends React.Component {
           currProd = {this.state.currProd}
           initialize={this.getRelatedProductArray} />
         <QuestionsAndAnswers />
+        <ReviewsWidget reviews={this.state.reviews}/>
       </div>
     )
   }

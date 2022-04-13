@@ -7,10 +7,11 @@ const getReviewById = (req, res) => {
   var page = req.params.page;
   var count = req.params.count;
   var sort = req.params.sort;
+  console.log('HERE!');
 
   axios({
     method: 'GET',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?=${product_id}`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews?product_id=${product_id}`,
     headers: { Authorization: API_KEY }
     })
     .then((response) => {

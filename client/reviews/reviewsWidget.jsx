@@ -1,4 +1,7 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import ReviewList from './components/reviewList.jsx';
+import Sorter from './components/sorter.jsx';
 
 class ReviewsWidget extends React.Component {
   constructor(props) {
@@ -7,8 +10,12 @@ class ReviewsWidget extends React.Component {
 
 
   render() {
-    return(
-      <div>Reviews Widget</div>
+    return (
+      <div>
+        <div>Reviews Widget</div>
+        <Sorter/>
+        <ReviewList reviews={this.props.reviews}/>
+      </div>
     );
   }
 
