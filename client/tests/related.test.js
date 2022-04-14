@@ -682,7 +682,7 @@ const wrapper = {
 ]
 
 }
-test('renders learn react link', async () => {
+test('related Item Test', async () => {
   render(<RelatedItems relatedArr ={wrapper.relatedProducts} currentProd={wrapper.currentProd}/>);
   const output = screen.getByText(/YOUR OUTFIT/i);
   expect(output).toBeInTheDocument();
