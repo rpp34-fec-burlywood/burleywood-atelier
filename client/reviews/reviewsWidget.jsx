@@ -8,6 +8,11 @@ class ReviewsWidget extends React.Component {
     super(props);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.currProd !== this.props.currProd) {
+      this.props.getReviewsById(this.props.currProd.id);
+    }
+  }
 
   render() {
     return (
