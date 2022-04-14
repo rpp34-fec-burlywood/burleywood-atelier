@@ -36,10 +36,7 @@ class App extends React.Component {
       // .then(currProd => {
       //   this.getRelatedProductArray(currProd.id);
       // })
-<<<<<<< HEAD
-=======
     this.getReviewsById(64632);
->>>>>>> 7681abb6160ed623e6986e392a953b086afe4efe
   }
 
   componentDidMount() {
