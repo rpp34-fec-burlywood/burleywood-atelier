@@ -13,6 +13,7 @@ const getProduct = function (numProd = 1) {
           this.setState({
             currProd: selectProd
           });
+          console.log('this', this);
           this.getProductStyleById(selectProd.id)
         })
       return selectProd;
