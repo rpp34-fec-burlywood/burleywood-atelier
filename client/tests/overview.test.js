@@ -21,15 +21,19 @@ var state = {
     ]
   },
   "currProdStyles": [
-    "{default?: false, name: \"Zebra Stripe\", original_pr…}",
-    "{default?: false, name: \"Oreo\", original_price: \"75…}",
-    "{default?: false, name: \"Red Supply\", original_pric…}",
-    "{default?: true, name: \"White\", original_price: \"45…}",
-    "{default?: false, name: \"Black\", original_price: \"9…}",
-    "{default?: false, name: \"Pink\", original_price: \"45…}",
-    "{default?: false, name: \"Green\", original_price: \"4…}",
-    "{default?: false, name: \"Butter\", original_price: \"…}",
-    "{default?: false, name: \"Grey\", original_price: \"45…}"
+    {
+      "style_id": 398234,
+      "name": "White",
+      "original_price": "450.00",
+      "sale_price": null,
+      "default?": true,
+      "photos": [
+        {
+          "thumbnail_url": "https://images.unsplash.com/photo-1505248254168-1de4e1abfa78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+          "url": "https://images.unsplash.com/photo-1505248254168-1de4e1abfa78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1649&q=80"
+        }
+      ]
+    }
   ],
   "selectedStyle": {
     "style_id": 398234,
