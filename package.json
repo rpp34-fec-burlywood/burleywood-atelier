@@ -13,7 +13,10 @@
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
     },
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/client/tests/styleMock.js"
+    }
   },
   "repository": {
     "type": "git",
