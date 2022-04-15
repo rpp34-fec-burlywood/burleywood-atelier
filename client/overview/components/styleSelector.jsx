@@ -13,8 +13,9 @@ class StyleSelector extends React.Component {
   // currProdStyles={this.props.currProdStyles}
 
   renderStyles(currProdStyles) {
-    if (this.props.selectedStyle && currProdStyles){
+    if (this.props.selectedStyle && currProdStyles) {
       var block = [];
+      var counter = 0;
       var row = [
         <StylePin
           styledId={this.props.selectedStyle.style_id}
@@ -22,20 +23,21 @@ class StyleSelector extends React.Component {
           key={this.props.selectedStyle.style_id} />
       ];
       for (let style of currProdStyles) {
-        if (style.style_id !==this.props.selectedStyle.style_id) {
+        if (style.style_id !== this.props.selectedStyle.style_id) {
           row.push(
             <StylePin
               styledId={style.style_id}
               photo={style.photos[0].thumbnail_url}
-              key={style.style_id} />
+              key={style.style_id + style.name} />
           );
         }
         if (row.length >= 4) {
-          block.push(<div className="styleRow">{row}</div>);
+          block.push(<div className="styleRow" key={counter}>{row}</div>);
           row = new Array;
+          counter++;
         }
       }
-      block.push(<div className="styleRow">{row}</div>)
+      block.push(<div className="styleRow" key={counter}>{row}</div>)
       return block;
     }
     return <div></div>
@@ -44,14 +46,12 @@ class StyleSelector extends React.Component {
 
 
   render() {
-    return(
+    return (
       <div className="styleSelector">
         <div>{`STYLE > ${this.props.selectedStyle?.name.toUpperCase()}`}</div>
-        <div>{}</div>
         <div>
           {this.renderStyles(this.props.currProdStyles)}
         </div>
-
       </div>
     );
   }
