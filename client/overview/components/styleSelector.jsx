@@ -48,7 +48,7 @@ class StyleSelector extends React.Component {
   render() {
     return (
       <div className="styleSelector">
-        <div>{`STYLE > ${this.props.selectedStyle?.name.toUpperCase()}`}</div>
+        <div>{`STYLE: ${this.props.selectedStyle?.name.toUpperCase()}`}</div>
         <div>
           {this.renderStyles(this.props.currProdStyles)}
         </div>
