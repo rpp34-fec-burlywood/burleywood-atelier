@@ -58,6 +58,7 @@ class RelatedItems extends React.Component {
       <div>
         <div className='related-items-container'>
           RELATED PRODUCTS
+          {/* {console.log(this.props.relatedArr)} */}
           <ProductCard relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft}/>
           YOUR OUTFIT
           {/* <YourOutfit num={[]} /> */}
