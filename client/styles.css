@@ -5,9 +5,13 @@
 }
 
 .overviewLeft,
-.rightOverRight {
+.overviewRight {
   display: inline-block;
   vertical-align: top;
+}
+
+.overviewRight {
+  max-width: 500px;
 }
 
 .productImageBlock,
