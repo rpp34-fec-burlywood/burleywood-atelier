@@ -8,7 +8,7 @@ const getReviewsById = function(id) {
       })
     })
     .catch(err => {
-      console.log('Review err', err);
+      console.log('Get Review err', err);
     })
 }
 
