@@ -2,7 +2,7 @@
 import React from 'react';
 import Title from './components/Title.jsx';
 import SearchBar from './components/SearchBar.jsx';
-import Footer from './components/Footer.jsx';
+import Footer from './components/Footer/Footer.jsx';
 import QuestionsList from './components/QuestionsList/QuestionsList.jsx';
 import './style.css'
 class QuestionsAndAnswers extends React.Component {

@@ -5,13 +5,13 @@
 
 .answer-start {
   font-weight: bold;
-
 }  
 
 .answers-list {
   flex: 1;
 }  
 
-.questions {
+.question {
+  margin-bottom: 10px;
   font-weight: bold;
 }

@@ -11,7 +11,7 @@ class Question extends React.Component {
   render() {
     return(
       <div>
-        <div className='questions'>
+        <div className='question'>
           Q: {this.props.question?.question_body}
         </div>
         <div className='answers'>
