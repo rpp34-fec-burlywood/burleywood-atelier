@@ -5,10 +5,15 @@ import YourOutfit from './components/yourOutfit.jsx';
 import $ from 'jquery';
 class RelatedItems extends React.Component {
   constructor(props) {
+
     super(props);
+    this.state = {
+      outfits: []
+    }
     this.slideRight = this.slideRight.bind(this)
     this.slideLeft = this.slideLeft.bind(this)
     this.handleAddProduct = this.handleAddProduct.bind(this)
+    this.handleRemoveOutfit = this.handleRemoveOutfit.bind(this)
   }
 
   componentDidUpdate(prevProps) {
@@ -17,6 +22,8 @@ class RelatedItems extends React.Component {
       //64626 = more than 4 products
       //64621 = less than 4
       this.props.initialize(64626);
+      let outfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
+      this.setState({outfits: outfits})
     }
   }
   slideRight(id) {
@@ -65,9 +72,50 @@ class RelatedItems extends React.Component {
 }
 
 handleAddProduct() {
-  console.log(this.props.selectedStyle)
+  let storage = [];
+  let merged = {};
+  merged.value = {...this.props.currProd}
+  merged.value.styles = {...this.props.selectedStyle}
+  // if your outfits is empty
+  if(!sessionStorage.getItem('outfits')) {
+    storage.push(merged);
+    sessionStorage.setItem('outfits', JSON.stringify(storage));
+    this.setState({outfits: storage})
+  } else {
+    //else check for duplicate
+    // console.log('====merged===')
+    // console.log(merged)
+    // console.log('====currentProdID===')
+    // console.log(this.props.currProd.id)
+
+  //   var yourOutfits = this.state.outfits;
+  //   console.log(this.state.outfits)
+
+
+  // })
+    // yourOutfits.forEach(outfit => {
+    //   if(outfit.value.id !== this.props.currProd.id) {
+    //       console.log('====outfitID===')
+    //       console.log(outfit.value.id)
+    //       console.log('====currentProdID===')
+    //       console.log(this.props.currProd.id)
+    //       yourOutfits.unshift(merged)
+    //       sessionStorage.setItem('outfits', JSON.stringify(yourOutfits));
+    //       this.setState({outfits: yourOutfits});
+    //     }
+    // })
+  }
 }
 
+handleRemoveOutfit(productID) {
+  let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
+  let index = storedOutfits.findIndex((outfit) => {
+    outfit.value.id === productID
+  })
+  storedOutfits.splice(index, 1);
+  sessionStorage.setItem('outfits', JSON.stringify(storedOutfits));
+  this.setState({outfits: storedOutfits})
+}
   render() {
     return (
       <div>
@@ -75,7 +123,7 @@ handleAddProduct() {
           RELATED PRODUCTS
           <ProductCard relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft}/>
           YOUR OUTFITS
-          <YourOutfit num={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft} handleAddProduct={this.handleAddProduct}/>
+          <YourOutfit num={this.state.outfits} slideRight={this.slideRight} slideLeft={this.slideLeft} handleAddProduct={this.handleAddProduct} handleRemoveOutfit={this.handleRemoveOutfit}/>
         </div>
       </div>
     );

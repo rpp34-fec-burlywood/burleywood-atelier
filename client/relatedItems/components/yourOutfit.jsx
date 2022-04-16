@@ -21,7 +21,7 @@ class YourOutfit extends React.Component {
           <RightButton len ={this.props.num.length} buttonID={'outfit'} slideRight={this.props.slideRight}/>
           <div id="outfit-list">
                   {this.props.num.map((product) => (
-                 <Card key={product.value.id + product.value.name} product={product.value} type ={'outfit'}/>
+                 <Card key={product.value.id + product.value.name} product={product.value} type ={'outfit'} handleRemoveOutfit={this.props.handleRemoveOutfit}/>
                ))}
           </div>
       </div>
