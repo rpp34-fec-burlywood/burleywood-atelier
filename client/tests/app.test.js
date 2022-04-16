@@ -2,7 +2,6 @@ const React = require('react');
 import { render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom';
 import App from "../app.jsx";
-import Reviews from '../reviews/reviewsWidget.jsx';
 
 describe("App Component", function () {
   test("should render with title", function () {
