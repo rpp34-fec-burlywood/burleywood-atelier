@@ -5,9 +5,18 @@
 }
 
 .overviewLeft,
-.rightOverRight {
+.overviewRight {
   display: inline-block;
   vertical-align: top;
+}
+
+.overviewLeft {
+  max-width: 50%;
+}
+
+
+.overviewRight {
+  max-width: 400px;
 }
 
 .productImageBlock,
@@ -42,4 +51,18 @@
   object-fit: cover;
   margin: 0;
   padding: 0;
+}
+
+
+.stylePin {
+  height: auto;
+  width: auto;
+  display: inline-block;
+}
+
+.pinImag {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
 }

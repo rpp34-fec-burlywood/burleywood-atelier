@@ -56,7 +56,10 @@ class App extends React.Component {
           currProd = {this.state.currProd}
           initialize={this.getRelatedProductArray} />
         <QuestionsAndAnswers />
-        <ReviewsWidget reviews={this.state.reviews}/>
+        <ReviewsWidget
+          currProd={this.state.currProd}
+          reviews={this.state.reviews}
+          getReviewsById={this.getReviewsById} />
       </div>
     )
   }

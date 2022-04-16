@@ -31,6 +31,8 @@ class Gallery extends React.Component {
       </div>
     );
   }
+
+
   render() {
     if (this.props.selectedStyle) {
       return (
