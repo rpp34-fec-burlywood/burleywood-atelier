@@ -6,9 +6,9 @@ const addToCart = (req, res) => {
   var sku_id = req.params.sku_id;
   axios({
     method: 'POST',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/cart`, 
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/cart`,
     headers: {'Authorization': API_KEY},
-    params: {sku_id: sku_id}
+    data: {sku_id: sku_id}
   })
     .then((response) => {
       console.log('-- Add to Cart OK: \n', response);

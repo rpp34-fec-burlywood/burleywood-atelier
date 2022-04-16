@@ -20,7 +20,7 @@ class Overview extends React.Component {
             selectedStyle={this.props.selectedStyle}
             currProdStyles={this.props.currProdStyles} />
         </div>
-        <div className="rightOverRight">
+        <div className="overviewRight">
           <ProductInfo
             productInfo={this.props.currProd}
             selectedStyle={this.props.selectedStyle}
@@ -29,7 +29,8 @@ class Overview extends React.Component {
             <StyleSelector
               selectedStyle={this.props.selectedStyle}
               currProdStyles={this.props.currProdStyles}/>
-            <AddToCart />
+            <AddToCart
+              selectedStyle={this.props.selectedStyle} />
           </div>
         </div>
       </div>

@@ -16,7 +16,8 @@ async function getCardInfo(productArr) {
   let productAndStyles = await Promise.allSettled(productsArr.filter(product => product.status === 'fulfilled').map(async (product) => {
     const stylesList = API.getProductStyleById(product.value.id);
       return stylesList.then((styles) =>{
-        product.value.styles = styles;
+        const style = styles.results.find(style => style['default?'] === true) || results[0]
+        product.value.styles = style;
         return product
       })
   }));

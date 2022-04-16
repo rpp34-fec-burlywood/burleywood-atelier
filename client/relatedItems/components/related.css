@@ -1,14 +1,124 @@
-.card-container {
+.img {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+#left-related {
+  position: absolute;
+  top: 50%;
+  display: none;
+  z-index: 1
+}
+
+#left-outfit {
+  top: 50%;
+  display: none;
+  z-index: 1;
+  position: absolute;
+  margin-left: 240px;
+}
+
+#right-related{
+  position: absolute;
+  top: 50%;
+  left: 96%;
+  z-index: 1
+}
+
+#right-outfit{
+  position: absolute;
+  top: 50%;
+  left: 96%;
+  z-index: 1
+}
+
+.related-add, #outfit-list {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.related-container, .your-outfits-container{
+  display: flex;
+  width: 965px;
+  height: 320px;
+  position: relative;
+}
+
+#related-list, #outfit-list{
+  flex: 1;
+  width: 750px;
+  height: 320px;
   display: inline-block;
   position: relative;
+  overflow:  scroll;
+  white-space:nowrap;
+  position: relative;
+  overflow: hidden;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  vertical-align: top;
+}
+
+.card{
+  display: inline-block;
+  width: 230px;
+  height: 300px;
+  position:relative;
+  cursor: pointer;
   box-sizing: border-box;
   background: #fff;
   border-radius: 2px;
-  height: 300px;
-  margin: 1rem;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  width: 220px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  margin-left:6px;
+  margin-right:6px;
 }
-.card-container:hover {
+
+.card:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+#outfit-add{
+  display: inline-block;
+  box-sizing: border-box;
+  background: #fff;
+  height: 300px;
+  margin-right: 0.4rem;
+  margin-left: 0.4rem;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  width: 230px;
+  border-radius: 3px;
+}
+
+#outfit-add:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.delete-outfit {
+  position: absolute;
+  background: transparent;
+  color: white;
+  right: 0;
+  color: black;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-outfit:hover {
+  background: #c6c6c5;
+}
+.compare-button {
+  position: absolute;
+  background: transparent;
+  color: white;
+  right: 0;
+  color: black;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.compare-button:hover {
+  background: #c6c6c5;
 }

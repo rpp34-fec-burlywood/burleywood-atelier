@@ -1,0 +1,17 @@
+.answers {
+  display: flex;
+  gap: 10px;
+}
+
+.answer-start {
+  font-weight: bold;
+}  
+
+.answers-list {
+  flex: 1;
+}  
+
+.question {
+  margin-bottom: 10px;
+  font-weight: bold;
+}

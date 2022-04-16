@@ -158,6 +158,20 @@ const reportReview = (review_id) => {
     .catch((err) => {
       console.log('-- Mark Helpful failed ', err.response.data);
     });
+  }
+
+const getQuestions = (product_id) => {
+  return axios({
+    method: 'GET',
+    url: `/qa/questions/${product_id}`
+  })
+    .then((response) => {
+      console.log('-- Get Questions OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Get Questions failed ', err.response.data);
+    });
 }
 
 var api = {
@@ -169,7 +183,8 @@ var api = {
   getReviewMeta,
   postReview,
   markReviewHelpful,
-  reportReview
+  reportReview,
+  getQuestions
 };
 
 export default api;
