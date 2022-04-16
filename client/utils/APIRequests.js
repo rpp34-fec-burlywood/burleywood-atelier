@@ -69,12 +69,12 @@ const getReviewsById = (page, count, sort, id) => {
   return axios({
     method: 'GET',
     url: `/reviews/${id}`,
-    params: {
-      page: page,
-      count: count,
-      sort: sort,
-      id: id
-    }
+    // params: {
+    //   page: page,
+    //   count: count,
+    //   sort: sort,
+    //   id: id
+    // }
   })
     .then((response) => {
       console.log('-- Get Reviews OK ', response.data);
