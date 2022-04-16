@@ -12,7 +12,7 @@ class QuestionsAndAnswers extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.currProd !== this.props.currProd) {
-      this.props.refetch(64626);
+      this.props.refetch(this.props.currProd.id);
     }
   }
   
