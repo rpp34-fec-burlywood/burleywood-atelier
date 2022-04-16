@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import StylePin from './stylePin.jsx';
+import StylePin from './styleComponents/stylePin.jsx';
 
 class StyleSelector extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class StyleSelector extends React.Component {
         <StylePin
           styledId={this.props.selectedStyle.style_id}
           photo={this.props.selectedStyle.photos[0].thumbnail_url}
-          key={this.props.selectedStyle.style_id} />
+          key={this.props.selectedStyle.style_id + this.props.selectedStyle.name} />
       ];
       for (let style of currProdStyles) {
         if (style.style_id !== this.props.selectedStyle.style_id) {
