@@ -1,0 +1,8 @@
+.qa-footer {
+  display: flex;
+  gap: 20px;
+}
+
+.add-question {
+  flex: 1;
+}  
