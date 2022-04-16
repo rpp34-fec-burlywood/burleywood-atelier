@@ -14,14 +14,14 @@ class YourOutfit extends React.Component {
   render() {
     return(
       <div className='your-outfits-container'>
-          <div id ="outfit-add" >
-            <p>Add to Outfit</p>
+          <div id ="outfit-add" onClick ={()=>this.props.handleAddProduct()} >
+            <p >Add to Outfit</p>
           </div>
-          <button id="left-outfit" onClick={()=>this.props.slideLeft('outfit')}>left</button>
+          <button className="arrow" id="left-outfit" onClick={()=>this.props.slideLeft('outfit')}>&#5130;</button>
           <RightButton len ={this.props.num.length} buttonID={'outfit'} slideRight={this.props.slideRight}/>
           <div id="outfit-list">
                   {this.props.num.map((product) => (
-                 <Card key={product.value.id + product.value.name} product={product.value} type ={'outfit'}/>
+                 <Card key={product.value.id + product.value.name} product={product.value} type ={'outfit'} handleRemoveOutfit={this.props.handleRemoveOutfit}/>
                ))}
           </div>
       </div>
