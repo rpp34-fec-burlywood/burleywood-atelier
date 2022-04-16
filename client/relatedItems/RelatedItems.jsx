@@ -70,6 +70,7 @@ class RelatedItems extends React.Component {
         <div className='related-main-container'>
           RELATED PRODUCTS
           <ProductCard relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft}/>
+          YOUR OUTFITS
           <YourOutfit num={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft} />
         </div>
       </div>

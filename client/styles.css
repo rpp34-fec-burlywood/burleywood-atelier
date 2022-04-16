@@ -11,12 +11,13 @@
 }
 
 .overviewLeft {
-  max-width: 50%;
+  min-width: 500px;
 }
 
 
 .overviewRight {
-  max-width: 400px;
+  min-width: 400px;
+  max-width: 460px;
 }
 
 .productImageBlock,
