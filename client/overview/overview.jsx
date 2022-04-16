@@ -30,7 +30,8 @@ class Overview extends React.Component {
               selectedStyle={this.props.selectedStyle}
               currProdStyles={this.props.currProdStyles}/>
             <AddToCart
-              selectedStyle={this.props.selectedStyle} />
+              selectedStyle={this.props.selectedStyle}
+              addToCart={this.props.addToCart} />
           </div>
         </div>
       </div>
