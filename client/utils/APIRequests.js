@@ -75,12 +75,27 @@ const getReviewsById = (id) => {
     });
 }
 
+const getQuestions = (product_id) => {
+  return axios({
+    method: 'GET',
+    url: `/qa/questions/${product_id}`
+  })
+    .then((response) => {
+      console.log('-- Get Questions OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Get Questions failed ', err.response.data);
+    });
+}
+
 var api = {
   getProducts,
   getProductById,
   getRelatedProducts,
   getProductStyleById,
-  getReviewsById
+  getReviewsById,
+  getQuestions
 };
 
 export default api;
