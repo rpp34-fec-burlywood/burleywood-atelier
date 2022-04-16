@@ -3,34 +3,44 @@
   border-top-right-radius: 3px;
 }
 
-#left-related {
+.arrow {
+  border: none;
+  z-index: 1;
+  cursor: pointer;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.575);
+  background-color: transparent;
+  transition: color 150ms ease-in-out;
   position: absolute;
-  top: 50%;
+}
+
+#left-related {
+  top: 30%;
+  position: absolute;
   display: none;
   z-index: 1
 }
 
 #left-outfit {
-  top: 50%;
+  top: 30%;
+  position: absolute;
   display: none;
   z-index: 1;
-  position: absolute;
   margin-left: 240px;
 }
 
-#right-related{
-  position: absolute;
-  top: 50%;
-  left: 96%;
-  z-index: 1
+#right-related, #right-outfit{
+  top: 30%;
+  left: 95%;
 }
 
-#right-outfit{
-  position: absolute;
-  top: 50%;
-  left: 96%;
-  z-index: 1
+#right-related:hover, #right-outfit:hover, #left-related:hover, #left-outfit:hover {
+  color: rgba(0, 0, 0, 0.455);
+
 }
+
 
 .related-add, #outfit-list {
   display: inline-block;
@@ -39,8 +49,8 @@
 
 .related-container, .your-outfits-container{
   display: flex;
-  width: 965px;
-  height: 320px;
+  width: 969px;
+  height: 330px;
   position: relative;
 }
 
@@ -64,7 +74,6 @@
   width: 230px;
   height: 300px;
   position:relative;
-  cursor: pointer;
   box-sizing: border-box;
   background: #fff;
   border-radius: 2px;
@@ -82,8 +91,8 @@
   box-sizing: border-box;
   background: #fff;
   height: 300px;
-  margin-right: 0.4rem;
-  margin-left: 0.4rem;
+  margin-left:6px;
+  margin-right:6px;
   cursor: pointer;
   box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   width: 230px;
@@ -122,3 +131,4 @@
 .compare-button:hover {
   background: #c6c6c5;
 }
+
