@@ -1,3 +1,8 @@
+/* sets whole website to use roboto font*/
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 #productGallery {
   width: 500px;
   height: 500px;

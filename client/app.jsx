@@ -58,6 +58,7 @@ class App extends React.Component {
         <RelatedItems
           relatedArr={this.state.relatedProducts}
           currProd = {this.state.currProd}
+          selectedStyle ={this.state.selectedStyle}
           initialize={this.getRelatedProductArray} />
         <QuestionsAndAnswers
           currProd={ this.state.currProd }

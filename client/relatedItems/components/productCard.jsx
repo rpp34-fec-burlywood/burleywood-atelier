@@ -13,7 +13,7 @@ class ProductCard extends React.Component {
     return(
     <div>
       <div className="related-container">
-            <button id="left-related" onClick={()=>this.props.slideLeft('related')}>left</button>
+            <button className="arrow" id="left-related" onClick={()=>this.props.slideLeft('related')}>&#5130;</button>
             <RightButton len ={this.props.relatedArr.length} buttonID={'related'} slideRight={this.props.slideRight}/>
           <div id="related-list">
               {this.props.relatedArr.map((product) => (

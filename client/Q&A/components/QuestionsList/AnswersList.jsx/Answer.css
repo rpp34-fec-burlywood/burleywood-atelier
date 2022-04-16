@@ -1,3 +1,12 @@
+
+.answer-body {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
 .answer-footer {
-  color:darkgrey;
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 5px;
 }
