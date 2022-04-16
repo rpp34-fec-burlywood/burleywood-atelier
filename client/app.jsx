@@ -38,7 +38,6 @@ class App extends React.Component {
       // .then(currProd => {
       //   this.getRelatedProductArray(currProd.id);
       // })
-    this.getReviewsById(64632);
   }
 
   componentDidMount() {
@@ -58,11 +57,10 @@ class App extends React.Component {
           currProd = {this.state.currProd}
           selectedStyle ={this.state.selectedStyle}
           initialize={this.getRelatedProductArray} />
-        <QuestionsAndAnswers 
-          currProd={ this.state.currProd }
-          questionsList={ this.state.questionsList }
-          refetch={ this.getQuestions }
-        />
+        <QuestionsAndAnswers
+        currProd={ this.state.currProd }
+        questionsList={ this.state.questionsList }
+        refetch={ this.getQuestions } />
         <ReviewsWidget
           currProd={this.state.currProd}
           reviews={this.state.reviews}

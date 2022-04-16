@@ -7,7 +7,6 @@ const getReviewById = (req, res) => {
   var page = req.params.page;
   var count = req.params.count;
   var sort = req.params.sort;
-  console.log('HERE!');
 
   axios({
     method: 'GET',
