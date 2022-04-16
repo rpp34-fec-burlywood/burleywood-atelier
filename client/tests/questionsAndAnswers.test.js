@@ -7,14 +7,26 @@ import data from './qAndAData';
 
 
 describe("Renders Q and A component", () => {
-  test("should render with all the questions", () => {
+  test("should render with all the questions in the dom", () => {
     render(
       <QuestionsAndAnswers
         currProd={data.currProd}
         questionsList={data.questionsData}
       />
     );
-    expect(screen.getByText('Sapiente ea nostrum repudiandae sequi explicabo eos aut quae reprehenderit.')).toBeInTheDocument();
+    data.questionsData.results.forEach((question) => {
+      expect(screen.getByText(question.question_body)).toBeInTheDocument();
+    })
+  });
+
+  test("should render with Q and A title in the dom", () => {
+    render(
+      <QuestionsAndAnswers
+        currProd={data.currProd}
+        questionsList={data.questionsData}
+      />
+    );
+    expect(screen.getByText('Questions & Answers')).toBeInTheDocument();
 
   });
 });
