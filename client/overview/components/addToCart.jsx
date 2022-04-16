@@ -44,7 +44,7 @@ class AddToCart extends React.Component {
   stockHandler(e) {
     e.preventDefault();
     var index = e.target.selectedIndex;
-    var stock = e.target[index].attributes.stock.value;
+    var stock = e.target[index].attributes.stock.value ? e.target[index].attributes.stock.value: 1;
     this.setState({
       currSizeStock: Number(stock)
     });
