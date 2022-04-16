@@ -17,6 +17,7 @@ class QuestionsAndAnswers extends React.Component {
   }
   
   render() {
+    console.log(this.props.questionsList)
     return (
       <div>
         <Title/>
