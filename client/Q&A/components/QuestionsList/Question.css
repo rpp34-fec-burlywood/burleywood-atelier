@@ -4,7 +4,8 @@
 }
 
 .answer-start {
-  font-weight: bold;
+  font-size: 25px;
+  font-weight: 900;
 }  
 
 .answers-list {
@@ -12,6 +13,17 @@
 }  
 
 .question {
-  margin-bottom: 10px;
-  font-weight: bold;
+  display: flex;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.question-start {
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.question-body {
+  font-size: 25px;
+  font-weight: 900;
 }

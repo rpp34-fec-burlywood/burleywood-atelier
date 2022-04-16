@@ -12,7 +12,12 @@ class Question extends React.Component {
     return(
       <div>
         <div className='question'>
-          Q: {this.props.question?.question_body}
+          <div className='question-start'>
+            Q:
+          </div>
+          <div className='question-body'>
+            {this.props.question?.question_body}
+          </div>
         </div>
         <div className='answers'>
           <div className='answer-start'>
@@ -24,8 +29,6 @@ class Question extends React.Component {
             />
           </div>
         </div>
-
-
       </div>
     );
   }
