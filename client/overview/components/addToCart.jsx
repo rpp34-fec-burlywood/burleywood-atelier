@@ -2,7 +2,7 @@
 import React from 'react';
 import SizeSelect from './cartComponents/sizeSelect.jsx';
 import QuantitySelect from './cartComponents/quantitySelect.jsx'
-//AddToCart
+import AddToCartBtn from './cartComponents/addToCartBtn.jsx';
 
 class AddToCart extends React.Component {
   constructor(props) {
@@ -59,6 +59,7 @@ class AddToCart extends React.Component {
             currSize={this.state.currSize}
             currSizeStock={this.state.currSizeStock}
             selectQuanityHandler={this.selectQuanityHandler} />
+          <AddToCartBtn />
         </div>
       );
     }
