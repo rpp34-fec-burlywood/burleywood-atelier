@@ -1,14 +1,14 @@
 import API from './APIRequests.js';
 
-const getReviewsById = function(id) {
-  API.getReviewsById(id)
+const getReviewsById = function(page, count, sort, id) {
+  API.getReviewsById(page, count, sort, id)
     .then(review => {
       this.setState({
         reviews: review.results
       })
     })
     .catch(err => {
-      console.log('Review err', err);
+      console.log('Get Review err', err);
     })
 }
 
