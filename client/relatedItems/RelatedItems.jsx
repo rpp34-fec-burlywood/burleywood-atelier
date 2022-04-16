@@ -20,10 +20,12 @@ class RelatedItems extends React.Component {
     }
   }
   slideRight(id) {
-    var element = document.getElementById(`${id}`);
-    const scrollLength = (element.offsetWidth + 25) / 4
+    var num;
+    id === 'related' ? num = 15 : num = 250
+    var element = document.getElementById(`${id}-list`);
+    const scrollLength = (element.offsetWidth + num) / 4
     element.scrollLeft += scrollLength;
-    var $container=$(`#${id}`);
+    var $container=$(`#${id}-list`);
     var scrollLeftValue = $container.scrollLeft(),
         width=$container.width(),
         scrollWidth=$container.get(0).scrollWidth;
@@ -33,40 +35,46 @@ class RelatedItems extends React.Component {
          $(`#right-${id}`).hide()
          $(`#left-${id}`).show()
     }
+   } else {
+    $(`#right-${id}`).show()
+    $(`#left-${id}`).show()
    }
  }
 
  slideLeft (id){
-  var element = document.getElementById(`${id}`);
-  const scrollLength = (element.offsetWidth + 15) / 4
+  var num, extraWidth;
+  id === 'related' ? num = 15 : num = 250;
+  id === 'related' ? extraWidth = 0 : extraWidth = 230;
+  var element = document.getElementById(`${id}-list`);
+  const scrollLength = (element.offsetWidth + num) / 4
   element.scrollLeft -= scrollLength;
-  var $container=$(`#${id}`);
+  var $container=$(`#${id}-list`);
   var scrollLeftValue = $container.scrollLeft(),
       width=$container.width(),
       scrollWidth=$container.get(0).scrollWidth;
   var offset=264;
-  if (offset + scrollLeftValue + width <= scrollWidth) {
-   {
-       $(`#right-${id}`).show()
-       $(`#left-${id}`).hide()
-  }
- }
+    if (offset + scrollLeftValue + width + extraWidth <= scrollWidth) {
+     {
+         $(`#right-${id}`).show()
+         $(`#left-${id}`).hide()
+    }
+   } else {
+    $(`#right-${id}`).show()
+    $(`#left-${id}`).show()
+   }
 }
 
   render() {
     return (
       <div>
-        <div className='related-items-container'>
+        <div className='related-main-container'>
           RELATED PRODUCTS
-          {/* {console.log(this.props.relatedArr)} */}
           <ProductCard relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft}/>
-          YOUR OUTFIT
-          {/* <YourOutfit num={[]} /> */}
+          <YourOutfit num={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft} />
         </div>
       </div>
     );
   }
-
 }
 
 export default RelatedItems;
