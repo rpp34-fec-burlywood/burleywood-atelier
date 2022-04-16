@@ -14,14 +14,3 @@ describe("App Component", function () {
     expect(true).toBe(true);
   });
 });
-//derzan's test
-describe("App Component", function () {
-  it("should have starter app message", function () {
-    let { getByText } = render(<App />);
-    expect(screen.getByText("Starter app")).toMatchInlineSnapshot(`
-      <h1>
-        Starter app
-      </h1>
-    `);
-  });
-});
