@@ -10,7 +10,7 @@ const getProduct = function (numProd = 1) {
       var selectProd = itemsList[Math.floor(Math.random() * numProd)];
 
       // API.getProductById(selectProd.id)
-      API.getProductById(64620) // TESTING PRODUCTS
+      API.getProductById(64627) // TESTING PRODUCTS
         .then(selectProd => {
           this.setState({
             currProd: selectProd

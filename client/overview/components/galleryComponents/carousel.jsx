@@ -13,14 +13,15 @@ class Carousel extends React.Component {
 
     var counter = 0;
     var carousel = this.props.selectedPhotos.map((photo, index) => {
-      if (index !== mainImageIndex){
+      if (index === mainImageIndex){
         counter++;
         return (
-          <div className="galleryThumbsBox" key={`galThumb${counter}`}>
-              <img className="galleryThumb" src={photo.thumbnail_url}/>
-            </div>
+          <img className="galleryThumb active" src={photo.thumbnail_url} key={index} />
         );
       }
+      return (
+        <img className="galleryThumb" src={photo.thumbnail_url} key={index}/>
+      );
     });
 
     return carousel;
@@ -29,7 +30,11 @@ class Carousel extends React.Component {
   render () {
     return(
       <div className="carousel">
-        {this.renderCarousel(this.props.mainImageIndex)}
+        <div className="carSlider">
+          {/* up arrow*/}
+          {this.renderCarousel(this.props.mainImageIndex)}
+          {/* down arrow*/}
+        </div>
       </div>
     );
   }
