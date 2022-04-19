@@ -12,6 +12,7 @@ class Review extends React.Component {
     var review = this.props.data;
     return(
       <div>
+        <div> {`${review.reviewer_name}, ${review.date }`} </div>
         <div> {review.summary} </div>
         <div> {review.body} </div>
       </div>

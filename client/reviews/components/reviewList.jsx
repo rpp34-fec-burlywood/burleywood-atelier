@@ -17,6 +17,10 @@ class ReviewList extends React.Component {
           <Review key={review.review_id} data={review}/>
         ))
       }
+      <div>
+        <button>More Reviews</button>
+        <button>Add Review</button>
+      </div>
       </div>
     );
   }
