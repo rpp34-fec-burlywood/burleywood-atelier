@@ -7,7 +7,8 @@
     "start": "node server/server.js",
     "server-dev": "npx nodemon server/server.js",
     "react-dev": "npx webpack --watch",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "jest": {
     "transform": {
@@ -18,6 +19,7 @@
       "\\.(css|less)$": "<rootDir>/client/tests/styleMock.js"
     }
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rpp34-fec-burlywood/burleywood-atelier.git"

@@ -3,12 +3,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-#productGallery {
-  width: 500px;
-  height: 500px;
-  overflow: hidden;
-}
-
 .overviewLeft,
 .overviewRight {
   display: inline-block;
@@ -16,46 +10,13 @@ body {
 }
 
 .overviewLeft {
-  max-width: 50%;
+  min-width: 500px;
 }
 
 
 .overviewRight {
-  max-width: 400px;
-}
-
-.productImageBlock,
-.mainImage {
-  width: 500px;
-  height: 500px;
-  object-fit: cover;
-  object-position: 50% 100%;
-}
-
-.carousel {
-  position: relative;
-  top: -500px;
-  left: 20px;
-  width: fit-content;
-  height: auto;
-}
-
-.galleryThumb,
-.galleryThumbsBox {
-  height: 60px;
-  width: 60px;
-}
-
-.galleryThumbsBox {
-  border: solid black 1px;
-  margin-bottom: 5px;
-  padding: 0;
-}
-
-.galleryThumb {
-  object-fit: cover;
-  margin: 0;
-  padding: 0;
+  min-width: 400px;
+  max-width: 460px;
 }
 
 
