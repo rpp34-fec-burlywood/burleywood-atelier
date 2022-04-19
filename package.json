@@ -10,7 +10,6 @@
     "test": "jest",
     "coverage": "jest --coverage",
     "coverage-related": "jest related.test.js --coverage --collectCoverageFrom=client/relatedItems/RelatedItems.jsx"
-
   },
   "jest": {
     "transform": {
@@ -21,6 +20,7 @@
       "\\.(css|less)$": "<rootDir>/client/tests/styleMock.js"
     }
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rpp34-fec-burlywood/burleywood-atelier.git"
