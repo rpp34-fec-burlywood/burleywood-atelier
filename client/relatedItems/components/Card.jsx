@@ -8,7 +8,6 @@ import CompareButton from './compareButton.jsx';
 
 const Card = (props)=> {
   const {product} = props;
-  console.log(product)
   const{original_price, sale_price, photos}  = product.styles
   const img = photos[0].thumbnail_url || `https://source.unsplash.com/random/300×194/?${product.category}`
   if (props.type === 'outfit') {

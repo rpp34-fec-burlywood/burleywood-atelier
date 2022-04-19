@@ -69,6 +69,7 @@ class RelatedItems extends React.Component {
     $(`#right-${id}`).show()
     $(`#left-${id}`).show()
    }
+
 }
 
 handleAddProduct() {
@@ -105,12 +106,16 @@ handleRemoveOutfit(productID) {
   });
   storedOutfits.splice(index, 1);
   sessionStorage.setItem('outfits', JSON.stringify(storedOutfits));
+  if(storedOutfits.length === 3) {
+    $(`#right-outfit`).hide()
+    $(`#left-outfit`).hide()
+  }
   this.setState({outfits: storedOutfits})
 }
   render() {
     return (
       <div>
-        <div className='related-main-container'>
+        <div className='related-main-container' data-testid="related-main-container">
           RELATED PRODUCTS
           <ProductCard relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft}/>
           YOUR OUTFITS
