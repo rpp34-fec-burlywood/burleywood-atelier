@@ -100,9 +100,9 @@ handleAddProduct() {
 
 handleRemoveOutfit(productID) {
   let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
-  let index = storedOutfits.findIndex((outfit) => {
-    outfit.value.id === productID
-  })
+  let index = storedOutfits.findIndex(outfit => {
+    return outfit.value.id === productID
+  });
   storedOutfits.splice(index, 1);
   sessionStorage.setItem('outfits', JSON.stringify(storedOutfits));
   this.setState({outfits: storedOutfits})
