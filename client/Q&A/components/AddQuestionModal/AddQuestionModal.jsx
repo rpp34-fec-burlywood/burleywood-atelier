@@ -5,6 +5,24 @@ import './AddQuestionModal.css';
 class AddQuestionModal extends React.Component {
   constructor(props) {
     super(props);
+
+    this.closeModalEventHandler = this.closeModalEventHandler.bind(this)
+  }
+
+  closeModalEventHandler(event) {
+    let modalWindow = document.getElementById("questionModalWindow");
+    let addQuestionButton = document.getElementById("add-question-button");
+    if (!modalWindow.contains(event.target) && event.target !== addQuestionButton) {
+      this.props.closeModal();
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('click', this.closeModalEventHandler)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('click', this.closeModalEventHandler)
   }
 
   setName() {
