@@ -13,7 +13,7 @@
 #questionModalWindow {
   position: relative;
   background-color: white;
-  padding: 4em 2em;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

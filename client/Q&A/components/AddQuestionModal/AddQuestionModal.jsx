@@ -5,8 +5,17 @@ import './AddQuestionModal.css';
 class AddQuestionModal extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      name: '',
+      email: '',
+      questionBody: ''
+    }
 
-    this.closeModalEventHandler = this.closeModalEventHandler.bind(this)
+    this.closeModalEventHandler = this.closeModalEventHandler.bind(this);
+    this.setName = this.setName.bind(this);
+    this.setEmail = this.setEmail.bind(this);
+    this.setQuestionBody = this.setQuestionBody.bind(this);
+    this.postQuestion = this.postQuestion.bind(this);
   }
 
   closeModalEventHandler(event) {
@@ -25,12 +34,29 @@ class AddQuestionModal extends React.Component {
     window.removeEventListener('click', this.closeModalEventHandler)
   }
 
-  setName() {
-    
+  setName(name) {
+    this.setState({
+      name
+    })
   }
 
-  setEmail() {
+  setEmail(email) {
+    this.setState({
+      email
+    })
+  }
 
+  setQuestionBody(questionBody) {
+    this.setState({
+      questionBody
+    })
+  }
+
+  postQuestion() {
+    console.log(this.state)
+
+    // add case where it fails and doesn't close
+    this.props.closeModal();
   }
 
   render() {
