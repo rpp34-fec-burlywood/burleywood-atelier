@@ -1,10 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import './Footer.css';
 
 class Footer extends React.Component {
   constructor(props) {
     super(props);
+
   }
+
 
   render() {
     return(
@@ -15,7 +18,7 @@ class Footer extends React.Component {
           </button>
         </div>
         <div id='add-question'>
-          <button>
+          <button onClick={this.props.addQuestionClickHandler}>
             ADD A QUESTION +
           </button>
         </div>
