@@ -19,6 +19,7 @@
       "\\.(css|less)$": "<rootDir>/client/tests/styleMock.js"
     }
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rpp34-fec-burlywood/burleywood-atelier.git"

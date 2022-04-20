@@ -26,6 +26,7 @@ class App extends React.Component {
     this.initialize = this.initialize.bind(this);
     this.getOverviewProduct = overviewHandler.getProduct.bind(this);
     this.getProductStyleById = overviewHandler.getProductStyleById.bind(this);
+    this.addToCart = overviewHandler.addToCart;
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
     this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
     this.getQuestions = qaHandlers.getQuestionsArray.bind(this);
@@ -51,7 +52,8 @@ class App extends React.Component {
         <Overview
           currProd={this.state.currProd}
           currProdStyles={this.state.currProdStyles}
-          selectedStyle={this.state.selectedStyle} />
+          selectedStyle={this.state.selectedStyle}
+          addToCart={this.addToCart} />
         <RelatedItems
           relatedArr={this.state.relatedProducts}
           currProd = {this.state.currProd}

@@ -8,12 +8,13 @@ const getProduct = function (numProd = 1) {
   return API.getProducts(numProd)
     .then(itemsList => {
       var selectProd = itemsList[Math.floor(Math.random() * numProd)];
-      API.getProductById(selectProd.id)
+
+      // API.getProductById(selectProd.id)
+      API.getProductById(64627) // TESTING PRODUCTS
         .then(selectProd => {
           this.setState({
             currProd: selectProd
           });
-          console.log('this', this);
           this.getProductStyleById(selectProd.id)
         })
       return selectProd;
@@ -21,7 +22,7 @@ const getProduct = function (numProd = 1) {
     .catch(err => {
       console.log('Fetch Featured Product FAILED', err);
     });
-}
+};
 
 const getProductStyleById = function (prodId) {
   API.getProductStyleById(prodId)
@@ -44,11 +45,25 @@ const getProductStyleById = function (prodId) {
     .catch(err => {
       console.log('Fetch Styles FAILED', err);
     });
-}
+};
+
+const addToCart = function ({sku_id, count}) {
+  if (!sku_id) {
+    return;
+  }
+  API.addToCart(sku_id, count)
+    .then(response => {
+      if (response === 'Created') {
+        window.alert('Added to Cart!')
+      }
+    });
+
+};
 
 var overviewHandlers = {
   getProduct,
-  getProductStyleById
+  getProductStyleById,
+  addToCart
 }
 
 export default overviewHandlers;

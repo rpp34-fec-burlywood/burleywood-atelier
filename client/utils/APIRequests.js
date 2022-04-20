@@ -190,12 +190,28 @@ const postQuestion = (product_id, data) => {
 }
 
 
+const addToCart = (sku_id, count = 1) => {
+  return axios ({
+    method: 'POST',
+    url: `/cart/${sku_id}/${count}`,
+  })
+  .then((response) => {
+      console.log('-- Add to Cart OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Add to Cart FAILED ', err.response.data);
+    });
+}
+
 var api = {
   getProducts,
   getProductById,
   getRelatedProducts,
   getProductStyleById,
   getReviewsById,
+  getQuestions,
+  addToCart,
   getReviewMeta,
   postReview,
   markReviewHelpful,

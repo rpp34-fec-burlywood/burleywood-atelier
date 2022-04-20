@@ -1,0 +1,46 @@
+#productGallery {
+  width: 500px;
+  height: 500px;
+  /* overflow: hidden; */
+}
+
+.productImageBlock,
+.mainImage {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  object-position: 50% 100%;
+  display: inline-block;
+}
+
+.carousel {
+  position: relative;
+  top: -500px;
+  left: 10px;
+  width: fit-content;
+  height: 500px;
+  /* background-color: aqua; */
+  overflow: hidden;
+}
+
+.carSlider {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  transform: translateY(0%);
+  height: 480px;
+  overflow: hidden;
+}
+
+.galleryThumb {
+  display: flex;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  height: 60px;
+  width: 60px;
+  flex-shrink: 0;
+}
