@@ -13,8 +13,8 @@ class YourOutfit extends React.Component {
 
   render() {
     return(
-      <div className='your-outfits-container'>
-          <div id ="outfit-add" onClick ={()=>this.props.handleAddProduct()} >
+      <div className='your-outfits-container' data-testid="outfit-container">
+          <div id ="outfit-add" data-testid="outfit-add" onClick ={()=>this.props.handleAddProduct()} >
             <p >Add to Outfit</p>
           </div>
           <button className="arrow" id="left-outfit" onClick={()=>this.props.slideLeft('outfit')}>&#5130;</button>
