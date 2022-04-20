@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './AddQuestionModal.css';
-
+import API from '../../../utils/APIRequests.js'
+import api from '../../../utils/APIRequests.js';
 class AddQuestionModal extends React.Component {
   constructor(props) {
     super(props);
@@ -53,8 +54,15 @@ class AddQuestionModal extends React.Component {
   }
 
   postQuestion() {
-    console.log(this.state)
-
+    const data = {
+      name: this.state.name,
+      email: this.state.email,
+      body: this.state.questionBody,
+      product_id: this.props.currProd.id
+    }
+    
+    API.postQuestion(this.props.currProd.id, data)
+      .then(xd => console.log(xd))
     // add case where it fails and doesn't close
     this.props.closeModal();
   }

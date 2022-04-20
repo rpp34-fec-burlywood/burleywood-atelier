@@ -44,7 +44,12 @@ class QuestionsAndAnswers extends React.Component {
         <SearchBar/>
         <QuestionsList questions={this.props.questionsList}/>
         <Footer addQuestionClickHandler={this.addQuestionClickHandler}/>
-        {this.state.questionModalOpen ?  <AddQuestionModal closeModal={this.closeQuestionModal}/> : null}
+        {this.state.questionModalOpen ?  
+            <AddQuestionModal 
+            closeModal={this.closeQuestionModal} 
+            currProd={this.props.currProd}/> : 
+          null
+        }
       </div>
     );
   }
