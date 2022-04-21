@@ -60,9 +60,10 @@ class App extends React.Component {
           selectedStyle ={this.state.selectedStyle}
           initialize={this.getRelatedProductArray} />
         <QuestionsAndAnswers
-        currProd={ this.state.currProd }
-        questionsList={ this.state.questionsList }
-        refetch={ this.getQuestions } />
+          currProd={ this.state.currProd }
+          questionsList={ this.state.questionsList }
+          refetch={ this.getQuestions } 
+        />
         <ReviewsWidget
           currProd={this.state.currProd}
           reviews={this.state.reviews}
