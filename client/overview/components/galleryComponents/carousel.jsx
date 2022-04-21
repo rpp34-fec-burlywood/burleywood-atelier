@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import CarouselItem from './carouselItem.jsx';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -16,11 +17,11 @@ class Carousel extends React.Component {
       if (index === mainImageIndex){
         counter++;
         return (
-          <img className="galleryThumb active" src={photo.thumbnail_url} key={index} />
+          <CarouselItem imgUrl={photo.thumbnail_url} index={index} active={true} key={index}/>
         );
       }
       return (
-        <img className="galleryThumb" src={photo.thumbnail_url} key={index}/>
+        <CarouselItem imgUrl={photo.thumbnail_url} index={index} active={false} key={index}/>
       );
     });
 

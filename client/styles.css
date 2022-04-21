@@ -1,6 +1,9 @@
 /* sets whole website to use roboto font*/
 body {
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .overviewLeft,

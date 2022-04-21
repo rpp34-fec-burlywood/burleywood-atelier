@@ -15,12 +15,16 @@
 
 .carousel {
   position: relative;
-  top: -500px;
-  left: 10px;
-  width: fit-content;
+  top: -504px;
+  left: 0px;
   height: 500px;
+  width: 70px;
+  display: flex;
   /* background-color: aqua; */
   overflow: hidden;
+  align-items: center;
+  margin: 0px;
+  padding-left: 10px;
 }
 
 .carSlider {
@@ -29,17 +33,18 @@
   flex-direction: column;
   flex-wrap: nowrap;
   transform: translateY(0%);
-  height: 480px;
+  height: 438px;
+  width: 60px;
   overflow: hidden;
 }
 
-.galleryThumb {
+.carouselItem {
   display: flex;
   object-fit: cover;
   margin: 0;
   padding: 0;
-  margin-bottom: 5px;
-  margin-top: 5px;
+  margin-bottom: 2px;
+  margin-top: 2px;
   height: 60px;
   width: 60px;
   flex-shrink: 0;
