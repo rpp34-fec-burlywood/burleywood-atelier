@@ -39,18 +39,21 @@ class QuestionsAndAnswers extends React.Component {
   render() {
     console.log(this.props.questionsList)
     return (
-      <div>
+      <>
         <Title/>
         <SearchBar/>
-        <QuestionsList questions={this.props.questionsList}/>
-        <Footer addQuestionClickHandler={this.addQuestionClickHandler}/>
+        <QuestionsList 
+          questions={this.props.questionsList}
+          addQuestionClickHandler={this.addQuestionClickHandler}
+        />
         {this.state.questionModalOpen ?  
-            <AddQuestionModal 
+          <AddQuestionModal 
             closeModal={this.closeQuestionModal} 
-            currProd={this.props.currProd}/> : 
+            currProd={this.props.currProd}
+          /> : 
           null
         }
-      </div>
+      </>
     );
   }
 

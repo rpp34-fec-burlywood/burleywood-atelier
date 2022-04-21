@@ -9,7 +9,7 @@ class Question extends React.Component {
 
     this.state = {
       answerListLength: 2,
-      answerListTotalLength: Object.keys(this.props.question?.answers).length,
+      answerListTotalLength: Object.keys(props.question?.answers).length,
       expanded: false
     }
 
