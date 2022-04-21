@@ -69,6 +69,7 @@ class RelatedItems extends React.Component {
     $(`#right-${id}`).show()
     $(`#left-${id}`).show()
    }
+
 }
 
 handleAddProduct() {
@@ -82,44 +83,39 @@ handleAddProduct() {
     sessionStorage.setItem('outfits', JSON.stringify(storage));
     this.setState({outfits: storage})
   } else {
-    //else check for duplicate
-    // console.log('====merged===')
-    // console.log(merged)
-    // console.log('====currentProdID===')
-    // console.log(this.props.currProd.id)
-
-  //   var yourOutfits = this.state.outfits;
-  //   console.log(this.state.outfits)
-
-
-  // })
-    // yourOutfits.forEach(outfit => {
-    //   if(outfit.value.id !== this.props.currProd.id) {
-    //       console.log('====outfitID===')
-    //       console.log(outfit.value.id)
-    //       console.log('====currentProdID===')
-    //       console.log(this.props.currProd.id)
-    //       yourOutfits.unshift(merged)
-    //       sessionStorage.setItem('outfits', JSON.stringify(yourOutfits));
-    //       this.setState({outfits: yourOutfits});
-    //     }
-    // })
+    const yourOutfits = [...this.state.outfits]
+    const currentOutfit = merged;
+    let duplicate = false;
+    yourOutfits.forEach(outfit => {
+      if(JSON.stringify(outfit) === JSON.stringify(merged) ) {
+        duplicate = true;
+      }
+    })
+    if(!duplicate) {
+      yourOutfits.push(currentOutfit);
+      this.setState({outfits: yourOutfits})
+      sessionStorage.setItem('outfits', JSON.stringify(yourOutfits));
+    }
   }
 }
 
 handleRemoveOutfit(productID) {
   let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
-  let index = storedOutfits.findIndex((outfit) => {
-    outfit.value.id === productID
-  })
+  let index = storedOutfits.findIndex(outfit => {
+    return outfit.value.id === productID
+  });
   storedOutfits.splice(index, 1);
   sessionStorage.setItem('outfits', JSON.stringify(storedOutfits));
+  if(storedOutfits.length === 3) {
+    $(`#right-outfit`).hide()
+    $(`#left-outfit`).hide()
+  }
   this.setState({outfits: storedOutfits})
 }
   render() {
     return (
       <div>
-        <div className='related-main-container'>
+        <div className='related-main-container' data-testid="related-main-container">
           RELATED PRODUCTS
           <ProductCard relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft}/>
           YOUR OUTFITS
