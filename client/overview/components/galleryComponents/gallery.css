@@ -29,15 +29,20 @@
   padding-left: 10px;
 }
 
+.carouselContainer {
+  height: 450px;
+  width: 64px;
+  overflow: hidden;
+}
+
 .carSlider {
   display: flex;
   position: relative;
   flex-direction: column;
   flex-wrap: nowrap;
-  transform: translateY(0%);
   height: 450px;
   width: 64px;
-  overflow: hidden;
+  transition: 0.3s;
 }
 
 .carouselItem {
