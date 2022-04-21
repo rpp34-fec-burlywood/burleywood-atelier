@@ -13,7 +13,7 @@ class Question extends React.Component {
       expanded: false
     }
 
-    this.returnAnswerArray = this.returnAnswerArray.bind(this);
+    this.returnAnswerObject = this.returnAnswerObject.bind(this);
     this.expandAnswerList = this.expandAnswerList.bind(this);
     this.collapseAnswers = this.collapseAnswers.bind(this);
   }
@@ -26,19 +26,19 @@ class Question extends React.Component {
     }
   }
 
-  returnAnswerArray() {
-    let answerArray = {};
+  returnAnswerObject() {
+    let answerObject = {};
     let answers = this.props.question?.answers;
     let index = 0;
 
     for (let answer in answers) {
       if (index < this.state.answerListLength) {
-        answerArray[answer] = answers[answer]; 
+        answerObject[answer] = answers[answer]; 
       }
       index++;
     }
 
-    return answerArray
+    return answerObject
   }
 
   expandAnswerList() {
@@ -76,7 +76,7 @@ class Question extends React.Component {
           </div>
           <div className='answers-list'>
             <AnswersList
-              answers={this.returnAnswerArray()}
+              answers={this.returnAnswerObject()}
             />
             {this.state.answerListLength !== this.state.answerListTotalLength ?
               <button onClick={this.expandAnswerList}>Load More Answers</button> :
