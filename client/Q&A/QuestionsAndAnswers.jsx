@@ -2,7 +2,6 @@
 import React from 'react';
 import Title from './components/Title.jsx';
 import SearchBar from './components/SearchBar.jsx';
-import Footer from './components/Footer/Footer.jsx';
 import QuestionsList from './components/QuestionsList/QuestionsList.jsx';
 import AddQuestionModal from './components/AddQuestionModal/AddQuestionModal.jsx';
 import './style.css'
