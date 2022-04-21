@@ -18,6 +18,7 @@ body {
 
 
 .overviewRight {
+  padding-left: 5px;
   min-width: 400px;
   max-width: 460px;
 }
