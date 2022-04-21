@@ -12,7 +12,7 @@ class SearchBar extends React.Component {
       const copiedQuestionList = structuredClone(this.props.originalQuestionList);
       let newQuestionResults = [];
       for (let question of copiedQuestionList.results) {
-        if (question.question_body.toLowerCase().includes(searchValue)) {
+        if (question.question_body.toLowerCase().replaceAll(' ', '').includes(searchValue.replaceAll(' ', ''))) {
           newQuestionResults.push(question)
         }
       }
