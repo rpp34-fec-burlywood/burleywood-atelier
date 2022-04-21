@@ -10,16 +10,25 @@ class QuestionsAndAnswers extends React.Component {
     super(props);
 
     this.state = {
-      questionModalOpen: false
+      questionModalOpen: false,
+      originalQuestionsList: props.originalQuestionsList,
+      currentQuestionsList: props.originalQuestionsList
     }
 
-    this.addQuestionClickHandler = this.addQuestionClickHandler.bind(this)
-    this.closeQuestionModal = this.closeQuestionModal.bind(this)
+    this.addQuestionClickHandler = this.addQuestionClickHandler.bind(this);
+    this.closeQuestionModal = this.closeQuestionModal.bind(this);
+    this.setQuestionList = this.setQuestionList.bind(this);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.currProd !== this.props.currProd) {
       this.props.refetch(this.props.currProd.id);
+    }
+    if (prevProps.originalQuestionsList !== this.props.originalQuestionsList) {
+      this.setState({
+        originalQuestionsList: this.props.originalQuestionsList,
+        currentQuestionsList: this.props.originalQuestionsList
+      })
     }
   }
 
@@ -35,14 +44,23 @@ class QuestionsAndAnswers extends React.Component {
     })
   }
 
+  setQuestionList(newQuestionList) {
+    this.setState({
+      currentQuestionsList: newQuestionList
+    })
+  }
+
   render() {
-    console.log(this.props.questionsList)
+    console.log('CURRENT STATE', this.state.currentQuestionsList)
     return (
       <>
         <Title/>
-        <SearchBar/>
+        <SearchBar 
+          setQuestionList={this.setQuestionList} 
+          originalQuestionList={this.state.originalQuestionsList}
+        />
         <QuestionsList 
-          questions={this.props.questionsList}
+          questions={this.state.currentQuestionsList}
           addQuestionClickHandler={this.addQuestionClickHandler}
         />
         {this.state.questionModalOpen ?  

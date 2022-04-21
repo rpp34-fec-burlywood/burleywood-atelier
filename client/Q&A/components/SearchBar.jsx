@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 class SearchBar extends React.Component {
@@ -5,13 +6,30 @@ class SearchBar extends React.Component {
     super(props);
   }
 
+  processSearch(searchValue) {
+
+    if (searchValue.length >= 3) {
+      const copiedQuestionList = structuredClone(this.props.originalQuestionList);
+      let newQuestionResults = [];
+      for (let question of copiedQuestionList.results) {
+        if (question.question_body.toLowerCase().includes(searchValue)) {
+          newQuestionResults.push(question)
+        }
+      }
+      copiedQuestionList.results = newQuestionResults
+      this.props.setQuestionList(copiedQuestionList)
+    } else {
+      this.props.setQuestionList(structuredClone(this.props.originalQuestionList))
+    }
+  }
+
   render() {
     return(
-      <form>
-        <input type="text" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." name="question_search"/>
-        <button type="submit">
-        </button>
-      </form>
+
+        <input
+          onChange={(e) => this.processSearch(e.target.value)} 
+          placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
+        />
     );
   }
 }
