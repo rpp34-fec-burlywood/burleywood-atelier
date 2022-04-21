@@ -1,6 +1,9 @@
 /* sets whole website to use roboto font*/
 body {
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .overviewLeft,
@@ -15,6 +18,7 @@ body {
 
 
 .overviewRight {
+  padding-left: 5px;
   min-width: 400px;
   max-width: 460px;
 }

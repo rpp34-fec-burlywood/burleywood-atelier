@@ -15,11 +15,23 @@
 
 .carousel {
   position: relative;
-  top: -500px;
-  left: 10px;
-  width: fit-content;
+  flex-direction: column;
+  top: -504px;
+  left: 0px;
   height: 500px;
+  width: 70px;
+  display: flex;
   /* background-color: aqua; */
+  overflow: hidden;
+  align-items: center;
+  margin: 0px;
+  justify-content: center;
+  padding-left: 10px;
+}
+
+.carouselContainer {
+  height: 450px;
+  width: 64px;
   overflow: hidden;
 }
 
@@ -28,19 +40,55 @@
   position: relative;
   flex-direction: column;
   flex-wrap: nowrap;
-  transform: translateY(0%);
-  height: 480px;
-  overflow: hidden;
+  height: 450px;
+  width: 64px;
+  transition: 0.3s;
 }
 
-.galleryThumb {
+.carouselItem {
   display: flex;
   object-fit: cover;
   margin: 0;
   padding: 0;
-  margin-bottom: 5px;
-  margin-top: 5px;
   height: 60px;
   width: 60px;
   flex-shrink: 0;
+  border: 2px solid transparent;
+}
+
+.carouselItem:hover {
+  cursor: pointer;
+  border-color: aliceblue;
+}
+
+#carouselUp,
+#carouselDown,
+.arrow {
+  display: flex;
+  height: 60px;
+  background-color: transparent;
+  padding: 0;
+  margin:0;
+  height: 15px;
+  width: 60px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+}
+#carouselUp:hover,
+#carouselDown:hover {
+  transform: scale(1.15);
+}
+
+.arrow {
+  transform: rotate(90deg);
+  display: flex;
+  position: relative;
+  color: white;
+}
+
+.carouselItem.active,
+.carouselItem.active:hover {
+  border: 2px solid yellowgreen;
+  cursor: default;
 }
