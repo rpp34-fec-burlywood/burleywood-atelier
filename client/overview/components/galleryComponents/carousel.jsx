@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import CarouselItem from './carouselItem.jsx';
+const MAX_CAROUSEL_LENGTH = 7;
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -29,15 +30,29 @@ class Carousel extends React.Component {
   }
 
   render () {
-    return(
+    if (this.props.selectedPhotos.length > MAX_CAROUSEL_LENGTH) {
+      return(
+        <div className="carousel">
+          <button id="carouselUp">
+            <div className="arrow">&#10092;</div>
+          </button>
+          <div className="carSlider">
+            {this.renderCarousel(this.props.mainImageIndex)}
+          </div>
+          <button id="carouselDown">
+            <div className="arrow">&#10093;</div>
+          </button>
+        </div>
+      );
+    }
+    return (
       <div className="carousel">
         <div className="carSlider">
-          {/* up arrow*/}
           {this.renderCarousel(this.props.mainImageIndex)}
-          {/* down arrow*/}
         </div>
       </div>
     );
+
   }
 }
 
