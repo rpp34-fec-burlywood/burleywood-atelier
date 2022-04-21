@@ -63,7 +63,7 @@ class QuestionsAndAnswers extends React.Component {
           questions={this.state.currentQuestionsList}
           addQuestionClickHandler={this.addQuestionClickHandler}
         />
-        {this.state.questionModalOpen ?  
+        {this.state.questionModalOpen?  
           <AddQuestionModal 
             closeModal={this.closeQuestionModal} 
             currProd={this.props.currProd}
