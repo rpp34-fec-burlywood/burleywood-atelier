@@ -39,7 +39,6 @@ class QuestionsList extends React.Component {
         fullyExpanded: true
       })
     }
-    console.log(this.state.fullyExpanded)
   }
 
   collapseQuestions() {

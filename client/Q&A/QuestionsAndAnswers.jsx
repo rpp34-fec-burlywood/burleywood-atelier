@@ -51,7 +51,6 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
-    console.log('CURRENT STATE', this.state.currentQuestionsList)
     return (
       <>
         <Title/>
