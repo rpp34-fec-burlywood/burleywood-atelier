@@ -19,7 +19,7 @@ class ReviewList extends React.Component {
       }
       <div>
         <button>More Reviews</button>
-        <button>Add Review</button>
+        <button onClick={console.log('Add Review')}>Add Review</button>
       </div>
       </div>
     );
