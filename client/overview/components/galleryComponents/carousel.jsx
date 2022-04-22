@@ -20,16 +20,9 @@ class Carousel extends React.Component {
 
   renderCarousel(mainImageIndex) {
 
-    var counter = 0;
     var carousel = this.props.selectedPhotos.map((photo, index) => {
-      if (index === mainImageIndex) {
-        counter++;
-        return (
-          <CarouselItem imgUrl={photo.thumbnail_url} index={index} active={true} key={index} />
-        );
-      }
       return (
-        <CarouselItem imgUrl={photo.thumbnail_url} index={index} active={false} key={index} />
+        <CarouselItem imgUrl={photo.thumbnail_url} index={index} mainImageIndex={mainImageIndex} key={index} />
       );
     });
 

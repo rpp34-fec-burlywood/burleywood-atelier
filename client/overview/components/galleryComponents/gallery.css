@@ -87,8 +87,8 @@
   color: white;
 }
 
-.carouselItem.active,
-.carouselItem.active:hover {
+#carouselItemActive,
+#carouselItemActive:hover {
   border: 2px solid yellowgreen;
   cursor: default;
 }
