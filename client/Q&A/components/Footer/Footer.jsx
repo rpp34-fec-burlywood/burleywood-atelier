@@ -8,12 +8,17 @@ class Footer extends React.Component {
 
   }
 
-
   render() {
+
     return(
       <div id='qa-footer'>
         <div id='show-more-or-collapse-questions'>
+
+          {/* Chained ternary operator. First check if questions list contains more than 2 questions. 
+              Then decides which button to load.
+          */}
           {
+            this.props.questions?.results?.length > 2 ?
             this.props.loadMoreQuestions ? 
             <button
               id='show-more-questions-button'
@@ -26,7 +31,8 @@ class Footer extends React.Component {
               onClick={this.props.collapseQuestions}
             >
               Collapse Questions
-            </button>
+            </button> : 
+            null
           }
         </div>
         <div id='add-question'>

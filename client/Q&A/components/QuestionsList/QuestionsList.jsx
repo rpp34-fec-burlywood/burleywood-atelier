@@ -39,7 +39,6 @@ class QuestionsList extends React.Component {
         fullyExpanded: true
       })
     }
-    console.log(this.state.fullyExpanded)
   }
 
   collapseQuestions() {
@@ -62,6 +61,7 @@ class QuestionsList extends React.Component {
           loadMoreQuestionsHandler={this.loadMoreQuestionsHandler}
           loadMoreQuestions={!this.state.fullyExpanded}
           collapseQuestions={this.collapseQuestions}
+          questions={this.props.questions}
         />
       </>
     );
