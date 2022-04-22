@@ -17,16 +17,15 @@
   position: relative;
   flex-direction: column;
   top: -504px;
-  left: 0px;
+  left: 10px;
   height: 500px;
   width: 70px;
   display: flex;
-  /* background-color: aqua; */
+  background-color: rgb(80, 80, 80, 0.8);
   overflow: hidden;
   align-items: center;
   margin: 0px;
   justify-content: center;
-  padding-left: 10px;
 }
 
 .carouselContainer {
@@ -75,6 +74,12 @@
   justify-content: center;
   border: 0;
 }
+
+#carouselUp,
+#carouselDown {
+  overflow: hidden;
+}
+
 #carouselUp:hover,
 #carouselDown:hover {
   transform: scale(1.15);
