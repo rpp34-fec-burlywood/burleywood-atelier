@@ -19,7 +19,8 @@ class App extends React.Component {
       selectedStyle: undefined,
       relatedProducts: [],
       reviews: [],
-      questionsList: []
+      questionsList: [],
+      mainImageIndex: 0
     }
 
     // Binding all App state modifiers to App
@@ -27,6 +28,7 @@ class App extends React.Component {
     this.getOverviewProduct = overviewHandler.getProduct.bind(this);
     this.getProductStyleById = overviewHandler.getProductStyleById.bind(this);
     this.addToCart = overviewHandler.addToCart;
+    this.carouselClickhandler = overviewHandler.carouselClickhandler.bind(this);
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
     this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
     this.getQuestions = qaHandlers.getQuestionsArray.bind(this);
@@ -53,7 +55,9 @@ class App extends React.Component {
           currProd={this.state.currProd}
           currProdStyles={this.state.currProdStyles}
           selectedStyle={this.state.selectedStyle}
-          addToCart={this.addToCart} />
+          addToCart={this.addToCart}
+          mainImageIndex={this.state.mainImageIndex}
+          carouselClickhandler={this.carouselClickhandler} />
         <RelatedItems
           relatedArr={this.state.relatedProducts}
           currProd = {this.state.currProd}
@@ -62,7 +66,7 @@ class App extends React.Component {
         <QuestionsAndAnswers
           currProd={ this.state.currProd }
           originalQuestionsList={ this.state.questionsList }
-          refetch={ this.getQuestions } 
+          refetch={ this.getQuestions }
         />
         <ReviewsWidget
           currProd={this.state.currProd}

@@ -60,10 +60,21 @@ const addToCart = function ({sku_id, count}) {
 
 };
 
+const carouselClickhandler = function(e) {
+  e.preventDefault();
+  var index = Number(e.target.attributes.index?.value);
+  if (index !== this.state.mainImageIndex) {
+    this.setState({
+      mainImageIndex: index
+    });
+  }
+}
+
 var overviewHandlers = {
   getProduct,
   getProductStyleById,
-  addToCart
+  addToCart,
+  carouselClickhandler,
 }
 
 export default overviewHandlers;
