@@ -7,24 +7,6 @@ import './galleryComponents/gallery.css'
 class Gallery extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      mainImageIndex: 0
-    }
-
-    this.carouselClickhandler = this.carouselClickhandler.bind(this);
-  }
-
-  carouselClickhandler (e){
-    e.preventDefault();
-
-    var index = Number(e.target.attributes.index?.value);
-    console.log(typeof index, index);
-    if (index !== this.state.mainImageIndex) {
-      this.setState({
-        mainImageIndex: index
-      })
-    }
   }
 
   render() {
@@ -33,12 +15,12 @@ class Gallery extends React.Component {
         <div id="productGallery">
           <div className="productImageBlock">
             <img className="mainImage"
-              src={this.props.selectedStyle.photos[this.state.mainImageIndex].url}>
+              src={this.props.selectedStyle.photos[this.props.mainImageIndex].url}>
             </img>
             <Carousel
-              mainImageIndex={this.state.mainImageIndex}
+              mainImageIndex={this.props.mainImageIndex}
               selectedPhotos={this.props.selectedStyle.photos}
-              carouselClickhandler={this.carouselClickhandler} />
+              carouselClickhandler={this.props.carouselClickhandler} />
           </div>
         </div>
       );

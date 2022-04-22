@@ -9,7 +9,22 @@ class Overview extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      mainImageIndex: 0
+    }
 
+    this.carouselClickhandler = this.carouselClickhandler.bind(this);
+  }
+
+  carouselClickhandler (e){
+    e.preventDefault();
+
+    var index = Number(e.target.attributes.index?.value);
+    if (index !== this.state.mainImageIndex) {
+      this.setState({
+        mainImageIndex: index
+      });
+    }
   }
 
   render() {
@@ -18,7 +33,9 @@ class Overview extends React.Component {
         <div className="overviewLeft">
           <Gallery
             selectedStyle={this.props.selectedStyle}
-            currProdStyles={this.props.currProdStyles} />
+            currProdStyles={this.props.currProdStyles}
+            mainImageIndex={this.state.mainImageIndex}
+            carouselClickhandler={this.carouselClickhandler} />
         </div>
         <div className="overviewRight">
           <ProductInfo
