@@ -73,7 +73,8 @@ class Carousel extends React.Component {
     }
     return (
       <div className="carousel">
-        <div className="carSlider">
+        <div className="carSlider"
+          onClick={this.props.carouselClickhandler}>
           {this.renderCarousel(this.props.mainImageIndex)}
         </div>
       </div>
