@@ -17,9 +17,10 @@ class Gallery extends React.Component {
 
   carouselClickhandler (e){
     e.preventDefault();
-    // console.log(e.target.attributes.index?.value)
+
     var index = Number(e.target.attributes.index?.value);
-    if (index && index !== this.state.mainImageIndex) {
+    console.log(typeof index, index);
+    if (index !== this.state.mainImageIndex) {
       this.setState({
         mainImageIndex: index
       })
