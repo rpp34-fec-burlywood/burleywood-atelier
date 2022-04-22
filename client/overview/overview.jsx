@@ -8,7 +8,6 @@ import AddToCart from './components/addToCart.jsx';
 class Overview extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   render() {
@@ -30,7 +29,9 @@ class Overview extends React.Component {
             <StyleSelector
               selectedStyle={this.props.selectedStyle}
               currProdStyles={this.props.currProdStyles}
-              mainImageIndex={this.props.mainImageIndex} />
+              defaultStyle={this.props.defaultStyle}
+              mainImageIndex={this.props.mainImageIndex}
+              styleClickHandler={this.props.styleClickHandler} />
             <AddToCart
               selectedStyle={this.props.selectedStyle}
               addToCart={this.props.addToCart} />

@@ -13,17 +13,17 @@ class StyleSelector extends React.Component {
   // currProdStyles={this.props.currProdStyles}
 
   renderStyles(currProdStyles) {
-    if (this.props.selectedStyle && currProdStyles) {
+    if (this.props.defaultStyle && currProdStyles) {
       var block = [];
       var counter = 0;
       var row = [
         <StylePin
-          styledId={this.props.selectedStyle.style_id}
-          photo={this.props.selectedStyle.photos[0].thumbnail_url}
-          key={this.props.selectedStyle.style_id + this.props.selectedStyle.name} />
+          styledId={this.props.defaultStyle.style_id}
+          photo={this.props.defaultStyle.photos[0].thumbnail_url}
+          key={this.props.defaultStyle.style_id + this.props.selectedStyle.name} />
       ];
       for (let style of currProdStyles) {
-        if (style.style_id !== this.props.selectedStyle.style_id) {
+        if (style.style_id !== this.props.defaultStyle.style_id) {
           row.push(
             <StylePin
               styledId={style.style_id}
@@ -46,14 +46,17 @@ class StyleSelector extends React.Component {
 
 
   render() {
-    return (
-      <div className="styleSelector">
-        <div>{`STYLE: ${this.props.selectedStyle?.name.toUpperCase()}`}</div>
-        <div>
-          {this.renderStyles(this.props.currProdStyles)}
+    if (this.props.defaultStyle?.name && this.props.defaultStyle?.name) {
+      return (
+        <div className="styleSelector">
+          <div>{`STYLE: ${this.props.selectedStyle.name.toUpperCase()}`}</div>
+          <div className="selectStylePin" onClick={this.props.styleClickHandler}>
+            {this.renderStyles(this.props.currProdStyles)}
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return  <div className="styleSelector"></div>
   }
 
 }

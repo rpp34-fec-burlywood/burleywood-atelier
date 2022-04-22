@@ -40,6 +40,7 @@ const getProductStyleById = function (prodId) {
       this.setState({
         currProdStyles: results,
         selectedStyle: selectedStyle,
+        defaultStyle: selectedStyle
       })
     })
     .catch(err => {
@@ -70,11 +71,34 @@ const carouselClickhandler = function(e) {
   }
 }
 
+  const styleClickHandler = function(e) {
+    e.preventDefault();
+    var styleId = Number(e.target.attributes.styleid?.value);
+    var currentStyleId = this.state.selectedStyle?.style_id;
+    // console.log("clicked ID", typeof styleId)
+    // console.log(typeof this.state.selectedStyle?.style_id)
+
+    if (styleId !== currentStyleId) {
+
+      for (let availStyle of this.state.currProdStyles) {
+
+        if (styleId === availStyle.style_id){
+          var selectedStyle = availStyle;
+          this.setState({
+            selectedStyle
+          });
+          break;
+        }
+      }
+    }
+  }
+
 var overviewHandlers = {
   getProduct,
   getProductStyleById,
   addToCart,
   carouselClickhandler,
+  styleClickHandler,
 }
 
 export default overviewHandlers;

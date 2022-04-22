@@ -16,6 +16,7 @@ class App extends React.Component {
     this.state = {
       currProd: undefined,
       currProdStyles: undefined,
+      defaultStyle: undefined,
       selectedStyle: undefined,
       relatedProducts: [],
       reviews: [],
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.getProductStyleById = overviewHandler.getProductStyleById.bind(this);
     this.addToCart = overviewHandler.addToCart;
     this.carouselClickhandler = overviewHandler.carouselClickhandler.bind(this);
+    this.styleClickHandler = overviewHandler.styleClickHandler.bind(this);
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
     this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
     this.getQuestions = qaHandlers.getQuestionsArray.bind(this);
@@ -54,7 +56,9 @@ class App extends React.Component {
         <Overview
           currProd={this.state.currProd}
           currProdStyles={this.state.currProdStyles}
+          defaultStyle={this.state.defaultStyle}
           selectedStyle={this.state.selectedStyle}
+          styleClickHandler={this.styleClickHandler}
           addToCart={this.addToCart}
           mainImageIndex={this.state.mainImageIndex}
           carouselClickhandler={this.carouselClickhandler} />
