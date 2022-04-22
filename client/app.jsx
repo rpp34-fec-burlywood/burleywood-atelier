@@ -61,7 +61,7 @@ class App extends React.Component {
           initialize={this.getRelatedProductArray} />
         <QuestionsAndAnswers
           currProd={ this.state.currProd }
-          questionsList={ this.state.questionsList }
+          originalQuestionsList={ this.state.questionsList }
           refetch={ this.getQuestions } 
         />
         <ReviewsWidget
