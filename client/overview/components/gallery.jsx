@@ -11,6 +11,19 @@ class Gallery extends React.Component {
     this.state = {
       mainImageIndex: 0
     }
+
+    this.carouselClickhandler = this.carouselClickhandler.bind(this);
+  }
+
+  carouselClickhandler (e){
+    e.preventDefault();
+    // console.log(e.target.attributes.index?.value)
+    var index = e.target.attributes.index?.value;
+    if (index && index !== this.state.mainImageIndex) {
+      this.setState({
+        mainImageIndex: index
+      })
+    }
   }
 
   render() {
@@ -23,7 +36,8 @@ class Gallery extends React.Component {
             </img>
             <Carousel
               mainImageIndex={this.state.mainImageIndex}
-              selectedPhotos={this.props.selectedStyle.photos} />
+              selectedPhotos={this.props.selectedStyle.photos}
+              carouselClickhandler={this.carouselClickhandler} />
           </div>
         </div>
       );

@@ -67,7 +67,8 @@ class Carousel extends React.Component {
           </button>
           <div className="carouselContainer">
             <div className="carSlider"
-              style={{ transform: `translateY(-${this.state.windowIndex * this.state.slidePercentage}%)` }}>
+              style={{ transform: `translateY(-${this.state.windowIndex * this.state.slidePercentage}%)` }}
+              onClick={this.props.carouselClickhandler}>
               {this.renderCarousel(this.props.mainImageIndex)}
             </div>
           </div>
