@@ -7,11 +7,9 @@ import './galleryComponents/gallery.css'
 class Gallery extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      mainImageIndex: 0
-    }
   }
+
+  // mainImage will need to be its own component for expanded view
 
   render() {
     if (this.props.selectedStyle) {
@@ -19,13 +17,18 @@ class Gallery extends React.Component {
         <div id="productGallery">
           <div className="productImageBlock">
             <img className="mainImage"
-              src={this.props.selectedStyle.photos[this.state.mainImageIndex].url}>
-            </img>
-            <Carousel
-              mainImageIndex={this.state.mainImageIndex}
-              selectedPhotos={this.props.selectedStyle.photos} />
-          </div>
+              src={
+                this.props.selectedStyle.photos[this.props.mainImageIndex] ?
+                  this.props.selectedStyle.photos[this.props.mainImageIndex].url :
+                  this.props.carouselClickhandler({ target: { attributes: { index: 0 } } })
+                }>
+          </img>
+          <Carousel
+            mainImageIndex={this.props.mainImageIndex}
+            selectedPhotos={this.props.selectedStyle.photos}
+            carouselClickhandler={this.props.carouselClickhandler} />
         </div>
+        </div >
       );
     }
     return <div id="productGallery"></div>

@@ -4,16 +4,22 @@ import React from 'react';
 class CarouselItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.genId = this.genId.bind(this);
   }
 
-  render () {
-    if (this.props.active) {
-      return (
-        <img className="carouselItem active" src={this.props.imgUrl} index={this.props.index} />
-      );
+  genId(mainImageIndex, index) {
+    if (mainImageIndex === index) {
+      return 'carouselItemActive';
     }
+    return '';
+  }
+
+  render() {
     return (
-      <img className="carouselItem" src={this.props.imgUrl} index={this.props.index} />
+      <img className='carouselItem'
+        id={this.genId(this.props.mainImageIndex, this.props.index)}
+        src={this.props.imgUrl} index={this.props.index} />
     );
   }
 }
