@@ -11,13 +11,13 @@ class MainImage extends React.Component {
       height: 500
     }
 
-    this.clickHandler = this.clickHandler.bind(this);
+    this.expandHandler = this.expandHandler.bind(this);
     this.renderArrows = this.renderArrows.bind(this)
   }
 
   // mainImage will need to be its own component for expanded view
 
-  clickHandler() {
+  expandHandler() {
     var height = $('#overview').height();
     this.setState({
       expanded: !this.state.expanded,
@@ -51,10 +51,10 @@ class MainImage extends React.Component {
     return (
       <div className={`mainImageContainer${this.state.expanded ? ' expanded' : ''}`}
         style={this.changeStyle(this.state.expanded)}>
+        <div id ='expandBTN'onClick={this.expandHandler}>{'[=]'}</div>
         {this.renderArrows(this.state.expanded)}
         <div className={`mainImageScroll ${this.state.expanded ? ' expanded' : ''}`}>
           <img className={`mainImage${this.state.expanded ? ' expanded' : ''}`}
-            onClick={this.clickHandler}
             src={
               this.props.selectedStyle.photos[this.props.mainImageIndex] ?
                 this.props.selectedStyle.photos[this.props.mainImageIndex].url :
