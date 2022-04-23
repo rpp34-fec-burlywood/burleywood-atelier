@@ -31,9 +31,7 @@ class ProductInfo extends React.Component {
         <div id="productInfo">
           <div>{this.props.productInfo.category}</div>
           <div className="currProductTitle">{this.props.productInfo.name}</div>
-          {this.props.selectedStyle ? this.renderPrice(this.props.selectedStyle) : null}
-          <div>{this.props.productInfo.slogan ? this.props.productInfo.slogan : null}</div>
-          <div>{this.props.productInfo.description ? this.props.productInfo.description : null}</div>
+          {this.renderPrice(this.props.selectedStyle)}
         </div>
       );
     }
