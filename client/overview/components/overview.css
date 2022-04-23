@@ -5,6 +5,8 @@
   max-width: 1000px;
 }
 
+
+
 .overviewTop {
   display: flex;
   flex-wrap: wrap;
@@ -37,34 +39,89 @@
   /* overflow: hidden; */
 }
 
-.productImageBlock,
-.mainImage {
+.productImageBlock {
   width: 600px;
   height: 500px;
+}
+
+.mainImageContainer {
+  position: relative;
+  top: -500px;
+  width: 600px;
+  height: 500px;
+  transition: 0.5s;
+  background-color: white;
+  /* ^^ Same as page BG*/
+}
+
+.mainImageContainer.expanded {
+  position: relative;
+  transition: 0.5s;
+}
+
+.arrowX {
+  position: absolute;
+}
+
+#mainLeft {
+  top: 50%;
+  left: 80px;
+  z-index: 3;
+}
+
+#mainRight {
+  top: 50%;
+  right: 20px;
+  z-index: 3;
+}
+
+.mainImageScroll {
+  height: inherit;
+  width: inherit;
+}
+
+.mainImageScroll.expanded {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
+.mainImage {
+  position: relative;
+  object-fit: cover;
+  object-position: 50% 50%;
+  height: inherit;
+  width: inherit;
+}
+
+.mainImage.expanded {
+  position: relative;
   object-fit: cover;
   object-position: 50% 100%;
-  display: inline-block;
+  width: inherit;
+  height: max-content;
+  padding: -10px
 }
 
 .carousel {
   position: relative;
   flex-direction: column;
-  top: -504px;
   left: 10px;
   height: 500px;
   width: 70px;
   display: flex;
-  background-color: rgb(80, 80, 80, 0.8);
   overflow: hidden;
   align-items: center;
   margin: 0px;
   justify-content: center;
+  z-index: 2;
 }
 
 .carouselContainer {
-  height: 450px;
+  height: fit-content;
   width: 64px;
   overflow: hidden;
+  background-color: rgb(80, 80, 80, 0.8);
 }
 
 .carSlider {
@@ -99,7 +156,7 @@
   display: flex;
   background-color: transparent;
   padding: 0;
-  margin:0;
+  margin: 0;
   height: 15px;
   width: 60px;
   align-items: center;
@@ -118,27 +175,21 @@
 }
 
 #carouselUp {
-margin-bottom: 3px;
+  margin-bottom: 3px;
 }
 
 #carouselDown {
-margin-top: 3px;
+  margin-top: 3px;
 }
 
 .arrowY {
   transform: rotate(90deg);
-  display: flex;
   position: relative;
   color: white;
-  height: 60px;
-  width: 15px;
   border: none;
   z-index: 1;
   cursor: default;
   font-size: 3rem;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.575);
-  background-color: transparent;
 }
 
 #carouselItemActive,
@@ -176,5 +227,3 @@ margin-top: 3px;
 .stylePin.active {
   border: 4px solid rgb(237, 102, 6);
 }
-
-
