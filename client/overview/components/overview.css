@@ -80,7 +80,7 @@
 
 #carouselUp,
 #carouselDown,
-.arrow {
+.arrowY {
   display: flex;
   background-color: transparent;
   padding: 0;
@@ -117,6 +117,13 @@ margin-top: 3px;
   color: white;
   height: 60px;
   width: 15px;
+  border: none;
+  z-index: 1;
+  cursor: default;
+  font-size: 3rem;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.575);
+  background-color: transparent;
 }
 
 #carouselItemActive,
