@@ -24,7 +24,7 @@ class App extends React.Component {
       questionsList: [],
       mainImageIndex: 0
     }
-
+    this.home = this.home.bind(this)
     // Binding all App state modifiers to App
     this.initialize = this.initialize.bind(this);
     this.getOverviewProduct = overviewHandler.getProduct.bind(this);
@@ -61,6 +61,10 @@ class App extends React.Component {
 
   }
 
+  home() {
+    window.location.href = window.location.origin;
+  }
+
   componentDidMount() {
     var id = this.parsePath(window.location?.pathname);
     console.log(id);
@@ -80,7 +84,9 @@ class App extends React.Component {
     }
     return (
       <div>
-        <h1>Starter app</h1>
+        <div onClick={this.home} className="home">
+          <h1>Starter app</h1>
+        </div>
         <Overview
           currProd={this.state.currProd}
           currProdStyles={this.state.currProdStyles}

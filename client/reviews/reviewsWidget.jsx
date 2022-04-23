@@ -16,7 +16,7 @@ class ReviewsWidget extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="reviews">
         <div>Reviews Widget</div>
         <Sorter/>
         <ReviewList reviews={this.props.reviews}/>

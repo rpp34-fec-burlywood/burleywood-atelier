@@ -6,3 +6,16 @@ body {
   justify-content: center;
   min-width: 1000px;
 }
+
+.home {
+  display: block;
+  width: fit-content;
+}
+
+.home:hover {
+  cursor: pointer;
+}
+
+.reviews {
+  width: 1000px;
+}
