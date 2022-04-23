@@ -27,6 +27,8 @@ class App extends React.Component {
     this.home = this.home.bind(this)
     // Binding all App state modifiers to App
     this.initialize = this.initialize.bind(this);
+
+    /**Use this function to set the main product, should trigger entire page render*/
     this.getOverviewProduct = overviewHandler.getProduct.bind(this);
     this.getProductStyleById = overviewHandler.getProductStyleById.bind(this);
     this.addToCart = overviewHandler.addToCart;

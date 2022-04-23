@@ -56,7 +56,7 @@ class Carousel extends React.Component {
       return (
         <div className="carousel">
           <button id="carouselUp" onClick={this.upArrowClick}>
-            <div className="arrow">&#10092;</div>
+            <div className="arrowY">&#10092;</div>
           </button>
           <div className="carouselContainer">
             <div className="carSlider"
@@ -66,7 +66,7 @@ class Carousel extends React.Component {
             </div>
           </div>
           <button id="carouselDown" onClick={this.downArrowClick}>
-            <div className="arrow">&#10093;</div>
+            <div className="arrowY">&#10093;</div>
           </button>
         </div>
       );
