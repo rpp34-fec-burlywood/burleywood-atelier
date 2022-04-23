@@ -8,6 +8,7 @@ import relatedHandlers  from './utils/relatedItemsUtils.js';
 import reviewHandlers from './utils/reviewUtils.js';
 import qaHandlers from './utils/questionsAndAnswersUtils.js';
 import './styles.css';
+
 class App extends React.Component {
 
   constructor(props) {
@@ -47,7 +48,6 @@ class App extends React.Component {
   }
 
   parsePath(pathname) {
-    console.log(pathname);
     if (pathname.includes('/productPage/')) {
       var id = pathname.slice(-6, -1);
       var num = Number(id);
@@ -75,6 +75,9 @@ class App extends React.Component {
   }
 
   render() {
+    if (this.state.currProd?.id) {
+      window.history.replaceState(null, '', `${window.location.origin}/productPage/${this.state.currProd.id}/`)
+    }
     return (
       <div>
         <h1>Starter app</h1>
