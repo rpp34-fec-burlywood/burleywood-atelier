@@ -1,6 +1,22 @@
 import API from './APIRequests.js';
 
-const getProduct = function (numProd = 1) {
+const getProduct = function (numProd = 1, productId = undefined) {
+
+  // Allows for direct set of state.
+  if (productId !== undefined) {
+    return API.getProductById(productId)
+      .then(selectProd => {
+        this.setState({
+          currProd: selectProd
+        });
+        this.getProductStyleById(selectProd.id)
+      })
+      .catch(err => {
+        console.log('Fetch Product By Product FAILED', err);
+
+      });
+  }
+
   // Get products
   // Randomize to select 1 product to show
   // Get features and set app state to current product
@@ -11,6 +27,7 @@ const getProduct = function (numProd = 1) {
 
       API.getProductById(selectProd.id)
       // API.getProductById(64627) // TESTING PRODUCTS
+      // API.getProductById(64625) // TESTING PRODUCTS
         .then(selectProd => {
           this.setState({
             currProd: selectProd
@@ -48,7 +65,7 @@ const getProductStyleById = function (prodId) {
     });
 };
 
-const addToCart = function ({sku_id, count}) {
+const addToCart = function ({ sku_id, count }) {
   if (!sku_id) {
     return;
   }
@@ -61,7 +78,7 @@ const addToCart = function ({sku_id, count}) {
 
 };
 
-const carouselClickhandler = function(e) {
+const carouselClickhandler = function (e) {
   e.preventDefault();
   var index = Number(e.target.attributes.index?.value);
   if (index !== this.state.mainImageIndex) {
@@ -71,27 +88,27 @@ const carouselClickhandler = function(e) {
   }
 }
 
-  const styleClickHandler = function(e) {
-    e.preventDefault();
-    var styleId = Number(e.target.attributes.styleid?.value);
-    var currentStyleId = this.state.selectedStyle?.style_id;
-    // console.log("clicked ID", typeof styleId)
-    // console.log(typeof this.state.selectedStyle?.style_id)
+const styleClickHandler = function (e) {
+  e.preventDefault();
+  var styleId = Number(e.target.attributes.styleid?.value);
+  var currentStyleId = this.state.selectedStyle?.style_id;
+  // console.log("clicked ID", typeof styleId)
+  // console.log(typeof this.state.selectedStyle?.style_id)
 
-    if (styleId !== currentStyleId) {
+  if (styleId !== currentStyleId) {
 
-      for (let availStyle of this.state.currProdStyles) {
+    for (let availStyle of this.state.currProdStyles) {
 
-        if (styleId === availStyle.style_id){
-          var selectedStyle = availStyle;
-          this.setState({
-            selectedStyle
-          });
-          break;
-        }
+      if (styleId === availStyle.style_id) {
+        var selectedStyle = availStyle;
+        this.setState({
+          selectedStyle
+        });
+        break;
       }
     }
   }
+}
 
 var overviewHandlers = {
   getProduct,

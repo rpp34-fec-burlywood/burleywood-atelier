@@ -36,17 +36,39 @@ class App extends React.Component {
     this.getQuestions = qaHandlers.getQuestionsArray.bind(this);
   }
 
-  initialize() {
+  initialize(productid = undefined) {
     // Initializes Overview by selecting 1 of 15 products
     // also calls this.getProductStyleById
-    this.getOverviewProduct(30)
+
+    this.getOverviewProduct(30, productid)
       // .then(currProd => {
       //   this.getRelatedProductArray(currProd.id);
       // })
   }
 
+  parsePath(pathname) {
+    console.log(pathname);
+    if (pathname.includes('/productPage/')) {
+      var id = pathname.slice(-6, -1);
+      if (Number(id) !==  NaN) {
+        return id;
+      }
+
+    }
+    return false;
+
+  }
+
   componentDidMount() {
-    this.initialize();
+    var id = this.parsePath(window.location?.pathname);
+    if (id) {
+      console.log('initialized by id');
+      this.initialize(id);
+    } else {
+      this.initialize();
+    }
+
+
   }
 
   render() {
