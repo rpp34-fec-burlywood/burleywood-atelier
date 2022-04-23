@@ -28,6 +28,10 @@
   padding-left: 10px;
 }
 
+.overviewBottom {
+  margin-bottom: 10px;
+}
+
 .productDescription {
   max-width: 1000px;
 }
@@ -49,14 +53,10 @@
   top: -500px;
   width: 600px;
   height: 500px;
-  transition: 0.5s;
-  background-color: white;
-  /* ^^ Same as page BG*/
 }
 
 .mainImageContainer.expanded {
   position: relative;
-  transition: 0.5s;
 }
 
 .arrowX {
@@ -82,7 +82,18 @@
 
 .mainImageScroll.expanded {
   overflow-y: auto;
-  overflow-x: hidden;
+}
+
+.mainImageScroll {
+  -ms-overflow-style: none;
+  /* for Internet Explorer, Edge */
+  scrollbar-width: none;
+  /* for Firefox */
+}
+
+.mainImageScroll::-webkit-scrollbar {
+  display: none;
+  /* for Chrome, Safari, and Opera */
 }
 
 
@@ -92,15 +103,14 @@
   object-position: 50% 50%;
   height: inherit;
   width: inherit;
+  transition: 0.3s;
+
 }
 
 .mainImage.expanded {
-  position: relative;
-  object-fit: cover;
-  object-position: 50% 100%;
-  width: inherit;
   height: max-content;
-  padding: -10px
+  transition: 0.3s;
+  position: 50% 50%;
 }
 
 .carousel {
@@ -122,6 +132,19 @@
   width: 64px;
   overflow: hidden;
   background-color: rgb(80, 80, 80, 0.8);
+  overflow-y: auto;
+}
+
+.carouselContainer {
+  -ms-overflow-style: none;
+  /* for Internet Explorer, Edge */
+  scrollbar-width: none;
+  /* for Firefox */
+}
+
+.carouselContainer::-webkit-scrollbar {
+  display: none;
+  /* for Chrome, Safari, and Opera */
 }
 
 .carSlider {

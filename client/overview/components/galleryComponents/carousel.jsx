@@ -30,14 +30,14 @@ class Carousel extends React.Component {
   }
 
   downArrowClick() {
-    var newWindowIndex = this.state.windowIndex < this.state.maxSlides ? this.state.windowIndex + 1 : 0;
+    var newWindowIndex = this.state.windowIndex < this.state.maxSlides ? this.state.windowIndex + 1 : this.state.maxSlides;
     this.setState({
       windowIndex: newWindowIndex
     })
   }
 
   upArrowClick() {
-    var newWindowIndex = this.state.windowIndex > 0 ? this.state.windowIndex - 1 : this.state.maxSlides;
+    var newWindowIndex = this.state.windowIndex > 0 ? this.state.windowIndex - 1 : 0;
     this.setState({
       windowIndex: newWindowIndex
     })
