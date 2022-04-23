@@ -129,10 +129,7 @@ const postReview = (id, rating, summary, body, recommend, name, email, photos, c
 const markReviewHelpful = (review_id) => {
   return axios({
     method: 'PUT',
-    url: `/reviews/${review_id}/helpful`,
-    params: {
-      review_id: review_id
-    }
+    url: `/reviews/reviews/${review_id}/helpful`,
   })
     .then((response) => {
       console.log('-- Mark Helpful OK ', response.data);

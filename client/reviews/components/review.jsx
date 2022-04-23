@@ -5,11 +5,24 @@ import React from 'react';
 class Review extends React.Component {
   constructor(props) {
     super(props);
+    this.markReviewHelpful = this.markReviewHelpful.bind(this);
   }
 
+  markReviewHelpful(e) {
+    console.log(this.props);
+    this.props.markReviewHelpful(e.target.id);
+    console.log('Marked review as helpful.')
+  }
+
+  reportReview(e) {
+    console.log(this.props);
+    this.props.reviewReview(e.target.id);
+    console.log('Reported Review.')
+  }
 
   render() {
     var review = this.props.data;
+
     const months = {
       '01' : "January",
       '02' : "February",
@@ -30,11 +43,16 @@ class Review extends React.Component {
     const month = months[date[1]];
     const day = date[2];
     var dateText = `${month} ${day}, ${year}`;
-    console.log('Month', date);
+    console.log('Review:', review);
 
     return(
       <div>
-        <div> {`${review.reviewer_name}, ${dateText}`} </div>
+        <div>
+          <span> {`${review.reviewer_name}, ${dateText} | Helpful? `} </span>
+          <span onClick={this.markReviewHelpful} id={review.review_id}> {`Yes`} </span>
+          <span> {` (${review.helpfulness}) |`} </span>
+          <span onClick={this.reportReview}> {` Report`}</span>
+        </div>
         <div> {review.summary} </div>
         <div> {review.body} </div>
         <div> ------------------- </div>

@@ -10,11 +10,11 @@ class NewReview extends React.Components {
       <div>
         <form>
           <label>Rating:</label>
-          {/* <input type="text"><br></br> */}
+          <input type="text"/><br></br>
           <label>Summary:</label>
-          {/* <input type="text"><br></br> */}
+          <input type="text"/><br></br>
           <label>Body:</label>
-          {/* <input type="text"><br></br> */}
+          <input type="text"/><br></br>
         </form>
       </div>
     );

@@ -29,6 +29,8 @@ class App extends React.Component {
     this.addToCart = overviewHandler.addToCart;
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
     this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
+    this.reportReview = reviewHandlers.reportReview.bind(this);
+    this.markReviewHelpful = reviewHandlers.markReviewHelpful.bind(this);
     this.getQuestions = qaHandlers.getQuestionsArray.bind(this);
   }
 
@@ -46,6 +48,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('App', this.getReviewsById);
     return (
       <div>
         <h1>Starter app</h1>
@@ -62,12 +65,15 @@ class App extends React.Component {
         <QuestionsAndAnswers
           currProd={ this.state.currProd }
           questionsList={ this.state.questionsList }
-          refetch={ this.getQuestions } 
+          refetch={ this.getQuestions }
         />
         <ReviewsWidget
           currProd={this.state.currProd}
           reviews={this.state.reviews}
-          getReviewsById={this.getReviewsById} />
+          getReviewsById={this.getReviewsById}
+          markReviewHelpful={this.markReviewHelpful}
+          reportReview={this.reportReview}
+          />
       </div>
     )
   }
