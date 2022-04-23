@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Carousel from './galleryComponents/carousel.jsx';
-import './galleryComponents/gallery.css'
 
 
 class Gallery extends React.Component {
