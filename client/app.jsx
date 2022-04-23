@@ -50,10 +50,12 @@ class App extends React.Component {
     console.log(pathname);
     if (pathname.includes('/productPage/')) {
       var id = pathname.slice(-6, -1);
-      if (Number(id) !==  NaN) {
+      var num = Number(id);
+
+      //Will need away to return Page not found!
+      if (!isNaN(id) && num > 64619 && num < 65631) {
         return id;
       }
-
     }
     return false;
 
@@ -61,6 +63,7 @@ class App extends React.Component {
 
   componentDidMount() {
     var id = this.parsePath(window.location?.pathname);
+    console.log(id);
     if (id) {
       console.log('initialized by id');
       this.initialize(id);
