@@ -1,6 +1,10 @@
 /* sets whole website to use roboto font*/
 body {
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 1000px;
 }
 
 .overviewLeft,
@@ -15,20 +19,37 @@ body {
 
 
 .overviewRight {
+  padding-left: 5px;
   min-width: 400px;
   max-width: 460px;
 }
 
-
-.stylePin {
-  height: auto;
+.selectStylePin {
   width: auto;
-  display: inline-block;
+  display: block;
 }
 
-.pinImag {
+.styleRow {
+  max-height: fit-content;
+  max-width: fit-content;
+  margin: 0;
+  padding: 0;
+}
+
+
+.stylePin {
+  display: inline-block;
   height: 50px;
   width: 50px;
+}
+
+.stylePin {
   object-fit: cover;
   border-radius: 50%;
+  border: 4px solid transparent;
+}
+
+.stylePin:hover {
+  cursor: pointer;
+  border-color: blanchedalmond;
 }

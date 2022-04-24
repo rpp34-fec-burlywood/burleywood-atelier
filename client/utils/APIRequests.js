@@ -30,6 +30,7 @@ const getProductById = (id) => {
     })
     .catch((err) => {
       console.log('-- Get Product by ID FAILED:', err.response.data);
+      return err;
     });
 }
 

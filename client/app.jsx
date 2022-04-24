@@ -8,6 +8,7 @@ import relatedHandlers  from './utils/relatedItemsUtils.js';
 import reviewHandlers from './utils/reviewUtils.js';
 import qaHandlers from './utils/questionsAndAnswersUtils.js';
 import './styles.css';
+
 class App extends React.Component {
 
   constructor(props) {
@@ -16,10 +17,12 @@ class App extends React.Component {
     this.state = {
       currProd: undefined,
       currProdStyles: undefined,
+      defaultStyle: undefined,
       selectedStyle: undefined,
       relatedProducts: [],
       reviews: [],
-      questionsList: []
+      questionsList: [],
+      mainImageIndex: 0
     }
 
     // Binding all App state modifiers to App
@@ -27,6 +30,8 @@ class App extends React.Component {
     this.getOverviewProduct = overviewHandler.getProduct.bind(this);
     this.getProductStyleById = overviewHandler.getProductStyleById.bind(this);
     this.addToCart = overviewHandler.addToCart;
+    this.carouselClickhandler = overviewHandler.carouselClickhandler.bind(this);
+    this.styleClickHandler = overviewHandler.styleClickHandler.bind(this);
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
     this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
     this.reportReview = reviewHandlers.reportReview.bind(this);
@@ -34,29 +39,59 @@ class App extends React.Component {
     this.getQuestions = qaHandlers.getQuestionsArray.bind(this);
   }
 
-  initialize() {
+  initialize(productid = undefined) {
     // Initializes Overview by selecting 1 of 15 products
     // also calls this.getProductStyleById
-    this.getOverviewProduct(30)
+
+    this.getOverviewProduct(30, productid)
       // .then(currProd => {
       //   this.getRelatedProductArray(currProd.id);
       // })
   }
 
+  parsePath(pathname) {
+    if (pathname.includes('/productPage/')) {
+      var id = pathname.slice(-6, -1);
+      var num = Number(id);
+
+      //Will need away to return Page not found!
+      if (!isNaN(id) && num > 64619 && num < 65631) {
+        return id;
+      }
+    }
+    return false;
+
+  }
+
   componentDidMount() {
-    this.initialize();
+    var id = this.parsePath(window.location?.pathname);
+    console.log(id);
+    if (id) {
+      console.log('initialized by id');
+      this.initialize(id);
+    } else {
+      this.initialize();
+    }
+
+
   }
 
   render() {
-    console.log('App', this.getReviewsById);
+    if (this.state.currProd?.id) {
+      window.history.replaceState(null, '', `${window.location.origin}/productPage/${this.state.currProd.id}/`)
+    }
     return (
       <div>
         <h1>Starter app</h1>
         <Overview
           currProd={this.state.currProd}
           currProdStyles={this.state.currProdStyles}
+          defaultStyle={this.state.defaultStyle}
           selectedStyle={this.state.selectedStyle}
-          addToCart={this.addToCart} />
+          styleClickHandler={this.styleClickHandler}
+          addToCart={this.addToCart}
+          mainImageIndex={this.state.mainImageIndex}
+          carouselClickhandler={this.carouselClickhandler} />
         <RelatedItems
           relatedArr={this.state.relatedProducts}
           currProd = {this.state.currProd}
@@ -64,7 +99,11 @@ class App extends React.Component {
           initialize={this.getRelatedProductArray} />
         <QuestionsAndAnswers
           currProd={ this.state.currProd }
+<<<<<<< HEAD
           questionsList={ this.state.questionsList }
+=======
+          originalQuestionsList={ this.state.questionsList }
+>>>>>>> master
           refetch={ this.getQuestions }
         />
         <ReviewsWidget

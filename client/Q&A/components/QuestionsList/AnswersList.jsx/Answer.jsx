@@ -25,7 +25,7 @@ class Answer extends React.Component {
 
     const time = this.props.answer?.date.split('T')[0].split('-');
     const year = time[0]
-    const month = months[parseInt(time[1])]
+    const month = months[parseInt(time[1]) - 1]
     const day = time[2]
     const user = this.props.answer?.answerer_name
     const helpful = this.props.answer?.helpfulness
