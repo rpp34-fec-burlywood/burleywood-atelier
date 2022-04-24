@@ -34,6 +34,8 @@ class App extends React.Component {
     this.styleClickHandler = overviewHandler.styleClickHandler.bind(this);
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
     this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
+    this.reportReview = reviewHandlers.reportReview.bind(this);
+    this.markReviewHelpful = reviewHandlers.markReviewHelpful.bind(this);
     this.getQuestions = qaHandlers.getQuestionsArray.bind(this);
   }
 
@@ -103,7 +105,10 @@ class App extends React.Component {
         <ReviewsWidget
           currProd={this.state.currProd}
           reviews={this.state.reviews}
-          getReviewsById={this.getReviewsById} />
+          getReviewsById={this.getReviewsById}
+          markReviewHelpful={this.markReviewHelpful}
+          reportReview={this.reportReview}
+          />
       </div>
     )
   }
