@@ -28,7 +28,7 @@ class Overview extends React.Component {
               productInfo={this.props.currProd}
               selectedStyle={this.props.selectedStyle}
             />
-            <div>
+            <div className="optionCheckout">
               <StyleSelector
                 selectedStyle={this.props.selectedStyle}
                 currProdStyles={this.props.currProdStyles}

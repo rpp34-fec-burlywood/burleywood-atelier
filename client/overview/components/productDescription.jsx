@@ -12,8 +12,8 @@ class ProductDescription extends React.Component {
     if(this.props.productInfo) {
       return (
         <div className="productDescription">
-          <div>{this.props.productInfo.slogan ? this.props.productInfo.slogan : null}</div>
-          <div>{this.props.productInfo.description ? this.props.productInfo.description : null}</div>
+          <div className="slogan">{this.props.productInfo.slogan ? this.props.productInfo.slogan : null}</div>
+          <div className="description">{this.props.productInfo.description ? this.props.productInfo.description : null}</div>
         </div>
       )
     }

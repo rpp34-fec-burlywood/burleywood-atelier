@@ -12,15 +12,17 @@ class ProductInfo extends React.Component {
 
     if (selectedStyle.sale_price) {
       return (
-        <div id="currStylePrice">
-          <div className="originalPrice">{`$${this.props.selectedStyle.original_price}`}</div>
-          <div id="checkoutPrice" className="$sale">{`$${this.props.selectedStyle.sale_price}`}</div>
+        <div className="currStylePrice">
+          <div>PRICE:</div>
+          <div className="originalPrice sale">{`$${this.props.selectedStyle.original_price}`}</div>
+          <div id="checkoutPrice" className="salesPrice">{`$${this.props.selectedStyle.sale_price}`}</div>
         </div>
       );
     }
     return (
       <div className="currStylePrice">
-        <div id="checkoutPrice">{`$${this.props.selectedStyle.original_price}`}</div>
+        <div>PRICE:</div>
+        <div id="checkoutPrice" className="originalPrice">{`$${this.props.selectedStyle.original_price}`}</div>
       </div>
     );
   }
@@ -29,7 +31,7 @@ class ProductInfo extends React.Component {
     if (this.props.productInfo && this.props.selectedStyle) {
       return (
         <div id="productInfo">
-          <div>{this.props.productInfo.category}</div>
+          <div className="productCategory">{`Category: ${this.props.productInfo.category}`}</div>
           <div className="currProductTitle">{this.props.productInfo.name}</div>
           {this.renderPrice(this.props.selectedStyle)}
         </div>
