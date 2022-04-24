@@ -8,8 +8,25 @@ class Answer extends React.Component {
   }
 
   render() {
+    const months = [
+      "January", 
+      "February",
+      "March", 
+      "April", 
+      "May", 
+      "June", 
+      "July", 
+      "August", 
+      "September", 
+      "October", 
+      "November", 
+      "December"
+    ]
 
-    const time = this.props.answer?.date.split('T')[0]
+    const time = this.props.answer?.date.split('T')[0].split('-');
+    const year = time[0]
+    const month = months[parseInt(time[1]) - 1]
+    const day = time[2]
     const user = this.props.answer?.answerer_name
     const helpful = this.props.answer?.helpfulness
 
@@ -19,11 +36,9 @@ class Answer extends React.Component {
           {this.props.answer?.body}
         </div>
         <div className='answer-footer'>
-          by user {user} on {time}  |  Helpful? Yes({helpful})
+          by user {user} on {`${month} ${day}, ${year}`} | Helpful? Yes ({helpful}) | Report
         </div>
       </div>
-
-
     );
   }
 }

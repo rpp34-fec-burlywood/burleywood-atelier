@@ -1,7 +1,10 @@
-#productGallery {
-  width: 500px;
-  height: 500px;
-  overflow: hidden;
+/* sets whole website to use roboto font*/
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 1000px;
 }
 
 .overviewLeft,
@@ -11,58 +14,42 @@
 }
 
 .overviewLeft {
-  max-width: 50%;
+  min-width: 500px;
 }
 
 
 .overviewRight {
-  max-width: 400px;
+  padding-left: 5px;
+  min-width: 400px;
+  max-width: 460px;
 }
 
-.productImageBlock,
-.mainImage {
-  width: 500px;
-  height: 500px;
-  object-fit: cover;
-  object-position: 50% 100%;
+.selectStylePin {
+  width: auto;
+  display: block;
 }
 
-.carousel {
-  position: relative;
-  top: -500px;
-  left: 20px;
-  width: fit-content;
-  height: auto;
-}
-
-.galleryThumb,
-.galleryThumbsBox {
-  height: 60px;
-  width: 60px;
-}
-
-.galleryThumbsBox {
-  border: solid black 1px;
-  margin-bottom: 5px;
-  padding: 0;
-}
-
-.galleryThumb {
-  object-fit: cover;
+.styleRow {
+  max-height: fit-content;
+  max-width: fit-content;
   margin: 0;
   padding: 0;
 }
 
 
 .stylePin {
-  height: auto;
-  width: auto;
   display: inline-block;
-}
-
-.pinImag {
   height: 50px;
   width: 50px;
+}
+
+.stylePin {
   object-fit: cover;
   border-radius: 50%;
+  border: 4px solid transparent;
+}
+
+.stylePin:hover {
+  cursor: pointer;
+  border-color: blanchedalmond;
 }
