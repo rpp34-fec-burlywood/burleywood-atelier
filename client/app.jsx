@@ -99,11 +99,7 @@ class App extends React.Component {
           initialize={this.getRelatedProductArray} />
         <QuestionsAndAnswers
           currProd={ this.state.currProd }
-<<<<<<< HEAD
-          questionsList={ this.state.questionsList }
-=======
           originalQuestionsList={ this.state.questionsList }
->>>>>>> master
           refetch={ this.getQuestions }
         />
         <ReviewsWidget
