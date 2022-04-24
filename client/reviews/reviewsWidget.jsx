@@ -17,13 +17,7 @@ class ReviewsWidget extends React.Component {
   render() {
     console.log("widget", this.props);
     return (
-<<<<<<< HEAD
       <div className="reviews">
-        <div>Reviews Widget</div>
-        <Sorter/>
-        <ReviewList reviews={this.props.reviews}/>
-=======
-      <div>
         <div>Reviews & Reviews</div>
         <RatingsBreakdown reviews={this.props.reviews}/>
         <ReviewList
@@ -31,7 +25,6 @@ class ReviewsWidget extends React.Component {
           markReviewHelpful={this.props.markReviewHelpful}
           reportReview={this.props.reportReview}
         />
->>>>>>> origin
       </div>
     );
   }
