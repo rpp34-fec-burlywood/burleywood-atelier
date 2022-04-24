@@ -7,16 +7,16 @@ const markReviewHelpful = (req, res) => {
 
   axios({
     method: 'PUT',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${product_id}/helpful`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews/${review_id}/helpful`,
     headers: { Authorization: API_KEY }
     })
     .then((response) => {
-      console.log('Mark Review Helpful:', response.data);
+      console.log('Atelier Mark Review Helpful:', response.data);
       res.status(204);
       res.send(response.data);
     })
     .catch((err) => {
-      console.log('Mark Review Help Error:', err.response.data);
+      console.log('Atelier Mark Review Help Error:', err.response.data);
       res.status(500);
       res.send(err);
     });

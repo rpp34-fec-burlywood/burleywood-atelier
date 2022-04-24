@@ -9,7 +9,7 @@ const { reportReview } = require('./reviewRoutes/reportReview.js');
 router.post('/', postReview);
 router.get('/:product_id', getReviewById);
 router.get('/meta/:product_id', getReviewMeta);
-router.put('/reviews/:review_id/helpful', markReviewHelpful);
-router.put('/reviews/:review_id/report', reportReview);
+router.put('/:review_id/helpful', markReviewHelpful);
+router.put('/:review_id/report', reportReview);
 
 module.exports = router;

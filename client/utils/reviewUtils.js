@@ -3,6 +3,7 @@ import API from './APIRequests.js';
 const getReviewsById = function(page, count, sort, id) {
   API.getReviewsById(page, count, sort, id)
     .then(review => {
+      console.log("Reviewed");
       this.setState({
         reviews: review.results
       })
@@ -12,8 +13,33 @@ const getReviewsById = function(page, count, sort, id) {
     })
 }
 
+const markReviewHelpful = function(review_id) {
+  API.markReviewHelpful(review_id)
+    .then(result => {
+      console.log('Review Marked Helpful');
+    })
+    .catch(err => {
+      console.log('Review Marked Helpful err', err);
+    })
+}
+
+const reportReview = function(review_id) {
+  API.getReviewsById(review_id)
+    .then(result => {
+      console.log('Review Reported');
+      this.setState({
+        reviews: review.results
+      })
+    })
+    .catch(err => {
+      console.log('Report Review err', err);
+    })
+}
+
 var reviewHandlers = {
-  getReviewsById
+  getReviewsById,
+  reportReview,
+  markReviewHelpful
 }
 
 export default reviewHandlers;
