@@ -64,7 +64,7 @@
   font-size: 1rem;
   top: 8px;
   right: 8px;
-  z-index: 3;
+  z-index: 4;
   cursor:cell;
   color: white;
   background-color: rgba(85, 85, 85, 0.481);
@@ -77,13 +77,13 @@
 #mainLeft {
   top: 50%;
   left: 80px;
-  z-index: 3;
+  z-index: 4;
 }
 
 #mainRight {
   top: 50%;
   right: 20px;
-  z-index: 3;
+  z-index: 4;
 }
 
 .mainImageScroll {
@@ -114,6 +114,7 @@
   object-position: 50% 50%;
   height: inherit;
   width: inherit;
+  z-index: 2;
 }
 
 .mainImage.expanded {
@@ -132,7 +133,7 @@
   align-items: center;
   margin: 0px;
   justify-content: center;
-  z-index: 2;
+  z-index: 3;
 }
 
 .carouselContainer {
@@ -258,10 +259,6 @@
 
 .stylePin.active {
   border: 4px solid rgb(237, 102, 6);
-}
-
-.productCategory {
-
 }
 
 .currProductTitle{
