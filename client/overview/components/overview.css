@@ -118,8 +118,10 @@
 }
 
 .mainImage.expanded {
-  height: max-content;
+  height: auto;
+  width: inherit;
   position: 50% 50%;
+  object-fit: contain;
 }
 
 .carousel {
