@@ -2,25 +2,6 @@
 import React from 'react';
 import CompareTable from './compareTable.jsx';
 
-
-// class CompareModal extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       leftArray : [],
-//       rightArray : [],
-//       centerArray: []
-//     }
-//   }
-//   render() {
-//     console.log(this.props)
-//     return(
-//       <div className='compareModal' >
-//        <CompareTable left = {this.state.left} right = {this.state.right} center = {this.state.center}/>
-//      </div>
-//     )
-//   }
-// }
 const CompareModal = (props) => {
   return (
     <div className='compareModal'>
