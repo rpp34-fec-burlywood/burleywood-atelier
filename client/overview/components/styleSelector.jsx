@@ -20,7 +20,8 @@ class StyleSelector extends React.Component {
         <StylePin
           styledId={this.props.defaultStyle.style_id}
           photo={this.props.defaultStyle.photos[0].thumbnail_url}
-          key={this.props.defaultStyle.style_id + this.props.selectedStyle.name} />
+          key={this.props.defaultStyle.style_id + this.props.selectedStyle.name}
+          selectedStyleId={this.props.selectedStyle.style_id} />
       ];
       for (let style of currProdStyles) {
         if (style.style_id !== this.props.defaultStyle.style_id) {
@@ -28,7 +29,8 @@ class StyleSelector extends React.Component {
             <StylePin
               styledId={style.style_id}
               photo={style.photos[0].thumbnail_url}
-              key={style.style_id + style.name} />
+              key={style.style_id + style.name}
+              selectedStyleId={this.props.selectedStyle.style_id} />
           );
         }
         if (row.length >= 4) {
@@ -49,14 +51,14 @@ class StyleSelector extends React.Component {
     if (this.props.defaultStyle?.name && this.props.defaultStyle?.name) {
       return (
         <div className="styleSelector">
-          <div>{`STYLE: ${this.props.selectedStyle.name.toUpperCase()}`}</div>
+          <div className="styelTitle">{'STYLE'}  <span>&#62;</span> {this.props.selectedStyle.name}</div>
           <div className="selectStylePin" onClick={this.props.styleClickHandler}>
             {this.renderStyles(this.props.currProdStyles)}
           </div>
         </div>
       );
     }
-    return  <div className="styleSelector"></div>
+    return <div className="styleSelector"></div>
   }
 
 }

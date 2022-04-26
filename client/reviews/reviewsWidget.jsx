@@ -17,7 +17,7 @@ class ReviewsWidget extends React.Component {
   render() {
     console.log("widget", this.props);
     return (
-      <div>
+      <div className="reviews">
         <div>Reviews & Reviews</div>
         <RatingsBreakdown reviews={this.props.reviews}/>
         <ReviewList

@@ -7,8 +7,10 @@ class StylePin extends React.Component {
   }
 
   render() {
-    return(
-      <img className="stylePin" src={this.props.photo} styleid={this.props.styledId}></img>
+    return (
+      <img className={`stylePin ${this.props.selectedStyleId === this.props.styledId? 'active' : null}`}
+        src={this.props.photo}
+        styleid={this.props.styledId}></img>
     );
   }
 
