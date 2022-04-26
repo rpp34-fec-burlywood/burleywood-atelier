@@ -21,7 +21,7 @@ class RelatedItems extends React.Component {
       //NOTE this is hardcoded
       //64626 = more than 4 products
       //64621 = less than 4
-      this.props.initialize(64626);
+      this.props.initialize(this.props.currProd.id);
       let outfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
       this.setState({outfits: outfits})
     }
@@ -117,7 +117,7 @@ handleRemoveOutfit(productID) {
       <div>
         <div className='related-main-container' data-testid="related-main-container">
           RELATED PRODUCTS
-          <ProductCard relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft} currProd ={this.props.currProd}/>
+          <ProductCard selectNewProduct ={this.props.selectNewProduct} relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft} currProd ={this.props.currProd}/>
           YOUR OUTFITS
           <YourOutfit num={this.state.outfits} slideRight={this.slideRight} slideLeft={this.slideLeft} handleAddProduct={this.handleAddProduct} handleRemoveOutfit={this.handleRemoveOutfit}/>
         </div>

@@ -24,7 +24,9 @@ const Card = (props)=> {
   if(props.type === 'related') {
     return (
         //todo CSS
-      <div className = "card">
+        //product.id
+        //onClick={()=>props.selectNewProduct(props.product.id)}
+      <div className = "card" onClick={()=>props.selectNewProduct(props.product.id)}>
         <CompareButton leftName={props.currProd.name} currProd={props.currProd.features} selectedProd={props.product.features} rightName={props.product.name}/>
         <img className ="img" src ={img}  width='228' height='194'/>
         <p className='card-category'>{product.category}</p>
