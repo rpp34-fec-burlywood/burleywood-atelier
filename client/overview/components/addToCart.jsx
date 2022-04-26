@@ -68,7 +68,7 @@ class AddToCart extends React.Component {
             currSize={this.state.currSize}
             currSizeStock={this.state.currSizeStock}
             selectQuanityHandler={this.selectQuanityHandler} />
-           <button onClick={this.addToCartHandler}>Add To Cart</button>
+           <button id="addCartBTN" onClick={this.addToCartHandler}>ADD TO CART</button>
         </div>
       );
     }

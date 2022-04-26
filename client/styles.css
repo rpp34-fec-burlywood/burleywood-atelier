@@ -1,33 +1,28 @@
 /* sets whole website to use roboto font*/
 body {
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 1000px;
 }
+<<<<<<< HEAD
 .overviewLeft,
 .overviewRight {
   display: inline-block;
   vertical-align: top;
+=======
+
+.home {
+  display: block;
+  width: fit-content;
+>>>>>>> b827c36b2d124b1add534f57a2e0a9a09245021a
 }
 
-.overviewLeft {
-  min-width: 500px;
+.home:hover {
+  cursor: pointer;
 }
 
-
-.overviewRight {
-  min-width: 400px;
-  max-width: 460px;
-}
-
-
-.stylePin {
-  height: auto;
-  width: auto;
-  display: inline-block;
-}
-
-.pinImag {
-  height: 50px;
-  width: 50px;
-  object-fit: cover;
-  border-radius: 50%;
+.reviews {
+  width: 1000px;
 }
