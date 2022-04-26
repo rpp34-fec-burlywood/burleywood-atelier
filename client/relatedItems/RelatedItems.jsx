@@ -117,7 +117,7 @@ handleRemoveOutfit(productID) {
       <div>
         <div className='related-main-container' data-testid="related-main-container">
           RELATED PRODUCTS
-          <ProductCard relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft}/>
+          <ProductCard relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft} currProd ={this.props.currProd}/>
           YOUR OUTFITS
           <YourOutfit num={this.state.outfits} slideRight={this.slideRight} slideLeft={this.slideLeft} handleAddProduct={this.handleAddProduct} handleRemoveOutfit={this.handleRemoveOutfit}/>
         </div>

@@ -3,7 +3,7 @@ import React from 'react';
 import Price from './price.jsx';
 import './related.css';
 import DeleteButton from './deleteButton.jsx';
-import CompareButton from './compareButton.jsx';
+import CompareButton from './comapreModal/compareButton.jsx';
 
 
 const Card = (props)=> {
@@ -25,7 +25,7 @@ const Card = (props)=> {
     return (
         //todo CSS
       <div className = "card">
-        <CompareButton />
+        <CompareButton leftName={props.currProd.name} currProd={props.currProd.features} selectedProd={props.product.features} rightName={props.product.name}/>
         <img className ="img" src ={img}  width='230' height='194'/>
         <p className='card-category'>{product.category}</p>
         <p className="card-price">{product.name}</p>

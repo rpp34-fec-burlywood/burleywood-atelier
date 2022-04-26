@@ -17,7 +17,7 @@ class ProductCard extends React.Component {
             <RightButton len ={this.props.relatedArr.length} buttonID={'related'} slideRight={this.props.slideRight}/>
           <div id="related-list">
               {this.props.relatedArr.map((product) => (
-                <Card key={product.value.id + product.value.name} product={product.value} type={'related'}/>
+                <Card key={product.value.id + product.value.name} product={product.value} type={'related'} currProd ={this.props.currProd}/>
               ))}
           </div>
         </div>

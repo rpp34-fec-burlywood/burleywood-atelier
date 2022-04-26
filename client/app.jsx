@@ -47,7 +47,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='app'>
         <h1>Starter app</h1>
         <Overview
           currProd={this.state.currProd}
@@ -62,7 +62,7 @@ class App extends React.Component {
         <QuestionsAndAnswers
           currProd={ this.state.currProd }
           questionsList={ this.state.questionsList }
-          refetch={ this.getQuestions } 
+          refetch={ this.getQuestions }
         />
         <ReviewsWidget
           currProd={this.state.currProd}

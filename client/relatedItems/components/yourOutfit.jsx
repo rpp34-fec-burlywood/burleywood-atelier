@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Card from './Card.jsx';
-import $ from 'jquery';
 import RightButton from './rightButton.jsx';
 
 class YourOutfit extends React.Component {
