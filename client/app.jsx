@@ -72,9 +72,9 @@ class App extends React.Component {
 
   componentDidMount() {
     var id = this.parsePath(window.location?.pathname);
-    console.log(id);
+    // console.log(id);
     if (id) {
-      console.log('initialized by id');
+      // console.log('initialized by id');
       this.initialize(id);
     } else {
       this.initialize();

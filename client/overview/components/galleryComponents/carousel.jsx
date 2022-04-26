@@ -52,6 +52,7 @@ class Carousel extends React.Component {
   }
 
   render() {
+    // console.log('RENDERED CAROUSEL');
     if (this.props.selectedPhotos.length > MAX_CAROUSEL_LENGTH) {
       return (
         <div className="carousel">

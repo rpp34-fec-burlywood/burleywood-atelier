@@ -48,6 +48,7 @@ class StyleSelector extends React.Component {
 
 
   render() {
+    // console.log('RENDERED StyleSelector');
     if (this.props.defaultStyle?.name && this.props.defaultStyle?.name) {
       return (
         <div className="styleSelector">

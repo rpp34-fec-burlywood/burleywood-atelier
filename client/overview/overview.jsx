@@ -13,6 +13,7 @@ class Overview extends React.Component {
   }
 
   render() {
+    // console.log('RENDERED Overview');
     return (
       <div id="overview">
         <div className="overviewTop">

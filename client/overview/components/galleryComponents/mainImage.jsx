@@ -47,9 +47,6 @@ class MainImage extends React.Component {
 
   arrowXHelper(e) {
     var move = Number(e.target.attributes.move.value);
-    console.log(e.target.attributes.move.value);
-    console.log('move:', move);
-    console.log('max', this.props.selectedStyle.photos.length);
     this.props.arrowXClickHandler(move, this.props.selectedStyle.photos.length)
   }
 
@@ -69,6 +66,7 @@ class MainImage extends React.Component {
   }
 
   render() {
+    // console.log('RENDERED MainImage');
     return (
       <div className={`mainImageContainer${this.state.expanded ? ' expanded' : ''}`}
         style={this.changeImageStyle(this.state.expanded)}>
