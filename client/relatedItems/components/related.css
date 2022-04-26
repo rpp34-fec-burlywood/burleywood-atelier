@@ -167,3 +167,11 @@
   width: 100%;
   height: auto;
 }
+.original_price{
+  text-decoration: line-through;
+  font-weight: 100;
+}
+.sale{
+  color: red;
+  font-weight: bold;
+}
