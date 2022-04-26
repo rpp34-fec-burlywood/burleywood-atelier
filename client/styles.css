@@ -6,17 +6,10 @@ body {
   justify-content: center;
   min-width: 1000px;
 }
-<<<<<<< HEAD
-.overviewLeft,
-.overviewRight {
-  display: inline-block;
-  vertical-align: top;
-=======
 
 .home {
   display: block;
   width: fit-content;
->>>>>>> b827c36b2d124b1add534f57a2e0a9a09245021a
 }
 
 .home:hover {

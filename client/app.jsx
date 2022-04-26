@@ -87,15 +87,10 @@ class App extends React.Component {
       window.history.replaceState(null, '', `${window.location.origin}/productPage/${this.state.currProd.id}/`)
     }
     return (
-<<<<<<< HEAD
-      <div className='app'>
-        <h1>Starter app</h1>
-=======
       <div>
         <div onClick={this.home} className="home">
           <h1>Starter app</h1>
         </div>
->>>>>>> b827c36b2d124b1add534f57a2e0a9a09245021a
         <Overview
           currProd={this.state.currProd}
           currProdStyles={this.state.currProdStyles}
@@ -112,11 +107,7 @@ class App extends React.Component {
           initialize={this.getRelatedProductArray} />
         <QuestionsAndAnswers
           currProd={ this.state.currProd }
-<<<<<<< HEAD
-          questionsList={ this.state.questionsList }
-=======
           originalQuestionsList={ this.state.questionsList }
->>>>>>> b827c36b2d124b1add534f57a2e0a9a09245021a
           refetch={ this.getQuestions }
         />
         <ReviewsWidget
