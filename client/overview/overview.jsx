@@ -21,7 +21,8 @@ class Overview extends React.Component {
               selectedStyle={this.props.selectedStyle}
               currProdStyles={this.props.currProdStyles}
               mainImageIndex={this.props.mainImageIndex}
-              carouselClickhandler={this.props.carouselClickhandler} />
+              carouselClickhandler={this.props.carouselClickhandler}
+              arrowXClickHandler={this.props.arrowXClickHandler} />
           </div>
           <div className="overviewRight">
             <ProductInfo

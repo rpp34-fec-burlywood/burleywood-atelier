@@ -12,7 +12,10 @@ class MainImage extends React.Component {
     }
 
     this.expandHandler = this.expandHandler.bind(this);
-    this.renderArrows = this.renderArrows.bind(this)
+    this.renderArrows = this.renderArrows.bind(this);
+    this.changeImageStyle = this.changeImageStyle.bind(this);
+    this.arrowXStyle = this.arrowXStyle.bind(this);
+    this.arrowXHelper = this.arrowXHelper.bind(this);
   }
 
   // mainImage will need to be its own component for expanded view
@@ -26,7 +29,7 @@ class MainImage extends React.Component {
 
   }
 
-  changeStyle(expandedState) {
+  changeImageStyle(expandedState) {
     if (!expandedState) {
       return {};
     }
@@ -36,12 +39,30 @@ class MainImage extends React.Component {
     }
   }
 
+  arrowXStyle() {
+    return {
+      height: `${this.state.height}px`,
+    }
+  }
+
+  arrowXHelper(e) {
+    var move = Number(e.target.attributes.move.value);
+    console.log(e.target.attributes.move.value);
+    console.log('move:', move);
+    console.log('max', this.props.selectedStyle.photos.length);
+    this.props.arrowXClickHandler(move, this.props.selectedStyle.photos.length)
+  }
+
   renderArrows(expandedState) {
     if (expandedState && this.props.selectedStyle.photos.length > 1) {
       return (
         <>
-          <button id="mainLeft" className='arrowX'> Left </button>
-          <button id="mainRight" className='arrowX'> Right </button>
+          <button id="mainLeft" className="arrowX"
+            style={this.arrowXStyle()} move="-1"
+            onClick={this.arrowXHelper}>&#10092;</button>
+          <button id="mainRight" className="arrowX"
+            style={this.arrowXStyle()} move="1"
+            onClick={this.arrowXHelper}>&#10093;</button>
         </>
       )
     }
@@ -50,8 +71,8 @@ class MainImage extends React.Component {
   render() {
     return (
       <div className={`mainImageContainer${this.state.expanded ? ' expanded' : ''}`}
-        style={this.changeStyle(this.state.expanded)}>
-        <div id ='expandBTN'onClick={this.expandHandler}>{'[=]'}</div>
+        style={this.changeImageStyle(this.state.expanded)}>
+        <div id='expandBTN' onClick={this.expandHandler}>{'[=]'}</div>
         {this.renderArrows(this.state.expanded)}
         <div className={`mainImageScroll ${this.state.expanded ? ' expanded' : ''}`}>
           <img className={`mainImage${this.state.expanded ? ' expanded' : ''}`}

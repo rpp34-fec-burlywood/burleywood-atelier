@@ -72,18 +72,37 @@
 
 .arrowX {
   position: absolute;
+  color: white;
+  border: none;
+  z-index: 1;
+  cursor: default;
+  font-size: 5rem;
+}
+
+#mainLeft,
+#mainRight {
+  top: 0%;
+  z-index: 3;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 1000px;
 }
 
 #mainLeft {
-  top: 50%;
-  left: 80px;
-  z-index: 4;
+  left: 0px;
+  margin-left: 77px;
 }
 
 #mainRight {
-  top: 50%;
-  right: 20px;
-  z-index: 4;
+  right: 0px;
+}
+
+#mainLeft:hover,
+#mainRight:hover {
+  background-color: rgb(255, 255, 255, 0.5);
 }
 
 .mainImageScroll {

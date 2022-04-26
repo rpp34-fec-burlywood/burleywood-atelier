@@ -21,7 +21,8 @@ class Gallery extends React.Component {
               selectedPhotos={this.props.selectedStyle.photos}
               carouselClickhandler={this.props.carouselClickhandler} />
           <MainImage selectedStyle={this.props.selectedStyle}
-            mainImageIndex={this.props.mainImageIndex} />
+            mainImageIndex={this.props.mainImageIndex}
+            arrowXClickHandler={this.props.arrowXClickHandler} />
           </div>
         </div>
       );
