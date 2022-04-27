@@ -80,7 +80,7 @@ class Question extends React.Component {
 
   upvoteQuestion() {
     API.upvoteQuestion(this.props.question?.question_id)
-      .then(xd => {console.log(xd)})
+      .then(res => {console.log(res)})
   }
 
   render() {

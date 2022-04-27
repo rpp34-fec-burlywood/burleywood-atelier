@@ -60,7 +60,7 @@ class AddAnswerModal extends React.Component {
     }
     
     API.postAnswer(this.props.question_id, data)
-      .then(xd => console.log(xd))
+      .then(res => console.log(res))
     // add case where it fails and doesn't close
     this.props.closeModal();
   }

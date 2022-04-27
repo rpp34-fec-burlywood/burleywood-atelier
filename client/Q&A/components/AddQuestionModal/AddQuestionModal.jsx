@@ -61,7 +61,7 @@ class AddQuestionModal extends React.Component {
     }
     
     API.postQuestion(this.props.currProd.id, data)
-      .then(xd => console.log(xd))
+      .then(res => console.log(res))
     // add case where it fails and doesn't close
     this.props.closeModal();
   }

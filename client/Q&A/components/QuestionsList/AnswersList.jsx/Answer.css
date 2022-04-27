@@ -20,7 +20,8 @@
 /* remove some of the spacing between the answer helpful button */
 .answer-helpful {
   margin-left: -5px;
-  margin-right: -5px; 
+  margin-right: -5px;
+  cursor: pointer;
 }
 
 .answer-report {

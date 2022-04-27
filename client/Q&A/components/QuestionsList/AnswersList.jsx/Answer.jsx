@@ -8,10 +8,17 @@ class Answer extends React.Component {
     super(props);
 
     this.reportAnswer = this.reportAnswer.bind(this);
+    this.upvoteAnswer = this.upvoteAnswer.bind(this);
   }
 
   reportAnswer() {
     API.reportAnswer(this.props.answer?.id)
+      .then(res => {console.log(res)});
+  }
+
+  upvoteAnswer() {
+    API.upvoteAnswer(this.props.answer?.id)
+      .then(res => {console.log(res)});
   }
 
   render() {
@@ -52,7 +59,7 @@ class Answer extends React.Component {
           <div className='footer-ele'>
             Helpful?
           </div>
-          <div className='footer-ele answer-helpful'>
+          <div className='footer-ele answer-helpful' onClick={this.upvoteAnswer}>
             Yes ({helpful})
           </div>
           <div className='footer-ele'>
