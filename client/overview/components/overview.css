@@ -57,6 +57,8 @@
 .mainImageContainer.expanded {
   position: relative;
   transition-duration: 0.3s;
+  background-color: white;
+  z-index: 3;
 }
 
 #expandBTN {
@@ -77,6 +79,7 @@
   z-index: 1;
   cursor: default;
   font-size: 5rem;
+  text-shadow: black 0 0 5px;
 }
 
 #mainLeft,
@@ -87,23 +90,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70px;
+  width: 50px;
   height: 1000px;
 }
 
-#mainLeft {
+.arrowX.aL {
   left: 0px;
   margin-left: 77px;
+  transition: 0.2s;
 }
 
-#mainRight {
+.arrowX.expandedL {
+  margin-left: 0;
+  transition: 0.3s;
+}
+
+.arrowX.aR,
+.arrowX.expandedR {
   right: 0px;
+  transition: 0.2s;
 }
 
 #mainLeft:hover,
 #mainRight:hover {
-  background-color: rgb(255, 255, 255, 0.5);
+  background-color: rgb(255, 255, 255, 0.3);
 }
+
+
+
 
 .mainImageScroll {
   height: inherit;
@@ -133,7 +147,7 @@
   object-position: 50% 50%;
   height: inherit;
   width: inherit;
-  z-index: 2;
+  z-index: 1;
 }
 
 .mainImage.expanded {
@@ -154,7 +168,7 @@
   align-items: center;
   margin: 0px;
   justify-content: center;
-  z-index: 3;
+  z-index: 2;
 }
 
 .carouselContainer {
@@ -210,7 +224,7 @@
   background-color: transparent;
   padding: 0;
   margin: 0;
-  height: 15px;
+  height: 20px;
   width: 60px;
   align-items: center;
   justify-content: center;
@@ -241,8 +255,11 @@
   color: white;
   border: none;
   z-index: 1;
+  width: 20px;
+  height: 60px;
   cursor: default;
   font-size: 3rem;
+  text-shadow: black 0 0 3px;
 }
 
 #carouselItemActive,

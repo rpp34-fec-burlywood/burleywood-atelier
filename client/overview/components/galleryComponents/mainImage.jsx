@@ -8,11 +8,12 @@ class MainImage extends React.Component {
 
     this.state = {
       expanded: false,
-      height: 500
+      height: 550
     }
 
     this.expandHandler = this.expandHandler.bind(this);
-    this.renderArrows = this.renderArrows.bind(this);
+    this.renderArrowLeft = this.renderArrowLeft.bind(this);
+    this.renderArrowRight = this.renderArrowRight.bind(this)
     this.changeImageStyle = this.changeImageStyle.bind(this);
     this.arrowXStyle = this.arrowXStyle.bind(this);
     this.arrowXHelper = this.arrowXHelper.bind(this);
@@ -21,12 +22,18 @@ class MainImage extends React.Component {
   // mainImage will need to be its own component for expanded view
 
   expandHandler() {
-    var height = $('#overview').height();
-    this.setState({
-      expanded: !this.state.expanded,
-      height
-    })
-
+    if (!this.state.expanded) {
+      var height = $('#overview').height();
+      this.setState({
+        expanded: !this.state.expanded,
+        height
+      })
+    } else {
+      this.setState({
+        expanded: !this.state.expanded,
+        height: 550
+      })
+    }
   }
 
   changeImageStyle(expandedState) {
@@ -50,18 +57,27 @@ class MainImage extends React.Component {
     this.props.arrowXClickHandler(move, this.props.selectedStyle.photos.length)
   }
 
-  renderArrows(expandedState) {
-    if (expandedState && this.props.selectedStyle.photos.length > 1) {
+
+  /**Because not component, must take in props to cause rerender! */
+  renderArrowLeft(expandedState, mainImageIndex) {
+    var numImages = this.props.selectedStyle.photos.length;
+    if (numImages > 1 && mainImageIndex > 0) {
       return (
-        <>
-          <button id="mainLeft" className="arrowX"
-            style={this.arrowXStyle()} move="-1"
-            onClick={this.arrowXHelper}>&#10092;</button>
-          <button id="mainRight" className="arrowX"
-            style={this.arrowXStyle()} move="1"
-            onClick={this.arrowXHelper}>&#10093;</button>
-        </>
-      )
+        <button id="mainLeft" className={`arrowX ${expandedState ? 'expandedL' : 'aL'}`}
+          style={this.arrowXStyle()} move="-1"
+          onClick={this.arrowXHelper}>&#10092;</button>
+      );
+    }
+  }
+
+  renderArrowRight(expandedState, mainImageIndex) {
+    var numImages = this.props.selectedStyle.photos.length;
+    if (numImages > 1 && mainImageIndex < numImages - 1) {
+      return (
+        <button id="mainRight" className={`arrowX ${expandedState ? 'expandedR' : 'aR'}`}
+          style={this.arrowXStyle()} move="1"
+          onClick={this.arrowXHelper}>&#10093;</button>
+      );
     }
   }
 
@@ -70,10 +86,12 @@ class MainImage extends React.Component {
     return (
       <div className={`mainImageContainer${this.state.expanded ? ' expanded' : ''}`}
         style={this.changeImageStyle(this.state.expanded)}>
-        <div id='expandBTN' onClick={this.expandHandler}>{'[=]'}</div>
-        {this.renderArrows(this.state.expanded)}
+        {/* <div id='expandBTN' onClick={this.expandHandler}>{'[=]'}</div> */}
+        {this.renderArrowLeft(this.state.expanded, this.props.mainImageIndex)}
+        {this.renderArrowRight(this.state.expanded, this.props.mainImageIndex)}
         <div className={`mainImageScroll ${this.state.expanded ? ' expanded' : ''}`}>
           <img className={`mainImage${this.state.expanded ? ' expanded' : ''}`}
+            onClick={this.expandHandler}
             src={
               this.props.selectedStyle.photos[this.props.mainImageIndex] ?
                 this.props.selectedStyle.photos[this.props.mainImageIndex].url :
