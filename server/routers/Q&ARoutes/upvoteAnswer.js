@@ -2,22 +2,24 @@ const axios = require('axios');
 require('dotenv').config();
 const API_KEY = process.env.API_KEY;
 
-const addToCart = (req, res) => {
-  let sku_id = req.params.sku_id;
+const upvoteAnswer = (req, res) => {
+  let answer_id = req.params.answer_id;
+  
   axios({
-    method: 'POST',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/cart`, 
+    method: 'PUT',
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${answer_id}/helpful`, 
     headers: {'Authorization': API_KEY},
-    params: {sku_id: sku_id}
   })
     .then((response) => {
-      console.log('-- Get All Products OK\n', response);
+      console.log('-- Mark Answer as Helpful Successful: \n');
+      res.send(response.data);
     })
     .catch((err) => {
-      console.log('-- Get All Products FAILED:', err.response.data);
+      console.error('-- Mark Answer as Helpful FAILED: \n', err.response.data);
+      res.status(500).send(err);
     });
 }
 
 module.exports = {
-  addToCart
+  upvoteAnswer
 }
