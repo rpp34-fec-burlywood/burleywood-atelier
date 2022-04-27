@@ -1,10 +1,17 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import API from '../../../../utils/APIRequests';
 import './Answer.css';
 
 class Answer extends React.Component {
   constructor(props) {
     super(props);
+
+    this.reportAnswer = this.reportAnswer.bind(this);
+  }
+
+  reportAnswer() {
+    API.reportAnswer(this.props.answer?.id)
   }
 
   render() {
@@ -51,7 +58,7 @@ class Answer extends React.Component {
           <div className='footer-ele'>
             |
           </div>
-          <div className='footer-ele'>
+          <div className='footer-ele answer-report' onClick={this.reportAnswer}>
             Report
           </div>
         </div>

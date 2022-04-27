@@ -216,6 +216,20 @@ const addToCart = (sku_id, count = 1) => {
     });
 }
 
+const reportAnswer = (answer_id) => {
+  return axios ({
+    method: 'PUT',
+    url: `/qa/answers/report/${answer_id}`,
+  })
+  .then((response) => {
+      console.log('-- Report Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Report Answer FAILED ', err.response.data);
+    });
+}
+
 var api = {
   getProducts,
   getProductById,
@@ -230,7 +244,8 @@ var api = {
   reportReview,
   getQuestions,
   postQuestion,
-  postAnswer
+  postAnswer,
+  reportAnswer
 };
 
 export default api;
