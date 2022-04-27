@@ -28,8 +28,8 @@ class QuestionsList extends React.Component {
       })
     }
 
-    var objDiv = document.getElementById("question-List");
-    objDiv.scrollTop = objDiv.scrollHeight;
+    const questionListDiv = document.getElementById("question-List");
+    questionListDiv.scrollTop = questionListDiv.scrollHeight;
   }
 
   loadMoreQuestionsHandler() {
