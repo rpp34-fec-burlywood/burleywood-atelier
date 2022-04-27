@@ -13,8 +13,8 @@ const Price = (props) => {
     return (
         //todo CSS
       <div className='card-price'>
-        <span className='sale'>{`$${props.sale} `}</span>
-        <span className='original_price'>{` $${props.original}`}</span>
+        <span id='sale'>{`$${props.sale} `}</span>
+        <span id='original_price'>{` $${props.original}`}</span>
       </div>
     )
   }
