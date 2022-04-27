@@ -150,11 +150,23 @@
   z-index: 1;
 }
 
+.mainImage:hover {
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
+
 .mainImage.expanded {
   height: auto;
   width: inherit;
   position: 50% 50%;
   object-fit: contain;
+}
+
+.mainImage.expanded:hover {
+  cursor: -moz-zoom-out;
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
 }
 
 .carousel {
@@ -213,7 +225,7 @@
 }
 
 .carouselItem:hover {
-  cursor: pointer;
+  cursor: default;
   border-color: aliceblue;
 }
 

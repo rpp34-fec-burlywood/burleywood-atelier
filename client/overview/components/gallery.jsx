@@ -27,9 +27,12 @@ class Gallery extends React.Component {
         </div>
       );
     }
-    return <div id="productGallery"></div>
+    return (
+      <div id="productGallery">
+        <div className="productImageBlock"></div>
+      </div>
+    );
   }
-
 }
 
 export default Gallery;
