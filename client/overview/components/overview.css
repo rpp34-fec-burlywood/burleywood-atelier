@@ -57,6 +57,8 @@
 .mainImageContainer.expanded {
   position: relative;
   transition-duration: 0.3s;
+  background-color: white;
+  z-index: 3;
 }
 
 #expandBTN {
@@ -72,23 +74,56 @@
 
 .arrowX {
   position: absolute;
+  color: white;
+  border: none;
+  z-index: 1;
+  cursor: default;
+  font-size: 5rem;
+  text-shadow: black 0 0 5px;
 }
 
-#mainLeft {
-  top: 50%;
-  left: 80px;
-  z-index: 4;
-}
-
+#mainLeft,
 #mainRight {
-  top: 50%;
-  right: 20px;
-  z-index: 4;
+  top: 0%;
+  z-index: 3;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 1000px;
 }
+
+.arrowX.aL {
+  left: 0px;
+  margin-left: 77px;
+  transition: 0.2s;
+}
+
+.arrowX.expandedL {
+  margin-left: 0;
+  transition: 0.3s;
+}
+
+.arrowX.aR,
+.arrowX.expandedR {
+  right: 0px;
+  transition: 0.2s;
+}
+
+#mainLeft:hover,
+#mainRight:hover {
+  background-color: rgb(255, 255, 255, 0.3);
+}
+
+
+
 
 .mainImageScroll {
   height: inherit;
   width: inherit;
+  border: 1px solid rgb(59, 59, 59);
+  border-radius: 2px;
 }
 
 .mainImageScroll.expanded {
@@ -114,7 +149,13 @@
   object-position: 50% 50%;
   height: inherit;
   width: inherit;
-  z-index: 2;
+  z-index: 1;
+}
+
+.mainImage:hover {
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 }
 
 .mainImage.expanded {
@@ -122,6 +163,12 @@
   width: inherit;
   position: 50% 50%;
   object-fit: contain;
+}
+
+.mainImage.expanded:hover {
+  cursor: -moz-zoom-out;
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
 }
 
 .carousel {
@@ -135,7 +182,7 @@
   align-items: center;
   margin: 0px;
   justify-content: center;
-  z-index: 3;
+  z-index: 2;
 }
 
 .carouselContainer {
@@ -180,7 +227,7 @@
 }
 
 .carouselItem:hover {
-  cursor: pointer;
+  cursor: default;
   border-color: aliceblue;
 }
 
@@ -191,7 +238,7 @@
   background-color: transparent;
   padding: 0;
   margin: 0;
-  height: 15px;
+  height: 20px;
   width: 60px;
   align-items: center;
   justify-content: center;
@@ -222,8 +269,11 @@
   color: white;
   border: none;
   z-index: 1;
+  width: 20px;
+  height: 60px;
   cursor: default;
   font-size: 3rem;
+  text-shadow: black 0 0 3px;
 }
 
 #carouselItemActive,
@@ -340,4 +390,3 @@
   font-size: 14pt;
   margin: 5px 0;
 }
-

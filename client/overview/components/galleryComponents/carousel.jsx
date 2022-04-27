@@ -6,6 +6,8 @@ const MAX_CAROUSEL_LENGTH = 7;
 class Carousel extends React.Component {
   constructor(props) {
     super(props);
+
+    /** windowIdex < maxSlides */
     this.state = {
       windowIndex: 0,
       maxSlides: 0,
@@ -52,6 +54,7 @@ class Carousel extends React.Component {
   }
 
   render() {
+    // console.log('RENDERED CAROUSEL');
     if (this.props.selectedPhotos.length > MAX_CAROUSEL_LENGTH) {
       return (
         <div className="carousel">

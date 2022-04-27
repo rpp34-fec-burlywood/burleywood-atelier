@@ -11,7 +11,7 @@ const getProducts = (numItems) => {
     params: count,
   })
     .then((response) => {
-      console.log('-- Get Products OK\n', response.data);
+      // console.log('-- Get Products OK\n', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -25,7 +25,7 @@ const getProductById = (id) => {
     url: `/products/${id}`,
   })
     .then((response) => {
-      console.log('-- Get Product by ID OK\n', response.data);
+      // console.log('-- Get Product by ID OK\n', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -40,7 +40,7 @@ const getRelatedProducts = (id) => {
     url: `/products/${id}/related`
   })
     .then((response) => {
-      console.log('-- Received related products ', response.data);
+      // console.log('-- Received related products ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -54,7 +54,7 @@ const getProductStyleById = (id) => {
     url: `/products/${id}/styles`
   })
     .then((response) => {
-      console.log('-- Get styles OK ', response.data);
+      // console.log('-- Get styles OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -78,7 +78,7 @@ const getReviewsById = (page, count, sort, id) => {
     // }
   })
     .then((response) => {
-      console.log('-- Get Reviews OK ', response.data);
+      // console.log('-- Get Reviews OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -95,7 +95,7 @@ const getReviewMeta = (id) => {
     }
   })
     .then((response) => {
-      console.log('-- Get Review Meta OK ', response.data);
+      // console.log('-- Get Review Meta OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -119,7 +119,7 @@ const postReview = (id, rating, summary, body, recommend, name, email, photos, c
     }
   })
     .then((response) => {
-      console.log('-- POST Review OK ', response.data);
+      // console.log('-- POST Review OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -133,7 +133,7 @@ const markReviewHelpful = (review_id) => {
     url: `/reviews/reviews/${review_id}/helpful`,
   })
     .then((response) => {
-      console.log('-- Mark Helpful OK ', response.data);
+      // console.log('-- Mark Helpful OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -150,7 +150,7 @@ const reportReview = (review_id) => {
     }
   })
     .then((response) => {
-      console.log('-- Mark Helpful OK ', response.data);
+      // console.log('-- Mark Helpful OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -164,7 +164,7 @@ const getQuestions = (product_id) => {
     url: `/qa/questions/${product_id}`
   })
     .then((response) => {
-      console.log('-- Get Questions OK ', response.data);
+      // console.log('-- Get Questions OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -179,7 +179,7 @@ const postQuestion = (product_id, data) => {
     data: data
   })
     .then((response) => {
-      console.log('-- Add Question OK ', response.data);
+      // console.log('-- Add Question OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -194,7 +194,7 @@ const addToCart = (sku_id, count = 1) => {
     url: `/cart/${sku_id}/${count}`,
   })
   .then((response) => {
-      console.log('-- Add to Cart OK ', response.data);
+      // console.log('-- Add to Cart OK ', response.data);
       return response.data;
     })
     .catch((err) => {

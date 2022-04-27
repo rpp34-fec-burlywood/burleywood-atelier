@@ -34,6 +34,7 @@ class App extends React.Component {
     this.addToCart = overviewHandler.addToCart;
     this.carouselClickhandler = overviewHandler.carouselClickhandler.bind(this);
     this.styleClickHandler = overviewHandler.styleClickHandler.bind(this);
+    this.arrowXClickHandler = overviewHandler.arrowXClickHandler.bind(this);
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
     this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
     this.reportReview = reviewHandlers.reportReview.bind(this);
@@ -71,9 +72,9 @@ class App extends React.Component {
 
   componentDidMount() {
     var id = this.parsePath(window.location?.pathname);
-    console.log(id);
+    // console.log(id);
     if (id) {
-      console.log('initialized by id');
+      // console.log('initialized by id');
       this.initialize(id);
     } else {
       this.initialize();
@@ -99,7 +100,8 @@ class App extends React.Component {
           styleClickHandler={this.styleClickHandler}
           addToCart={this.addToCart}
           mainImageIndex={this.state.mainImageIndex}
-          carouselClickhandler={this.carouselClickhandler} />
+          carouselClickhandler={this.carouselClickhandler}
+          arrowXClickHandler={this.arrowXClickHandler} />
         <RelatedItems
           relatedArr={this.state.relatedProducts}
           currProd = {this.state.currProd}
