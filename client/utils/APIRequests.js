@@ -230,6 +230,34 @@ const reportAnswer = (answer_id) => {
     });
 }
 
+const upvoteAnswer = (answer_id) => {
+  return axios ({
+    method: 'PUT',
+    url: `/qa/answers/upvote/${answer_id}`,
+  })
+  .then((response) => {
+      console.log('-- Upvote Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Upvote Answer FAILED ', err.response.data);
+    });
+}
+
+const upvoteQuestion = (question_id) => {
+  return axios ({
+    method: 'PUT',
+    url: `/qa/questions/upvote/${question_id}`,
+  })
+  .then((response) => {
+      console.log('-- Upvote Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Upvote Answer FAILED ', err.response.data);
+    });
+}
+
 var api = {
   getProducts,
   getProductById,
@@ -245,7 +273,9 @@ var api = {
   getQuestions,
   postQuestion,
   postAnswer,
-  reportAnswer
+  reportAnswer,
+  upvoteAnswer,
+  upvoteQuestion
 };
 
 export default api;

@@ -32,3 +32,8 @@
 .add-answer {
   cursor: pointer;
 }
+
+.question-helpful {
+  margin-left: -5px;
+  cursor: pointer;
+}

@@ -2,8 +2,8 @@
 import React from 'react';
 import AnswersList from '../AnswersList.jsx/AnswersList.jsx';
 import AddAnswerModal from '../../AddAnswerModal/AddAnswerModal.jsx';
+import API from '../../../../utils/APIRequests.js';
 import './Question.css';
-
 class Question extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +20,7 @@ class Question extends React.Component {
     this.collapseAnswers = this.collapseAnswers.bind(this);
     this.closeAnswerModal = this.closeAnswerModal.bind(this);
     this.openAnswerModal = this.openAnswerModal.bind(this);
+    this.upvoteQuestion = this.upvoteQuestion.bind(this);
   }
 
   componentDidMount() {
@@ -77,6 +78,11 @@ class Question extends React.Component {
     })
   }
 
+  upvoteQuestion() {
+    API.upvoteQuestion(this.props.question?.question_id)
+      .then(xd => {console.log(xd)})
+  }
+
   render() {
     return(
       <>
@@ -94,7 +100,10 @@ class Question extends React.Component {
           <div className='question-body'>
             {this.props.question?.question_body}
           </div>
-          <div>Helpful? Yes ({this.props.question?.question_helpfulness})</div>
+          <div> Helpful? </div>
+          <div className='question-helpful' onClick={this.upvoteQuestion}>
+            Yes ({this.props.question?.question_helpfulness})
+          </div>
           <div>
             |
           </div>
