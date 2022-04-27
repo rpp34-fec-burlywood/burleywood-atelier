@@ -122,6 +122,8 @@
 .mainImageScroll {
   height: inherit;
   width: inherit;
+  border: 1px solid rgb(59, 59, 59);
+  border-radius: 2px;
 }
 
 .mainImageScroll.expanded {
