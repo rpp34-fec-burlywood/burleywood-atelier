@@ -1,16 +1,11 @@
-.img {
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-}
-
 .arrow {
   border: none;
   z-index: 1;
   cursor: pointer;
-  font-size: 3rem;
+  font-size: 2rem;
   display: flex;
   align-items: center;
-  color: rgba(255, 255, 255, 0.575);
+  color: rgba(255, 255, 255, 0.726);
   background-color: transparent;
   transition: color 150ms ease-in-out;
   position: absolute;
@@ -33,7 +28,7 @@
 
 #right-related, #right-outfit{
   top: 30%;
-  left: 95%;
+  left: 97%;
 }
 
 #right-related:hover, #right-outfit:hover, #left-related:hover, #left-outfit:hover {
@@ -76,10 +71,10 @@
   position:relative;
   box-sizing: border-box;
   background: #fff;
-  border-radius: 2px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   margin-left:6px;
   margin-right:6px;
+  border: 1px solid rgb(59, 59, 59);
+  border-radius: 2px;
 }
 
 .card:hover {
@@ -94,9 +89,9 @@
   margin-left:6px;
   margin-right:6px;
   cursor: pointer;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   width: 230px;
-  border-radius: 3px;
+  border: 1px solid rgb(59, 59, 59);
+  border-radius: 2px;
 }
 
 #outfit-add:hover {
@@ -120,15 +115,61 @@
 .compare-button {
   position: absolute;
   background: transparent;
-  color: white;
+  color: rgb(255, 255, 255);
   right: 0;
-  color: black;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  size: 23px
 }
 
 .compare-button:hover {
   background: #c6c6c5;
 }
 
+.compareModal {
+  z-index: 10;
+  width: 570px;
+  position:fixed;
+  padding: 2px;
+  top: 26%;
+  right: 21%;
+  height: 220px;
+  border: 1px solid rgb(59, 59, 59);
+  border-radius: 2px;
+  background-color: white;
+  color: rgb(59, 59, 59);
+}
+#th-left{
+  width: 15%;
+  text-align: left;
+  padding: 2px;
+
+}
+#th-center{
+  width: 70%;
+  text-align: center;
+  padding: 2px;
+
+}
+#th-right{
+  width: 15%;
+  text-align: right;
+  padding: 2px;
+
+}
+#table{
+  width: 100%;
+  height: auto;
+}
+.card-price{
+  margin-bottom: 6px;
+}
+#original_price{
+  text-decoration: line-through;
+  font-weight: 100;
+}
+#sale{
+  color: red;
+  font-weight: bold;
+}

@@ -106,7 +106,9 @@ class App extends React.Component {
           relatedArr={this.state.relatedProducts}
           currProd = {this.state.currProd}
           selectedStyle ={this.state.selectedStyle}
-          initialize={this.getRelatedProductArray} />
+          initialize={this.getRelatedProductArray}
+          selectNewProduct = {this.initialize}
+          />
         <QuestionsAndAnswers
           currProd={ this.state.currProd }
           originalQuestionsList={ this.state.questionsList }

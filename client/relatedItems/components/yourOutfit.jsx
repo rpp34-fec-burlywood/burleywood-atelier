@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Card from './Card.jsx';
-import $ from 'jquery';
 import RightButton from './rightButton.jsx';
 
 class YourOutfit extends React.Component {
@@ -17,7 +16,7 @@ class YourOutfit extends React.Component {
           <div id ="outfit-add" data-testid="outfit-add" onClick ={()=>this.props.handleAddProduct()} >
             <p >Add to Outfit</p>
           </div>
-          <button className="arrow" id="left-outfit" onClick={()=>this.props.slideLeft('outfit')}>&#5130;</button>
+          <button className="arrow" id="left-outfit" onClick={()=>this.props.slideLeft('outfit')}>&#706;</button>
           <RightButton len ={this.props.num.length} buttonID={'outfit'} slideRight={this.props.slideRight}/>
           <div id="outfit-list">
                   {this.props.num.map((product) => (
