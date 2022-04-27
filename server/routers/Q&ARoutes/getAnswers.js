@@ -7,7 +7,7 @@ const getAnswers = (req, res) => {
 
   // page and count are optional params, setting default according to api specs
   let page = req.params.page || 1;
-  let count = req.params.count|| 5;
+  let count = req.params.count|| 500;
 
   axios({
     method: 'GET',

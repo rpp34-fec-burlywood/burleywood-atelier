@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import AnswersList from './AnswersList.jsx/AnswersList.jsx';
-import AddAnswerModal from '../AddAnswerModal/AddAnswerModal.jsx';
+import AnswersList from '../AnswersList.jsx/AnswersList.jsx';
+import AddAnswerModal from '../../AddAnswerModal/AddAnswerModal.jsx';
 import './Question.css';
 
 class Question extends React.Component {
@@ -70,14 +70,12 @@ class Question extends React.Component {
   }
 
   openAnswerModal() {
-    console.log('AYOOOOO')
     this.setState({
       answerModalOpen: true
     })
   }
 
   render() {
-    console.log('QUESTION STATE: ', this.state)
     return(
       <>
         {this.state.answerModalOpen ?  
@@ -94,7 +92,7 @@ class Question extends React.Component {
           <div className='question-body'>
             {this.props.question?.question_body}
           </div>
-          <div>Helpful? Yes ()</div>
+          <div>Helpful? Yes ({this.props.question?.question_helpfulness})</div>
           <div>
             |
           </div>
@@ -104,7 +102,7 @@ class Question extends React.Component {
         </div>
         <div className='answers'>
           <div className='answer-start'>
-            A:
+            {this.state.answerListTotalLength > 0 ? 'A:' : ''}
           </div>
           <div className='answers-list'>
             <AnswersList

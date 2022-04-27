@@ -31,14 +31,31 @@ class Answer extends React.Component {
     const helpful = this.props.answer?.helpfulness
 
     return(
-      <div>
+      <>
         <div className='answer-body'>
           {this.props.answer?.body}
         </div>
         <div className='answer-footer'>
-          by user {user} on {`${month} ${day}, ${year}`} | Helpful? Yes ({helpful}) | Report
+          <div className='footer-ele'>
+            by user {user} on {`${month} ${day}, ${year}`}
+          </div>
+          <div className='footer-ele'>
+            |
+          </div>
+          <div className='footer-ele'>
+            Helpful?
+          </div>
+          <div className='footer-ele answer-helpful'>
+            Yes ({helpful})
+          </div>
+          <div className='footer-ele'>
+            |
+          </div>
+          <div className='footer-ele'>
+            Report
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
