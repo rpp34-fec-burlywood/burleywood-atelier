@@ -24,6 +24,11 @@
 }
 
 .question-body {
+  flex-grow: 1;
   font-size: 25px;
   font-weight: 900;
+}
+
+.add-answer {
+  cursor: pointer;
 }

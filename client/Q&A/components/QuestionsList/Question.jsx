@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import AnswersList from './AnswersList.jsx/AnswersList.jsx';
+import AddAnswerModal from '../AddAnswerModal/AddAnswerModal.jsx';
 import './Question.css';
 
 class Question extends React.Component {
@@ -10,12 +11,15 @@ class Question extends React.Component {
     this.state = {
       answerListLength: 2,
       answerListTotalLength: Object.keys(props.question?.answers).length,
-      expanded: false
+      expanded: false,
+      answerModalOpen: false
     }
 
     this.returnAnswerObject = this.returnAnswerObject.bind(this);
     this.expandAnswerList = this.expandAnswerList.bind(this);
     this.collapseAnswers = this.collapseAnswers.bind(this);
+    this.closeAnswerModal = this.closeAnswerModal.bind(this);
+    this.openAnswerModal = this.openAnswerModal.bind(this);
   }
 
   componentDidMount() {
@@ -59,15 +63,43 @@ class Question extends React.Component {
     })
   }
 
+  closeAnswerModal() {
+    this.setState({
+      answerModalOpen: false
+    })
+  }
+
+  openAnswerModal() {
+    console.log('AYOOOOO')
+    this.setState({
+      answerModalOpen: true
+    })
+  }
+
   render() {
+    console.log('QUESTION STATE: ', this.state)
     return(
-      <div>
+      <>
+        {this.state.answerModalOpen ?  
+          <AddAnswerModal 
+            closeModal={this.closeAnswerModal} 
+            question_id={this.props.question?.question_id}
+          /> : 
+          null
+        }
         <div className='question'>
           <div className='question-start'>
             Q:
           </div>
           <div className='question-body'>
             {this.props.question?.question_body}
+          </div>
+          <div>Helpful? Yes ()</div>
+          <div>
+            |
+          </div>
+          <div className='add-answer' onClick={this.openAnswerModal}>
+            Add Answer
           </div>
         </div>
         <div className='answers'>
@@ -88,7 +120,7 @@ class Question extends React.Component {
             }
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

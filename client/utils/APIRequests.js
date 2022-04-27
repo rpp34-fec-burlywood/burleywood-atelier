@@ -187,6 +187,20 @@ const postQuestion = (product_id, data) => {
     });
 }
 
+const postAnswer = (question_id, data) => {
+  return axios({
+    method: 'POST',
+    url: `/qa/answers/${question_id}`,
+    data: data
+  })
+    .then((response) => {
+      console.log('-- Add Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Add Answer failed ', err.response.data);
+    });
+}
 
 const addToCart = (sku_id, count = 1) => {
   return axios ({
@@ -215,7 +229,8 @@ var api = {
   markReviewHelpful,
   reportReview,
   getQuestions,
-  postQuestion
+  postQuestion,
+  postAnswer
 };
 
 export default api;

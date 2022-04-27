@@ -54,7 +54,11 @@ class QuestionsList extends React.Component {
     return(
       <>
         {this.state.answerListCurrent?.map((q, i) => (
-          <Question key={i + 50} question={q}/>
+          <Question 
+            key={i + 50} 
+            question={q} 
+            addAnswerClickHandler={this.props.addAnswerClickHandler}
+          />
         ))}
         <Footer 
           addQuestionClickHandler={this.props.addQuestionClickHandler}

@@ -1,27 +1,27 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import './AddQuestionModal.css';
-import API from '../../../utils/APIRequests.js'
-class AddQuestionModal extends React.Component {
+import './AddAnswerModal.css';
+import API from '../../../utils/APIRequests.js';
+
+class AddAnswerModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
       email: '',
-      questionBody: ''
+      answerBody: ''
     }
 
     this.closeModalEventHandler = this.closeModalEventHandler.bind(this);
     this.setName = this.setName.bind(this);
     this.setEmail = this.setEmail.bind(this);
-    this.setQuestionBody = this.setQuestionBody.bind(this);
-    this.postQuestion = this.postQuestion.bind(this);
+    this.setAnswerBody = this.setAnswerBody.bind(this);
+    this.postAnswer = this.postAnswer.bind(this);
   }
 
   closeModalEventHandler(event) {
-    let modalWindow = document.getElementById("questionModalWindow");
-    let addQuestionButton = document.getElementById("add-question-button");
-    if (!modalWindow.contains(event.target) && event.target !== addQuestionButton) {
+    let modalWindow = document.getElementById("answerModalWindow");
+    if (!modalWindow.contains(event.target) && !event.target.matches('div.add-answer')) {
       this.props.closeModal();
     }
   }
@@ -46,21 +46,20 @@ class AddQuestionModal extends React.Component {
     })
   }
 
-  setQuestionBody(questionBody) {
+  setAnswerBody(answerBody) {
     this.setState({
-      questionBody
+      answerBody
     })
   }
 
-  postQuestion() {
+  postAnswer() {
     const data = {
       name: this.state.name,
       email: this.state.email,
-      body: this.state.questionBody,
-      product_id: this.props.currProd.id
+      body: this.state.answerBody,
     }
     
-    API.postQuestion(this.props.currProd.id, data)
+    API.postAnswer(this.props.question_id, data)
       .then(xd => console.log(xd))
     // add case where it fails and doesn't close
     this.props.closeModal();
@@ -68,9 +67,9 @@ class AddQuestionModal extends React.Component {
 
   render() {
     return(
-      <div id='questionModal'>
-        <div id='questionModalWindow'>
-          <h1>Post your question</h1>
+      <div id='answerModal'>
+        <div id='answerModalWindow'>
+          <h1>Post your Answer</h1>
           <label>Your name: </label>
           <input
             onChange={(e) => this.setName(e.target.value)} 
@@ -81,18 +80,15 @@ class AddQuestionModal extends React.Component {
             onChange={(e) => this.setEmail(e.target.value)}
             placeholder='Ex: bobjunior@email.com'
           />
-          <label>Your Question: </label>
+          <label>Your Answer: </label>
           <textarea 
             rows="5" cols="33" 
-            placeholder="Please enter a question." 
-            onChange={(e) => this.setQuestionBody(e.target.value)}>
+            placeholder="Please enter your Answer." 
+            onChange={(e) => this.setAnswerBody(e.target.value)}>
           </textarea>
-          <label>
-            Your question might be answered by sellers, manufacturers, or customers who bought this product.
-          </label>
-          <div id='questionModalFooter'>
+          <div id='answerModalFooter'>
             <button onClick={this.props.closeModal}>Cancel</button>
-            <button onClick={this.postQuestion}>Post</button>
+            <button onClick={this.postAnswer}>Post</button>
           </div>
         </div>
       </div>
@@ -100,4 +96,4 @@ class AddQuestionModal extends React.Component {
   }
 }
 
-export default AddQuestionModal
+export default AddAnswerModal
