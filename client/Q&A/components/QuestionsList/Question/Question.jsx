@@ -46,9 +46,11 @@ class Question extends React.Component {
   }
 
   expandAnswerList() {
+    let newAnswerListLength = this.state.answerListLength + 2
+    let isExpanded = newAnswerListLength >= this.state.answerListTotalLength ? true : false
     this.setState({
-      answerListLength: this.state.answerListTotalLength,
-      expanded: true
+      answerListLength: newAnswerListLength,
+      expanded: isExpanded
     })
   }
 
@@ -108,13 +110,9 @@ class Question extends React.Component {
             <AnswersList
               answers={this.returnAnswerObject()}
             />
-            {this.state.answerListLength !== this.state.answerListTotalLength ?
-              <button onClick={this.expandAnswerList}>Load More Answers</button> :
-              null
-            }
-            {this.state.expanded?
+            {this.state.expanded ?
               <button onClick={this.collapseAnswers}>Collapse Answers</button> :
-              null
+              <button onClick={this.expandAnswerList}>Load More Answers</button>
             }
           </div>
         </div>
