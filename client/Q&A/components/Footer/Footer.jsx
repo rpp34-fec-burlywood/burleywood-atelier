@@ -18,20 +18,21 @@ class Footer extends React.Component {
               Then decides which button to load.
           */}
           {
-            this.props.questions?.results?.length > 2 ?
-            this.props.loadMoreQuestions ? 
-            <button
-              id='show-more-questions-button'
-              onClick={this.props.loadMoreQuestionsHandler}
-            >
-              MORE ANSWERED QUESTIONS
-            </button> :
-            <button
-              id='collapse-questions-button'
-              onClick={this.props.collapseQuestions}
-            >
-              Collapse Questions
-            </button> : 
+            this.props.questions?.results?.length > 2 ? 
+              this.props.loadMoreQuestions ? 
+              <button
+                id='show-more-questions-button'
+                onClick={this.props.loadMoreQuestionsHandler}
+              >
+                MORE ANSWERED QUESTIONS
+              </button> :
+              <button
+                id='collapse-questions-button'
+                onClick={this.props.collapseQuestions}
+              >
+                Collapse Questions
+              </button> 
+            : 
             null
           }
         </div>

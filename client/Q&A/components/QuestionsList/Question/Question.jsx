@@ -110,9 +110,13 @@ class Question extends React.Component {
             <AnswersList
               answers={this.returnAnswerObject()}
             />
-            {this.state.expanded ?
-              <button onClick={this.collapseAnswers}>Collapse Answers</button> :
-              <button onClick={this.expandAnswerList}>Load More Answers</button>
+            {
+            this.state.answerListTotalLength > 2 ?
+              this.state.expanded ?
+                <button onClick={this.collapseAnswers}>Collapse Answers</button> :
+                <button onClick={this.expandAnswerList}>Load More Answers</button>
+              :
+              null
             }
           </div>
         </div>
