@@ -5,7 +5,8 @@ import Reviews from "../reviews/reviewsWidget.jsx";
 
 describe("Review Widge Component", function () {
   it("should render reviews widget", function () {
-    let { getByText } = render(<Reviews reviews={[]}/>);
-    expect(screen.getByText("Reviews Widget")).toBeInTheDocument();
+    render(<Reviews reviews={[]}/>);
+    const output = screen.getByText('More Reviews');
+    expect(output).toBeInTheDocument();
   });
 });

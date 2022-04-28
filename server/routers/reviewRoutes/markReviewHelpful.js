@@ -16,7 +16,7 @@ const markReviewHelpful = (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      console.log('Atelier Mark Review Help Error:', err.response.data);
+      //console.log('Atelier Mark Review Help Error:', err.response.data);
       res.status(500);
       res.send(err);
     });

@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, {useState} from 'react';
 import Review from './review.jsx';
+import NewReview from './newReview.jsx';
+import './style.css';
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class ReviewList extends React.Component {
 
     this.addReviews = this.addReviews.bind(this);
     this.hideReviews = this.hideReviews.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   addReviews() {
@@ -21,6 +24,12 @@ class ReviewList extends React.Component {
       }));
     }
     console.log(this.state.reviewNum);
+  }
+
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal
+    })
   }
 
   hideReviews() {
@@ -37,10 +46,8 @@ class ReviewList extends React.Component {
     var renders = this.props.reviews.slice(0, this.state.reviewNum);
     console.log("List", this.props);
     return(
-      <div>
-      <div>-----------------</div>
-      <div>{`${length} Reviews, sorted by helpful`}</div>
-      <div>-----------------</div>
+      <div id='list'>
+      <div id='sorting'>{`${length} Reviews, sorted by helpful`}</div>
       {
         renders.map((review) => (
             <Review
@@ -51,10 +58,11 @@ class ReviewList extends React.Component {
             />
         ))
       }
-      <div>
-        <button onClick={this.addReviews}>More Reviews</button>
-        <button onClick={this.hideReviews}>Hide Reviews</button>
-        <button>Add Review</button>
+      <div id='buttons'>
+        <button onClick={this.addReviews}>MORE REVIEWS</button>
+        <button onClick={this.hideReviews}>HIDE REVIEWS</button>
+        <button onClick={this.toggleModal}> {`ADD A REVIEW \u002b`} </button>
+        <NewReview showModal={this.state.showModal} closeModal={this.toggleModal}/>
       </div>
       </div>
     );
