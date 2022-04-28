@@ -16,13 +16,13 @@ class Gallery extends React.Component {
       return (
         <div id="productGallery">
           <div className="productImageBlock">
-          <Carousel
+            <MainImage selectedStyle={this.props.selectedStyle}
+              mainImageIndex={this.props.mainImageIndex}
+              arrowXClickHandler={this.props.arrowXClickHandler} />
+            <Carousel
               mainImageIndex={this.props.mainImageIndex}
               selectedPhotos={this.props.selectedStyle.photos}
               carouselClickhandler={this.props.carouselClickhandler} />
-          <MainImage selectedStyle={this.props.selectedStyle}
-            mainImageIndex={this.props.mainImageIndex}
-            arrowXClickHandler={this.props.arrowXClickHandler} />
           </div>
         </div>
       );

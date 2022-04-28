@@ -49,8 +49,8 @@
 .mainImageContainer {
   display: flex;
   position: relative;
-  top: -500px;
-  width: 600px;
+  /* top: -500px; */
+  width: inherit;
   height: inherit;
   transition-duration: 0.3s;
 }
@@ -89,17 +89,12 @@
   position: absolute;
   color: white;
   border: none;
-  z-index: 1;
   cursor: default;
   font-size: 5rem;
   text-shadow: black 0 0 5px;
   height: 100%;
-}
 
-#mainLeft,
-#mainRight {
-  /* top: 0%; */
-  position: absolute;
+  top: 0%;
   z-index: 3;
   background-color: transparent;
   display: flex;
@@ -116,19 +111,24 @@
 }
 
 .arrowX.expandedL {
-  margin-left: 0;
-  left: -50px;
   transition: 0.3s;
+  position: absolute;
+  width: 10%;
+  left: 0;
+  justify-content: center;
 }
 
-.arrowX.aR,
-.arrowX.expandedR {
+.arrowX.aR {
   right: 0px;
   transition: 0.3s;
 }
 
 .arrowX.expandedR {
-  right: -50px;
+  transition: 0.3s;
+  position: absolute;
+  right: 0;
+  width: 10%;
+  justify-content: center;
 }
 
 #mainLeft:hover,
@@ -198,6 +198,7 @@
   position: relative;
   flex-direction: column;
   left: 10px;
+  top: -97%;
   height: 500px;
   width: 70px;
   display: flex;
@@ -206,6 +207,7 @@
   margin: 0px;
   justify-content: center;
   z-index: 2;
+
 }
 
 .carouselContainer {
