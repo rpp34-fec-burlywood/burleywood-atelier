@@ -8,7 +8,9 @@
     "server-dev": "npx nodemon server/server.js",
     "react-dev": "npx webpack --watch",
     "test": "jest",
-    "coverage-related": "jest related.test.js --coverage --collectCoverageFrom=client/relatedItems/RelatedItems.jsx"
+    "coverage": "jest --coverage",
+    "coverage-related": "jest related.test.js --coverage --collectCoverageFrom=client/relatedItems/RelatedItems.jsx",
+    "coverage-overview": "jest overview.test.js --coverage --collectCoverageFrom=client/overview/**"
   },
   "jest": {
     "transform": {

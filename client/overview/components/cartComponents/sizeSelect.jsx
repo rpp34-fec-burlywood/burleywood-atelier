@@ -37,7 +37,7 @@ class SizeSelect extends React.Component {
     return (
       <div>
         <select id="sizeSelect" onChange={this.handlerBundle}>
-          <option value="">--SELECT SIZE--</option>
+          <option value="">-SELECT SIZE-</option>
           {this.renderSkus(this.props.skus)}
         </select>
       </div>

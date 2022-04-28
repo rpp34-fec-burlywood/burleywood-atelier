@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import Question from './Question.jsx';
+import Question from './Question/Question.jsx';
 import Footer from '../Footer/Footer.jsx';
+import './QuestionsList.css';
 class QuestionsList extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +27,9 @@ class QuestionsList extends React.Component {
         answerListTotal: this.props.questions?.results,
       })
     }
+
+    const questionListDiv = document.getElementById("question-List");
+    questionListDiv.scrollTop = questionListDiv.scrollHeight;
   }
 
   loadMoreQuestionsHandler() {
@@ -53,9 +57,15 @@ class QuestionsList extends React.Component {
   render() {
     return(
       <>
-        {this.state.answerListCurrent?.map((q, i) => (
-          <Question key={i + 50} question={q}/>
-        ))}
+        <div id='question-List'>
+          {this.state.answerListCurrent?.map((q, i) => (
+            <Question 
+              key={i + 50} 
+              question={q} 
+              addAnswerClickHandler={this.props.addAnswerClickHandler}
+            />
+          ))}
+        </div>
         <Footer 
           addQuestionClickHandler={this.props.addQuestionClickHandler}
           loadMoreQuestionsHandler={this.loadMoreQuestionsHandler}

@@ -24,14 +24,17 @@ class App extends React.Component {
       questionsList: [],
       mainImageIndex: 0
     }
-
+    this.home = this.home.bind(this)
     // Binding all App state modifiers to App
     this.initialize = this.initialize.bind(this);
+
+    /**Use this function to set the main product, should trigger entire page render*/
     this.getOverviewProduct = overviewHandler.getProduct.bind(this);
     this.getProductStyleById = overviewHandler.getProductStyleById.bind(this);
     this.addToCart = overviewHandler.addToCart;
     this.carouselClickhandler = overviewHandler.carouselClickhandler.bind(this);
     this.styleClickHandler = overviewHandler.styleClickHandler.bind(this);
+    this.arrowXClickHandler = overviewHandler.arrowXClickHandler.bind(this);
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
     this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
     this.reportReview = reviewHandlers.reportReview.bind(this);
@@ -63,11 +66,15 @@ class App extends React.Component {
 
   }
 
+  home() {
+    window.location.href = window.location.origin;
+  }
+
   componentDidMount() {
     var id = this.parsePath(window.location?.pathname);
-    console.log(id);
+    // console.log(id);
     if (id) {
-      console.log('initialized by id');
+      // console.log('initialized by id');
       this.initialize(id);
     } else {
       this.initialize();
@@ -82,7 +89,9 @@ class App extends React.Component {
     }
     return (
       <div>
-        <h1>Starter app</h1>
+        <div onClick={this.home} className="home">
+          <h1>Starter app</h1>
+        </div>
         <Overview
           currProd={this.state.currProd}
           currProdStyles={this.state.currProdStyles}
@@ -91,12 +100,15 @@ class App extends React.Component {
           styleClickHandler={this.styleClickHandler}
           addToCart={this.addToCart}
           mainImageIndex={this.state.mainImageIndex}
-          carouselClickhandler={this.carouselClickhandler} />
+          carouselClickhandler={this.carouselClickhandler}
+          arrowXClickHandler={this.arrowXClickHandler} />
         <RelatedItems
           relatedArr={this.state.relatedProducts}
           currProd = {this.state.currProd}
           selectedStyle ={this.state.selectedStyle}
-          initialize={this.getRelatedProductArray} />
+          initialize={this.getRelatedProductArray}
+          selectNewProduct = {this.initialize}
+          />
         <QuestionsAndAnswers
           currProd={ this.state.currProd }
           originalQuestionsList={ this.state.questionsList }

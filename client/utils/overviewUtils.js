@@ -26,8 +26,8 @@ const getProduct = function (numProd = 1, productId = undefined) {
       var selectProd = itemsList[Math.floor(Math.random() * numProd)];
 
       API.getProductById(selectProd.id)
-      // API.getProductById(64627) // TESTING PRODUCTS
-      // API.getProductById(64625) // TESTING PRODUCTS
+        // API.getProductById(64627) // TESTING PRODUCTS
+        // API.getProductById(64625) // TESTING PRODUCTS
         .then(selectProd => {
           this.setState({
             currProd: selectProd
@@ -110,12 +110,31 @@ const styleClickHandler = function (e) {
   }
 }
 
+/**
+ *
+ * @param {Positive_move_forward} move
+ * @param {selectedStyle.photos.length} max
+ */
+const arrowXClickHandler = function (move, max) {
+  var currentI = this.state.mainImageIndex
+  if (move > 0 && currentI < max - 1) {
+    this.setState({
+      mainImageIndex : currentI + 1
+    })
+  } else if (move < 0 && currentI > 0) {
+    this.setState({
+      mainImageIndex : currentI - 1
+    })
+  }
+}
+
 var overviewHandlers = {
   getProduct,
   getProductStyleById,
   addToCart,
   carouselClickhandler,
   styleClickHandler,
+  arrowXClickHandler,
 }
 
 export default overviewHandlers;

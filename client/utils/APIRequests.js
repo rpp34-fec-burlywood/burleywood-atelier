@@ -11,7 +11,7 @@ const getProducts = (numItems) => {
     params: count,
   })
     .then((response) => {
-      console.log('-- Get Products OK\n', response.data);
+      // console.log('-- Get Products OK\n', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -25,7 +25,7 @@ const getProductById = (id) => {
     url: `/products/${id}`,
   })
     .then((response) => {
-      console.log('-- Get Product by ID OK\n', response.data);
+      // console.log('-- Get Product by ID OK\n', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -40,7 +40,7 @@ const getRelatedProducts = (id) => {
     url: `/products/${id}/related`
   })
     .then((response) => {
-      console.log('-- Received related products ', response.data);
+      // console.log('-- Received related products ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -54,7 +54,7 @@ const getProductStyleById = (id) => {
     url: `/products/${id}/styles`
   })
     .then((response) => {
-      console.log('-- Get styles OK ', response.data);
+      // console.log('-- Get styles OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -78,7 +78,7 @@ const getReviewsById = (page, count, sort, id) => {
     }
   })
     .then((response) => {
-      console.log('-- Get Reviews OK ', response.data);
+      // console.log('-- Get Reviews OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -95,7 +95,7 @@ const getReviewMeta = (id) => {
     }
   })
     .then((response) => {
-      console.log('-- Get Review Meta OK ', response.data);
+      // console.log('-- Get Review Meta OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -119,7 +119,7 @@ const postReview = (id, rating, summary, body, recommend, name, email, photos, c
     }
   })
     .then((response) => {
-      console.log('-- POST Review OK ', response.data);
+      // console.log('-- POST Review OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -133,7 +133,7 @@ const markReviewHelpful = (review_id) => {
     url: `/reviews/${review_id}/helpful`,
   })
     .then((response) => {
-      console.log('-- Mark Helpful OK ', response.data);
+      // console.log('-- Mark Helpful OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -164,7 +164,7 @@ const getQuestions = (product_id) => {
     url: `/qa/questions/${product_id}`
   })
     .then((response) => {
-      console.log('-- Get Questions OK ', response.data);
+      // console.log('-- Get Questions OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -179,7 +179,7 @@ const postQuestion = (product_id, data) => {
     data: data
   })
     .then((response) => {
-      console.log('-- Add Question OK ', response.data);
+      // console.log('-- Add Question OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -187,6 +187,20 @@ const postQuestion = (product_id, data) => {
     });
 }
 
+const postAnswer = (question_id, data) => {
+  return axios({
+    method: 'POST',
+    url: `/qa/answers/${question_id}`,
+    data: data
+  })
+    .then((response) => {
+      console.log('-- Add Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Add Answer failed ', err.response.data);
+    });
+}
 
 const addToCart = (sku_id, count = 1) => {
   return axios ({
@@ -194,11 +208,53 @@ const addToCart = (sku_id, count = 1) => {
     url: `/cart/${sku_id}/${count}`,
   })
   .then((response) => {
-      console.log('-- Add to Cart OK ', response.data);
+      // console.log('-- Add to Cart OK ', response.data);
       return response.data;
     })
     .catch((err) => {
       console.log('-- Add to Cart FAILED ', err.response.data);
+    });
+}
+
+const reportAnswer = (answer_id) => {
+  return axios ({
+    method: 'PUT',
+    url: `/qa/answers/report/${answer_id}`,
+  })
+  .then((response) => {
+      console.log('-- Report Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Report Answer FAILED ', err.response.data);
+    });
+}
+
+const upvoteAnswer = (answer_id) => {
+  return axios ({
+    method: 'PUT',
+    url: `/qa/answers/upvote/${answer_id}`,
+  })
+  .then((response) => {
+      console.log('-- Upvote Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Upvote Answer FAILED ', err.response.data);
+    });
+}
+
+const upvoteQuestion = (question_id) => {
+  return axios ({
+    method: 'PUT',
+    url: `/qa/questions/upvote/${question_id}`,
+  })
+  .then((response) => {
+      console.log('-- Upvote Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Upvote Answer FAILED ', err.response.data);
     });
 }
 
@@ -215,7 +271,11 @@ var api = {
   markReviewHelpful,
   reportReview,
   getQuestions,
-  postQuestion
+  postQuestion,
+  postAnswer,
+  reportAnswer,
+  upvoteAnswer,
+  upvoteQuestion
 };
 
 export default api;

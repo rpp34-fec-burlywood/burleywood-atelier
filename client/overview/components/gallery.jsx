@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Carousel from './galleryComponents/carousel.jsx';
-import './galleryComponents/gallery.css'
+import MainImage from './galleryComponents/mainImage.jsx';
 
 
 class Gallery extends React.Component {
@@ -16,24 +16,23 @@ class Gallery extends React.Component {
       return (
         <div id="productGallery">
           <div className="productImageBlock">
-            <img className="mainImage"
-              src={
-                this.props.selectedStyle.photos[this.props.mainImageIndex] ?
-                  this.props.selectedStyle.photos[this.props.mainImageIndex].url :
-                  this.props.carouselClickhandler({ target: { attributes: { index: 0 } } })
-                }>
-          </img>
           <Carousel
+              mainImageIndex={this.props.mainImageIndex}
+              selectedPhotos={this.props.selectedStyle.photos}
+              carouselClickhandler={this.props.carouselClickhandler} />
+          <MainImage selectedStyle={this.props.selectedStyle}
             mainImageIndex={this.props.mainImageIndex}
-            selectedPhotos={this.props.selectedStyle.photos}
-            carouselClickhandler={this.props.carouselClickhandler} />
+            arrowXClickHandler={this.props.arrowXClickHandler} />
+          </div>
         </div>
-        </div >
       );
     }
-    return <div id="productGallery"></div>
+    return (
+      <div id="productGallery">
+        <div className="productImageBlock"></div>
+      </div>
+    );
   }
-
 }
 
 export default Gallery;

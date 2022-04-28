@@ -7,49 +7,15 @@ body {
   min-width: 1000px;
 }
 
-.overviewLeft,
-.overviewRight {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.overviewLeft {
-  min-width: 500px;
-}
-
-
-.overviewRight {
-  padding-left: 5px;
-  min-width: 400px;
-  max-width: 460px;
-}
-
-.selectStylePin {
-  width: auto;
+.home {
   display: block;
+  width: fit-content;
 }
 
-.styleRow {
-  max-height: fit-content;
-  max-width: fit-content;
-  margin: 0;
-  padding: 0;
-}
-
-
-.stylePin {
-  display: inline-block;
-  height: 50px;
-  width: 50px;
-}
-
-.stylePin {
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid transparent;
-}
-
-.stylePin:hover {
+.home:hover {
   cursor: pointer;
-  border-color: blanchedalmond;
+}
+
+.reviews {
+  width: 1000px;
 }
