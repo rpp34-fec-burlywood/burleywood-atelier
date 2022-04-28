@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import $ from 'jquery';
 
 class MainImage extends React.Component {
   constructor(props) {
@@ -89,6 +88,11 @@ class MainImage extends React.Component {
         {/* <div id='expandBTN' onClick={this.expandHandler}>{'[=]'}</div> */}
         {this.renderArrowLeft(this.state.expanded, this.props.mainImageIndex)}
         <div className={`mainImageScroll ${this.state.expanded ? ' expanded' : ''}`}>
+          <link rel="preload" as="image" href={
+            this.props.selectedStyle.photos[this.props.mainImageIndex] ?
+              this.props.selectedStyle.photos[this.props.mainImageIndex].url :
+              this.props.selectedStyle.photos[0].url
+          } />
           <img className={`mainImage${this.state.expanded ? ' expanded' : ''}`}
             onClick={this.expandHandler}
             src={
