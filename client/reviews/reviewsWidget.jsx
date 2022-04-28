@@ -2,6 +2,7 @@
 import React from 'react';
 import ReviewList from './components/reviewList.jsx';
 import RatingsBreakdown from './components/ratingsBreakdown.jsx';
+import './style.css';
 
 class ReviewsWidget extends React.Component {
   constructor(props) {
@@ -10,15 +11,15 @@ class ReviewsWidget extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.currProd !== this.props.currProd) {
-      this.props.getReviewsById(undefined, undefined, undefined, 64620/*this.props.currProd.id*/);
+      this.props.getReviewsById(undefined, 10, 'helpfulness', 64626/*this.props.currProd.id*/);
     }
   }
 
   render() {
-    console.log("widget", this.props);
     return (
       <div>
-        <div>Reviews & Reviews</div>
+        <div id='title'> RATINGS & REVIEWS </div>
+        <div id='ratings'>
         <RatingsBreakdown reviews={this.props.reviews}/>
         <ReviewList
           reviews={this.props.reviews}
@@ -26,6 +27,7 @@ class ReviewsWidget extends React.Component {
           reportReview={this.props.reportReview}
         />
       </div>
+    </div>
     );
   }
 

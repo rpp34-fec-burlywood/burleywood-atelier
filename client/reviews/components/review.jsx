@@ -1,22 +1,28 @@
 /* eslint-disable react/prop-types */
-
+import './style.css'
 import React from 'react';
 
 class Review extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      helpfulness: this.props.data.helpfulness
+    }
     this.markReviewHelpful = this.markReviewHelpful.bind(this);
+    this.reportReview = this.reportReview.bind(this);
   }
 
   markReviewHelpful(e) {
-    console.log(this.props);
-    this.props.markReviewHelpful(e.target.id);
+    this.setState({
+      helpfulness: this.state.helpfulness + 1
+    })
+    this.props.markReviewHelpful(e.target.id.substring(1));
     console.log('Marked review as helpful.')
   }
 
   reportReview(e) {
-    console.log(this.props);
-    this.props.reviewReview(e.target.id);
+    this.props.reportReview(e.target.id.substring(1));
+    console.log('Substring', e.target.id.substring(1));
     console.log('Reported Review.')
   }
 
@@ -43,19 +49,27 @@ class Review extends React.Component {
     const month = months[date[1]];
     const day = date[2];
     var dateText = `${month} ${day}, ${year}`;
-    console.log('Review:', review);
+
+    // this.setState({
+    //   helpful: review.helpfulness
+    // })
 
     return(
-      <div>
-        <div>
-          <span> {`${review.reviewer_name}, ${dateText} | Helpful? `} </span>
-          <span onClick={this.markReviewHelpful} id={review.review_id}> {`Yes`} </span>
-          <span> {` (${review.helpfulness}) |`} </span>
-          <span onClick={this.reportReview}> {` Report`}</span>
+      <div id='review'>
+        <div id='info'>
+          <span> {`${review.reviewer_name}, ${dateText}`} </span>
         </div>
-        <div> {review.summary} </div>
-        <div> {review.body} </div>
-        <div> ------------------- </div>
+        <div id='summary'> {review.summary} </div>
+        <div id='body'> {review.body} </div>
+        {
+          review.recommend ? (<div id='recommended'> {`\u2713 I recommend this product`} </div>) : (<div> </div>)
+        }
+        <div id='commentary'>
+          <span> {`Helpful?  `} </span>
+          <span onClick={this.markReviewHelpful} className='clickable' id={'h' + review.review_id}> {`Yes`} </span>
+          <span > {` (${this.state.helpfulness})  |`} </span>
+          <span onClick={this.reportReview} className='clickable' id={'r' + review.review_id}> {`  Report`}</span>
+        </div>
       </div>
     );
   }
