@@ -25,8 +25,8 @@ class NewReview extends React.Component {
               <input type="text" name="summary"/><br></br>
               <label>Body</label><br></br>
               <input type="text" name="body"/><br></br>
-              <label>Body</label><br></br>
-              <input type="text" name="body"/><br></br>
+              {/* <label>Review</label><br></br>
+              <input type="text" name="body"/><br></br> */}
             </form>
           </div>
           <div>
