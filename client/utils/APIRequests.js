@@ -187,6 +187,20 @@ const postQuestion = (product_id, data) => {
     });
 }
 
+const postAnswer = (question_id, data) => {
+  return axios({
+    method: 'POST',
+    url: `/qa/answers/${question_id}`,
+    data: data
+  })
+    .then((response) => {
+      console.log('-- Add Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Add Answer failed ', err.response.data);
+    });
+}
 
 const addToCart = (sku_id, count = 1) => {
   return axios ({
@@ -199,6 +213,48 @@ const addToCart = (sku_id, count = 1) => {
     })
     .catch((err) => {
       console.log('-- Add to Cart FAILED ', err.response.data);
+    });
+}
+
+const reportAnswer = (answer_id) => {
+  return axios ({
+    method: 'PUT',
+    url: `/qa/answers/report/${answer_id}`,
+  })
+  .then((response) => {
+      console.log('-- Report Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Report Answer FAILED ', err.response.data);
+    });
+}
+
+const upvoteAnswer = (answer_id) => {
+  return axios ({
+    method: 'PUT',
+    url: `/qa/answers/upvote/${answer_id}`,
+  })
+  .then((response) => {
+      console.log('-- Upvote Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Upvote Answer FAILED ', err.response.data);
+    });
+}
+
+const upvoteQuestion = (question_id) => {
+  return axios ({
+    method: 'PUT',
+    url: `/qa/questions/upvote/${question_id}`,
+  })
+  .then((response) => {
+      console.log('-- Upvote Answer OK ', response.data);
+      return response.data;
+    })
+    .catch((err) => {
+      console.log('-- Upvote Answer FAILED ', err.response.data);
     });
 }
 
@@ -215,7 +271,11 @@ var api = {
   markReviewHelpful,
   reportReview,
   getQuestions,
-  postQuestion
+  postQuestion,
+  postAnswer,
+  reportAnswer,
+  upvoteAnswer,
+  upvoteQuestion
 };
 
 export default api;

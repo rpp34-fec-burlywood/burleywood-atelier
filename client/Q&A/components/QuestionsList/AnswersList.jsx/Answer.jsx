@@ -1,10 +1,24 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import API from '../../../../utils/APIRequests';
 import './Answer.css';
 
 class Answer extends React.Component {
   constructor(props) {
     super(props);
+
+    this.reportAnswer = this.reportAnswer.bind(this);
+    this.upvoteAnswer = this.upvoteAnswer.bind(this);
+  }
+
+  reportAnswer() {
+    API.reportAnswer(this.props.answer?.id)
+      .then(res => {console.log(res)});
+  }
+
+  upvoteAnswer() {
+    API.upvoteAnswer(this.props.answer?.id)
+      .then(res => {console.log(res)});
   }
 
   render() {
@@ -31,14 +45,31 @@ class Answer extends React.Component {
     const helpful = this.props.answer?.helpfulness
 
     return(
-      <div>
+      <>
         <div className='answer-body'>
           {this.props.answer?.body}
         </div>
         <div className='answer-footer'>
-          by user {user} on {`${month} ${day}, ${year}`} | Helpful? Yes ({helpful}) | Report
+          <div className='footer-ele'>
+            by user {user} on {`${month} ${day}, ${year}`}
+          </div>
+          <div className='footer-ele'>
+            |
+          </div>
+          <div className='footer-ele'>
+            Helpful?
+          </div>
+          <div className='footer-ele answer-helpful' onClick={this.upvoteAnswer}>
+            Yes ({helpful})
+          </div>
+          <div className='footer-ele'>
+            |
+          </div>
+          <div className='footer-ele answer-report' onClick={this.reportAnswer}>
+            Report
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
