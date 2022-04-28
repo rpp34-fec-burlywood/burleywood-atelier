@@ -113,7 +113,7 @@ class App extends React.Component {
           mainImageIndex={this.state.mainImageIndex}
           carouselClickhandler={this.carouselClickhandler}
           arrowXClickHandler={this.arrowXClickHandler} />
-        <RelatedItems
+        {/* <RelatedItems
           relatedArr={this.state.relatedProducts}
           currProd = {this.state.currProd}
           selectedStyle ={this.state.selectedStyle}
@@ -133,7 +133,7 @@ class App extends React.Component {
           getReviewsById={this.getReviewsById}
           markReviewHelpful={this.markReviewHelpful}
           reportReview={this.reportReview}
-          />
+          /> */}
       </div>
     )
   }

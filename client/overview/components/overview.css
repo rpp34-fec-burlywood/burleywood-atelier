@@ -42,6 +42,7 @@
 }
 
 .productImageBlock {
+  position: relative;
   width: 600px;
   height: inherit;
 }
@@ -52,12 +53,11 @@
   /* top: -500px; */
   width: inherit;
   height: inherit;
-  transition-duration: 0.3s;
+  transition: 0.3s;
 }
 
 .mainImageContainer.expanded {
   display: flex;
-  transition-duration: 0.3s;
   background-color: white;
   /* z-index: 3; */
   top: inherit;
@@ -71,7 +71,7 @@
   z-index: 2;
   align-items: center;
   justify-content: center;
-
+  transition: 0.3s;
 }
 
 #expandBTN {
@@ -101,6 +101,7 @@
   justify-content: center;
   align-items: center;
   width: 50px;
+  transition: 0.3s;
   /* height: 1000px; */
 }
 
@@ -173,6 +174,7 @@
   height: inherit;
   width: inherit;
   z-index: 1;
+  transition-duration: 0.3s;
 }
 
 .mainImage:hover {
@@ -195,10 +197,10 @@
 }
 
 .carousel {
-  position: relative;
+  position: absolute;
   flex-direction: column;
   left: 10px;
-  top: -97%;
+  top: 20px;
   height: 500px;
   width: 70px;
   display: flex;
@@ -206,8 +208,6 @@
   align-items: center;
   margin: 0px;
   justify-content: center;
-  z-index: 2;
-
 }
 
 .carouselContainer {
