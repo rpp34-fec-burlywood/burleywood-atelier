@@ -65,17 +65,17 @@ const getProductStyleById = (id) => {
 const getReviewsById = (page, count, sort, id) => {
   page = page === undefined ? 1 : page;
   count = count === undefined ? 5 : count;
-  sort = sort === undefined ? 'newest' : sort;
+  sort = sort === undefined ? 'helpfulness' : sort;
 
   return axios({
     method: 'GET',
     url: `/reviews/${id}`,
-    // params: {
-    //   page: page,
-    //   count: count,
-    //   sort: sort,
-    //   id: id
-    // }
+    params: {
+      product_id: 62328,
+      page: page,
+      count: count,
+      sort: sort
+    }
   })
     .then((response) => {
       // console.log('-- Get Reviews OK ', response.data);
@@ -130,7 +130,7 @@ const postReview = (id, rating, summary, body, recommend, name, email, photos, c
 const markReviewHelpful = (review_id) => {
   return axios({
     method: 'PUT',
-    url: `/reviews/reviews/${review_id}/helpful`,
+    url: `/reviews/${review_id}/helpful`,
   })
     .then((response) => {
       // console.log('-- Mark Helpful OK ', response.data);
@@ -145,16 +145,16 @@ const reportReview = (review_id) => {
   return axios({
     method: 'PUT',
     url: `/reviews/${review_id}/report`,
-    params: {
-      review_id: review_id
-    }
+    // params: {
+    //   review_id: review_id
+    // }
   })
     .then((response) => {
-      // console.log('-- Mark Helpful OK ', response.data);
+      console.log('-- Report OK ', response.data);
       return response.data;
     })
     .catch((err) => {
-      console.log('-- Mark Helpful failed ', err.response.data);
+      console.log('-- Report failed ', err.response.data);
     });
   }
 

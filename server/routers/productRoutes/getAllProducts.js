@@ -10,11 +10,11 @@ const getAllProducts = (req, res) => {
     params: req.query
   })
     .then((response) => {
-      console.log('-- Get All Products OK: \n', response.data);
+      //console.log('-- Get All Products OK: \n', response.data);
       res.send(response.data);
     })
     .catch((err) => {
-      console.error('-- Get All Products FAILED: \n', err.response.data);
+      //console.error('-- Get All Products FAILED: \n', err.response.data);
       res.status(500).send(err);
     });
 }

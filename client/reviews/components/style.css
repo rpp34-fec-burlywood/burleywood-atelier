@@ -1,0 +1,83 @@
+/* Breakdown */
+#breakdown {
+  flex: 1;
+  margin-right: 2em;
+}
+
+#average {
+  font-size: 3em;
+  margin-bottom: .5em;
+}
+
+#recommend {
+  font-size: 1em;
+}
+
+/* List */
+#list {
+  flex: 2;
+}
+
+#sorting, #summary {
+  font-size: 1.5em;
+  font-style: bold;
+  margin-bottom: 1em;
+}
+
+#buttons {
+  text-align: center;
+}
+/* Review */
+.clickable {
+  text-decoration: underline;
+}
+
+#recommended {
+  text-align: center;
+}
+
+#review {
+  border-style: none none solid none;
+  border-width: 1px;
+}
+
+#body {
+  text-align: left;
+}
+
+#commentary, #info {
+  font-size: .75em;
+  text-align: right;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  width: 500px;
+  background-color: #fff;
+}
+
+.modal-header, .modal-footer {
+  padding: 10px;
+}
+
+.modal-title {
+  margin: 0px;
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
