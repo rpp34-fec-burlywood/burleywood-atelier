@@ -22,7 +22,8 @@ class App extends React.Component {
       relatedProducts: [],
       reviews: [],
       questionsList: [],
-      mainImageIndex: 0
+      mainImageIndex: 0,
+      outfits: []
     }
     this.home = this.home.bind(this)
     // Binding all App state modifiers to App
@@ -40,6 +41,7 @@ class App extends React.Component {
     this.reportReview = reviewHandlers.reportReview.bind(this);
     this.markReviewHelpful = reviewHandlers.markReviewHelpful.bind(this);
     this.getQuestions = qaHandlers.getQuestionsArray.bind(this);
+    this.outfitUpdater = this.outfitUpdater.bind(this)
   }
 
   initialize(productid = undefined) {
@@ -51,6 +53,15 @@ class App extends React.Component {
       //   this.getRelatedProductArray(currProd.id);
       // })
   }
+
+  outfitUpdater(value) {
+    //takes in an array
+    this.setState({
+      outfits: value
+    })
+  }
+
+
 
   parsePath(pathname) {
     if (pathname.includes('/productPage/')) {
@@ -79,8 +90,8 @@ class App extends React.Component {
     } else {
       this.initialize();
     }
-
-
+    let outfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
+    this.setState({outfits: outfits})
   }
 
   render() {
@@ -108,6 +119,8 @@ class App extends React.Component {
           selectedStyle ={this.state.selectedStyle}
           initialize={this.getRelatedProductArray}
           selectNewProduct = {this.initialize}
+          outfitUpdater = {this.outfitUpdater}
+          outfits = {this.state.outfits}
           />
         <QuestionsAndAnswers
           currProd={ this.state.currProd }
