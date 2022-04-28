@@ -55,10 +55,32 @@
 }
 
 .mainImageContainer.expanded {
-  position: relative;
+  display: flex;
   transition-duration: 0.3s;
   background-color: white;
   z-index: 3;
+  top: inherit;
+  height: 80%;
+  width: 80%;
+
+}
+
+.expandedMask {
+  height: inherit;
+  width: inherit;
+}
+
+.expandedMask.expanded {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #expandBTN {
@@ -67,7 +89,7 @@
   top: 8px;
   right: 8px;
   z-index: 4;
-  cursor:cell;
+  cursor: cell;
   color: white;
   background-color: rgba(85, 85, 85, 0.481);
 }
@@ -97,18 +119,23 @@
 .arrowX.aL {
   left: 0px;
   margin-left: 77px;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .arrowX.expandedL {
   margin-left: 0;
+  left: -50px;
   transition: 0.3s;
 }
 
 .arrowX.aR,
 .arrowX.expandedR {
   right: 0px;
-  transition: 0.2s;
+  transition: 0.3s;
+}
+
+.arrowX.expandedR {
+  right: -50px;
 }
 
 #mainLeft:hover,
@@ -117,17 +144,20 @@
 }
 
 
-
-
 .mainImageScroll {
   height: inherit;
   width: inherit;
-  border: 1px solid rgb(59, 59, 59);
+  /* border: 1px solid rgb(59, 59, 59); */
   border-radius: 2px;
+  position: relative;
 }
 
 .mainImageScroll.expanded {
-  overflow-y: auto;
+  /* overflow-y: auto; */
+  overflow: hidden;
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 .mainImageScroll {
@@ -144,9 +174,9 @@
 
 
 .mainImage {
-  position: relative;
+  /* position: relative; */
   object-fit: cover;
-  object-position: 50% 50%;
+  /* object-position: 50% 50%; */
   height: inherit;
   width: inherit;
   z-index: 1;
@@ -159,9 +189,9 @@
 }
 
 .mainImage.expanded {
-  height: auto;
-  width: inherit;
-  position: 50% 50%;
+  height: 100%;
+  width: 100%;
+  /* position: absolute; */
   object-fit: contain;
 }
 
@@ -313,7 +343,7 @@
   border: 4px solid rgb(237, 102, 6);
 }
 
-.currProductTitle{
+.currProductTitle {
   font-size: 30pt;
   padding: 10px 0;
   font-weight: 800;
@@ -325,7 +355,7 @@
 
 }
 
-.originalPrice.sale{
+.originalPrice.sale {
   text-decoration: line-through;
 }
 
@@ -353,6 +383,7 @@
 .styleSelector {
   width: inherit;
 }
+
 .selectStylePin {
   width: 390px;
 }

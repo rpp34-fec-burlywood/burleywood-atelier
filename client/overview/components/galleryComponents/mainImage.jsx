@@ -14,7 +14,6 @@ class MainImage extends React.Component {
     this.expandHandler = this.expandHandler.bind(this);
     this.renderArrowLeft = this.renderArrowLeft.bind(this);
     this.renderArrowRight = this.renderArrowRight.bind(this)
-    this.changeImageStyle = this.changeImageStyle.bind(this);
     this.arrowXStyle = this.arrowXStyle.bind(this);
     this.arrowXHelper = this.arrowXHelper.bind(this);
   }
@@ -23,26 +22,20 @@ class MainImage extends React.Component {
 
   expandHandler() {
     if (!this.state.expanded) {
-      var height = $('#overview').height();
+      // var height = document.getElementById('overview').offsetHeight;
+      var height = 0.8 * window.innerHeight;
+      var width = 0.8 * window.innerWidth;
       this.setState({
         expanded: !this.state.expanded,
-        height
+        height,
+        width,
       })
     } else {
       this.setState({
         expanded: !this.state.expanded,
-        height: 550
+        height: 550,
+        width: 600
       })
-    }
-  }
-
-  changeImageStyle(expandedState) {
-    if (!expandedState) {
-      return {};
-    }
-    return {
-      width: '1000px',
-      height: `${this.state.height}px`,
     }
   }
 
@@ -84,20 +77,25 @@ class MainImage extends React.Component {
   render() {
     // console.log('RENDERED MainImage');
     return (
-      <div className={`mainImageContainer${this.state.expanded ? ' expanded' : ''}`}
-        style={this.changeImageStyle(this.state.expanded)}>
-        {/* <div id='expandBTN' onClick={this.expandHandler}>{'[=]'}</div> */}
-        {this.renderArrowLeft(this.state.expanded, this.props.mainImageIndex)}
-        {this.renderArrowRight(this.state.expanded, this.props.mainImageIndex)}
-        <div className={`mainImageScroll ${this.state.expanded ? ' expanded' : ''}`}>
-          <img className={`mainImage${this.state.expanded ? ' expanded' : ''}`}
-            onClick={this.expandHandler}
-            src={
-              this.props.selectedStyle.photos[this.props.mainImageIndex] ?
-                this.props.selectedStyle.photos[this.props.mainImageIndex].url :
-                this.props.selectedStyle.photos[0].url
-            } />
+      <div id='expandedMask'
+        className={`expandedMask ${this.state.expanded ? ' expanded' : ''}`}>
+
+
+        <div className={`mainImageContainer ${this.state.expanded ? ' expanded' : ''}`}>
+          {/* <div id='expandBTN' onClick={this.expandHandler}>{'[=]'}</div> */}
+          {this.renderArrowLeft(this.state.expanded, this.props.mainImageIndex)}
+          {this.renderArrowRight(this.state.expanded, this.props.mainImageIndex)}
+          <div className={`mainImageScroll ${this.state.expanded ? ' expanded' : ''}`}>
+            <img className={`mainImage${this.state.expanded ? ' expanded' : ''}`}
+              onClick={this.expandHandler}
+              src={
+                this.props.selectedStyle.photos[this.props.mainImageIndex] ?
+                  this.props.selectedStyle.photos[this.props.mainImageIndex].url :
+                  this.props.selectedStyle.photos[0].url
+              } />
+          </div>
         </div>
+
       </div>
     );
   }
