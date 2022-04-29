@@ -17,6 +17,7 @@ class Carousel extends React.Component {
     this.renderCarousel = this.renderCarousel.bind(this);
     this.downArrowClick = this.downArrowClick.bind(this);
     this.upArrowClick = this.upArrowClick.bind(this);
+    this.trackMainImage = this.trackMainImage.bind(this);
   }
 
 
@@ -50,6 +51,22 @@ class Carousel extends React.Component {
     this.setState({
       maxSlides,
       slidePercentage: 100 / MAX_CAROUSEL_LENGTH
+    })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.mainImageIndex !== this.props.mainImageIndex) {
+      this.trackMainImage()
+    }
+  }
+
+  trackMainImage() {
+    var index = 0
+    if (this.props.mainImageIndex >= MAX_CAROUSEL_LENGTH) {
+      index = this.props.mainImageIndex - (MAX_CAROUSEL_LENGTH - 1);
+    }
+    this.setState({
+      windowIndex: index
     })
   }
 

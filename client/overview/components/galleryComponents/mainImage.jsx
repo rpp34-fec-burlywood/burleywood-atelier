@@ -83,7 +83,6 @@ class MainImage extends React.Component {
   }
 
   arrowNav (e) {
-    console.log(e.key)
     if (e.key === 'ArrowLeft') {
       this.props.arrowXClickHandler(-1, this.props.selectedStyle.photos.length)
     }
