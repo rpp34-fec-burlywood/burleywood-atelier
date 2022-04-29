@@ -26,9 +26,65 @@ async function getCardInfo(productArr) {
   return fulfilled;
 }
 
+function handleAddProduct() {
+  let storage = [];
+  let merged = {};
+  // merged.value = {...this.props.currProd}
+  // merged.value.styles = {...this.props.selectedStyle}
+  merged.value = {...this.state.currProd}
+  merged.value.styles = {...this.state.selectedStyle}
+  let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
+  // if your outfits is empty
+  if(storedOutfits?.length > 3) {
+    $(`#right-outfit`).show()
+  }
+  if(!sessionStorage.getItem('outfits')) {
+    storage.push(merged);
+    sessionStorage.setItem('outfits', JSON.stringify(storage));
+    this.setState({outfits: storage})
+    // this.props.outfitUpdater(storage)
+  } else {
+    // const yourOutfits = [...this.props.outfits]
+    const yourOutfits = [...this.state.outfits]
+    const currentOutfit = merged;
+    let duplicate = false;
+    yourOutfits.forEach(outfit => {
+      if(JSON.stringify(outfit) === JSON.stringify(merged) ) {
+        duplicate = true;
+      }
+    })
+    if(!duplicate) {
+      yourOutfits.push(currentOutfit);
+      this.setState({outfits: yourOutfits})
+      // this.props.outfitUpdater(yourOutfits)
+      sessionStorage.setItem('outfits', JSON.stringify(yourOutfits));
+    }
+  }
+}
+
+function handleRemoveOutfit(styleID) {
+  let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
+  console.log(storedOutfits)
+  let index = storedOutfits.findIndex(outfit => {
+    return outfit.value.styles.style_id === styleID
+  });
+  if(index >= 0) {
+    storedOutfits.splice(index, 1);
+  }
+  sessionStorage.setItem('outfits', JSON.stringify(storedOutfits));
+  if(storedOutfits.length === 3) {
+    $(`#right-outfit`).hide()
+    $(`#left-outfit`).hide()
+  }
+  this.setState({outfits: yourOutfits})
+  // this.props.outfitUpdater(storedOutfits)
+}
+
 var relatedHandlers = {
   getRelatedProductArray,
-  getCardInfo
+  getCardInfo,
+  handleAddProduct,
+  handleRemoveOutfit,
 }
 
 export default relatedHandlers;

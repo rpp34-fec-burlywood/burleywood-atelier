@@ -81,7 +81,7 @@ handleAddProduct() {
   merged.value.styles = {...this.props.selectedStyle}
   let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
   // if your outfits is empty
-  if(storedOutfits.length > 3) {
+  if(storedOutfits?.length > 3) {
     $(`#right-outfit`).show()
   }
   if(!sessionStorage.getItem('outfits')) {
