@@ -53,7 +53,7 @@ class MainImage extends React.Component {
 
   arrowXHelper(e) {
     var move = Number(e.target.attributes.move.value);
-    this.props.arrowXClickHandler(move, this.props.selectedStyle.photos.length)
+    this.props.arrowXClickHandler(move, this.props.selectedStyle.photos.length, this.props.trackMainImage);
   }
 
 
