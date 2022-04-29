@@ -4,7 +4,7 @@ import QuestionsAndAnswers from './Q&A/QuestionsAndAnswers.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
 import ReviewsWidget from './reviews/reviewsWidget.jsx';
 import overviewHandler from './utils/overviewUtils.js';
-import relatedHandlers  from './utils/relatedItemsUtils.js';
+import relatedHandlers from './utils/relatedItemsUtils.js';
 import reviewHandlers from './utils/reviewUtils.js';
 import qaHandlers from './utils/questionsAndAnswersUtils.js';
 import './styles.css';
@@ -49,9 +49,9 @@ class App extends React.Component {
     // also calls this.getProductStyleById
 
     this.getOverviewProduct(30, productid)
-      // .then(currProd => {
-      //   this.getRelatedProductArray(currProd.id);
-      // })
+    // .then(currProd => {
+    //   this.getRelatedProductArray(currProd.id);
+    // })
   }
 
   outfitUpdater(value) {
@@ -91,7 +91,7 @@ class App extends React.Component {
       this.initialize();
     }
     let outfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
-    this.setState({outfits: outfits})
+    this.setState({ outfits: outfits })
   }
 
   render() {
@@ -113,20 +113,21 @@ class App extends React.Component {
           mainImageIndex={this.state.mainImageIndex}
           carouselClickhandler={this.carouselClickhandler}
           arrowXClickHandler={this.arrowXClickHandler}
-          reviews={this.state.reviews} />
+          reviews={this.state.reviews}
+          outfitUpdater={this.outfitUpdater} />ß
         <RelatedItems
           relatedArr={this.state.relatedProducts}
-          currProd = {this.state.currProd}
-          selectedStyle ={this.state.selectedStyle}
+          currProd={this.state.currProd}
+          selectedStyle={this.state.selectedStyle}
           initialize={this.getRelatedProductArray}
-          selectNewProduct = {this.initialize}
-          outfitUpdater = {this.outfitUpdater}
-          outfits = {this.state.outfits}
-          />
+          selectNewProduct={this.initialize}
+          outfitUpdater={this.outfitUpdater}
+          outfits={this.state.outfits}
+        />
         <QuestionsAndAnswers
-          currProd={ this.state.currProd }
-          originalQuestionsList={ this.state.questionsList }
-          refetch={ this.getQuestions }
+          currProd={this.state.currProd}
+          originalQuestionsList={this.state.questionsList}
+          refetch={this.getQuestions}
         />
         <ReviewsWidget
           currProd={this.state.currProd}
@@ -134,7 +135,7 @@ class App extends React.Component {
           getReviewsById={this.getReviewsById}
           markReviewHelpful={this.markReviewHelpful}
           reportReview={this.reportReview}
-          />
+        />
       </div>
     )
   }
