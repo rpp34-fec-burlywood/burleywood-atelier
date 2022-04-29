@@ -112,7 +112,8 @@ class App extends React.Component {
           addToCart={this.addToCart}
           mainImageIndex={this.state.mainImageIndex}
           carouselClickhandler={this.carouselClickhandler}
-          arrowXClickHandler={this.arrowXClickHandler} />
+          arrowXClickHandler={this.arrowXClickHandler}
+          reviews={this.state.reviews} />
         <RelatedItems
           relatedArr={this.state.relatedProducts}
           currProd = {this.state.currProd}
