@@ -115,7 +115,7 @@ class App extends React.Component {
           carouselClickhandler={this.carouselClickhandler}
           arrowXClickHandler={this.arrowXClickHandler}
           reviews={this.state.reviews}
-          handleAddProduct={this.handleAddProduct} />ß
+          handleAddProduct={this.handleAddProduct} />
         <RelatedItems
           relatedArr={this.state.relatedProducts}
           currProd={this.state.currProd}
