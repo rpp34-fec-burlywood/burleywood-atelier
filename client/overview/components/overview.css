@@ -77,15 +77,22 @@
 
 #expandBTN {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1rem;
-  top: 8px;
-  right: 8px;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
   z-index: 4;
-  cursor: cell;
   color: white;
-  background-color: rgba(85, 85, 85, 0.481);
+  padding: 3px;
+  background-color: rgba(85, 85, 85, 0.806);
 }
-
+#expandBTN:hover {
+  background-color: rgba(85, 85, 85, 0.234);
+}
 .arrowX {
   position: absolute;
   color: white;
