@@ -15,6 +15,7 @@ class MainImage extends React.Component {
     this.renderArrowRight = this.renderArrowRight.bind(this)
     this.arrowXStyle = this.arrowXStyle.bind(this);
     this.arrowXHelper = this.arrowXHelper.bind(this);
+    this.arrowNav = this.arrowNav.bind(this);
   }
 
   // mainImage will need to be its own component for expanded view
@@ -81,8 +82,27 @@ class MainImage extends React.Component {
     }
   }
 
+  arrowNav (e) {
+    console.log(e.key)
+    if (e.key === 'ArrowLeft') {
+      this.props.arrowXClickHandler(-1, this.props.selectedStyle.photos.length)
+    }
+    if (e.key === 'ArrowRight') {
+      this.props.arrowXClickHandler(1, this.props.selectedStyle.photos.length)
+    }
+    if (e.key === 'Escape') {
+      this.expandHandler();
+    }
+  }
+
   render() {
     // console.log('RENDERED MainImage');
+    if (this.state.expanded) {
+      document.addEventListener('keydown', this.arrowNav);
+    } else {
+      document.removeEventListener('keydown', this.arrowNav);
+    }
+
     return (
       <div className={`mainImageContainer ${this.state.expanded ? ' expanded' : ''}`}>
         {/* <div id='expandBTN' onClick={this.expandHandler}>{'[=]'}</div> */}
