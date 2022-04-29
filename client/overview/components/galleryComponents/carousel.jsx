@@ -15,6 +15,7 @@ class Carousel extends React.Component {
     };
 
     this.renderCarousel = this.renderCarousel.bind(this);
+    this.transformCarousel = this.transformCarousel.bind(this);
   }
 
 
@@ -29,8 +30,17 @@ class Carousel extends React.Component {
     return carousel;
   }
 
-  // OPTIMIZATION, use a function to perform the TRANSFORM, if the index is already in teh display area,
-  // no transform is needed.
+  /**OPTIMIZATION, use a function to perform the TRANSFORM, if the index is already in teh display area,
+   no transform is needed*/
+  transformCarousel(windowIndex, slidePercentage) {
+    var element = document.getElementById('carouselContainer');
+    var scrollPercent = (100 * element.scrollTop / (element.scrollHeight - element.clientHeight));
+    var desired = this.props.windowIndex * this.props.slidePercentage;
+    console.log(desired, scrollPercent)
+    // return {
+    //   transform: `translateY(${}%)`
+    // }
+  }
 
   render() {
     // console.log('RENDERED CAROUSEL');
@@ -40,8 +50,8 @@ class Carousel extends React.Component {
           <button id="carouselUp" onClick={this.props.upArrowClick}>
             <div className="arrowY">&#10092;</div>
           </button>
-          <div className="carouselContainer">
-            <div className="carSlider"
+          <div id="carouselContainer" className="carouselContainer">
+            <div id="carSlider" className="carSlider"
               style={{ transform: `translateY(-${this.props.windowIndex * this.props.slidePercentage}%)` }}
               onClick={this.props.carouselClickhandler}>
               {this.renderCarousel(this.props.mainImageIndex)}

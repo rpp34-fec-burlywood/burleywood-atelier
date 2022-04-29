@@ -221,7 +221,7 @@
   width: 64px;
   overflow: hidden;
   background-color: rgb(80, 80, 80, 0.8);
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .carouselContainer {
