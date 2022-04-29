@@ -401,7 +401,14 @@
 }
 
 #addCartBTN {
-  width: 310px;
+  width: 250px;
+  height: 50px;
+  border: 3px solid dark rgb(59, 59, 59);
+  margin: 0px 5px;
+}
+
+#addStyleBTN {
+  width: 50px;
   height: 50px;
   border: 3px solid dark rgb(59, 59, 59);
   margin-left: 5px;

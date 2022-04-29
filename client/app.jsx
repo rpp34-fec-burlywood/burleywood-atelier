@@ -37,6 +37,7 @@ class App extends React.Component {
     this.styleClickHandler = overviewHandler.styleClickHandler.bind(this);
     this.arrowXClickHandler = overviewHandler.arrowXClickHandler.bind(this);
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
+    this.handleAddProduct = relatedHandlers.handleAddProduct.bind(this);
     this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
     this.reportReview = reviewHandlers.reportReview.bind(this);
     this.markReviewHelpful = reviewHandlers.markReviewHelpful.bind(this);
@@ -114,7 +115,7 @@ class App extends React.Component {
           carouselClickhandler={this.carouselClickhandler}
           arrowXClickHandler={this.arrowXClickHandler}
           reviews={this.state.reviews}
-          outfitUpdater={this.outfitUpdater} />ß
+          handleAddProduct={this.handleAddProduct} />ß
         <RelatedItems
           relatedArr={this.state.relatedProducts}
           currProd={this.state.currProd}
