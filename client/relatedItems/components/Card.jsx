@@ -13,7 +13,7 @@ const Card = (props)=> {
   if (props.type === 'outfit') {
     return (
       <div className = "card">
-        <DeleteButton id={product.id} handleRemove = {props.handleRemoveOutfit}/>
+        <DeleteButton id={product.styles.style_id} handleRemove = {props.handleRemoveOutfit}/>
         <img className ="img" src ={img}  width='228' height='194'/>
         <p className='card-category'>{product.category}</p>
         <p className="card-price">{product.name}</p>
@@ -23,9 +23,6 @@ const Card = (props)=> {
   }
   if(props.type === 'related') {
     return (
-        //todo CSS
-        //product.id
-        //onClick={()=>props.selectNewProduct(props.product.id)}
       <div className = "card" onClick={()=>props.selectNewProduct(props.product.id)}>
         <CompareButton leftName={props.currProd.name} currProd={props.currProd.features} selectedProd={props.product.features} rightName={props.product.name}/>
         <img className ="img" src ={img}  width='228' height='194'/>

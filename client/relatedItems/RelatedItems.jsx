@@ -22,8 +22,10 @@ class RelatedItems extends React.Component {
       //64626 = more than 4 products
       //64621 = less than 4
       this.props.initialize(this.props.currProd.id);
-      let outfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
-      this.setState({outfits: outfits})
+      // this.props.initialize(64626);
+
+      // let outfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
+      // this.setState({outfits: outfits})
     }
   }
   slideRight(id) {
@@ -51,7 +53,7 @@ class RelatedItems extends React.Component {
  slideLeft (id){
   var num, extraWidth;
   id === 'related' ? num = 0 : num = 242;
-  id === 'related' ? extraWidth = 0 : extraWidth = 242;
+  id === 'related' ? extraWidth = 0 : extraWidth = -278;
   var element = document.getElementById(`${id}-list`);
   const scrollLength = (element.offsetWidth + num) / 4
   element.scrollLeft -= scrollLength;
@@ -77,13 +79,18 @@ handleAddProduct() {
   let merged = {};
   merged.value = {...this.props.currProd}
   merged.value.styles = {...this.props.selectedStyle}
+  let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
   // if your outfits is empty
+  if(storedOutfits?.length > 3) {
+    $(`#right-outfit`).show()
+  }
   if(!sessionStorage.getItem('outfits')) {
     storage.push(merged);
     sessionStorage.setItem('outfits', JSON.stringify(storage));
-    this.setState({outfits: storage})
+    // this.setState({outfits: storage})
+    this.props.outfitUpdater(storage)
   } else {
-    const yourOutfits = [...this.state.outfits]
+    const yourOutfits = [...this.props.outfits]
     const currentOutfit = merged;
     let duplicate = false;
     yourOutfits.forEach(outfit => {
@@ -93,24 +100,28 @@ handleAddProduct() {
     })
     if(!duplicate) {
       yourOutfits.push(currentOutfit);
-      this.setState({outfits: yourOutfits})
+      // this.setState({outfits: yourOutfits})
+      this.props.outfitUpdater(yourOutfits)
       sessionStorage.setItem('outfits', JSON.stringify(yourOutfits));
     }
   }
 }
 
-handleRemoveOutfit(productID) {
+handleRemoveOutfit(styleID) {
   let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
+  console.log(storedOutfits)
   let index = storedOutfits.findIndex(outfit => {
-    return outfit.value.id === productID
+    return outfit.value.styles.style_id === styleID
   });
-  storedOutfits.splice(index, 1);
+  if(index >= 0) {
+    storedOutfits.splice(index, 1);
+  }
   sessionStorage.setItem('outfits', JSON.stringify(storedOutfits));
   if(storedOutfits.length === 3) {
     $(`#right-outfit`).hide()
     $(`#left-outfit`).hide()
   }
-  this.setState({outfits: storedOutfits})
+  this.props.outfitUpdater(storedOutfits)
 }
   render() {
     return (
@@ -119,7 +130,7 @@ handleRemoveOutfit(productID) {
           RELATED PRODUCTS
           <ProductCard selectNewProduct ={this.props.selectNewProduct} relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft} currProd ={this.props.currProd}/>
           YOUR OUTFITS
-          <YourOutfit num={this.state.outfits} slideRight={this.slideRight} slideLeft={this.slideLeft} handleAddProduct={this.handleAddProduct} handleRemoveOutfit={this.handleRemoveOutfit}/>
+          <YourOutfit outfits={this.props.outfits} slideRight={this.slideRight} slideLeft={this.slideLeft} handleAddProduct={this.handleAddProduct} handleRemoveOutfit={this.handleRemoveOutfit}/>
         </div>
       </div>
     );

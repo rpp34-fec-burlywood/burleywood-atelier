@@ -4,7 +4,7 @@ import QuestionsAndAnswers from './Q&A/QuestionsAndAnswers.jsx';
 import RelatedItems from './relatedItems/RelatedItems.jsx';
 import ReviewsWidget from './reviews/reviewsWidget.jsx';
 import overviewHandler from './utils/overviewUtils.js';
-import relatedHandlers  from './utils/relatedItemsUtils.js';
+import relatedHandlers from './utils/relatedItemsUtils.js';
 import reviewHandlers from './utils/reviewUtils.js';
 import qaHandlers from './utils/questionsAndAnswersUtils.js';
 import Stars from './stars.jsx';
@@ -24,7 +24,8 @@ class App extends React.Component {
       reviews: [],
       reviewMeta: {},
       questionsList: [],
-      mainImageIndex: 0
+      mainImageIndex: 0,
+      outfits: []
     }
     this.home = this.home.bind(this)
     // Binding all App state modifiers to App
@@ -40,6 +41,7 @@ class App extends React.Component {
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
 
     //Review Methods
+    this.handleAddProduct = relatedHandlers.handleAddProduct.bind(this);
     this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
     this.reportReview = reviewHandlers.reportReview.bind(this);
     this.markReviewHelpful = reviewHandlers.markReviewHelpful.bind(this);
@@ -48,6 +50,7 @@ class App extends React.Component {
 
     //Questions
     this.getQuestions = qaHandlers.getQuestionsArray.bind(this);
+    this.outfitUpdater = this.outfitUpdater.bind(this)
   }
 
   initialize(productid = undefined) {
@@ -55,10 +58,19 @@ class App extends React.Component {
     // also calls this.getProductStyleById
 
     this.getOverviewProduct(30, productid)
-      // .then(currProd => {
-      //   this.getRelatedProductArray(currProd.id);
-      // })
+    // .then(currProd => {
+    //   this.getRelatedProductArray(currProd.id);
+    // })
   }
+
+  outfitUpdater(value) {
+    //takes in an array
+    this.setState({
+      outfits: value
+    })
+  }
+
+
 
   parsePath(pathname) {
     if (pathname.includes('/productPage/')) {
@@ -87,8 +99,8 @@ class App extends React.Component {
     } else {
       this.initialize();
     }
-
-
+    let outfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
+    this.setState({ outfits: outfits })
   }
 
   render() {
@@ -111,18 +123,22 @@ class App extends React.Component {
           addToCart={this.addToCart}
           mainImageIndex={this.state.mainImageIndex}
           carouselClickhandler={this.carouselClickhandler}
-          arrowXClickHandler={this.arrowXClickHandler} />
+          arrowXClickHandler={this.arrowXClickHandler}
+          reviews={this.state.reviews}
+          handleAddProduct={this.handleAddProduct} />
         <RelatedItems
           relatedArr={this.state.relatedProducts}
-          currProd = {this.state.currProd}
-          selectedStyle ={this.state.selectedStyle}
+          currProd={this.state.currProd}
+          selectedStyle={this.state.selectedStyle}
           initialize={this.getRelatedProductArray}
-          selectNewProduct = {this.initialize}
-          />
+          selectNewProduct={this.initialize}
+          outfitUpdater={this.outfitUpdater}
+          outfits={this.state.outfits}
+        />
         <QuestionsAndAnswers
-          currProd={ this.state.currProd }
-          originalQuestionsList={ this.state.questionsList }
-          refetch={ this.getQuestions }
+          currProd={this.state.currProd}
+          originalQuestionsList={this.state.questionsList}
+          refetch={this.getQuestions}
         />
         <ReviewsWidget
           currProd={this.state.currProd}
@@ -134,6 +150,7 @@ class App extends React.Component {
           reviewMeta={this.state.reviewMeta}
           postReview={this.postReview}
           />
+        />
       </div>
     )
   }

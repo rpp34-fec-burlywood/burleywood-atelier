@@ -115,16 +115,18 @@ const styleClickHandler = function (e) {
  * @param {Positive_move_forward} move
  * @param {selectedStyle.photos.length} max
  */
-const arrowXClickHandler = function (move, max) {
+const arrowXClickHandler = function (move, max, cb = ()=>{}) {
   var currentI = this.state.mainImageIndex
   if (move > 0 && currentI < max - 1) {
     this.setState({
       mainImageIndex : currentI + 1
     })
+    cb(currentI + 1)
   } else if (move < 0 && currentI > 0) {
     this.setState({
       mainImageIndex : currentI - 1
     })
+    cb(currentI - 1)
   }
 }
 
