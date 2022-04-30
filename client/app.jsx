@@ -7,6 +7,7 @@ import overviewHandler from './utils/overviewUtils.js';
 import relatedHandlers  from './utils/relatedItemsUtils.js';
 import reviewHandlers from './utils/reviewUtils.js';
 import qaHandlers from './utils/questionsAndAnswersUtils.js';
+import Stars from './stars.jsx';
 import './styles.css';
 
 class App extends React.Component {
@@ -21,6 +22,7 @@ class App extends React.Component {
       selectedStyle: undefined,
       relatedProducts: [],
       reviews: [],
+      reviewMeta: {},
       questionsList: [],
       mainImageIndex: 0
     }
@@ -36,9 +38,15 @@ class App extends React.Component {
     this.styleClickHandler = overviewHandler.styleClickHandler.bind(this);
     this.arrowXClickHandler = overviewHandler.arrowXClickHandler.bind(this);
     this.getRelatedProductArray = relatedHandlers.getRelatedProductArray.bind(this);
+
+    //Review Methods
     this.getReviewsById = reviewHandlers.getReviewsById.bind(this);
     this.reportReview = reviewHandlers.reportReview.bind(this);
     this.markReviewHelpful = reviewHandlers.markReviewHelpful.bind(this);
+    this.getReviewMeta = reviewHandlers.getReviewMeta.bind(this);
+    this.postReview = reviewHandlers.postReview.bind(this);
+
+    //Questions
     this.getQuestions = qaHandlers.getQuestionsArray.bind(this);
   }
 
@@ -84,12 +92,14 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('Review Meta', this.reviewMeta);
     if (this.state.currProd?.id) {
       window.history.replaceState(null, '', `${window.location.origin}/productPage/${this.state.currProd.id}/`)
     }
     return (
       <div>
         <div onClick={this.home} className="home">
+          <Stars stars={4.5}/>
           <h1>Starter app</h1>
         </div>
         <Overview
@@ -120,6 +130,9 @@ class App extends React.Component {
           getReviewsById={this.getReviewsById}
           markReviewHelpful={this.markReviewHelpful}
           reportReview={this.reportReview}
+          getReviewMeta={this.getReviewMeta}
+          reviewMeta={this.state.reviewMeta}
+          postReview={this.postReview}
           />
       </div>
     )

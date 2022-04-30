@@ -11,7 +11,7 @@ const getQuestions = (req, res) => {
 
   axios({
     method: 'GET',
-    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/`, 
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/`,
     headers: {'Authorization': API_KEY},
     params: {
       product_id,
@@ -20,7 +20,7 @@ const getQuestions = (req, res) => {
     }
   })
     .then((response) => {
-      console.log('-- Get Questions Successful: \n', response.data);
+      //console.log('-- Get Questions Successful: \n', response.data);
       res.send(response.data);
     })
     .catch((err) => {
