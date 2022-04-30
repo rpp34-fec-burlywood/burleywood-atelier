@@ -32,8 +32,8 @@ class QuantitySelect extends React.Component {
 
   render() {
     return (
-      <div>
-        <select id="quantitySelect" onChange={this.props.selectQuanityHandler}>
+      <div id="quantitySelect">
+        <select onChange={this.props.selectQuanityHandler}>
           <option value="">-QTY-</option>
           {this.renderQuantity(this.props.currSize, this.props.currSizeStock)}
         </select>

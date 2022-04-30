@@ -48,6 +48,9 @@ class AddToCart extends React.Component {
     this.setState({
       currSizeStock: Number(stock)
     });
+
+    // STOCK QUANTITY SHOULD BE HANDELED at the prop level here in this COMPONENT
+    // not at the selector target...., unless it's in an array that I would have to search.... Hmmm
   }
 
   addToCartHandler(e) {
@@ -62,6 +65,7 @@ class AddToCart extends React.Component {
           <SizeSelect
             skus={this.props.selectedStyle.skus}
             selectSizeHandler={this.selectSizeHandler}
+            currSize={this.state.currSize}
             stockHandler = {this.stockHandler} />
           <QuantitySelect
             skus={this.props.selectedStyle.skus}
