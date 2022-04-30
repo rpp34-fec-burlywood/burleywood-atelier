@@ -11,7 +11,7 @@ const getRelatedProductById = (req, res) => {
     headers: { Authorization: API_KEY }
     })
     .then((response) => {
-      console.log('Got related products Array: \n', response.data);
+      //console.log('Got related products Array: \n', response.data);
       res.send(response.data);
     })
     .catch((err) => {

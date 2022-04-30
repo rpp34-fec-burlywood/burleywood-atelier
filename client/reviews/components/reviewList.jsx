@@ -62,7 +62,7 @@ class ReviewList extends React.Component {
         <button onClick={this.addReviews}>MORE REVIEWS</button>
         <button onClick={this.hideReviews}>HIDE REVIEWS</button>
         <button onClick={this.toggleModal}> {`ADD A REVIEW \u002b`} </button>
-        <NewReview showModal={this.state.showModal} closeModal={this.toggleModal}/>
+        <NewReview showModal={this.state.showModal} closeModal={this.toggleModal} postReview={this.props.postReview}/>
       </div>
       </div>
     );
