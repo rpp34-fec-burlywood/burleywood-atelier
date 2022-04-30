@@ -17,6 +17,7 @@ const Card = (props)=> {
         <img className ="img" src ={img}  width='228' height='194'/>
         <p className='card-category'>{product.category}</p>
         <p className="card-price">{product.name}</p>
+        <p className="card-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
         <Price sale ={sale_price} original = {original_price}/>
       </div>
     )
@@ -28,6 +29,7 @@ const Card = (props)=> {
         <img className ="img" src ={img}  width='228' height='194'/>
         <p className='card-category'>{product.category}</p>
         <p className="card-price">{product.name}</p>
+        <p className="card-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
         <Price sale ={sale_price} original = {original_price}/>
       </div>
     )

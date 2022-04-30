@@ -9,7 +9,7 @@
     "react-dev": "npx webpack --watch",
     "test": "jest",
     "coverage": "jest --coverage",
-    "coverage-related": "jest related.test.js --coverage --collectCoverageFrom=client/relatedItems/RelatedItems.jsx",
+    "coverage-related": "jest related.test.js --coverage --collectCoverageFrom=client/relatedItems/**",
     "coverage-overview": "jest overview.test.js --coverage --collectCoverageFrom=client/overview/**"
   },
   "jest": {

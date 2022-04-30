@@ -79,7 +79,7 @@ handleAddProduct() {
   let merged = {};
   merged.value = {...this.props.currProd}
   merged.value.styles = {...this.props.selectedStyle}
-  let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
+  let storedOutfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
   // if your outfits is empty
   if(storedOutfits.length > 3) {
     $(`#right-outfit`).show()

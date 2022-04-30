@@ -12,7 +12,7 @@ const YourOutfit = (props) => {
         <button className="arrow" id="left-outfit" onClick={()=>props.slideLeft('outfit')}>&#706;</button>
         <RightButton len ={props.outfits.length} buttonID={'outfit'} slideRight={props.slideRight}/>
         <div id="outfit-list">
-            {props.outfits.map((product, index) => (
+            {props.outfits.map((product) => (
                 <Card key={product.value.styles.style_id + product.value.name} product={product.value} type ={'outfit'} handleRemoveOutfit={props.handleRemoveOutfit}/>
             ))}
         </div>
