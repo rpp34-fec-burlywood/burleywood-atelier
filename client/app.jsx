@@ -149,7 +149,6 @@ class App extends React.Component {
           getReviewMeta={this.getReviewMeta}
           reviewMeta={this.state.reviewMeta}
           postReview={this.postReview}
-          />
         />
       </div>
     )
