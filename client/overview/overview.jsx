@@ -27,6 +27,7 @@ class Overview extends React.Component {
           </div>
           <div className="overviewRight">
             <ProductInfo
+              reviews={this.props.reviews}
               productInfo={this.props.currProd}
               selectedStyle={this.props.selectedStyle}
             />
@@ -39,7 +40,8 @@ class Overview extends React.Component {
                 styleClickHandler={this.props.styleClickHandler} />
               <AddToCart
                 selectedStyle={this.props.selectedStyle}
-                addToCart={this.props.addToCart} />
+                addToCart={this.props.addToCart}
+                handleAddProduct={this.props.handleAddProduct} />
             </div>
           </div>
         </div>
