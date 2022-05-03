@@ -13,12 +13,14 @@ class AddToCart extends React.Component {
       currSize: null,
       quantity: 1,
       currSizeStock: null,
-      sku_id: null
+      sku_id: null,
+      sizeDropdown: false,
     }
 
     this.selectSizeHandler = this.selectSizeHandler.bind(this);
     this.selectQuanityHandler = this.selectQuanityHandler.bind(this);
     this.addToCartHandler = this.addToCartHandler.bind(this);
+    this.dropdownClickHandler = this.dropdownClickHandler.bind(this);
   }
 
   // NEED Way to handle Edge case of Null SKU, (infinity Stone)
@@ -35,20 +37,22 @@ class AddToCart extends React.Component {
   }
 
   selectQuanityHandler(quantity) {
-
     this.setState({
       quantity: quantity
     });
   }
 
-    // STOCK QUANTITY SHOULD BE HANDELED at the prop level here in this COMPONENT
-    // not at the selector target...., unless it's in an array that I would have to search.... Hmmm
-
+  dropdownClickHandler() {
+    this.setState({
+      sizeDropdown: !this.state.sizeDropdown
+    })
+  }
 
   addToCartHandler(e) {
     e.preventDefault();
     this.props.addToCart(this.state);
   }
+
 
   render() {
     if (this.props.selectedStyle) {
@@ -57,7 +61,9 @@ class AddToCart extends React.Component {
           <SizeSelect
             skus={this.props.selectedStyle.skus}
             selectSizeHandler={this.selectSizeHandler}
-            currSize={this.state.currSize} />
+            currSize={this.state.currSize}
+            active={this.state.sizeDropdown}
+            dropdownClickHandler={this.dropdownClickHandler} />
           <QuantitySelect
             skus={this.props.selectedStyle.skus}
             currSize={this.state.currSize}

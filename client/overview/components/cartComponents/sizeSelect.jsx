@@ -5,13 +5,8 @@ class SizeSelect extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      active: false
-    }
-
     this.handlerBundle = this.handlerBundle.bind(this);
     this.renderSkus = this.renderSkus.bind(this);
-    this.dropdownClickHandler = this.dropdownClickHandler.bind(this);
   }
 
   renderSkus(skuObj) {
@@ -46,25 +41,19 @@ class SizeSelect extends React.Component {
     let size = e.target.attributes.value?.value;
     if (size !== undefined){
       this.props.selectSizeHandler(sku_id);
-      this.dropdownClickHandler();
+      this.props.dropdownClickHandler();
     }
-  }
-
-  dropdownClickHandler() {
-    this.setState({
-      active: !this.state.active
-    })
   }
 
   render() {
     return (
       <div id="sizeSelect">
-        <div className="dropdown" onClick={this.dropdownClickHandler}>
+        <div className="dropdown" onClick={this.props.dropdownClickHandler}>
           <span style={{paddingleft: '10px', width: '11px'}}></span>
           <div>{this.props.currSize ? `Size: ${this.props.currSize}` : "SELECT SIZE"}</div>
           <span style={{paddingRight: '6px'}}>&#9663;</span>
         </div>
-        <div className={`dropdownMenu ${this.state.active ? 'active': ""}`}  onClick={this.handlerBundle}>
+        <div className={`dropdownMenu ${this.props.active ? 'active': ""}`}  onClick={this.handlerBundle}>
           {this.renderSkus(this.props.skus)}
         </div>
       </div>
