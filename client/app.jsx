@@ -111,7 +111,6 @@ class App extends React.Component {
     return (
       <div>
         <div onClick={this.home} className="home">
-          {/* <Stars stars={4.5}/> */}
           <h1>Starter app</h1>
         </div>
         <Overview

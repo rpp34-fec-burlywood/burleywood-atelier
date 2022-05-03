@@ -52,7 +52,7 @@ class StyleSelector extends React.Component {
     if (this.props.defaultStyle?.name && this.props.defaultStyle?.name) {
       return (
         <div className="styleSelector">
-          <div className="styelTitle">{'STYLE'}  <span>&#62;</span> {this.props.selectedStyle.name}</div>
+          <div className="styleTitle">{'STYLE'}  <span>&#62;</span> {this.props.selectedStyle.name}</div>
           <div className="selectStylePin" onClick={this.props.styleClickHandler}>
             {this.renderStyles(this.props.currProdStyles)}
           </div>

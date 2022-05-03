@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import Stars from '../../stars.jsx';
 
 class ProductInfo extends React.Component {
   constructor(props) {
@@ -35,10 +36,11 @@ class ProductInfo extends React.Component {
       }
       let average = reviewSum / this.props.reviews.length;
       average = average.toFixed(2);
+
       return (
         <div id="productInfo">
           <a id="jump2Review" href="#reviews">
-            <span>{`${average} Stars `}</span>
+            <span id='currProdRating'><Stars stars={average} /></span>
             {`Read All ${this.props.reviews.length} Reviews`}</a>
           <div className="productCategory">{`Category: ${this.props.productInfo.category}`}</div>
           <div className="currProductTitle">{this.props.productInfo.name}</div>
