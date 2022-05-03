@@ -71,7 +71,7 @@ const getReviewsById = (page, count, sort, id) => {
     method: 'GET',
     url: `/reviews/${id}`,
     params: {
-      product_id: 62328,
+      product_id: id,
       page: page,
       count: count,
       sort: sort
@@ -86,15 +86,16 @@ const getReviewsById = (page, count, sort, id) => {
     });
 }
 
-const getReviewMeta = (id) => {
+const getReviewMeta = (product_id) => {
   return axios({
     method: 'GET',
     url: `/reviews/meta`,
     params: {
-      id: id
+      product_id: product_id
     }
   })
     .then((response) => {
+      console.log('Accessed');
       // console.log('-- Get Review Meta OK ', response.data);
       return response.data;
     })

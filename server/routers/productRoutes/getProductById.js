@@ -10,7 +10,7 @@ const getProductById = (req, res) => {
     headers: { Authorization: API_KEY }
     })
     .then((response) => {
-      console.log('-- Get Product by ID OK: \n', response.data);
+      //console.log('-- Get Product by ID OK: \n', response.data);
       res.send(response.data);
     })
     .catch((err) => {
