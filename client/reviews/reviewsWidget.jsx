@@ -17,11 +17,7 @@ class ReviewsWidget extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div className='reviews'>
-=======
       <div id="reviews">
->>>>>>> f65572c694677a32d307021b6e2e3ee7c5d4d16f
         <div id='title'> RATINGS & REVIEWS </div>
         <div id='ratings'>
         <RatingsBreakdown reviews={this.props.reviews}/>

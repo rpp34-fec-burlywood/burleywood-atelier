@@ -3,6 +3,7 @@ import React from 'react';
 import ProductCard from './components/productCard.jsx';
 import YourOutfit from './components/yourOutfit.jsx';
 import $ from 'jquery';
+import relatedItemUtils from '../utils/relatedItemsUtils.js'
 class RelatedItems extends React.Component {
   constructor(props) {
 
