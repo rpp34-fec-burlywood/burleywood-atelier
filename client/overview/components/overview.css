@@ -359,7 +359,8 @@
   display: inline-block;
   height: 50px;
   width: 50px;
-  padding: 5px;
+  padding: 2px;
+  margin-right: 4px;
 }
 
 .stylePin:hover {

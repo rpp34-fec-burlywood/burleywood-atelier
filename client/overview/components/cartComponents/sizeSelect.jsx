@@ -61,7 +61,7 @@ class SizeSelect extends React.Component {
       <div id="sizeSelect">
         <div className="dropdown" onClick={this.dropdownClickHandler}>
           <span style={{paddingleft: '10px', width: '11px'}}></span>
-          <div>{this.props.currSize ? `${this.props.currSize}` : "Select Size"}</div>
+          <div>{this.props.currSize ? `Size: ${this.props.currSize}` : "SELECT SIZE"}</div>
           <span style={{paddingRight: '6px'}}>&#9663;</span>
         </div>
         <div className={`dropdownMenu ${this.state.active ? 'active': ""}`}  onClick={this.handlerBundle}>

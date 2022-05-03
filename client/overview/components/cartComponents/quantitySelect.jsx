@@ -65,7 +65,7 @@ render() {
     <div id="quantitySelect">
       <div className="dropdown" onClick={this.dropdownClickHandler}>
         <span style={{ paddingleft: '10px', width: '11px' }}></span>
-        <div>{this.props.currSize ? `${this.props.quantity}` : "-"}</div>
+        <div>{this.props.currSize ? `QTY: ${this.props.quantity}` : "-"}</div>
         <span style={{ paddingRight: '6px' }}>&#9663;</span>
       </div>
       <div className={`dropdownMenu ${this.state.active ? 'active' : ""}`} onClick={this.handlerBundle}>
