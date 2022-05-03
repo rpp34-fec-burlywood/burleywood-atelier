@@ -19,7 +19,7 @@ class ReviewsWidget extends React.Component {
   render() {
     console.log('This', this.props.getReviewMeta);
     return (
-      <div className='reviews'>
+      <div id='reviews'>
         <div id='title'> RATINGS & REVIEWS </div>
         <div id='ratings'>
         <RatingsBreakdown reviewMeta={this.props.reviewMeta}/>
