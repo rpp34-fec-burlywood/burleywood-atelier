@@ -16,6 +16,7 @@ body {
   cursor: pointer;
 }
 
+.reviews,
 #reviews {
   width: 1000px;
 }
