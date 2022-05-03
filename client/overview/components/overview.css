@@ -346,21 +346,25 @@
 }
 
 .styleRow {
+  display: flex;
   max-height: fit-content;
   max-width: fit-content;
   margin: 0;
   padding: 0;
+  flex-direction: row;
+
 }
 
 .stylePin {
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid transparent;
-  display: inline-block;
+  display: flex;
   height: 50px;
   width: 50px;
   padding: 2px;
   margin-right: 4px;
+  position: relative;
 }
 
 .stylePin:hover {
@@ -385,6 +389,20 @@
   padding: 5px;
   margin: 5px, 0;
   font-weight: 500;
+}
+
+.stylePinHolder {
+  position: relative;
+  display: flex;
+}
+
+.styleCheck {
+  position: absolute;
+  font-size: 18px;
+  top: 3px;
+  right: 3px;
+  color: white;
+  text-shadow: black 0 0 5px;
 }
 
 /*****************************************************************

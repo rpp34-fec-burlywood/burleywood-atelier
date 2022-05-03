@@ -111,7 +111,7 @@ class App extends React.Component {
     return (
       <div>
         <div onClick={this.home} className="home">
-          <h1>Starter app</h1>
+          <h1>Starter FASHION</h1>
         </div>
         <Overview
           currProd={this.state.currProd}
