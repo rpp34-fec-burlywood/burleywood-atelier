@@ -503,6 +503,7 @@
   color: grey;
 }
 
+.dropdownItem:hover
 .outOfStock:hover {
   cursor: default;
 }
@@ -514,7 +515,7 @@
 }
 
 #addStyleBTN {
-  width: 50px;
+  width: 58px;
   height: 50px;
   margin-left: 5px;
 }

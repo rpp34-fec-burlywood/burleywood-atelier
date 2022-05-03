@@ -11,7 +11,7 @@ class AddToCart extends React.Component {
     //selected current state
     this.state = {
       currSize: null,
-      quantity: 0,
+      quantity: 1,
       currSizeStock: null,
       sku_id: null
     }
@@ -34,10 +34,10 @@ class AddToCart extends React.Component {
     }
   }
 
-  selectQuanityHandler(e) {
-    e.preventDefault();
+  selectQuanityHandler(quantity) {
+
     this.setState({
-      quantity: e.target.value
+      quantity: quantity
     });
   }
 
@@ -61,6 +61,7 @@ class AddToCart extends React.Component {
           <QuantitySelect
             skus={this.props.selectedStyle.skus}
             currSize={this.state.currSize}
+            quantity={this.state.quantity}
             currSizeStock={this.state.currSizeStock}
             selectQuanityHandler={this.selectQuanityHandler} />
            <button id="addCartBTN" onClick={this.addToCartHandler}>ADD TO CART</button>
