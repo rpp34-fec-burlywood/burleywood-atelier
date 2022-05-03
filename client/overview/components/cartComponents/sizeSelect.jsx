@@ -25,7 +25,7 @@ class SizeSelect extends React.Component {
                   sku_id={skuNum}
                   key={skuNum}
                   value={null}>
-                    Out of Stock
+                    {`${size} OUT OF STOCK`}
                 </div>
       } else {
         item = <div className='dropdownItem'
@@ -43,8 +43,8 @@ class SizeSelect extends React.Component {
   handlerBundle(e) {
     e.preventDefault();
     let sku_id = e.target.attributes.sku_id?.value;
-    let size = e.target.attributes.value?.value
-    if (size !== undefined || size !== null){
+    let size = e.target.attributes.value?.value;
+    if (size !== undefined){
       this.props.selectSizeHandler(sku_id);
       this.dropdownClickHandler();
     }

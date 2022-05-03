@@ -492,6 +492,15 @@
   border-bottom: 0px hidden;
 }
 
+.outOfStock {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.outOfStock:hover {
+  cursor: default;
+}
+
 #addCartBTN {
   width: 250px;
   height: 50px;
