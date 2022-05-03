@@ -18,20 +18,20 @@ class AddToCart extends React.Component {
 
     this.selectSizeHandler = this.selectSizeHandler.bind(this);
     this.selectQuanityHandler = this.selectQuanityHandler.bind(this);
-    this.stockHandler = this.stockHandler.bind(this);
     this.addToCartHandler = this.addToCartHandler.bind(this);
   }
 
   // NEED Way to handle Edge case of Null SKU, (infinity Stone)
 
-  selectSizeHandler(e) {
-    e.preventDefault();
-    var index = e.target.selectedIndex;
-    var sku_id = e.target[index].attributes.id.value;
-    this.setState({
-      currSize: e.target.value,
-      sku_id: sku_id
-    });
+  selectSizeHandler(sku_id) {
+    if (sku_id !== undefined) {
+      // console.log(this.props.selectedStyle.skus[sku_id].size)
+      this.setState({
+        currSize: this.props.selectedStyle.skus[sku_id].size,
+        sku_id: sku_id,
+        currSizeStock: this.props.selectedStyle.skus[sku_id].quantity,
+      });
+    }
   }
 
   selectQuanityHandler(e) {
@@ -41,17 +41,9 @@ class AddToCart extends React.Component {
     });
   }
 
-  stockHandler(e) {
-    e.preventDefault();
-    var index = e.target.selectedIndex;
-    var stock = e.target[index].attributes.stock?.value ? e.target[index].attributes.stock.value: 1;
-    this.setState({
-      currSizeStock: Number(stock)
-    });
-
     // STOCK QUANTITY SHOULD BE HANDELED at the prop level here in this COMPONENT
     // not at the selector target...., unless it's in an array that I would have to search.... Hmmm
-  }
+
 
   addToCartHandler(e) {
     e.preventDefault();
@@ -65,8 +57,7 @@ class AddToCart extends React.Component {
           <SizeSelect
             skus={this.props.selectedStyle.skus}
             selectSizeHandler={this.selectSizeHandler}
-            currSize={this.state.currSize}
-            stockHandler = {this.stockHandler} />
+            currSize={this.state.currSize} />
           <QuantitySelect
             skus={this.props.selectedStyle.skus}
             currSize={this.state.currSize}

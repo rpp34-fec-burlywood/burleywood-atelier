@@ -456,7 +456,7 @@
   width: 146px;
   height: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   cursor: default;
 }
 
