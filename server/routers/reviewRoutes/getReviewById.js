@@ -3,11 +3,10 @@ require('dotenv').config();
 const API_KEY = process.env.API_KEY;
 
 const getReviewById = (req, res) => {
-  var product_id = req.params.product_id;
-  var page = req.params.page;
-  var count = req.params.count;
-  var sort = req.params.sort;
-  console.log('Params', req.params);
+  var product_id = req.query.product_id;
+  var page = req.query.page;
+  var count = req.query.count;
+  var sort = req.query.sort;
 
   axios({
     method: 'GET',
@@ -21,7 +20,7 @@ const getReviewById = (req, res) => {
     }
     })
     .then((response) => {
-      console.log('Get Review By Id:', response.data);
+      // console.log('Get Review By Id:', response.data);
       res.status(200);
       res.send(response.data);
     })

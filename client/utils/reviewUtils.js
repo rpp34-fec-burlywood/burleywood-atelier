@@ -36,10 +36,35 @@ const reportReview = function(review_id) {
     })
 }
 
+const postReview = function(review_id) {
+  API.getReviewsById(review_id)
+    .then(result => {
+      console.log('Review Posted');
+    })
+    .catch(err => {
+      console.log('Report Post err', err);
+    })
+}
+
+const getReviewMeta = function(product_id) {
+  API.getReviewMeta(product_id)
+    .then(result => {
+      console.log('Review Meta X', result);
+      this.setState({
+        reviewMeta: result
+      })
+    })
+    .catch(err => {
+      console.log('Report Meta err', err);
+    })
+}
+
 var reviewHandlers = {
   getReviewsById,
   reportReview,
-  markReviewHelpful
+  markReviewHelpful,
+  getReviewMeta,
+  postReview
 }
 
 export default reviewHandlers;
