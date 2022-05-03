@@ -363,7 +363,7 @@
   height: 50px;
   width: 50px;
   padding: 2px;
-  margin-right: 4px;
+  margin: 0 4px 4px 0;
   position: relative;
 }
 
