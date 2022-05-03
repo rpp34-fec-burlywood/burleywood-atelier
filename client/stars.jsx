@@ -10,41 +10,41 @@ class Stars extends React.Component {
     super(props);
 
     this.state = {
-      stars: this.floor(this.props.stars)
+      stars: this.round(this.props.stars)
     }
 
-    this.floor = this.floor.bind(this);
+    this.floor = this.round.bind(this);
   }
 
-  floor(number) {
-    if (number >= 5) {
+  round(number) {
+    if (number >= 4.75) {
       return 5;
     }
-    if (number >= 4.5) {
+    if (number >= 4.25) {
       return 4.5;
     }
-    if (number >= 4) {
+    if (number >= 3.75) {
       return 4;
     }
-    if (number >= 3.5) {
+    if (number >= 3.25) {
       return 3.5;
     }
-    if (number >= 3) {
+    if (number >= 2.75) {
       return 3;
     }
-    if (number >= 2.5) {
+    if (number >= 2.25) {
       return 2.5;
     }
-    if (number >= 2) {
+    if (number >= 1.75) {
       return 2;
     }
-    if (number >= 1.5) {
+    if (number >= 1.25) {
       return 1.5;
     }
-    if (number >= 1) {
+    if (number >= .75) {
       return 1;
     }
-    if (number >= .5) {
+    if (number >= .25) {
       return .5;
     }
     if (number >= 0) {
