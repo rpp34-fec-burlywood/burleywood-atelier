@@ -11,44 +11,39 @@ class AddToCart extends React.Component {
     //selected current state
     this.state = {
       currSize: null,
-      quantity: 0,
+      quantity: 1,
       currSizeStock: null,
       sku_id: null
     }
 
     this.selectSizeHandler = this.selectSizeHandler.bind(this);
     this.selectQuanityHandler = this.selectQuanityHandler.bind(this);
-    this.stockHandler = this.stockHandler.bind(this);
     this.addToCartHandler = this.addToCartHandler.bind(this);
   }
 
   // NEED Way to handle Edge case of Null SKU, (infinity Stone)
 
-  selectSizeHandler(e) {
-    e.preventDefault();
-    var index = e.target.selectedIndex;
-    var sku_id = e.target[index].attributes.id.value;
+  selectSizeHandler(sku_id) {
+    if (sku_id !== undefined) {
+      // console.log(this.props.selectedStyle.skus[sku_id].size)
+      this.setState({
+        currSize: this.props.selectedStyle.skus[sku_id].size,
+        sku_id: sku_id,
+        currSizeStock: this.props.selectedStyle.skus[sku_id].quantity,
+      });
+    }
+  }
+
+  selectQuanityHandler(quantity) {
+
     this.setState({
-      currSize: e.target.value,
-      sku_id: sku_id
+      quantity: quantity
     });
   }
 
-  selectQuanityHandler(e) {
-    e.preventDefault();
-    this.setState({
-      quantity: e.target.value
-    });
-  }
+    // STOCK QUANTITY SHOULD BE HANDELED at the prop level here in this COMPONENT
+    // not at the selector target...., unless it's in an array that I would have to search.... Hmmm
 
-  stockHandler(e) {
-    e.preventDefault();
-    var index = e.target.selectedIndex;
-    var stock = e.target[index].attributes.stock?.value ? e.target[index].attributes.stock.value: 1;
-    this.setState({
-      currSizeStock: Number(stock)
-    });
-  }
 
   addToCartHandler(e) {
     e.preventDefault();
@@ -62,10 +57,11 @@ class AddToCart extends React.Component {
           <SizeSelect
             skus={this.props.selectedStyle.skus}
             selectSizeHandler={this.selectSizeHandler}
-            stockHandler = {this.stockHandler} />
+            currSize={this.state.currSize} />
           <QuantitySelect
             skus={this.props.selectedStyle.skus}
             currSize={this.state.currSize}
+            quantity={this.state.quantity}
             currSizeStock={this.state.currSizeStock}
             selectQuanityHandler={this.selectQuanityHandler} />
            <button id="addCartBTN" onClick={this.addToCartHandler}>ADD TO CART</button>

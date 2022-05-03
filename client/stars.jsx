@@ -74,7 +74,7 @@ class Stars extends React.Component {
     }
 
     return (
-      <div>
+      <div className="stars">
         {items}
       </div>
     )
