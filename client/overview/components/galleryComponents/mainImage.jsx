@@ -46,9 +46,10 @@ class MainImage extends React.Component {
         var mouseBox = mouseBox.getBoundingClientRect();
         // Need Math here to calculate the correct scaling movement!! :)
         var px_fudge = 4;;
-        var percent_fudge = 1.02;
-        let x = (mouseBox.left - e.pageX - px_fudge) * ((zoomBox.width - mouseBox.width - px_fudge) / (mouseBox.width * percent_fudge));
-        let y = (mouseBox.top - e.pageY - px_fudge) * ((zoomBox.height - mouseBox.height - px_fudge) / (mouseBox.height * percent_fudge));
+        var percent_fudgeX = 1.02;
+        var percent_fudgeY = 1.06;
+        let x = (mouseBox.left - e.pageX - px_fudge) * ((zoomBox.width - mouseBox.width - px_fudge) / (mouseBox.width * percent_fudgeX));
+        let y = (mouseBox.top - e.pageY - px_fudge) * ((zoomBox.height - mouseBox.height - px_fudge) / (mouseBox.height * percent_fudgeY));
 
         zoomImg.style.top = `${y}px`;
         zoomImg.style.left = `${x}px`;
@@ -68,9 +69,10 @@ class MainImage extends React.Component {
     var mouseBox = mouseBox.getBoundingClientRect();
     // Need Math here to calculate the correct scaling movement!! :)
     var px_fudge = 4;;
-    var percent_fudge = 1.02;
-    let x = (mouseBox.left - e.pageX - px_fudge) * ((zoomBox.width - mouseBox.width - px_fudge) / (mouseBox.width * percent_fudge));
-    let y = (mouseBox.top - e.pageY - px_fudge) * ((zoomBox.height - mouseBox.height - px_fudge) / (mouseBox.height * percent_fudge));
+    var percent_fudgeX = 1.02;
+    var percent_fudgeY = 1.06;
+    let x = (mouseBox.left - e.pageX - px_fudge) * ((zoomBox.width - mouseBox.width - px_fudge) / (mouseBox.width * percent_fudgeX));
+    let y = (mouseBox.top - e.pageY - px_fudge) * ((zoomBox.height - mouseBox.height - px_fudge) / (mouseBox.height * percent_fudgeY));
 
     zoomImg.style.top = `${y}px`;
     zoomImg.style.left = `${x}px`;
