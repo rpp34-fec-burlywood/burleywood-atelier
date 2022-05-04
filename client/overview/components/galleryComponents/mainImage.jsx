@@ -7,7 +7,7 @@ class MainImage extends React.Component {
 
     this.state = {
       expanded: false,
-      height: 550
+      superZoom: false,
     }
 
     this.expandHandler = this.expandHandler.bind(this);
@@ -16,37 +16,31 @@ class MainImage extends React.Component {
     this.arrowXStyle = this.arrowXStyle.bind(this);
     this.arrowXHelper = this.arrowXHelper.bind(this);
     this.arrowNav = this.arrowNav.bind(this);
+    this.superZoom = this.superZoom.bind(this);
   }
 
   // mainImage will need to be its own component for expanded view
 
   expandHandler() {
-    if (!this.state.expanded) {
-      // var height = document.getElementById('overview').offsetHeight;
-      var height = 0.8 * window.innerHeight;
-      var width = 0.8 * window.innerWidth;
-      this.setState({
-        expanded: !this.state.expanded,
-        height,
-        width,
-      })
-    } else {
-      this.setState({
-        expanded: !this.state.expanded,
-        height: 550,
-        width: 600
-      })
-    }
+    this.setState({
+      expanded: !this.state.expanded,
+    });
+  }
+
+  superZoom () {
+    this.setState({
+      superZoom: !this.state.expanded,
+    });
   }
 
   arrowXStyle(left = true, mainImageIndex, numImages) {
     if (left) {
       if (!(mainImageIndex > 0)) {
-        return { visibility: 'hidden' }
+        return { opacity: 0 }
       }
     } else {
       if (!(mainImageIndex < numImages - 1)) {
-        return { visibility: 'hidden' }
+        return { opacity: 0 }
       }
     }
   }
@@ -115,7 +109,7 @@ class MainImage extends React.Component {
               this.props.selectedStyle.photos[0].url
           } />
           <img className={`mainImage${this.state.expanded ? ' expanded' : ''}`}
-            onClick={this.expandHandler}
+            onClick={this.state.expanded ? null : this.expandHandler}
             src={
               this.props.selectedStyle.photos[this.props.mainImageIndex] ?
                 this.props.selectedStyle.photos[this.props.mainImageIndex].url :
