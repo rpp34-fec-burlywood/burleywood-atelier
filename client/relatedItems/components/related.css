@@ -5,35 +5,56 @@
   font-size: 2rem;
   display: flex;
   align-items: center;
-  color: rgba(255, 255, 255, 0.726);
+  color: white;
+  text-shadow: black 0 0 5px;
+  font-size: 2rem;
   background-color: transparent;
   transition: color 150ms ease-in-out;
   position: absolute;
 }
-
-#left-related {
-  top: 30%;
+.arrowRight {
+  border: none;
+  z-index: 1;
+  cursor: pointer;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-shadow: black 0 0 5px;
+  font-size: 2rem;
+  background-color: transparent;
+  transition: color 150ms ease-in-out;
   position: absolute;
-  display: none;
-  z-index: 1
 }
-
-#left-outfit {
-  top: 30%;
+#left-related {
+  top: 0%;
   position: absolute;
   display: none;
   z-index: 1;
-  margin-left: 240px;
+  right: 97%;
+  height: 100%;
+
+}
+
+#left-outfit {
+  top: 0%;
+  position: absolute;
+  display: none;
+  z-index: 1;
+  margin-left: 246px;
+  /* right: 90%; */
+  height: 100%;
 }
 
 #right-related, #right-outfit{
-  top: 30%;
+  top: 0%;
   left: 97%;
+  z-index: 1;
+  height: 100%;
 }
 
 #right-related:hover, #right-outfit:hover, #left-related:hover, #left-outfit:hover {
-  color: rgba(0, 0, 0, 0.455);
-
+  background-color: rgb(255, 255, 255, 0.3);
 }
 
 
@@ -117,10 +138,11 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  z-index: 2;
 }
 
 .delete-outfit:hover {
-  background: #c6c6c5;
+  background-color: rgba(255, 255, 255, 0.085);
 }
 .compare-button {
   position: absolute;
@@ -130,11 +152,12 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  size: 23px
+  size: 30px;
+  z-index: 2;
 }
 
 .compare-button:hover {
-  background: #c6c6c5;
+  background-color: rgba(255, 255, 255, 0.085);
 }
 
 .compareModal {
@@ -149,6 +172,7 @@
   border-radius: 2px;
   background-color: white;
   color: rgb(59, 59, 59);
+
 }
 #th-left{
   width: 15%;
@@ -166,7 +190,6 @@
   width: 15%;
   text-align: right;
   padding: 2px;
-
 }
 #table{
   width: 100%;

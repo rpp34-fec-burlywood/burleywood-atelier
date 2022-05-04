@@ -21,8 +21,8 @@ class RelatedItems extends React.Component {
       //NOTE this is hardcoded
       //64626 = more than 4 products
       //64621 = less than 4
-      this.props.initialize(this.props.currProd.id);
-      // this.props.initialize(64626);
+      // this.props.initialize(this.props.currProd.id);
+      this.props.initialize(64626);
 
       // let outfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
       // this.setState({outfits: outfits})
@@ -43,7 +43,6 @@ class RelatedItems extends React.Component {
     console.log(element.offsetWidth)
     console.log(width)
 
-    // scrollWidth - scrollLeftValue - width <= offset
     if (scrollWidth - scrollLeftValue - width <= offset) {
      {
          $(`#right-${id}`).hide()

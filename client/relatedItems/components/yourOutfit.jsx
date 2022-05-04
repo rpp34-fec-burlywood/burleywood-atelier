@@ -9,7 +9,7 @@ const YourOutfit = (props) => {
       <div id ="outfit-add" data-testid="outfit-add" onClick ={()=>props.handleAddProduct()} >
         <p >Add to Outfit</p>
       </div>
-        <button className="arrow" id="left-outfit" onClick={()=>props.slideLeft('outfit')}>&#706;</button>
+        <button className="arrow" id="left-outfit" onClick={()=>props.slideLeft('outfit')}>&#10092;</button>
         <RightButton len ={props.outfits.length} buttonID={'outfit'} slideRight={props.slideRight}/>
         <div id="outfit-list">
             {props.outfits.map((product) => (
