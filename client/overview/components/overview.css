@@ -178,7 +178,7 @@
 
 .mainImageScroll.expanded {
   /* overflow-y: auto; */
-  overflow: visible;
+  overflow: hidden;
   display: flex;
   height: 80%;
   width: 80%;
@@ -207,9 +207,7 @@
 }
 
 .mainImage:hover {
-  cursor: -moz-zoom-in;
-  cursor: -webkit-zoom-in;
-  cursor: zoom-in;
+  cursor: default;
 }
 
 .mainImage.expanded {
@@ -220,9 +218,9 @@
 }
 
 .mainImage.expanded:hover {
-  cursor: -moz-zoom-out;
-  cursor: -webkit-zoom-out;
-  cursor: zoom-out;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 }
 
 .carousel {
@@ -334,6 +332,16 @@
 #carouselItemActive:hover {
   border: 2px solid yellowgreen;
   cursor: default;
+}
+
+#superZoom {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  z-index: 2;
+  height: 250%;
+  width: 250%;
+  object-fit: contain;
 }
 
 /*****************************************************************
@@ -573,4 +581,3 @@
   opacity: 1;
   transition: 0.01s;
 }
-

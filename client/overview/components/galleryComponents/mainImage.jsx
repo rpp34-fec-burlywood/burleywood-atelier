@@ -16,7 +16,9 @@ class MainImage extends React.Component {
     this.arrowXStyle = this.arrowXStyle.bind(this);
     this.arrowXHelper = this.arrowXHelper.bind(this);
     this.arrowNav = this.arrowNav.bind(this);
-    this.superZoom = this.superZoom.bind(this);
+    this.toggleZoom = this.toggleZoom.bind(this);
+    this.imageHref = this.imageHref.bind(this);
+    this.moveSuperZoom = this.moveSuperZoom.bind(this);
   }
 
   // mainImage will need to be its own component for expanded view
@@ -24,13 +26,18 @@ class MainImage extends React.Component {
   expandHandler() {
     this.setState({
       expanded: !this.state.expanded,
+      superZoom: false,
     });
   }
 
-  superZoom () {
+  toggleZoom() {
     this.setState({
-      superZoom: !this.state.expanded,
+      superZoom: !this.state.superZoom,
     });
+  }
+
+  moveSuperZoom(e) {
+    console.log('mousemove', e);
   }
 
   arrowXStyle(left = true, mainImageIndex, numImages) {
@@ -76,7 +83,7 @@ class MainImage extends React.Component {
     }
   }
 
-  arrowNav (e) {
+  arrowNav(e) {
     if (e.key === 'ArrowLeft') {
       this.props.arrowXClickHandler(-1, this.props.selectedStyle.photos.length)
     }
@@ -88,6 +95,14 @@ class MainImage extends React.Component {
     }
   }
 
+  imageHref(selectedStyle) {
+    return (
+      selectedStyle.photos[this.props.mainImageIndex] ?
+        selectedStyle.photos[this.props.mainImageIndex].url :
+        selectedStyle.photos[0].url
+    );
+  }
+
   render() {
     // console.log('RENDERED MainImage');
     if (this.state.expanded) {
@@ -96,25 +111,32 @@ class MainImage extends React.Component {
       document.removeEventListener('keydown', this.arrowNav);
     }
 
+
+    if (this.state.superZoom) {
+      var imgContainer = document.getElementById('mainImageScroll');
+      imgContainer.addEventListener("mousemove", this.moveSuperZoom)
+    } else {
+      var imgContainer = document.getElementById('mainImageScroll');
+      imgContainer?.removeEventListener("mousemove", this.moveSuperZoom)
+    }
+
     return (
       <div className={`mainImageContainer ${this.state.expanded ? ' expanded' : ''}`}>
         {this.state.expanded ?
           <div id='expandBTN' onClick={this.expandHandler}>{'X'}</div>
           : null}
         {this.renderArrowLeft(this.state.expanded, this.props.mainImageIndex)}
-        <div className={`mainImageScroll${this.state.expanded ? ' expanded' : ''}`}>
-          <link rel="preload" as="image" href={
-            this.props.selectedStyle.photos[this.props.mainImageIndex] ?
-              this.props.selectedStyle.photos[this.props.mainImageIndex].url :
-              this.props.selectedStyle.photos[0].url
-          } />
+        <div id="mainImageScroll" className={`mainImageScroll${this.state.expanded ? ' expanded' : ''}`}>
+          <link rel="preload" as="image" href={this.imageHref(this.props.selectedStyle)} />
           <img className={`mainImage${this.state.expanded ? ' expanded' : ''}`}
-            onClick={this.state.expanded ? null : this.expandHandler}
-            src={
-              this.props.selectedStyle.photos[this.props.mainImageIndex] ?
-                this.props.selectedStyle.photos[this.props.mainImageIndex].url :
-                this.props.selectedStyle.photos[0].url
-            } />
+            onClick={this.state.expanded ? this.toggleZoom : this.expandHandler}
+            src={this.imageHref(this.props.selectedStyle)} />
+          {this.state.superZoom ?
+            <img id="superZoom"
+              onClick={this.toggleZoom}
+              src={this.imageHref(this.props.selectedStyle)} />
+            : null
+          }
         </div>
         {this.renderArrowRight(this.state.expanded, this.props.mainImageIndex)}
       </div>
