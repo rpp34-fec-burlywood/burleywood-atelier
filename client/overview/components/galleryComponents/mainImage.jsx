@@ -35,10 +35,31 @@ class MainImage extends React.Component {
 
     this.setState({
       superZoom: !this.state.superZoom,
+    }, () => {
+      //See if this can be refactored for simplification!
+      if (this.state.superZoom) {
+        var zoomImg = document.getElementById('superZoom');
+        var mouseBox = document.getElementById('mainImageScroll');
+        var zoomBox = zoomImg.getBoundingClientRect();
+
+        // Using Scoll as the bounding Client Rect
+        var mouseBox = mouseBox.getBoundingClientRect();
+        // Need Math here to calculate the correct scaling movement!! :)
+        var px_fudge = 4;;
+        var percent_fudge = 1.02;
+        let x = (mouseBox.left - e.pageX - px_fudge) * ((zoomBox.width - mouseBox.width - px_fudge) / (mouseBox.width * percent_fudge));
+        let y = (mouseBox.top - e.pageY - px_fudge) * ((zoomBox.height - mouseBox.height - px_fudge) / (mouseBox.height * percent_fudge));
+
+        zoomImg.style.top = `${y}px`;
+        zoomImg.style.left = `${x}px`;
+      }
     });
   }
 
   moveSuperZoom(e) {
+    // ZoomBox and MouseBox functions will be done on componentDidMount and set to state in the non executing state??
+    // Will need to test which I can get away with?
+
     var zoomImg = document.getElementById('superZoom');
     var mouseBox = document.getElementById('mainImageScroll');
     var zoomBox = zoomImg.getBoundingClientRect();
