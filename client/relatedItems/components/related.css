@@ -54,12 +54,9 @@
   width: 750px;
   height: 320px;
   display: inline-block;
-  position: relative;
-  overflow:  scroll;
   white-space:nowrap;
   position: relative;
   overflow: hidden;
-  scrollbar-width: none;
   scroll-behavior: smooth;
   vertical-align: top;
 }
@@ -75,6 +72,8 @@
   margin-right:6px;
   border: 1px solid rgb(59, 59, 59);
   border-radius: 2px;
+  word-wrap: break-all;
+
 }
 
 .card:hover {
@@ -87,8 +86,10 @@
 .card-price{
   margin: 0
 }
-.card-stars{
-  margin: 0
+.stars{
+  margin: 0;
+  padding-left: 6px;
+  color: rgb(86, 86, 86);
 }
 #outfit-add{
   display: inline-block;
@@ -171,8 +172,28 @@
   width: 100%;
   height: auto;
 }
-.card-price{
+
+.card-name{
   margin-bottom: 6px;
+  padding-left: 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 228;
+  font-size: 14px;
+  font-weight: bold;
+}
+.card-category{
+  line-height: 50%;
+  font-size: 16px;
+  font-weight: lighter;
+  margin-top: 6px;
+  padding-left: 6px;
+}
+.card-price{
+  font-size: 14px;
+  padding-left: 6px;
+
 }
 #original_price{
   text-decoration: line-through;

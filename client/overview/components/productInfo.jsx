@@ -36,7 +36,7 @@ class ProductInfo extends React.Component {
       }
       let average = reviewSum / this.props.reviews.length;
       average = average.toFixed(2);
-
+      console.log(this.props.reviews)
       return (
         <div id="productInfo">
           <a id="jump2Review" href="#reviews">

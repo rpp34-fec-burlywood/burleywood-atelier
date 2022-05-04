@@ -3,7 +3,6 @@ import React from 'react';
 import ProductCard from './components/productCard.jsx';
 import YourOutfit from './components/yourOutfit.jsx';
 import $ from 'jquery';
-import relatedItemUtils from '../utils/relatedItemsUtils.js'
 class RelatedItems extends React.Component {
   constructor(props) {
 
@@ -31,7 +30,7 @@ class RelatedItems extends React.Component {
   }
   slideRight(id) {
     var num;
-    id === 'related' ? num = 0 : num = 242
+    id === 'related' ? num = 0 : num = 244
     var element = document.getElementById(`${id}-list`);
     const scrollLength = (element.offsetWidth + num) / 4
     element.scrollLeft += scrollLength;
@@ -40,6 +39,11 @@ class RelatedItems extends React.Component {
         width=$container.width(),
         scrollWidth=$container.get(0).scrollWidth;
     var offset=278;
+    console.log(scrollWidth)
+    console.log(element.offsetWidth)
+    console.log(width)
+
+    // scrollWidth - scrollLeftValue - width <= offset
     if (scrollWidth - scrollLeftValue - width <= offset) {
      {
          $(`#right-${id}`).hide()
@@ -52,9 +56,10 @@ class RelatedItems extends React.Component {
  }
 
  slideLeft (id){
-  var num, extraWidth;
+  var num, extraWidth, offset
   id === 'related' ? num = 0 : num = 242;
-  id === 'related' ? extraWidth = 0 : extraWidth = -278;
+  // id === 'related' ? extraWidth = 0 : extraWidth = -242;
+  // id === 'related' ? offset = 240 : offset = 243;
   var element = document.getElementById(`${id}-list`);
   const scrollLength = (element.offsetWidth + num) / 4
   element.scrollLeft -= scrollLength;
@@ -62,8 +67,10 @@ class RelatedItems extends React.Component {
   var scrollLeftValue = $container.scrollLeft(),
       width=$container.width(),
       scrollWidth=$container.get(0).scrollWidth;
-  var offset=278;
-    if (offset + scrollLeftValue + width + extraWidth <= scrollWidth) {
+      // console.log(scrollLeftValue)
+  // offset = 240;
+  // offset + scrollLeftValue + width + extraWidth <= scrollWidth)
+    if (  scrollLeftValue <= 242) {
      {
          $(`#right-${id}`).show()
          $(`#left-${id}`).hide()
@@ -79,6 +86,8 @@ handleAddProduct() {
   let storage = [];
   let merged = {};
   merged.value = {...this.props.currProd}
+  //need suggestion here on how to get the stars of currenProd
+  console.log(this.props.currProd)
   merged.value.styles = {...this.props.selectedStyle}
   let storedOutfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
   // if your outfits is empty
@@ -88,7 +97,6 @@ handleAddProduct() {
   if(!sessionStorage.getItem('outfits')) {
     storage.push(merged);
     sessionStorage.setItem('outfits', JSON.stringify(storage));
-    // this.setState({outfits: storage})
     this.props.outfitUpdater(storage)
   } else {
     const yourOutfits = [...this.props.outfits]
@@ -100,8 +108,7 @@ handleAddProduct() {
       }
     })
     if(!duplicate) {
-      yourOutfits.push(currentOutfit);
-      // this.setState({outfits: yourOutfits})
+      yourOutfits.unshift(currentOutfit);
       this.props.outfitUpdater(yourOutfits)
       sessionStorage.setItem('outfits', JSON.stringify(yourOutfits));
     }
@@ -110,7 +117,6 @@ handleAddProduct() {
 
 handleRemoveOutfit(styleID) {
   let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
-  console.log(storedOutfits)
   let index = storedOutfits.findIndex(outfit => {
     return outfit.value.styles.style_id === styleID
   });

@@ -15,9 +15,14 @@ async function getCardInfo(productArr) {
   //returns an array of products with their styles attached to product.value.style
   let productAndStyles = await Promise.allSettled(productsArr.filter(product => product.status === 'fulfilled').map(async (product) => {
     const stylesList = API.getProductStyleById(product.value.id);
+    const rating = getAverage(product.value.id);
       return stylesList.then((styles) =>{
+        rating.then((rating) =>{
+          product.value.rating = rating;
+          })
         const style = styles.results.find(style => style['default?'] === true) || results[0]
         product.value.styles = style;
+        console.log(product)
         return product
       })
   }));
@@ -25,6 +30,22 @@ async function getCardInfo(productArr) {
   const fulfilled = productAndStyles.filter(result => result.status === 'fulfilled').map(result => result.value);
   return fulfilled;
 }
+
+ async function getAverage(productID){
+  return API.getReviewMeta(productID)
+    .then((ratings) => {
+      let total = 0
+      let count = 0
+      for(let rating in ratings.ratings) {
+        total += Number(ratings.ratings[rating])
+        count++;
+      }
+
+       let average = total/count;
+       return average
+    })
+}
+
 
 function handleAddProduct() {
   let storage = [];
