@@ -338,10 +338,11 @@
   position: absolute;
   top: -50%;
   left: -50%;
-  z-index: 2;
+  z-index: 3;
   height: 250%;
-  width: 250%;
+  width: fit-content;
   object-fit: contain;
+  cursor: zoom-out;
 }
 
 /*****************************************************************
