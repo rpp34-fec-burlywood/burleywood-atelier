@@ -16,7 +16,8 @@
 .overviewRight {
   display: flex;
   position: relative;
-  vertical-align: top;
+  flex-direction: column;
+  align-content: space-between;
 }
 
 .overviewLeft {
@@ -32,10 +33,6 @@
 
 .overviewBottom {
   margin-bottom: 10px;
-}
-
-.productDescription {
-  max-width: 1000px;
 }
 
 .overviewBottom {
@@ -442,6 +439,7 @@
 *****************************************************************/
 #productInfo {
   display: flex;
+  height: fit-content;
   flex-direction: column;
 }
 
@@ -473,22 +471,36 @@
   color: red;
 }
 
-.slogan {
+.productDescription {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.productSlogan {
   font-size: 14pt;
+  font-weight: bold;
   margin: 5px 0;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+
+.description{
+  font-style: italic;
 }
 
 /*****************************************************************
 --------------------------- Add to Cart --------------------------
 *****************************************************************/
 .optionCheckout {
-  position: absolute;
-  bottom: 0;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
   height: auto;
+  flex: 1 1 auto;
 }
 
 
