@@ -8,6 +8,9 @@ class MainImage extends React.Component {
     this.state = {
       expanded: false,
       superZoom: false,
+      px_fudge: 4,
+      percent_fudgeX: 1.02,
+      percent_fudgeY: 1.00,
     }
 
     this.expandHandler = this.expandHandler.bind(this);
@@ -38,21 +41,7 @@ class MainImage extends React.Component {
     }, () => {
       //See if this can be refactored for simplification!
       if (this.state.superZoom) {
-        var zoomImg = document.getElementById('superZoom');
-        var mouseBox = document.getElementById('mainImageScroll');
-        var zoomBox = zoomImg.getBoundingClientRect();
-
-        // Using Scoll as the bounding Client Rect
-        var mouseBox = mouseBox.getBoundingClientRect();
-        // Need Math here to calculate the correct scaling movement!! :)
-        var px_fudge = 4;;
-        var percent_fudgeX = 1.02;
-        var percent_fudgeY = 1.06;
-        let x = (mouseBox.left - e.pageX - px_fudge) * ((zoomBox.width - mouseBox.width - px_fudge) / (mouseBox.width * percent_fudgeX));
-        let y = (mouseBox.top - e.pageY - px_fudge) * ((zoomBox.height - mouseBox.height - px_fudge) / (mouseBox.height * percent_fudgeY));
-
-        zoomImg.style.top = `${y}px`;
-        zoomImg.style.left = `${x}px`;
+        this.moveSuperZoom(e);
       }
     });
   }
@@ -68,12 +57,12 @@ class MainImage extends React.Component {
     // Using Scoll as the bounding Client Rect
     var mouseBox = mouseBox.getBoundingClientRect();
     // Need Math here to calculate the correct scaling movement!! :)
-    var px_fudge = 4;;
-    var percent_fudgeX = 1.02;
-    var percent_fudgeY = 1.06;
-    let x = (mouseBox.left - e.pageX - px_fudge) * ((zoomBox.width - mouseBox.width - px_fudge) / (mouseBox.width * percent_fudgeX));
-    let y = (mouseBox.top - e.pageY - px_fudge) * ((zoomBox.height - mouseBox.height - px_fudge) / (mouseBox.height * percent_fudgeY));
+    let x = (mouseBox.left - e.pageX - this.state.px_fudge) * ((zoomBox.width - mouseBox.width - this.state.px_fudge)
+      / (mouseBox.width * this.state.percent_fudgeX));
+    let y = (mouseBox.top - e.pageY - this.state.px_fudge) * ((zoomBox.height - mouseBox.height - this.state.px_fudge)
+        / (mouseBox.height * this.state.percent_fudgeY));
 
+    // console.log(`${mouseBox.top} ${e.pageY}`)
     zoomImg.style.top = `${y}px`;
     zoomImg.style.left = `${x}px`;
   }
