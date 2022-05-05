@@ -9,7 +9,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content:flex-start;
+  flex-grow: 1;
 }
 
 .overviewLeft,
@@ -26,7 +27,8 @@
 
 
 .overviewRight {
-  width: 380px;
+  /* width: 380px; */
+  width: max-content;
   padding-left: 20px;
   min-height: 550px;
 }
@@ -44,7 +46,8 @@
 *****************************************************************/
 
 #productGallery {
-  width: 600px;
+  max-width: 640px;
+  min-width: 640px;
   height: 550px;
   /* overflow: hidden; */
 }
@@ -60,7 +63,6 @@
 .mainImageContainer {
   display: flex;
   position: relative;
-  /* top: -500px; */
   width: inherit;
   height: inherit;
   transition-duration: 0.3s;
@@ -172,8 +174,9 @@
 
 
 .mainImageScroll {
-  height: inherit;
-  width: inherit;
+  display: flex;
+  height: 100%;
+  width: 100%;
   /* border: 1px solid rgb(59, 59, 59); */
   border-radius: 2px;
   position: relative;
@@ -253,6 +256,7 @@
   align-items: center;
   margin: 0px;
   justify-content: center;
+  z-index: 1;
 }
 
 .carouselContainer {
@@ -394,6 +398,8 @@
   padding: 2px;
   margin: 0 4px 4px 0;
   position: relative;
+  background-color: grey;
+  border-color: white;
 }
 
 .stylePin:hover {
@@ -410,7 +416,7 @@
 }
 
 .selectStylePin {
-  width: 390px;
+  min-width: fit-content;
 }
 
 .styleTitle {
@@ -441,6 +447,7 @@
   display: flex;
   height: fit-content;
   flex-direction: column;
+  width: max-content;
 }
 
 #jump2Review {
@@ -477,6 +484,7 @@
   max-width: 1000px;
   padding: 5px;
   margin: 10px 0;
+  padding-right: 30px;
 }
 
 .productSlogan {
@@ -501,11 +509,14 @@
   justify-content: space-between;
   height: auto;
   flex: 1 1 auto;
+  width: max-content;
 }
 
 
 #addToCart {
   display: flex;
+  max-width: fit-content;
+  min-width: 340px;
   flex-wrap: wrap;
   height: auto;
 }
