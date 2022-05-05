@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import ImgIndicator from './imgIndicator.jsx';
 
 class MainImage extends React.Component {
   constructor(props) {
@@ -166,6 +167,10 @@ class MainImage extends React.Component {
           }
         </div>
         {this.renderArrowRight(this.state.expanded, this.props.mainImageIndex)}
+        <ImgIndicator
+          expanded={this.state.expanded}
+          mainImageIndex={this.props.mainImageIndex}
+          imgLength={this.props.selectedStyle.photos.length} />
       </div>
     );
   }

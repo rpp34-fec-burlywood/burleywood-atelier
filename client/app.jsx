@@ -56,11 +56,10 @@ class App extends React.Component {
   initialize(productid = undefined) {
     // Initializes Overview by selecting 1 of 15 products
     // also calls this.getProductStyleById
-
     this.getOverviewProduct(30, productid)
-    // .then(currProd => {
-    //   this.getRelatedProductArray(currProd.id);
-    // })
+    this.setState({
+      mainImageIndex: 0
+    })
   }
 
   outfitUpdater(value) {

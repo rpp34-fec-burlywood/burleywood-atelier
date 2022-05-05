@@ -30,6 +30,7 @@ class ProductInfo extends React.Component {
 
   render() {
     if (this.props.productInfo && this.props.selectedStyle) {
+      var average = 5;
       if (this.props.reviews) {
         let reviewSum = 0;
         let numReview = 0;
@@ -38,7 +39,7 @@ class ProductInfo extends React.Component {
           reviewSum += count * i;
           numReview += count;
         }
-        let average = reviewSum / numReview;
+        average = reviewSum / numReview;
         average = average.toFixed(2);
       }
 

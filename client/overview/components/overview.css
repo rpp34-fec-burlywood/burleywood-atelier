@@ -54,6 +54,8 @@
   height: inherit;
 }
 
+/* ------------ Gallery Expansion Sytem and Arrows ------------*/
+
 .mainImageContainer {
   display: flex;
   position: relative;
@@ -223,6 +225,21 @@
   cursor: zoom-in;
 }
 
+/* ------------ Image Indicator ------------*/
+.imgIndicator {
+  visibility: hidden;
+  position: fixed;
+  bottom: 30px;
+}
+
+.imgIndicator.active {
+  visibility: visible;
+  display: flex;
+  z-index: 10;
+}
+
+/* ------------ Image Carousel ------------*/
+
 .carousel {
   position: absolute;
   flex-direction: column;
@@ -333,6 +350,8 @@
   border: 2px solid yellowgreen;
   cursor: default;
 }
+
+/* ------------ Super Zoom Element ------------*/
 
 #superZoom {
   position: absolute;
