@@ -30,16 +30,18 @@ class ProductInfo extends React.Component {
 
   render() {
     if (this.props.productInfo && this.props.selectedStyle) {
-      let reviewSum = 0;
-      let numReview = 0;
-      for (let i = 1; i <= 5; i++) {
-        let count = Number(this.props.reviews[i]);
-        reviewSum +=  count * i;
-        numReview += count;
+      if (this.props.reviews) {
+        let reviewSum = 0;
+        let numReview = 0;
+        for (let i = 1; i <= 5; i++) {
+          let count = Number(this.props.reviews[i]);
+          reviewSum += count * i;
+          numReview += count;
+        }
+        let average = reviewSum / numReview;
+        average = average.toFixed(2);
       }
-      let average = reviewSum / numReview;
-      average = average.toFixed(2);
-      console.log('stars',average)
+
       return (
         <div id="productInfo">
           <a id="jump2Review" href="#reviews">
