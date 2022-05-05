@@ -2,7 +2,6 @@
 import React from 'react';
 
 const rightButton = (props) => {
-  console.log(props)
   if(props.len >4 && props.buttonID === 'related') {
     return (
       <button className="arrowRight" id= {`right-${props.buttonID}`} onClick={()=>props.slideRight(props.buttonID)} >&#10093;

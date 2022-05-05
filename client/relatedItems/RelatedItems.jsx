@@ -7,9 +7,6 @@ class RelatedItems extends React.Component {
   constructor(props) {
 
     super(props);
-    this.state = {
-      outfits: []
-    }
     this.slideRight = this.slideRight.bind(this)
     this.slideLeft = this.slideLeft.bind(this)
     this.handleAddProduct = this.handleAddProduct.bind(this)
@@ -21,8 +18,8 @@ class RelatedItems extends React.Component {
       //NOTE this is hardcoded
       //64626 = more than 4 products
       //64621 = less than 4
-      // this.props.initialize(this.props.currProd.id);
-      this.props.initialize(64626);
+      this.props.initialize(this.props.currProd.id);
+      // this.props.initialize(64626);
 
       // let outfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
       // this.setState({outfits: outfits})
@@ -39,10 +36,6 @@ class RelatedItems extends React.Component {
         width=$container.width(),
         scrollWidth=$container.get(0).scrollWidth;
     var offset=278;
-    console.log(scrollWidth)
-    console.log(element.offsetWidth)
-    console.log(width)
-
     if (scrollWidth - scrollLeftValue - width <= offset) {
      {
          $(`#right-${id}`).hide()
@@ -85,8 +78,19 @@ handleAddProduct() {
   let storage = [];
   let merged = {};
   merged.value = {...this.props.currProd}
-  //need suggestion here on how to get the stars of currenProd
-  console.log(this.props.currProd)
+  let {ratings} = this.props.reviewMeta
+  //might need this for debug
+  // console.log(ratings)
+  let total = 0
+  let count = 0
+      for(let rating in ratings) {
+        total += Number(ratings[rating])
+        count++;
+      }
+  let average = total/count;
+  //might need this for debug
+  // console.log(average)
+  merged.rating = average;
   merged.value.styles = {...this.props.selectedStyle}
   let storedOutfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
   // if your outfits is empty
@@ -133,10 +137,10 @@ handleRemoveOutfit(styleID) {
     return (
       <div>
         <div className='related-main-container' data-testid="related-main-container">
-          RELATED PRODUCTS
+          <p className='related-titles'>RELATED PRODUCTS</p>
           <ProductCard selectNewProduct ={this.props.selectNewProduct} relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft} currProd ={this.props.currProd}/>
-          YOUR OUTFITS
-          <YourOutfit outfits={this.props.outfits} slideRight={this.slideRight} slideLeft={this.slideLeft} handleAddProduct={this.handleAddProduct} handleRemoveOutfit={this.handleRemoveOutfit}/>
+          <p className='related-titles'>YOUR OUTFITS</p>
+          <YourOutfit selectNewProduct ={this.props.selectNewProduct}  outfits={this.props.outfits} slideRight={this.slideRight} slideLeft={this.slideLeft} handleAddProduct={this.handleAddProduct} handleRemoveOutfit={this.handleRemoveOutfit} />
         </div>
       </div>
     );
