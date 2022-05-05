@@ -65,14 +65,14 @@ const getProductStyleById = function (prodId) {
     });
 };
 
-const addToCart = function ({ sku_id, count }) {
+const addToCart = function ({ sku_id, count }, cb = () => { }) {
   if (!sku_id) {
     return;
   }
   API.addToCart(sku_id, count)
     .then(response => {
       if (response === 'Created') {
-        window.alert('Added to Cart!')
+        cb(response)
       }
     });
 
@@ -115,16 +115,16 @@ const styleClickHandler = function (e) {
  * @param {Positive_move_forward} move
  * @param {selectedStyle.photos.length} max
  */
-const arrowXClickHandler = function (move, max, cb = ()=>{}) {
+const arrowXClickHandler = function (move, max, cb = () => { }) {
   var currentI = this.state.mainImageIndex
   if (move > 0 && currentI < max - 1) {
     this.setState({
-      mainImageIndex : currentI + 1
+      mainImageIndex: currentI + 1
     })
     cb(currentI + 1)
   } else if (move < 0 && currentI > 0) {
     this.setState({
-      mainImageIndex : currentI - 1
+      mainImageIndex: currentI - 1
     })
     cb(currentI - 1)
   }

@@ -6,7 +6,12 @@ class ProductInfo extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      average: 0,
+      numReview: 0,
+    }
 
+    this.renderReview = this.renderReview.bind(this);
   }
 
   renderPrice(selectedStyle) {
@@ -28,20 +33,39 @@ class ProductInfo extends React.Component {
     );
   }
 
+  renderReview() {
+    var average = 0;
+    var numReview = 0;
+    let reviewSum = 0;
+
+    for (let i = 1; i <= 5; i++) {
+      let count = Number(this.props.reviews[i]);
+      reviewSum += count * i;
+      numReview += count;
+    }
+    average = reviewSum / numReview;
+    average = average.toFixed(2);
+
+    this.setState({
+      average,
+      numReview,
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.reviews !== this.props.reviews) {
+      this.renderReview();
+    }
+  }
+
   render() {
     if (this.props.productInfo && this.props.selectedStyle) {
-      let reviewSum = 0;
-      for (let review of this.props.reviews) {
-        reviewSum += review.rating;
-      }
-      let average = reviewSum / this.props.reviews.length;
-      average = average.toFixed(2);
 
       return (
         <div id="productInfo">
           <a id="jump2Review" href="#reviews">
-            <span id='currProdRating'><Stars stars={average} /></span>
-            {`Read All ${this.props.reviews.length} Reviews`}</a>
+            <span id='currProdRating'><Stars stars={this.state.average} /></span>
+            {`Read All ${this.state.numReview} Reviews`}</a>
           <div className="productCategory">{`Category: ${this.props.productInfo.category}`}</div>
           <div className="currProductTitle">{this.props.productInfo.name}</div>
           {this.renderPrice(this.props.selectedStyle)}
@@ -50,7 +74,6 @@ class ProductInfo extends React.Component {
     }
     return <div id="productInfo"></div>
   }
-
 }
 
 export default ProductInfo;
