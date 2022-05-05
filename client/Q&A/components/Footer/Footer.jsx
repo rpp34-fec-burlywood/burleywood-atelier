@@ -20,29 +20,29 @@ class Footer extends React.Component {
           {
             this.props.questions?.results?.length > 2 ? 
               this.props.loadMoreQuestions ? 
-              <button
+              <div
                 id='show-more-questions-button'
                 onClick={this.props.loadMoreQuestionsHandler}
               >
                 MORE ANSWERED QUESTIONS
-              </button> :
-              <button
+              </div> :
+              <div
                 id='collapse-questions-button'
                 onClick={this.props.collapseQuestions}
               >
-                Collapse Questions
-              </button> 
+                COLLAPSE QUESTIONS
+              </div> 
             : 
             null
           }
         </div>
         <div id='add-question'>
-          <button 
+          <div 
             onClick={this.props.addQuestionClickHandler}
             id='add-question-button'
           >
             ADD A QUESTION +
-          </button>
+          </div>
         </div>
       </div>
     );

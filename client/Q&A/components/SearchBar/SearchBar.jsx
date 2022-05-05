@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-
+import './SearchBar.css';
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -22,11 +22,14 @@ class SearchBar extends React.Component {
 
   render() {
     return(
-
+      <div id='search-bar'> 
         <input
+          id='search-bar-input'
           onChange={(e) => this.processSearch(e.target.value)} 
-          placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
+          placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS... '
         />
+      </div>
+
     );
   }
 }
