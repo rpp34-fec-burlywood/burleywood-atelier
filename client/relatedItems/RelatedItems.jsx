@@ -27,7 +27,7 @@ class RelatedItems extends React.Component {
   }
   slideRight(id) {
     var num;
-    id === 'related' ? num = 0 : num = 244
+    id === 'related' ? num = 0 : num = 226;
     var element = document.getElementById(`${id}-list`);
     const scrollLength = (element.offsetWidth + num) / 4
     element.scrollLeft += scrollLength;
@@ -49,7 +49,7 @@ class RelatedItems extends React.Component {
 
  slideLeft (id){
   var num, extraWidth, offset
-  id === 'related' ? num = 0 : num = 242;
+  id === 'related' ? num = 0 : num = 226;
   // id === 'related' ? extraWidth = 0 : extraWidth = -242;
   // id === 'related' ? offset = 240 : offset = 243;
   var element = document.getElementById(`${id}-list`);
@@ -62,7 +62,7 @@ class RelatedItems extends React.Component {
       // console.log(scrollLeftValue)
   // offset = 240;
   // offset + scrollLeftValue + width + extraWidth <= scrollWidth)
-    if (  scrollLeftValue <= 242) {
+    if (  scrollLeftValue <= 230) {
      {
          $(`#right-${id}`).show()
          $(`#left-${id}`).hide()
