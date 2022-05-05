@@ -609,13 +609,15 @@
 
 .addPopUp {
   position: absolute;
-  top: -30px;
+  top: -28px;
   font-size: 15px;
-  margin-left: 5px;
+  left: 10px;
   color: rgba(223, 0, 0, 0.581);
+  background-color: rgba(255, 255, 255, 0.632);
   pointer-events: none;
   opacity: 0;
   transition: 1s;
+  border-radius: 3px;
 }
 
 .addPopUp.active {

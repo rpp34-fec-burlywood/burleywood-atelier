@@ -53,7 +53,7 @@ class SizeSelect extends React.Component {
           <div>{this.props.currSize ? `Size: ${this.props.currSize}` : "SELECT SIZE"}</div>
           <span style={{paddingRight: '6px'}}>&#9663;</span>
         </div>
-        <div className={`addPopUp ${this.props.addPopUp ? 'active': ""}`}>Please Select A Size</div>
+        <div className={`addPopUp ${this.props.addPopUp ? 'active': ""}`}>Please Select Size</div>
         <div className={`dropdownMenu ${this.props.active ? 'active': ""}`}  onClick={this.handlerBundle}>
           {this.renderSkus(this.props.skus)}
         </div>
