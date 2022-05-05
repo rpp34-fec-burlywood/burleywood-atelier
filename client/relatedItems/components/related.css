@@ -145,7 +145,7 @@
 .delete-outfit {
   position: absolute;
   background: transparent;
-  color: white;
+  color: rgba(255, 255, 255, 0.774);
   right: 0;
   background-color: transparent;
   border: none;
@@ -160,7 +160,7 @@
 .compare-button {
   position: absolute;
   background: transparent;
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255， 0.774);
   right: 0;
   background-color: transparent;
   border: none;
