@@ -104,7 +104,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('Review Meta', this.reviewMeta);
+    // console.log('Review Meta', this.reviewMeta);
     if (this.state.currProd?.id) {
       window.history.replaceState(null, '', `${window.location.origin}/productPage/${this.state.currProd.id}/`)
     }
@@ -123,7 +123,7 @@ class App extends React.Component {
           mainImageIndex={this.state.mainImageIndex}
           carouselClickhandler={this.carouselClickhandler}
           arrowXClickHandler={this.arrowXClickHandler}
-          reviews={this.state.reviews}
+          reviews={this.state.reviewMeta?.ratings}
           handleAddProduct={this.handleAddProduct} />
         <RelatedItems
           relatedArr={this.state.relatedProducts}
