@@ -1,15 +1,16 @@
 
 .answer-body {
+  color: 	#808080;
   font-size: 20px;
   font-weight: 500;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .answer-footer {
   display: flex;
   font-size: 15px;
   font-weight: 400;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   gap: 10px;
 }
 
@@ -22,8 +23,26 @@
   margin-left: -5px;
   margin-right: -5px;
   cursor: pointer;
+  text-decoration: underline;
+  text-underline-position: under;
+  color: #808080;
 }
 
 .answer-report {
   cursor: pointer;
+  text-decoration: underline;
+  text-underline-position: under;
+  color: #808080;
+}
+
+.answer-helpful-text {
+  color: #808080;
+}
+
+.answer-user {
+  color:	#A9A9A9;
+}
+
+.bar-sep {
+  color: #808080;
 }

@@ -100,7 +100,9 @@ class Question extends React.Component {
           <div className='question-body'>
             {this.props.question?.question_body}
           </div>
-          <div> Helpful? </div>
+          <div className='helpful-text'>
+            Helpful?
+          </div>
           <div className='question-helpful' onClick={this.upvoteQuestion}>
             Yes ({this.props.question?.question_helpfulness})
           </div>
@@ -120,10 +122,11 @@ class Question extends React.Component {
               answers={this.returnAnswerObject()}
             />
             {
+
             this.state.answerListTotalLength > 2 ?
               this.state.expanded ?
-                <button onClick={this.collapseAnswers}>Collapse Answers</button> :
-                <button onClick={this.expandAnswerList}>Load More Answers</button>
+                <div className='answer-expand-collapse' onClick={this.collapseAnswers}>COLLAPSE ANSWERS</div> :
+                <div className='answer-expand-collapse' onClick={this.expandAnswerList}>LOAD MORE ANSWERS</div>
               :
               null
             }
