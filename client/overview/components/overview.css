@@ -7,11 +7,14 @@
 
 .overviewTop {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .overviewLeft,
 .overviewRight {
+  display: flex;
   position: relative;
   vertical-align: top;
 }
@@ -24,6 +27,7 @@
 .overviewRight {
   width: 390px;
   padding-left: 10px;
+  min-height: 550px;
 }
 
 .overviewBottom {
@@ -436,6 +440,11 @@
 /*****************************************************************
 --------------------------- Product Info -------------------------
 *****************************************************************/
+#productInfo {
+  display: flex;
+  flex-direction: column;
+}
+
 #jump2Review {
   display: flex;
 }
@@ -479,7 +488,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
-  height: 380px;
+  height: auto;
 }
 
 

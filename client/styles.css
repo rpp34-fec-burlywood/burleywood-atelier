@@ -4,7 +4,7 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  min-width: 1000px;
+
 }
 
 .home {
@@ -16,9 +16,17 @@ body {
   cursor: pointer;
 }
 
+#app,
+#appContainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  min-width: 600px;
+}
+
 .reviews,
 #reviews {
-  width: 1000px;
+  max-width: 1000px;
 }
 
 html {

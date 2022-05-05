@@ -108,7 +108,7 @@ class App extends React.Component {
       window.history.replaceState(null, '', `${window.location.origin}/productPage/${this.state.currProd.id}/`)
     }
     return (
-      <div>
+      <div id="appContainer">
         <div onClick={this.home} className="home">
           <h1>Starter FASHION</h1>
         </div>
