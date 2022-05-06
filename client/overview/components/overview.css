@@ -249,7 +249,7 @@
   flex-direction: column;
   left: 10px;
   top: 20px;
-  height: 500px;
+  max-height: 550px;
   width: 70px;
   display: flex;
   overflow: hidden;
@@ -265,7 +265,7 @@
   overflow: hidden;
   z-index: 2;
   display: flex;
-  max-height: 460px;
+  max-height: 462px;
   align-items: flex-start;
 }
 
@@ -277,6 +277,7 @@
   flex-wrap: nowrap;
   width: 64px;
   transition: 0.3s;
+  max-height: 462px;
   z-index: 1;
 }
 
