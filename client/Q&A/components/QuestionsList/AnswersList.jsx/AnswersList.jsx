@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Answer from './Answer.jsx';
-
 class AnswersList extends React.Component {
   constructor(props) {
     super(props);
