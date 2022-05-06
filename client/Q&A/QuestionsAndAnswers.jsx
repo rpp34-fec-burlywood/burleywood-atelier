@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import Title from './components/Title.jsx';
-import SearchBar from './components/SearchBar.jsx';
+import SearchBar from './components/SearchBar/SearchBar.jsx';
 import QuestionsList from './components/QuestionsList/QuestionsList.jsx';
 import AddQuestionModal from './components/AddQuestionModal/AddQuestionModal.jsx';
+import Title from './components/Title/Title.jsx';
 import './style.css'
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class QuestionsAndAnswers extends React.Component {
   render() {
     return (
       <>
-        <Title/>
+        <Title />
         <SearchBar 
           setQuestionList={this.setQuestionList} 
           originalQuestionList={this.state.originalQuestionsList}

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import ImgIndicator from './imgIndicator.jsx';
 
 class MainImage extends React.Component {
   constructor(props) {
@@ -7,7 +8,10 @@ class MainImage extends React.Component {
 
     this.state = {
       expanded: false,
-      height: 550
+      superZoom: false,
+      px_fudge: 4,
+      percent_fudgeX: 1.02,
+      percent_fudgeY: 1.00,
     }
 
     this.expandHandler = this.expandHandler.bind(this);
@@ -16,37 +20,62 @@ class MainImage extends React.Component {
     this.arrowXStyle = this.arrowXStyle.bind(this);
     this.arrowXHelper = this.arrowXHelper.bind(this);
     this.arrowNav = this.arrowNav.bind(this);
+    this.toggleZoom = this.toggleZoom.bind(this);
+    this.imageHref = this.imageHref.bind(this);
+    this.moveSuperZoom = this.moveSuperZoom.bind(this);
   }
 
   // mainImage will need to be its own component for expanded view
 
   expandHandler() {
-    if (!this.state.expanded) {
-      // var height = document.getElementById('overview').offsetHeight;
-      var height = 0.8 * window.innerHeight;
-      var width = 0.8 * window.innerWidth;
-      this.setState({
-        expanded: !this.state.expanded,
-        height,
-        width,
-      })
-    } else {
-      this.setState({
-        expanded: !this.state.expanded,
-        height: 550,
-        width: 600
-      })
-    }
+    this.setState({
+      expanded: !this.state.expanded,
+      superZoom: false,
+    });
+  }
+
+  toggleZoom(e) {
+    // add mouse location to calculate initial position like the moveSuperZoom
+
+    this.setState({
+      superZoom: !this.state.superZoom,
+    }, () => {
+      //See if this can be refactored for simplification!
+      if (this.state.superZoom) {
+        this.moveSuperZoom(e);
+      }
+    });
+  }
+
+  moveSuperZoom(e) {
+    // ZoomBox and MouseBox functions will be done on componentDidMount and set to state in the non executing state??
+    // Will need to test which I can get away with?
+
+    var zoomImg = document.getElementById('superZoom');
+    var mouseBox = document.getElementById('mainImageScroll');
+    var zoomBox = zoomImg.getBoundingClientRect();
+
+    // Using Scoll as the bounding Client Rect
+    var mouseBox = mouseBox.getBoundingClientRect();
+    // Need Math here to calculate the correct scaling movement!! :)
+    let x = (mouseBox.left - e.pageX - this.state.px_fudge) * ((zoomBox.width - mouseBox.width - this.state.px_fudge)
+      / (mouseBox.width * this.state.percent_fudgeX));
+    let y = (mouseBox.top - e.pageY - this.state.px_fudge) * ((zoomBox.height - mouseBox.height - this.state.px_fudge)
+        / (mouseBox.height * this.state.percent_fudgeY));
+
+    // console.log(`${mouseBox.top} ${e.pageY}`)
+    zoomImg.style.top = `${y}px`;
+    zoomImg.style.left = `${x}px`;
   }
 
   arrowXStyle(left = true, mainImageIndex, numImages) {
     if (left) {
       if (!(mainImageIndex > 0)) {
-        return { visibility: 'hidden' }
+        return { opacity: 0 }
       }
     } else {
       if (!(mainImageIndex < numImages - 1)) {
-        return { visibility: 'hidden' }
+        return { opacity: 0 }
       }
     }
   }
@@ -82,7 +111,7 @@ class MainImage extends React.Component {
     }
   }
 
-  arrowNav (e) {
+  arrowNav(e) {
     if (e.key === 'ArrowLeft') {
       this.props.arrowXClickHandler(-1, this.props.selectedStyle.photos.length)
     }
@@ -94,6 +123,14 @@ class MainImage extends React.Component {
     }
   }
 
+  imageHref(selectedStyle) {
+    return (
+      selectedStyle.photos[this.props.mainImageIndex] ?
+        selectedStyle.photos[this.props.mainImageIndex].url :
+        selectedStyle.photos[0].url
+    );
+  }
+
   render() {
     // console.log('RENDERED MainImage');
     if (this.state.expanded) {
@@ -102,27 +139,38 @@ class MainImage extends React.Component {
       document.removeEventListener('keydown', this.arrowNav);
     }
 
+
+    if (this.state.superZoom) {
+      var imgContainer = document.getElementById('mainImageScroll');
+      imgContainer.addEventListener("mousemove", this.moveSuperZoom)
+    } else {
+      var imgContainer = document.getElementById('mainImageScroll');
+      imgContainer?.removeEventListener("mousemove", this.moveSuperZoom)
+    }
+
     return (
       <div className={`mainImageContainer ${this.state.expanded ? ' expanded' : ''}`}>
         {this.state.expanded ?
           <div id='expandBTN' onClick={this.expandHandler}>{'X'}</div>
           : null}
         {this.renderArrowLeft(this.state.expanded, this.props.mainImageIndex)}
-        <div className={`mainImageScroll${this.state.expanded ? ' expanded' : ''}`}>
-          <link rel="preload" as="image" href={
-            this.props.selectedStyle.photos[this.props.mainImageIndex] ?
-              this.props.selectedStyle.photos[this.props.mainImageIndex].url :
-              this.props.selectedStyle.photos[0].url
-          } />
+        <div id="mainImageScroll" className={`mainImageScroll${this.state.expanded ? ' expanded' : ''}`}>
+          <link rel="preload" as="image" href={this.imageHref(this.props.selectedStyle)} />
           <img className={`mainImage${this.state.expanded ? ' expanded' : ''}`}
-            onClick={this.expandHandler}
-            src={
-              this.props.selectedStyle.photos[this.props.mainImageIndex] ?
-                this.props.selectedStyle.photos[this.props.mainImageIndex].url :
-                this.props.selectedStyle.photos[0].url
-            } />
+            onClick={this.state.expanded ? this.toggleZoom : this.expandHandler}
+            src={this.imageHref(this.props.selectedStyle)} />
+          {this.state.superZoom ?
+            <img id="superZoom"
+              onClick={this.toggleZoom}
+              src={this.imageHref(this.props.selectedStyle)} />
+            : null
+          }
         </div>
         {this.renderArrowRight(this.state.expanded, this.props.mainImageIndex)}
+        <ImgIndicator
+          expanded={this.state.expanded}
+          mainImageIndex={this.props.mainImageIndex}
+          imgLength={this.props.selectedStyle.photos.length} />
       </div>
     );
   }

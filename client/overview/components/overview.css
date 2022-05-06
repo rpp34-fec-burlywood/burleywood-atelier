@@ -7,13 +7,18 @@
 
 .overviewTop {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content:flex-start;
+  flex-grow: 1;
 }
 
 .overviewLeft,
 .overviewRight {
+  display: flex;
   position: relative;
-  vertical-align: top;
+  flex-direction: column;
+  align-content: space-between;
 }
 
 .overviewLeft {
@@ -22,16 +27,14 @@
 
 
 .overviewRight {
-  width: 390px;
-  padding-left: 10px;
+  /* width: 380px; */
+  width: max-content;
+  padding-left: 20px;
+  min-height: 550px;
 }
 
 .overviewBottom {
   margin-bottom: 10px;
-}
-
-.productDescription {
-  max-width: 1000px;
 }
 
 .overviewBottom {
@@ -43,7 +46,8 @@
 *****************************************************************/
 
 #productGallery {
-  width: 600px;
+  max-width: 640px;
+  min-width: 640px;
   height: 550px;
   /* overflow: hidden; */
 }
@@ -54,10 +58,11 @@
   height: inherit;
 }
 
+/* ------------ Gallery Expansion Sytem and Arrows ------------*/
+
 .mainImageContainer {
   display: flex;
   position: relative;
-  /* top: -500px; */
   width: inherit;
   height: inherit;
   transition-duration: 0.3s;
@@ -169,8 +174,9 @@
 
 
 .mainImageScroll {
-  height: inherit;
-  width: inherit;
+  display: flex;
+  height: 100%;
+  width: 100%;
   /* border: 1px solid rgb(59, 59, 59); */
   border-radius: 2px;
   position: relative;
@@ -178,7 +184,7 @@
 
 .mainImageScroll.expanded {
   /* overflow-y: auto; */
-  overflow: visible;
+  overflow: hidden;
   display: flex;
   height: 80%;
   width: 80%;
@@ -207,9 +213,7 @@
 }
 
 .mainImage:hover {
-  cursor: -moz-zoom-in;
-  cursor: -webkit-zoom-in;
-  cursor: zoom-in;
+  cursor: default;
 }
 
 .mainImage.expanded {
@@ -220,10 +224,25 @@
 }
 
 .mainImage.expanded:hover {
-  cursor: -moz-zoom-out;
-  cursor: -webkit-zoom-out;
-  cursor: zoom-out;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 }
+
+/* ------------ Image Indicator ------------*/
+.imgIndicator {
+  visibility: hidden;
+  position: fixed;
+  bottom: 30px;
+}
+
+.imgIndicator.active {
+  visibility: visible;
+  display: flex;
+  z-index: 10;
+}
+
+/* ------------ Image Carousel ------------*/
 
 .carousel {
   position: absolute;
@@ -237,6 +256,7 @@
   align-items: center;
   margin: 0px;
   justify-content: center;
+  z-index: 1;
 }
 
 .carouselContainer {
@@ -336,6 +356,19 @@
   cursor: default;
 }
 
+/* ------------ Super Zoom Element ------------*/
+
+#superZoom {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  z-index: 3;
+  height: 250%;
+  width: fit-content;
+  object-fit: contain;
+  cursor: zoom-out;
+}
+
 /*****************************************************************
 ------------------------- Style Selector -------------------------
 *****************************************************************/
@@ -346,21 +379,27 @@
 }
 
 .styleRow {
+  display: flex;
   max-height: fit-content;
   max-width: fit-content;
   margin: 0;
   padding: 0;
+  flex-direction: row;
+
 }
 
 .stylePin {
   object-fit: cover;
   border-radius: 50%;
   border: 4px solid transparent;
-  display: inline-block;
+  display: flex;
   height: 50px;
   width: 50px;
   padding: 2px;
-  margin-right: 4px;
+  margin: 0 4px 4px 0;
+  position: relative;
+  background-color: grey;
+  border-color: white;
 }
 
 .stylePin:hover {
@@ -377,7 +416,7 @@
 }
 
 .selectStylePin {
-  width: 390px;
+  min-width: fit-content;
 }
 
 .styleTitle {
@@ -387,12 +426,34 @@
   font-weight: 500;
 }
 
+.stylePinHolder {
+  position: relative;
+  display: flex;
+}
+
+.styleCheck {
+  position: absolute;
+  font-size: 18px;
+  top: 3px;
+  right: 3px;
+  color: white;
+  text-shadow: black 0 0 5px;
+}
+
 /*****************************************************************
 --------------------------- Product Info -------------------------
 *****************************************************************/
+#productInfo {
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  width: max-content;
+}
+
 #jump2Review {
   display: flex;
 }
+
 #currProdRating {
   padding-right: 4px;
 }
@@ -417,27 +478,45 @@
   color: red;
 }
 
-.slogan {
+.productDescription {
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  padding: 5px;
+  margin: 10px 0;
+  padding-right: 30px;
+}
+
+.productSlogan {
   font-size: 14pt;
+  font-weight: bold;
   margin: 5px 0;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+
+.description{
+  font-style: italic;
 }
 
 /*****************************************************************
 --------------------------- Add to Cart --------------------------
 *****************************************************************/
 .optionCheckout {
-  position: absolute;
-  bottom: 0;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: space-between;
-  height: 380px;
+  height: auto;
+  flex: 1 1 auto;
+  width: max-content;
 }
 
 
 #addToCart {
   display: flex;
+  max-width: fit-content;
+  min-width: 340px;
   flex-wrap: wrap;
   height: auto;
 }
@@ -479,7 +558,7 @@
 
 .dropdownMenu.active {
   pointer-events: auto;
-  background-color: white;
+  background-color: rgb(164, 164, 164);
   visibility: visible;
   pointer-events: auto;
   height: max-content;
@@ -488,11 +567,12 @@
 
 .dropdownItem {
   display: flex;
-  border-bottom: 1px solid rgb(59, 59, 59);
+  border-bottom: 1px solid rgb(224, 224, 224);
   align-items: center;
   justify-content: center;
   width: 150px;
   height: 40px;
+  background-color: #efefef;
 }
 
 .dropdownItem:last-child {
@@ -504,15 +584,18 @@
   color: grey;
 }
 
-.dropdownItem:hover
-.outOfStock:hover {
+.dropdownItem:hover .outOfStock:hover {
   cursor: default;
 }
 
-#addCartBTN {
+#addCartBTN,
+#invalidAddBTN {
   width: 250px;
   height: 50px;
   margin: 0px 5px;
+  background-color: #efefef;
+  transition: 0.4s;
+  font-size: 14px;
 }
 
 #addStyleBTN {
@@ -526,6 +609,29 @@
 #sizeSelect,
 #addCartBTN,
 #addStyleBTN,
+#invalidAddBTN,
 .dropdownMenu {
   border: 2px solid rgb(114, 114, 114);
+}
+
+#invalidAddBTN {
+  color: rgb(201, 201, 201);
+}
+
+.addPopUp {
+  position: absolute;
+  top: -28px;
+  font-size: 15px;
+  left: 10px;
+  color: rgba(223, 0, 0, 0.581);
+  background-color: rgba(255, 255, 255, 0.632);
+  pointer-events: none;
+  opacity: 0;
+  transition: 1s;
+  border-radius: 3px;
+}
+
+.addPopUp.active {
+  opacity: 1;
+  transition: 0.01s;
 }

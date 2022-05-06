@@ -13,12 +13,18 @@ class AddToCart extends React.Component {
       currSize: null,
       quantity: 1,
       currSizeStock: null,
-      sku_id: null
+      sku_id: null,
+      sizeDropdown: false,
+      addPopUp: false,
+      cartSucc: false,
+
     }
 
     this.selectSizeHandler = this.selectSizeHandler.bind(this);
     this.selectQuanityHandler = this.selectQuanityHandler.bind(this);
     this.addToCartHandler = this.addToCartHandler.bind(this);
+    this.dropdownClickHandler = this.dropdownClickHandler.bind(this);
+    this.addPopUp = this.addPopUp.bind(this);
   }
 
   // NEED Way to handle Edge case of Null SKU, (infinity Stone)
@@ -35,20 +41,45 @@ class AddToCart extends React.Component {
   }
 
   selectQuanityHandler(quantity) {
-
     this.setState({
       quantity: quantity
     });
   }
 
-    // STOCK QUANTITY SHOULD BE HANDELED at the prop level here in this COMPONENT
-    // not at the selector target...., unless it's in an array that I would have to search.... Hmmm
-
+  dropdownClickHandler() {
+    this.setState({
+      sizeDropdown: !this.state.sizeDropdown
+    })
+  }
 
   addToCartHandler(e) {
     e.preventDefault();
-    this.props.addToCart(this.state);
+    this.props.addToCart(this.state, () => {
+      this.setState({
+        cartSucc: true
+      })
+
+      setTimeout(() => {
+        this.setState({
+          cartSucc: false
+        })
+      }, 2000)
+    });
   }
+
+  addPopUp() {
+    this.setState({
+      sizeDropdown: true,
+      addPopUp: true
+    })
+
+    setTimeout(() => {
+      this.setState({
+        addPopUp: false
+      })
+    }, 2000)
+  }
+
 
   render() {
     if (this.props.selectedStyle) {
@@ -57,15 +88,24 @@ class AddToCart extends React.Component {
           <SizeSelect
             skus={this.props.selectedStyle.skus}
             selectSizeHandler={this.selectSizeHandler}
-            currSize={this.state.currSize} />
+            currSize={this.state.currSize}
+            active={this.state.sizeDropdown}
+            dropdownClickHandler={this.dropdownClickHandler}
+            addPopUp={this.state.addPopUp} />
           <QuantitySelect
             skus={this.props.selectedStyle.skus}
             currSize={this.state.currSize}
             quantity={this.state.quantity}
             currSizeStock={this.state.currSizeStock}
             selectQuanityHandler={this.selectQuanityHandler} />
-           <button id="addCartBTN" onClick={this.addToCartHandler}>ADD TO CART</button>
-           <button id="addStyleBTN" title="Add to Outfits" onClick={this.props.handleAddProduct}>&#10133;</button>
+          {
+            this.state.sku_id ?
+              <button id="addCartBTN" onClick={this.addToCartHandler}>
+                <div>{`${this.state.cartSucc ? 'SUCCESS!': 'ADD TO CART'}`}</div>
+                </button>
+              : <button id="invalidAddBTN" onClick={this.addPopUp}>ADD TO CART</button>
+          }
+          <button id="addStyleBTN" title="Add to Outfits" onClick={this.props.handleAddProduct}>&#10133;</button>
         </div>
       );
     }
