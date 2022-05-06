@@ -3,7 +3,7 @@ import API from './APIRequests.js';
 const getReviewsById = function(page, count, sort, id) {
   API.getReviewsById(page, count, sort, id)
     .then(review => {
-      console.log("Reviewed");
+      // console.log("Reviewed");
       this.setState({
         reviews: review.results
       })
@@ -49,7 +49,7 @@ const postReview = function(review_id) {
 const getReviewMeta = function(product_id) {
   API.getReviewMeta(product_id)
     .then(result => {
-      console.log('Review Meta X', result);
+      // console.log('Review Meta X', result);
       this.setState({
         reviewMeta: result
       })

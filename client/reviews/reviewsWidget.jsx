@@ -11,13 +11,13 @@ class ReviewsWidget extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.currProd !== this.props.currProd) {
-      this.props.getReviewsById(1, 10, 'newest', 64626/*this.props.currProd.id*/);
-      this.props.getReviewMeta(64626);
+      this.props.getReviewsById(1, 10, 'newest', /*64626*/this.props.currProd.id);
+      this.props.getReviewMeta(/*64626*/this.props.currProd.id);
     }
   }
 
   render() {
-    console.log('This', this.props.getReviewMeta);
+    // console.log('This', this.props.getReviewMeta);
     return (
       <div id='reviews'>
         <div id='title'> RATINGS & REVIEWS </div>
