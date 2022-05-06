@@ -57,7 +57,7 @@ class Answer extends React.Component {
         </div>
         <div className='answer-footer'>
           <div className='footer-ele answer-user'>
-            by user {user} on {`${month} ${day}, ${year}`}
+            by user {user.toLowerCase() === 'seller' ? <b>Seller</b> : user} on {`${month} ${day}, ${year}`}
           </div>
           <div className='footer-ele bar-sep'>
             |

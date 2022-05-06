@@ -18,6 +18,7 @@
 #close {
   font-size: 50px;
   position: absolute;
+  z-index: 100;
 	cursor: pointer;
   right: 50px;
 	top: 20px;
