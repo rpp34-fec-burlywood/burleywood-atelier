@@ -263,9 +263,9 @@
   height: fit-content;
   width: 64px;
   overflow: hidden;
-  background-color: rgb(80, 80, 80, 0.8);
   z-index: 2;
   display: flex;
+  max-height: 460px;
   align-items: flex-start;
 }
 
@@ -275,22 +275,23 @@
   position: relative;
   flex-direction: column;
   flex-wrap: nowrap;
-  max-height: 448px;
   width: 64px;
   transition: 0.3s;
-  background-color: rgb(80, 80, 80, 0.8);
   z-index: 1;
 }
 
 .carouselItem {
   display: flex;
   object-fit: cover;
-  margin: 0;
+  margin-bottom: 2px;
   padding: 0;
   height: 60px;
   width: 60px;
   flex-shrink: 0;
-  border: 2px solid transparent;
+  border: 2px solid rgb(80, 80, 80, 0.8);
+}
+.carouselItem:last-child {
+  margin: 0;
 }
 
 .carouselItem:hover {

@@ -36,13 +36,17 @@ class MainImage extends React.Component {
 
   toggleZoom(e) {
     // add mouse location to calculate initial position like the moveSuperZoom
+    var cord = {
+      x: e.clientX,
+      y: e.clientY
+    }
 
     this.setState({
       superZoom: !this.state.superZoom,
     }, () => {
       //See if this can be refactored for simplification!
       if (this.state.superZoom) {
-        this.moveSuperZoom(e);
+        this.moveSuperZoom(cord);
       }
     });
   }
