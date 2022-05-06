@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import API from '../../../../utils/APIRequests';
+import Thumbnail from './thumbnail.jsx';
 import './Answer.css';
 
 class Answer extends React.Component {
@@ -43,11 +44,16 @@ class Answer extends React.Component {
     const day = time[2]
     const user = this.props.answer?.answerer_name
     const helpful = this.props.answer?.helpfulness
-
+    // <Thumbnail thumbnailLink={link} key={index}/>
     return(
       <>
         <div className='answer-body'>
           {this.props.answer?.body}
+        </div>
+        <div className='qa-thumbnail-icon-list'>
+          {this.props.answer?.photos?.map((link, index) => (
+              <Thumbnail thumbnailLink={link} key={index}/>
+          ))}
         </div>
         <div className='answer-footer'>
           <div className='footer-ele answer-user'>
