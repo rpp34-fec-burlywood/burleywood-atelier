@@ -7,13 +7,18 @@ import './style.css';
 class ReviewsWidget extends React.Component {
   constructor(props) {
     super(props);
+    this.sort = this.sort.bind(this);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.currProd !== this.props.currProd) {
-      this.props.getReviewsById(1, 10, 'newest', 64626/*this.props.currProd.id*/);
+      this.props.getReviewsById(1, 10, 'helpful', 64626/*this.props.currProd.id*/);
       this.props.getReviewMeta(64626);
     }
+  }
+
+  sort(order) {
+    this.props.getReviewsById(1, 10, order, 64626)
   }
 
   render() {
@@ -28,6 +33,7 @@ class ReviewsWidget extends React.Component {
           markReviewHelpful={this.props.markReviewHelpful}
           reportReview={this.props.reportReview}
           postReview={this.props.postReview}
+          sort={this.sort}
         />
       </div>
     </div>

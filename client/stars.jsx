@@ -8,12 +8,7 @@ import {BsStarHalf} from 'react-icons/bs';
 class Stars extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      stars: this.round(this.props.stars)
-    }
-
-    this.floor = this.round.bind(this);
+    this.round = this.round.bind(this);
   }
 
   round(number) {
@@ -55,22 +50,21 @@ class Stars extends React.Component {
   render() {
     const items = [];
     var count = 5;
-    var i = this.state.stars;
+    var i = this.round(parseFloat(this.props.stars));
     var full = Math.floor(i);
     for (full; full > 0; full--) {
-      items.push(<BsStarFill/>);
+      items.push(<BsStarFill key={count}/>);
       i--;
       count--;
     }
 
     if (i === .5) {
-      items.push(<BsStarHalf/>);
+      items.push(<BsStarHalf key={count}/>);
       count--;
     }
 
     for (count; count > 0; count--) {
-      items.push(<BsStar/>);
-      count--;
+      items.push(<BsStar key={count}/>);
     }
 
     return (

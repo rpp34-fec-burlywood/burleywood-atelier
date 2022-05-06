@@ -16,10 +16,6 @@ body {
   cursor: pointer;
 }
 
-#reviews {
-  width: 1000px;
-}
-
 html {
   scroll-behavior: smooth;
 }

@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './style.css';
+import Stars from '../../stars.jsx'
+import Bar from './bar.jsx'
 
 class RatingsBreakdown extends React.Component {
   constructor(props) {
@@ -38,14 +40,21 @@ class RatingsBreakdown extends React.Component {
 
       return (
         <div id='breakdown'>
-          <div id='average'> {average} </div>
+          <div id='overall'>
+            <span className='meta' id='average'>
+              {average}
+            </span>
+            <span className='meta' id='avestars'>
+              <Stars stars={average}/>
+            </span>
+          </div>
           <div id='recommend'> {`${recommendation}% of reviews recommend this product`} </div>
           <div className='stars'>
-            <div id='five'> {`5 stars: ${counts[5]}`} </div>
-            <div id='four'> {`4 stars: ${counts[4]}`}  </div>
-            <div id='three'> {`3 stars: ${counts[3]}`}  </div>
-            <div id='two'> {`2 stars: ${counts[2]}`}  </div>
-            <div id='one'> {`1 stars: ${counts[1]}`}  </div>
+            <div id='five' className='num_stars'> {`5 stars`} <Bar count={counts[5]} total={div}/> </div>
+            <div id='four' className='num_stars'> {`4 stars`} <Bar count={counts[4]} total={div}/> </div>
+            <div id='three' className='num_stars'> {`3 stars`} <Bar count={counts[3]} total={div}/> </div>
+            <div id='two' className='num_stars'> {`2 stars`} <Bar count={counts[2]} total={div}/> </div>
+            <div id='one' className='num_stars'> {`1 stars`} <Bar count={counts[1]} total={div}/> </div>
           </div>
           <br></br>
           <div className='characteristics'>
