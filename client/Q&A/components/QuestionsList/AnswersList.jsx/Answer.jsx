@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import API from '../../../../utils/APIRequests';
-import Thumbnail from './thumbnail.jsx';
+import Thumbnail from './Thumbnail/Thumbnail.jsx';
 import './Answer.css';
 
 class Answer extends React.Component {
