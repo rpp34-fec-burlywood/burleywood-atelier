@@ -2,4 +2,24 @@
   overflow-y: auto;
   width: 100%;
   max-height: 50vh;
+  
+}
+
+#question-List::-webkit-scrollbar {
+  background-color: #fff;
+  width: 16px;
+}
+
+#question-List::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+
+#question-List::-webkit-scrollbar-thumb {
+  background-color: #babac0;
+  border-radius: 16px;
+  border: 4px solid #fff;
+}
+
+#question-List::-webkit-scrollbar-button {
+  display:none;
 }
