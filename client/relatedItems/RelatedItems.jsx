@@ -50,8 +50,6 @@ class RelatedItems extends React.Component {
  slideLeft (id){
   var num, extraWidth, offset
   id === 'related' ? num = 0 : num = 226;
-  // id === 'related' ? extraWidth = 0 : extraWidth = -242;
-  // id === 'related' ? offset = 240 : offset = 243;
   var element = document.getElementById(`${id}-list`);
   const scrollLength = (element.offsetWidth + num) / 4
   element.scrollLeft -= scrollLength;
@@ -59,9 +57,7 @@ class RelatedItems extends React.Component {
   var scrollLeftValue = $container.scrollLeft(),
       width=$container.width(),
       scrollWidth=$container.get(0).scrollWidth;
-      // console.log(scrollLeftValue)
-  // offset = 240;
-  // offset + scrollLeftValue + width + extraWidth <= scrollWidth)
+
     if (  scrollLeftValue <= 230) {
      {
          $(`#right-${id}`).show()
@@ -81,13 +77,14 @@ handleAddProduct() {
   let {ratings} = this.props.reviewMeta
   //might need this for debug
   // console.log(ratings)
-  let total = 0
-  let count = 0
-      for(let rating in ratings) {
-        total += Number(ratings[rating])
-        count++;
-      }
-  let average = total/count;
+  var average = 0;
+  var totalReviews = 0;
+  let totalRating = 0;
+  for(let rating in ratings) {
+    totalRating += Number(rating) * Number(ratings[rating])
+    totalReviews += Number(ratings[rating])
+  }
+  average = totalRating / totalReviews
   //might need this for debug
   // console.log(average)
   merged.rating = average;

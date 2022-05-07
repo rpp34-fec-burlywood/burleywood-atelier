@@ -96,7 +96,9 @@
   border: 1px solid rgb(59, 59, 59);
   border-radius: 2px;
   word-wrap: break-all;
-
+}
+.img{
+  object-fit: cover;
 }
 
 .card:hover {
@@ -149,7 +151,7 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  z-index: 2;
+  z-index: 4;
   font-size: 14px;
   pointer-events: stroke;
 
@@ -167,7 +169,7 @@
   border: none;
   cursor: pointer;
   font-size: 20px;
-  z-index: 2;
+  z-index: 4;
 }
 
 .compare-button:hover {

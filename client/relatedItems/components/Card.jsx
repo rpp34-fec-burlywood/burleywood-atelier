@@ -19,7 +19,7 @@ const Card = (props)=> {
         <img className ="img" src ={img}  width='212' height='194'/>
         <p className='card-category'>{product.category}</p>
         <p className="card-name">{product.name}</p>
-        {<Stars stars={product.rating || 0} /> }
+        {<Stars stars={props.rating || 0} /> }
         <Price sale ={sale_price} original = {original_price}/>
       </div>
     )

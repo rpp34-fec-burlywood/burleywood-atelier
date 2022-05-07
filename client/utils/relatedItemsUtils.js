@@ -34,15 +34,15 @@ async function getCardInfo(productArr) {
  async function getAverage(productID){
   return API.getReviewMeta(productID)
     .then((ratings) => {
-      let total = 0
-      let count = 0
-      for(let rating in ratings.ratings) {
-        total += Number(ratings.ratings[rating])
-        count++;
-      }
-
-       let average = total/count;
-       return average
+      var average = 0;
+      var totalReviews = 0;
+      let totalRating = 0;
+    for(let rating in ratings.ratings) {
+      totalRating += Number(rating) * Number(ratings.ratings[rating])
+      totalReviews += Number(ratings.ratings[rating])
+    }
+    average = totalRating / totalReviews
+    return average
     })
 }
 

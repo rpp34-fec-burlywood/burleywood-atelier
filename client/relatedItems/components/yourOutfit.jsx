@@ -4,10 +4,6 @@ import Card from './Card.jsx';
 import {VscAdd} from 'react-icons/vsc';
 import RightButton from './rightButton.jsx';
 const YourOutfit = (props) => {
-<<<<<<< HEAD
-=======
-  // console.log(props)
->>>>>>> a87370d3c61b08250ecf500a2771d18c9ce13d96
   return (
     <div className='your-outfits-container' data-testid="outfit-container">
       <div id ="outfit-add" data-testid="outfit-add" onClick ={()=>props.handleAddProduct()} >
