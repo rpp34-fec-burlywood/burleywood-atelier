@@ -153,9 +153,6 @@
   cursor: pointer;
   z-index: auto;
   font-size: 14px;
-  pointer-events: visibleStroke;
-  pointer-events: auto;
-
  }
 
 .delete-outfit:hover {
