@@ -4,30 +4,32 @@ const API_KEY = process.env.API_KEY;
 
 //Not done
 const postReview = (req, res) => {
-  var product_id = req.params.product_id;
-  var rating = req.params.rating;
-  var summary = req.params.summary;
-  var body = req.params.body;
-  var recommend = req.params.recommend;
-  var name = req.params.name;
-  var email = req.params.email;
-  var photos = req.params.photos;
-  var characteristics = req.params.characteristics;
+  console.log('Post REQ', req.query);
+  console.log('Post Body', req.body);
+  var product_id = req.query.product_id;
+  var rating = req.query.rating;
+  var summary = req.query.summary;
+  var body = req.query.body;
+  var recommend = req.query.recommend;
+  var name = req.query.name;
+  var email = req.query.email;
+  var photos = req.query.photos;
+  var characteristics = req.query.characteristics;
 
   axios({
     method: 'POST',
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/reviews`,
     headers: {'Authorization': API_KEY},
-    params: {
-      product_id: product_id,
-      rating: rating,
-      summary: summary,
-      body: body,
-      recommend: recommend,
-      name: name,
-      email: email,
-      photos: photos,
-      characteristics: characteristics
+    data: {
+      product_id: 64626,
+      rating: 3,
+      summary: "summary",
+      body: "body",
+      recommend: true,
+      name: "name",
+      email: "email",
+      photos: [],
+      characteristics: {}
     }
   })
     .then((response) => {

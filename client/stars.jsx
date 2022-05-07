@@ -17,20 +17,20 @@ class Stars extends React.Component {
     var i = this.props.stars;
     var full = Math.floor(i);
     for (full; full > 0; full--) {
-      items.push(<BsStarFill />);
+      items.push(<BsStarFill/>);
       count++;
     }
 
-    if (0.20 < (i % 1) && (i % 1) <= 0.6) {
-      items.push(<BsStarHalf />);
+    if (0.25 <= (i % 1) && (i % 1) < 0.75) {
+      items.push(<BsStarHalf/>);
       count++;
-    } else if ((i % 1) > 0.6) {
-      items.push(<BsStarFill />);
+    } else if ((i % 1) >= 0.75) {
+      items.push(<BsStarFill/>);
       count++;
     }
 
     for (count; count < 5; count++) {
-      items.push(<BsStar />);
+      items.push(<BsStar/>);
     }
 
     return (

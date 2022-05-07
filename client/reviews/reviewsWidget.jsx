@@ -30,6 +30,7 @@ class ReviewsWidget extends React.Component {
         <div id='ratings'>
         <RatingsBreakdown reviewMeta={this.props.reviewMeta}/>
         <ReviewList
+          reviewMeta={this.props.reviewMeta}
           currProd={this.props.currProd}
           reviews={this.props.reviews}
           markReviewHelpful={this.props.markReviewHelpful}
