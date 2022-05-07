@@ -18,45 +18,45 @@ class NewReview extends React.Component {
       characteristics: {}
     }
 
-    this.postReview = this.postReview.bind(this);
-    this.setName = this.setName.bind(this);
-    this.setRating = this.setRating.bind(this);
-    this.setSummary = this.setSummary.bind(this);
-    this.setRec = this.setRec.bind(this);
-    this.setEmail = this.setEmail.bind(this);
-    this.setPhotos = this.setPhotos.bind(this);
-    this.setChar = this.setChar.bind(this);
+    // this.postReview = this.postReview.bind(this);
+    // this.setName = this.setName.bind(this);
+    // this.setRating = this.setRating.bind(this);
+    // this.setSummary = this.setSummary.bind(this);
+    // this.setRec = this.setRec.bind(this);
+    // this.setEmail = this.setEmail.bind(this);
+    // this.setPhotos = this.setPhotos.bind(this);
+    // this.setChar = this.setChar.bind(this);
   }
 
-  setName(name) {
-    this.setState({
-      name: name
-    })
-  }
+  // setName(name) {
+  //   this.setState({
+  //     name: name
+  //   })
+  // }
 
-  setRating(rating) {
-    this.setState({
-      name: name
-    })
-  }
+  // setRating(rating) {
+  //   this.setState({
+  //     name: name
+  //   })
+  // }
 
-  setSummary(summary) {
-    this.setState({
-      name: name
-    })
-  }
+  // setSummary(summary) {
+  //   this.setState({
+  //     name: name
+  //   })
+  // }
 
-  setRec(rec) {
-    this.setState({
-      name: name
-    })
-  }
+  // setRec(rec) {
+  //   this.setState({
+  //     name: name
+  //   })
+  // }
 
-  setEmail(email) {
-    this.setState({
-      name: name
-    })
-  }
+  // setEmail(email) {
+  //   this.setState({
+  //     name: name
+  //   })
+  // }
 
   // setPhotos(photos) {
   //   this.setState({
@@ -89,9 +89,9 @@ class NewReview extends React.Component {
           <div className='modal-body'>
             <form>
               <label>Username</label><br></br>
-              <input type="text" name="user" onChange={(e) => this.setName(e.target.value)}/><br></br>
+              <input type="text" name="user"/><br></br>
               <label>Email</label><br></br>
-              <input type="text" name="email" onChange={(e) => this.setEmail(e.target.value)}/><br></br>
+              <input type="text" name="email"/><br></br>
               <label>Rating</label><br></br>
               <div className='rating'>
                 <input type="radio" id='one' name="stars"/>
