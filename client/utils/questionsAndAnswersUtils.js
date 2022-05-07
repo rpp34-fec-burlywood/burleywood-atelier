@@ -11,14 +11,24 @@ async function getQuestionsArray (productID) {
 
 
   questions.results.forEach(questionObj => {
-
     let temp = Object.keys(questionObj.answers)
       .map((answerID) => (questionObj.answers[answerID]));
     temp.sort((a, b) => (b.helpfulness - a.helpfulness))
-    questionObj.answers = temp
+
+    // put seller first after sorting
+    let putSellerFirst = [];
+    for (const ele of temp) {
+      if (ele.answerer_name.toLowerCase() === 'seller') {
+        putSellerFirst.unshift(ele);
+      } else {
+        putSellerFirst.push(ele);
+      }
+    }
+    
+    questionObj.answers = putSellerFirst;
   });
 
-  // console.log(questions.results)
+  console.log(questions.results)
 
   this.setState({questionsList : questions});
 }
