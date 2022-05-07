@@ -1,0 +1,26 @@
+#thumbnailModal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+#thumbnailModalImage {
+  max-width: 80vw;
+  max-height: 80vh;
+}
+
+#close {
+  font-size: 50px;
+  position: absolute;
+  z-index: 100;
+	cursor: pointer;
+  right: 50px;
+	top: 20px;
+}
