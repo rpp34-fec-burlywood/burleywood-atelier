@@ -11,7 +11,7 @@ import Stars from '../../stars.jsx';
 const Card = (props)=> {
   const {product} = props;
   const{original_price, sale_price, photos}  = product.styles
-  const img = photos[0].thumbnail_url || `https://source.unsplash.com/random/206×194/?${product.category}`
+  const img = photos[0].thumbnail_url || `https://source.unsplash.com/random/212×194/?${product.category}`
   if (props.type === 'outfit') {
     return (
       <div className = "card" onClick={()=>props.selectNewProduct(props.product.id)}>
