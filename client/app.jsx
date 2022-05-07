@@ -123,6 +123,7 @@ class App extends React.Component {
           carouselClickhandler={this.carouselClickhandler}
           arrowXClickHandler={this.arrowXClickHandler}
           reviews={this.state.reviewMeta?.ratings}
+          numReviews={this.state.reviews.length}
           handleAddProduct={this.handleAddProduct} />
         <RelatedItems
           relatedArr={this.state.relatedProducts}
