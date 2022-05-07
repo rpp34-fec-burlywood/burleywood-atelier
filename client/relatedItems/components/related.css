@@ -151,7 +151,9 @@
   cursor: pointer;
   z-index: 2;
   font-size: 14px;
-}
+  pointer-events: stroke;
+
+ }
 
 .delete-outfit:hover {
   color: black;

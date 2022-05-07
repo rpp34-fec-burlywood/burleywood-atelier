@@ -60,17 +60,6 @@ class ProductInfo extends React.Component {
 
   render() {
     if (this.props.productInfo && this.props.selectedStyle) {
-<<<<<<< HEAD
-      let reviewSum = 0;
-      for (let review of this.props.reviews) {
-        reviewSum += review.rating;
-      }
-      let average = reviewSum / this.props.reviews.length;
-      average = average.toFixed(2);
-      console.log(this.props.reviews)
-=======
-
->>>>>>> 05eac14df4e156c338045a1112ee634c847386e8
       return (
         <div id="productInfo">
           <a id="jump2Review" href="#reviews">

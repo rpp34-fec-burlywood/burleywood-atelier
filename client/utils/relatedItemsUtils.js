@@ -75,7 +75,7 @@ function handleAddProduct() {
       }
     })
     if(!duplicate) {
-      yourOutfits.unshiftß(currentOutfit);
+      yourOutfits.unshift(currentOutfit);
       this.setState({outfits: yourOutfits})
       // this.props.outfitUpdater(yourOutfits)
       sessionStorage.setItem('outfits', JSON.stringify(yourOutfits));

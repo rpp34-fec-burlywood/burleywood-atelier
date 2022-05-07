@@ -44,7 +44,7 @@ class ReviewList extends React.Component {
   render() {
     var length = this.props.reviews.length;
     var renders = this.props.reviews.slice(0, this.state.reviewNum);
-    console.log("List", this.props);
+    // console.log("List", this.props);
     return(
       <div id='list'>
       <div id='sorting'>{`${length} Reviews, sorted by helpful`}</div>

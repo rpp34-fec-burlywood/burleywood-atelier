@@ -36,13 +36,17 @@ class MainImage extends React.Component {
 
   toggleZoom(e) {
     // add mouse location to calculate initial position like the moveSuperZoom
+    var cord = {
+      x: e.clientX,
+      y: e.clientY
+    }
 
     this.setState({
       superZoom: !this.state.superZoom,
     }, () => {
       //See if this can be refactored for simplification!
       if (this.state.superZoom) {
-        this.moveSuperZoom(e);
+        this.moveSuperZoom(cord);
       }
     });
   }
@@ -58,9 +62,10 @@ class MainImage extends React.Component {
     // Using Scoll as the bounding Client Rect
     var mouseBox = mouseBox.getBoundingClientRect();
     // Need Math here to calculate the correct scaling movement!! :)
-    let x = (mouseBox.left - e.pageX - this.state.px_fudge) * ((zoomBox.width - mouseBox.width - this.state.px_fudge)
+
+    let x = (mouseBox.left - e.x - this.state.px_fudge) * ((zoomBox.width - mouseBox.width - this.state.px_fudge)
       / (mouseBox.width * this.state.percent_fudgeX));
-    let y = (mouseBox.top - e.pageY - this.state.px_fudge) * ((zoomBox.height - mouseBox.height - this.state.px_fudge)
+    let y = (mouseBox.top - e.y - this.state.px_fudge) * ((zoomBox.height - mouseBox.height - this.state.px_fudge)
         / (mouseBox.height * this.state.percent_fudgeY));
 
     // console.log(`${mouseBox.top} ${e.pageY}`)
