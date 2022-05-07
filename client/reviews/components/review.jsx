@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import './style.css'
 import React from 'react';
+import Stars from '../../stars.jsx';
 
 class Review extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      helpfulness: this.props.data.helpfulness
+      helpfulness: this.props.data.helpfulness,
+      photos: true
     }
     this.markReviewHelpful = this.markReviewHelpful.bind(this);
     this.reportReview = this.reportReview.bind(this);
@@ -50,13 +52,10 @@ class Review extends React.Component {
     const day = date[2];
     var dateText = `${month} ${day}, ${year}`;
 
-    // this.setState({
-    //   helpful: review.helpfulness
-    // })
-
     return(
       <div id='review'>
         <div id='info'>
+          <span> <Stars stars={review.rating}/> </span>
           <span> {`${review.reviewer_name}, ${dateText}`} </span>
         </div>
         <div id='summary'> {review.summary} </div>
@@ -64,6 +63,15 @@ class Review extends React.Component {
         {
           review.recommend ? (<div id='recommended'> {`\u2713 I recommend this product`} </div>) : (<div> </div>)
         }
+        <div id='images'>
+          {
+            review.photos.map((photo) => {
+              if (photo !== undefined){
+                return (<img key={photo.id} src={photo.url}/>);
+              }
+            })
+          }
+        </div>
         <div id='commentary'>
           <span> {`Helpful?  `} </span>
           <span onClick={this.markReviewHelpful} className='clickable' id={'h' + review.review_id}> {`Yes`} </span>

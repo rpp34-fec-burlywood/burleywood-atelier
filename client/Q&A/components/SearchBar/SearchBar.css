@@ -5,6 +5,12 @@ input {
 
 #search-bar {
   padding-bottom: 20px;
+  max-width: 975px;
+}
+
+#search-bar-input::placeholder {
+  size: 25px;
+  font-weight: 900;
 }
 
 #search-bar-input {
