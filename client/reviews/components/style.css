@@ -82,6 +82,7 @@
   width: 70px;
   height: 70px;
   margin: 5px;
+  border: 1px black solid;
 }
 
 /* Modal */
@@ -137,11 +138,10 @@ label {
 
 #sort {
   background-color: white;
-  border: black solid 1px;
+  border-color: white;
   color: black;
+  text-decoration: underline;
   font-weight: bold;
-  padding: 15px 32px;
-  margin: 5px;
   text-align: center;
   display: inline-block;
   font-size: 22px;

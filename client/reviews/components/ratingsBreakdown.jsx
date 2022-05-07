@@ -16,18 +16,20 @@ class RatingsBreakdown extends React.Component {
     var counts = this.props.reviewMeta.ratings;
 
     if (counts) {
+      div = parseInt(rec.true) + parseInt(rec.false);
       for (var i = 1; i <= 5; i++) {
         if (i in counts) {
           sum += i * counts[i];
-          div += 1;
         } else {
           counts[i] = 0;
         }
       }
 
       var average = sum / div;
+      console.log('Ave', average);
       average = average.toFixed(2);
-      var recommendation = rec.true / div * 100;
+      var recommendation = (rec.true / div) * 100;
+      console.log('Recs', rec.true, div);
       recommendation = recommendation.toFixed(2);
       console.log('review Meta', this.props.reviewMeta);
 

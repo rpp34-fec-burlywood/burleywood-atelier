@@ -5,12 +5,74 @@ import FStars from './fullstars.jsx';
 class NewReview extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      id: this.props.currProd,
+      rating: 0,
+      summary: '',
+      body: '',
+      recommend: true,
+      name: '',
+      email: '',
+      photos: [],
+      characteristics: {}
+    }
+
     this.postReview = this.postReview.bind(this);
+    this.setName = this.setName.bind(this);
+    this.setRating = this.setRating.bind(this);
+    this.setSummary = this.setSummary.bind(this);
+    this.setRec = this.setRec.bind(this);
+    this.setEmail = this.setEmail.bind(this);
+    this.setPhotos = this.setPhotos.bind(this);
+    this.setChar = this.setChar.bind(this);
   }
+
+  setName(name) {
+    this.setState({
+      name: name
+    })
+  }
+
+  setRating(rating) {
+    this.setState({
+      name: name
+    })
+  }
+
+  setSummary(summary) {
+    this.setState({
+      name: name
+    })
+  }
+
+  setRec(rec) {
+    this.setState({
+      name: name
+    })
+  }
+
+  setEmail(email) {
+    this.setState({
+      name: name
+    })
+  }
+
+  // setPhotos(photos) {
+  //   this.setState({
+  //     name: name
+  //   })
+  // }
+
+  // setPhotos(char) {
+  //   this.setState({
+  //     name: name
+  //   })
+  // }
 
   postReview() {
     this.props.closeModal;
-    // this.props.postReview()
+    //this.props.postReview(this.state.id, this.state.rating, this.state.summary, this.state.body, this.state.recommend, this.state.name, this.state.email, this.state.photos, this. state.characteristics);
   }
 
   render() {
@@ -27,9 +89,9 @@ class NewReview extends React.Component {
           <div className='modal-body'>
             <form>
               <label>Username</label><br></br>
-              <input type="text" name="user"/><br></br>
+              <input type="text" name="user" onChange={(e) => this.setName(e.target.value)}/><br></br>
               <label>Email</label><br></br>
-              <input type="text" name="user"/><br></br>
+              <input type="text" name="email" onChange={(e) => this.setEmail(e.target.value)}/><br></br>
               <label>Rating</label><br></br>
               <div className='rating'>
                 <input type="radio" id='one' name="stars"/>

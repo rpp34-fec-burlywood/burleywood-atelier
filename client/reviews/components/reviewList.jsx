@@ -92,7 +92,7 @@ class ReviewList extends React.Component {
       <div id='buttons'>
         {button}
         <button className='button' onClick={this.toggleModal}> {`ADD A REVIEW \u002b`} </button>
-        <NewReview showModal={this.state.showModal} closeModal={this.toggleModal} postReview={this.props.postReview}/>
+        <NewReview showModal={this.state.showModal} closeModal={this.toggleModal} postReview={this.props.postReview} currProd={this.props.currProd}/>
       </div>
       </div>
     );
