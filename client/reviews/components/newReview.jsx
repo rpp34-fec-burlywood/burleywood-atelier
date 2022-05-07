@@ -13,14 +13,15 @@ class NewReview extends React.Component {
       summary: 'hi',
       body: 'gu',
       recommend: true,
-      name: 'ta',
+      name: '',
       email: 'asdf',
       photos: [],
-      characteristics: {}
+      characteristics: {},
+      missingData: false
     }
 
     this.postReview = this.postReview.bind(this);
-    // this.setName = this.setName.bind(this);
+    this.setName = this.setName.bind(this);
     // this.setRating = this.setRating.bind(this);
     // this.setSummary = this.setSummary.bind(this);
     // this.setRec = this.setRec.bind(this);
@@ -29,11 +30,11 @@ class NewReview extends React.Component {
     // this.setChar = this.setChar.bind(this);
   }
 
-  // setName(name) {
-  //   this.setState({
-  //     name: name
-  //   })
-  // }
+  setName(e) {
+    this.setState({
+      name: e.target.value
+    });
+  }
 
   // setRating(rating) {
   //   this.setState({
@@ -72,8 +73,16 @@ class NewReview extends React.Component {
   // }
 
   postReview() {
-    this.props.closeModal();
-    //this.props.postReview(this.state.id, this.state.rating, this.state.summary, this.state.body, this.state.recommend, this.state.name, this.state.email, this.state.photos, this.state.characteristics);
+    if (this.state.name === '') {
+      this.setState({
+        missingData: true
+      })
+    }
+
+    if (!this.state.missingData) {
+      this.props.closeModal();
+      //this.props.postReview(this.state.id, this.state.rating, this.state.summary, this.state.body, this.state.recommend, this.state.name, this.state.email, this.state.photos, this.state.characteristics);
+    }
   }
 
   render() {
@@ -91,7 +100,7 @@ class NewReview extends React.Component {
           <div className='rmodal-body'>
             <form>
               <label>Username</label><br></br>
-              <input type="text" name="user" placeholder="Example: jackson11!"/><br></br>
+              <input type="text" name="user" placeholder="Example: jackson11!" onChange={this.setName}/><br></br>
               <div> For privacy reasons, do not use your full name or email address </div>
               <label>Email</label><br></br>
               <input type="text" name="email" placeholder="Example: jackson11@email.com" size={60} maxLength={60}/><br></br>
@@ -119,8 +128,8 @@ class NewReview extends React.Component {
                 <input type="radio" id='no' name="stars"/>
                 <label htmlFor="no">No</label>
               </div>
-              {/* <label>Photos</label><br></br>
-              <input type="text" name="summary"/><br></br> */}
+              <label>Photos</label><br></br>
+              <input type="file" id="files" name="files" multiple/><br></br>
               <label>Characteristics</label><br></br>
               {Object.keys(this.props.meta.characteristics).map((char) => {
                 return (

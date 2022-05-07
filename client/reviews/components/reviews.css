@@ -93,8 +93,12 @@
 }
 
 #revlist {
-  height: 450px;
+  height: 600px;
   overflow-y: scroll;
+}
+
+#revlist::-webkit-scrollbar {
+  display: none;
 }
 
 /* Review */
@@ -186,6 +190,17 @@
 .chars {
   display: inline;
   margin: 5px;
+}
+
+#files {
+  background-color: white;
+  border: black solid 1px;
+  color: black;
+  padding: 10px 20px;
+  margin: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 10px;
 }
 
 /* Ratings */

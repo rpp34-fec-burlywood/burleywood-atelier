@@ -75,8 +75,7 @@ handleAddProduct() {
   let merged = {};
   merged.value = {...this.props.currProd}
   let {ratings} = this.props.reviewMeta
-  //might need this for debug
-  // console.log(ratings)
+
   var average = 0;
   var totalReviews = 0;
   let totalRating = 0;
@@ -85,8 +84,7 @@ handleAddProduct() {
     totalReviews += Number(ratings[rating])
   }
   average = totalRating / totalReviews
-  //might need this for debug
-  // console.log(average)
+
   merged.rating = average;
   merged.value.styles = {...this.props.selectedStyle}
   let storedOutfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
