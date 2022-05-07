@@ -2,7 +2,7 @@
 import React from 'react';
 const DeleteButton = (props) => {
   return (
-    <button className='delete-outfit' onClick ={()=>{props.handleRemove(props.id)}}>
+    <button className='delete-outfit' onClick ={(e)=>{props.handleRemove(props.id, e)}}>
       &#9447;
     </button>
   )
