@@ -19,10 +19,6 @@ class RelatedItems extends React.Component {
       //64626 = more than 4 products
       //64621 = less than 4
       this.props.initialize(this.props.currProd.id);
-      // this.props.initialize(64626);
-
-      // let outfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
-      // this.setState({outfits: outfits})
     }
   }
   slideRight(id) {
