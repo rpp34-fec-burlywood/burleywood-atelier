@@ -3,7 +3,7 @@ import React from 'react';
 import Card from './Card.jsx';
 import RightButton from './rightButton.jsx';
 const YourOutfit = (props) => {
-  console.log(props)
+  // console.log(props)
   return (
     <div className='your-outfits-container' data-testid="outfit-container">
       <div id ="outfit-add" data-testid="outfit-add" onClick ={()=>props.handleAddProduct()} >

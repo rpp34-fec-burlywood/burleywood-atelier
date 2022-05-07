@@ -17,13 +17,13 @@ class Review extends React.Component {
       helpfulness: this.state.helpfulness + 1
     })
     this.props.markReviewHelpful(e.target.id.substring(1));
-    console.log('Marked review as helpful.')
+    // console.log('Marked review as helpful.')
   }
 
   reportReview(e) {
     this.props.reportReview(e.target.id.substring(1));
-    console.log('Substring', e.target.id.substring(1));
-    console.log('Reported Review.')
+    // console.log('Substring', e.target.id.substring(1));
+    // console.log('Reported Review.')
   }
 
   render() {

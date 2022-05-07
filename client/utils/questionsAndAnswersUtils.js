@@ -18,7 +18,7 @@ async function getQuestionsArray (productID) {
     questionObj.answers = temp
   });
 
-  console.log(questions.results)
+  // console.log(questions.results)
 
   this.setState({questionsList : questions});
 }

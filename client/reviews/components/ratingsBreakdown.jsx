@@ -27,14 +27,14 @@ class RatingsBreakdown extends React.Component {
       average = average.toFixed(2);
       var recommendation = rec.true / div * 100;
       recommendation = recommendation.toFixed(2);
-      console.log('review Meta', this.props.reviewMeta);
+      // console.log('review Meta', this.props.reviewMeta);
 
       var characteristics = this.props.reviewMeta.characteristics;
       var char_array = [];
       for (var char in characteristics) {
         char_array.push([char, characteristics[char]]);
       }
-      console.log('Array', char_array);
+      // console.log('Array', char_array);
 
       return (
         <div id='breakdown'>
