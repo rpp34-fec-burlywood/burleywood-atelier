@@ -24,20 +24,17 @@ const markReviewHelpful = function(review_id) {
 }
 
 const reportReview = function(review_id) {
-  API.getReviewsById(review_id)
+  API.reportReview(review_id)
     .then(result => {
-      console.log('Review Reported');
-      this.setState({
-        reviews: review.results
-      })
+      console.log('Review Reported', review_id);
     })
     .catch(err => {
       console.log('Report Review err', err);
     })
 }
 
-const postReview = function(review_id) {
-  API.getReviewsById(review_id)
+const postReview = function(review_id, rating, summary, body, recommend, name, email, photos, characteristics) {
+  API.postReview(review_id, rating, summary, body, recommend, name, email, photos, characteristics)
     .then(result => {
       console.log('Review Posted');
     })

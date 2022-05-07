@@ -104,12 +104,12 @@ const getReviewMeta = (product_id) => {
     });
 }
 
-const postReview = (id, rating, summary, body, recommend, name, email, photos, characteristics) => {
+const postReview = (product_id, rating, summary, body, recommend, name, email, photos = [], characteristics = {}) => {
   return axios({
     method: 'POST',
     url: `/reviews`,
-    params: {
-      id: id,
+    data: {
+      product_id: product_id,
       rating: rating,
       summary: summary,
       body: recommend,
@@ -120,7 +120,7 @@ const postReview = (id, rating, summary, body, recommend, name, email, photos, c
     }
   })
     .then((response) => {
-      // console.log('-- POST Review OK ', response.data);
+      console.log('-- POST Review OK ', response.data);
       return response.data;
     })
     .catch((err) => {
@@ -146,9 +146,9 @@ const reportReview = (review_id) => {
   return axios({
     method: 'PUT',
     url: `/reviews/${review_id}/report`,
-    // params: {
-    //   review_id: review_id
-    // }
+    params: {
+      review_id: review_id
+    }
   })
     .then((response) => {
       console.log('-- Report OK ', response.data);

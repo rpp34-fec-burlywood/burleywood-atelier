@@ -28,13 +28,62 @@
   display: inline;
 }
 
+#greylines {
+  display: flex;
+}
+
+.greychar {
+  background-color: lightgray;
+  height: 10px;
+  width: 20px;
+  margin: 2px;
+  flex: 1;
+}
+
+.greychar {
+  background-color: lightgray;
+  height: 10px;
+  width: 20px;
+  margin: 2px;
+  flex: 1;
+}
+
+#chartext {
+  display: flex;
+  position: relative;
+  font-weight: bold;
+}
+
+#pointer {
+  position: absolute;
+  color: darkgray;
+  z-index: -1;
+}
+
+.char {
+  flex: 1;
+  font-size: 10px;
+}
+
+#mid {
+  text-align: center;
+}
+
+#right {
+  text-align: right;
+}
+
+.charnames {
+  font-weight: bold;
+}
+
 /* List */
 #list {
   flex: 2;
 }
 
 #sorting, #summary {
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-style: bold;
   margin-bottom: 1em;
 }
@@ -44,11 +93,27 @@
 }
 
 #revlist {
-  height: 350px;
+  height: 450px;
   overflow-y: scroll;
 }
 
 /* Review */
+#info {
+  display: flex;
+  margin: 5px;
+}
+
+#review_stars {
+  text-align: left;
+  flex: 1;
+  font-size: large;
+}
+
+#username {
+  text-align: right;
+  flex: 1;
+}
+
 .clickable {
   text-decoration: underline;
 }
@@ -86,7 +151,7 @@
 }
 
 /* Modal */
-.modal {
+.rmodal {
   position: fixed;
   left: 0;
   top: 0;
@@ -96,26 +161,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 
-.modal-content {
+.rmodal-content {
   width: 500px;
   background-color: #fff;
 }
 
-.modal-header, .modal-footer {
+.rmodal-header, .modal-footer {
   padding: 10px;
 }
 
-.modal-title {
+.rmodal-title {
   margin: 0px;
 }
 
-.modal-body {
+.rmodal-body {
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
+
+.chars {
+  display: inline;
+  margin: 5px;
+}
+
+/* Ratings */
 
 .rating {
   display: inline;
@@ -127,6 +200,17 @@ label {
 
 .button {
   background-color: white;
+  border: black solid 1px;
+  color: black;
+  padding: 15px 32px;
+  margin: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: lightgray;
   border: black solid 1px;
   color: black;
   padding: 15px 32px;
@@ -163,4 +247,9 @@ label {
 
 #percents {
   display: flex
+}
+
+#star_count {
+  font-size: 15px;
+  padding: 0px 10px 10px 10px;
 }

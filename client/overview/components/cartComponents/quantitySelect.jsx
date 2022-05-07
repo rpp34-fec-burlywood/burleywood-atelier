@@ -10,7 +10,7 @@ class QuantitySelect extends React.Component {
     }
     this.handlerBundle = this.handlerBundle.bind(this);
     this.renderQuantity = this.renderQuantity.bind(this);
-    this.dropdownClickHandler = this.dropdownClickHandler.bind(this);
+    // this.dropdownClickHandler = this.dropdownClickHandler.bind(this);
   }
 
   renderQuantity(currSize, currSizeStock) {
@@ -33,20 +33,12 @@ class QuantitySelect extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   var e = {
-  //     target: { value: 1 },
-  //     preventDefault: function () { }
-  //   }
-  //   this.props.selectQuanityHandler(e);
+  // dropdownClickHandler() {
+  //   if (this.props.currSize)
+  //   this.setState({
+  //     active: !this.state.active
+  //   })
   // }
-
-  dropdownClickHandler() {
-    if (this.props.currSize)
-    this.setState({
-      active: !this.state.active
-    })
-  }
 
   handlerBundle(e) {
     e.preventDefault();
@@ -54,7 +46,7 @@ class QuantitySelect extends React.Component {
     let quantity = e.target.attributes.value?.value;
     if (quantity){
       this.props.selectQuanityHandler(quantity);
-      this.dropdownClickHandler();
+      this.props.dropdownClickHandler();
     }
   }
 
@@ -63,12 +55,12 @@ class QuantitySelect extends React.Component {
 render() {
   return (
     <div id="quantitySelect">
-      <div className="dropdown" onClick={this.dropdownClickHandler}>
+      <div className="dropdown" onClick={this.props.dropdownClickHandler}>
         <span style={{ paddingleft: '10px', width: '11px' }}></span>
         <div>{this.props.currSize ? `QTY: ${this.props.quantity}` : "-"}</div>
         <span style={{ paddingRight: '6px' }}>&#9663;</span>
       </div>
-      <div className={`dropdownMenu ${this.state.active ? 'active' : ""}`} onClick={this.handlerBundle}>
+      <div className={`dropdownMenu ${this.props.active ? 'active' : ""}`} onClick={this.handlerBundle}>
         {this.renderQuantity(this.props.currSize, this.props.currSizeStock)}
       </div>
     </div>
@@ -78,10 +70,3 @@ render() {
 }
 
 export default QuantitySelect;
-
-{/* <div id="quantitySelect">
-  <select onChange={this.props.selectQuanityHandler}>
-    <option value="">-QTY-</option>
-    {this.renderQuantity(this.props.currSize, this.props.currSizeStock)}
-  </select>
-</div> */}

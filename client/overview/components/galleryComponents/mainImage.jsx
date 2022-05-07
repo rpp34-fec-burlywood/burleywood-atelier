@@ -23,6 +23,7 @@ class MainImage extends React.Component {
     this.toggleZoom = this.toggleZoom.bind(this);
     this.imageHref = this.imageHref.bind(this);
     this.moveSuperZoom = this.moveSuperZoom.bind(this);
+    this.zoomWidthGen=this.zoomWidthGen.bind(this);
   }
 
   // mainImage will need to be its own component for expanded view
@@ -136,6 +137,12 @@ class MainImage extends React.Component {
     );
   }
 
+  zoomWidthGen () {
+    return {
+      width: `${window.innerWidth * 0.8 * 2.5}px`
+    }
+  }
+
   render() {
     // console.log('RENDERED MainImage');
     if (this.state.expanded) {
@@ -167,7 +174,9 @@ class MainImage extends React.Component {
           {this.state.superZoom ?
             <img id="superZoom"
               onClick={this.toggleZoom}
-              src={this.imageHref(this.props.selectedStyle)} />
+              src={this.imageHref(this.props.selectedStyle)}
+              // style={this.zoomWidthGen()}
+              />
             : null
           }
         </div>
