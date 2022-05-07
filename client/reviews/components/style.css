@@ -4,13 +4,28 @@
   margin-right: 2em;
 }
 
+#overall {
+  display: flex;
+}
+
 #average {
   font-size: 3em;
   margin-bottom: .5em;
+  margin-right: 2em;
+  display: inline;
+}
+
+#avestars {
+  display: inline;
+  padding-top: .5em;
 }
 
 #recommend {
   font-size: 1em;
+}
+
+.num_stars {
+  display: inline;
 }
 
 /* List */
@@ -27,6 +42,12 @@
 #buttons {
   text-align: center;
 }
+
+#revlist {
+  height: 350px;
+  overflow-y: scroll;
+}
+
 /* Review */
 .clickable {
   text-decoration: underline;
@@ -48,6 +69,20 @@
 #commentary, #info {
   font-size: .75em;
   text-align: right;
+}
+
+#images {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#images img {
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+  border: 1px black solid;
 }
 
 /* Modal */
@@ -80,4 +115,52 @@
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+}
+
+.rating {
+  display: inline;
+}
+
+label {
+  font-weight: bold;
+}
+
+.button {
+  background-color: white;
+  border: black solid 1px;
+  color: black;
+  padding: 15px 32px;
+  margin: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#sort {
+  background-color: white;
+  border-color: white;
+  color: black;
+  text-decoration: underline;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  font-size: 22px;
+}
+
+/* Bar */
+.black {
+  border-color: black 1px solid;
+  background-color: black;
+  height: 10px;
+  flex: 1;
+}
+
+.grey {
+  background-color: lightgray;
+  height: 10px;
+  flex: 1;
+}
+
+#percents {
+  display: flex
 }
