@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import './style.css'
+import './reviews.css'
 import React from 'react';
 import Stars from '../../stars.jsx';
 
@@ -55,14 +55,11 @@ class Review extends React.Component {
     return(
       <div id='review'>
         <div id='info'>
-          <span> <Stars stars={review.rating}/> </span>
-          <span> {`${review.reviewer_name}, ${dateText}`} </span>
+          <span id='review_stars'> <Stars stars={review.rating}/> </span>
+          <span id='username'> {`${review.reviewer_name}, ${dateText}`} </span>
         </div>
         <div id='summary'> {review.summary} </div>
         <div id='body'> {review.body} </div>
-        {
-          review.recommend ? (<div id='recommended'> {`\u2713 I recommend this product`} </div>) : (<div> </div>)
-        }
         <div id='images'>
           {
             review.photos.map((photo) => {
@@ -72,6 +69,9 @@ class Review extends React.Component {
             })
           }
         </div>
+        {
+          review.recommend ? (<div id='recommended'> {`\u2713 I recommend this product`} </div>) : (<div> </div>)
+        }
         <div id='commentary'>
           <span> {`Helpful?  `} </span>
           <span onClick={this.markReviewHelpful} className='clickable' id={'h' + review.review_id}> {`Yes`} </span>

@@ -1,24 +1,25 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import FStars from './fullstars.jsx';
+import './reviews.css';
 
 class NewReview extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      id: this.props.currProd,
-      rating: 0,
-      summary: '',
-      body: '',
+      id: 64626,
+      rating: 1,
+      summary: 'hi',
+      body: 'gu',
       recommend: true,
-      name: '',
-      email: '',
+      name: 'ta',
+      email: 'asdf',
       photos: [],
       characteristics: {}
     }
 
-    // this.postReview = this.postReview.bind(this);
+    this.postReview = this.postReview.bind(this);
     // this.setName = this.setName.bind(this);
     // this.setRating = this.setRating.bind(this);
     // this.setSummary = this.setSummary.bind(this);
@@ -71,8 +72,8 @@ class NewReview extends React.Component {
   // }
 
   postReview() {
-    this.props.closeModal;
-    //this.props.postReview(this.state.id, this.state.rating, this.state.summary, this.state.body, this.state.recommend, this.state.name, this.state.email, this.state.photos, this. state.characteristics);
+    this.props.closeModal();
+    //this.props.postReview(this.state.id, this.state.rating, this.state.summary, this.state.body, this.state.recommend, this.state.name, this.state.email, this.state.photos, this.state.characteristics);
   }
 
   render() {
@@ -81,19 +82,21 @@ class NewReview extends React.Component {
     }
 
     return(
-      <div className='modal'>
-        <div className='modal-content'>
-          <div className='modal-header'>
-            <h4 className='modal-title'>Review</h4>
+      <div className='rmodal'>
+        <div className='rmodal-content'>
+          <div className='rmodal-header'>
+            <h4 className='rmodal-title'>Write Your Review</h4>
+            <h5 className='rmodal-title'>About the Product</h5>
           </div>
-          <div className='modal-body'>
+          <div className='rmodal-body'>
             <form>
               <label>Username</label><br></br>
-              <input type="text" name="user"/><br></br>
+              <input type="text" name="user" placeholder="Example: jackson11!"/><br></br>
+              <div> For privacy reasons, do not use your full name or email address </div>
               <label>Email</label><br></br>
-              <input type="text" name="email"/><br></br>
+              <input type="text" name="email" placeholder="Example: jackson11@email.com" size={60} maxLength={60}/><br></br>
               <label>Rating</label><br></br>
-              <div className='rating'>
+              <div className='ratings'>
                 <input type="radio" id='one' name="stars"/>
                 <label htmlFor="one"><FStars stars={1}/></label>
                 <input type="radio" id='two' name="stars"/>
@@ -106,9 +109,9 @@ class NewReview extends React.Component {
                 <label htmlFor="five"><FStars stars={5}/></label><br></br>
               </div>
               <label>Summary</label><br></br>
-              <input type="text" name="summary"/><br></br>
+              <input type="text" name="summary" size={60}/><br></br>
               <label>Body</label><br></br>
-              <input type="text" name="body"/><br></br>
+              <textarea name="body" rows="4" cols="50"/><br></br>
               <label>Recommend</label><br></br>
               <div>
                 <input type="radio" id='yes' name="stars"/>
@@ -116,15 +119,29 @@ class NewReview extends React.Component {
                 <input type="radio" id='no' name="stars"/>
                 <label htmlFor="no">No</label>
               </div>
-              <label>Photos</label><br></br>
-              <input type="text" name="summary"/><br></br>
+              {/* <label>Photos</label><br></br>
+              <input type="text" name="summary"/><br></br> */}
               <label>Characteristics</label><br></br>
-              <input type="text" name="body"/><br></br>
+              {Object.keys(this.props.meta.characteristics).map((char) => {
+                return (
+                  <div key={char} id={char} >
+                    <div className="chars">{char}</div>
+                    <select name={this.props.meta.characteristics[char].id} id={`${char}-scroll`}>
+                      <option value="empty"></option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                );
+              })}
             </form>
           </div>
           <div>
             <button className='button' onClick={this.props.closeModal}> Close </button>
-            <button className='button' onClick={this.props.closeModal}> Post Review </button>
+            <button className='button' onClick={this.postReview}> Post Review </button>
           </div>
         </div>
       </div>
