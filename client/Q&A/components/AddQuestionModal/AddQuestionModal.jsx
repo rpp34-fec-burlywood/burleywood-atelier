@@ -70,42 +70,29 @@ class AddQuestionModal extends React.Component {
     return(
       <div id='questionModal'>
         <div id='questionModalWindow'>
-          <h1 className='modal-top-title' >Post your question</h1>
-          <label className='modal-title'>What is your nickname*</label>
+          <h1>Post your question</h1>
+          <label>Your name: </label>
           <input
-            className='modal-input'
             onChange={(e) => this.setName(e.target.value)} 
             placeholder='Ex: Bob Junior'
           />
-          <label className='modal-title'>Your email*</label> 
-          <input
-            className='modal-input' 
+          <label>Your email: </label> 
+          <input 
             onChange={(e) => this.setEmail(e.target.value)}
             placeholder='Ex: bobjunior@email.com'
           />
-          <label className='modal-title'>Your Question*</label>
+          <label>Your Question: </label>
           <textarea 
-            className='modal-input'
             rows="5" cols="33" 
             placeholder="Please enter a question." 
             onChange={(e) => this.setQuestionBody(e.target.value)}>
           </textarea>
-          <label className='modal-footnote'>
-            For authentication reasons, you will not be emailed
+          <label>
+            Your question might be answered by sellers, manufacturers, or customers who bought this product.
           </label>
           <div id='questionModalFooter'>
-            <div
-              className='modal-footer-buttons'
-              onClick={this.props.closeModal}
-            >
-              Cancel
-            </div>
-            <div
-              className='modal-footer-buttons'
-              onClick={this.postQuestion}
-            >
-              Submit question
-            </div>
+            <button onClick={this.props.closeModal}>Cancel</button>
+            <button onClick={this.postQuestion}>Post</button>
           </div>
         </div>
       </div>

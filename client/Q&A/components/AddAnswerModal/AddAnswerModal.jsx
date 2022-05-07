@@ -2,7 +2,6 @@
 import React from 'react';
 import './AddAnswerModal.css';
 import API from '../../../utils/APIRequests.js';
-import e from 'express';
 
 class AddAnswerModal extends React.Component {
   constructor(props) {
@@ -60,73 +59,36 @@ class AddAnswerModal extends React.Component {
       body: this.state.answerBody,
     }
     
-    if (data['name'] === '' || data['email'] === '' || data['body'] === '') {
-      let inputArray = []
-      for (const key in data) {
-        if (data[key] === '') {
-          let inputName = '#' + key + '-' + 'input'
-          inputArray.push(document.querySelector(inputName))
-        }
-      }
-      for (const ele of inputArray) {
-        ele.reportValidity()
-      }
-
-    } else {
-      API.postAnswer(this.props.question_id, data)
+    API.postAnswer(this.props.question_id, data)
       .then(res => console.log(res))
-      // add case where it fails and doesn't close
-      this.props.closeModal();
-    }
-
+    // add case where it fails and doesn't close
+    this.props.closeModal();
   }
 
   render() {
     return(
       <div id='answerModal'>
         <div id='answerModalWindow'>
-          <h1 className='modal-top-title'>Post your Answer</h1>
-          <label className='modal-title'>What is your nickname*</label>
+          <h1>Post your Answer</h1>
+          <label>Your name: </label>
           <input
-            required
-            id='name-input'
-            className='modal-input error'
             onChange={(e) => this.setName(e.target.value)} 
-            placeholder='Example: jack543!'
+            placeholder='Ex: Bob Junior'
           />
-          <label className='modal-title'>Your email*</label> 
+          <label>Your email: </label> 
           <input 
-            required
-            id='email-input'
-            className='modal-input'
             onChange={(e) => this.setEmail(e.target.value)}
-            placeholder='Example: jack@email.com'
+            placeholder='Ex: bobjunior@email.com'
           />
-          <label className='modal-title'>Your Answer*</label>
-          <textarea
-            required
-            id='body-input'
-            className='modal-input' 
+          <label>Your Answer: </label>
+          <textarea 
             rows="5" cols="33" 
-            placeholder="Why did you like the product or not?" 
+            placeholder="Please enter your Answer." 
             onChange={(e) => this.setAnswerBody(e.target.value)}>
-          </textarea >
-          <label className='modal-footnote'>
-            For authentication reasons, you will not be emailed
-          </label>
-          <div className='answerModalFooter'>
-            <div
-              className='modal-footer-buttons'
-              onClick={this.props.closeModal}
-            >
-              Cancel
-            </div>
-            <div
-              className='modal-footer-buttons'
-              onClick={this.postAnswer}
-            >
-              Submit answer
-            </div>
+          </textarea>
+          <div id='answerModalFooter'>
+            <button onClick={this.props.closeModal}>Cancel</button>
+            <button onClick={this.postAnswer}>Post</button>
           </div>
         </div>
       </div>
