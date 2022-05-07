@@ -134,6 +134,7 @@ class App extends React.Component {
           outfitUpdater={this.outfitUpdater}
           outfits={this.state.outfits}
           reviewMeta={this.state.reviewMeta}
+          handleAddProduct={this.handleAddProduct}
         />
         <QuestionsAndAnswers
           currProd={this.state.currProd}
