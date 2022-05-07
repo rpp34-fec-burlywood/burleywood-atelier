@@ -4,7 +4,7 @@ body {
   margin: 0;
   display: flex;
   justify-content: center;
-  min-width: 1000px;
+  color: #262626;
 }
 
 .home {
@@ -14,6 +14,20 @@ body {
 
 .home:hover {
   cursor: pointer;
+}
+
+
+#app,
+#appContainer {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  min-width: 600px;
+}
+
+.reviews,
+#reviews {
+  max-width: 1000px;
 }
 
 html {

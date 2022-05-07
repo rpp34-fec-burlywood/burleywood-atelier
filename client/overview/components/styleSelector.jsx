@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import StylePin from './styleComponents/stylePin.jsx';
+import {MdDoubleArrow} from 'react-icons/md'
 
 class StyleSelector extends React.Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class StyleSelector extends React.Component {
     if (this.props.defaultStyle?.name && this.props.defaultStyle?.name) {
       return (
         <div className="styleSelector">
-          <div className="styelTitle">{'STYLE'}  <span>&#62;</span> {this.props.selectedStyle.name}</div>
+          <div className="styleTitle">{'STYLE'}  <div id='styleArrow'><MdDoubleArrow size={'1.1em'}/></div> {this.props.selectedStyle.name}</div>
           <div className="selectStylePin" onClick={this.props.styleClickHandler}>
             {this.renderStyles(this.props.currProdStyles)}
           </div>

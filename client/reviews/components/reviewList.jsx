@@ -56,7 +56,6 @@ class ReviewList extends React.Component {
   render() {
     var length = this.props.reviews.length;
     var renders = this.props.reviews.slice(0, this.state.reviewNum);
-
     var moreReviews = true;
     var button;
     var selector;
@@ -66,7 +65,7 @@ class ReviewList extends React.Component {
     } else {
       button = <button className='button' onClick={this.hideReviews}>HIDE REVIEWS</button>;
     }
-
+    // console.log("List", this.props);
     return(
       <div id='list'>
       <div id='sorting'>

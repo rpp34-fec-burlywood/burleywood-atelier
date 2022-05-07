@@ -56,11 +56,10 @@ class App extends React.Component {
   initialize(productid = undefined) {
     // Initializes Overview by selecting 1 of 15 products
     // also calls this.getProductStyleById
-
     this.getOverviewProduct(30, productid)
-    // .then(currProd => {
-    //   this.getRelatedProductArray(currProd.id);
-    // })
+    this.setState({
+      mainImageIndex: 0
+    })
   }
 
   outfitUpdater(value) {
@@ -104,15 +103,14 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('Review Meta', this.reviewMeta);
+    // console.log('Review Meta', this.reviewMeta);
     if (this.state.currProd?.id) {
       window.history.replaceState(null, '', `${window.location.origin}/productPage/${this.state.currProd.id}/`)
     }
     return (
-      <div>
+      <div id="appContainer">
         <div onClick={this.home} className="home">
-          {/* <Stars stars={4.5}/> */}
-          <h1>Starter app</h1>
+          <h1>Starter FASHION</h1>
         </div>
         <Overview
           currProd={this.state.currProd}
@@ -124,7 +122,7 @@ class App extends React.Component {
           mainImageIndex={this.state.mainImageIndex}
           carouselClickhandler={this.carouselClickhandler}
           arrowXClickHandler={this.arrowXClickHandler}
-          reviews={this.state.reviews}
+          reviews={this.state.reviewMeta?.ratings}
           handleAddProduct={this.handleAddProduct} />
         <RelatedItems
           relatedArr={this.state.relatedProducts}
