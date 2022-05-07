@@ -52,11 +52,11 @@ class RatingsBreakdown extends React.Component {
           </div>
           <div id='recommend'> {`${recommendation}% of reviews recommend this product`} </div>
           <div className='stars'>
-            <div id='five' className='num_stars'> {`5 stars`} <Bar count={counts[5]} total={div}/> </div>
-            <div id='four' className='num_stars'> {`4 stars`} <Bar count={counts[4]} total={div}/> </div>
-            <div id='three' className='num_stars'> {`3 stars`} <Bar count={counts[3]} total={div}/> </div>
-            <div id='two' className='num_stars'> {`2 stars`} <Bar count={counts[2]} total={div}/> </div>
-            <div id='one' className='num_stars'> {`1 stars`} <Bar count={counts[1]} total={div}/> </div>
+            <div id='five' className='num_stars'> {`5 stars`} <Bar count={counts[5]} total={div}/> {counts[5]} </div>
+            <div id='four' className='num_stars'> {`4 stars`} <Bar count={counts[4]} total={div}/> {counts[4]} </div>
+            <div id='three' className='num_stars'> {`3 stars`} <Bar count={counts[3]} total={div}/> {counts[3]} </div>
+            <div id='two' className='num_stars'> {`2 stars`} <Bar count={counts[2]} total={div}/> {counts[2]} </div>
+            <div id='one' className='num_stars'> {`1 stars`} <Bar count={counts[1]} total={div}/> {counts[1]} </div>
           </div>
           <br></br>
           <div className='characteristics'>
