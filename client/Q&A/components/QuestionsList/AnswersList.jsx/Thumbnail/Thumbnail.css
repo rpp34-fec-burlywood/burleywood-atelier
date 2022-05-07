@@ -1,0 +1,8 @@
+
+.qa-thumbnail-icon {
+  height: 65px;
+  width: 100px;
+  object-fit: cover;
+  border: 1px solid #565656;
+  cursor: pointer;
+}
