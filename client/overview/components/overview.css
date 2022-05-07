@@ -290,6 +290,7 @@
   flex-shrink: 0;
   border: 2px solid rgb(80, 80, 80, 0.8);
 }
+
 .carouselItem:last-child {
   margin: 0;
 }
@@ -356,10 +357,11 @@
   left: -50%;
   z-index: 3;
   height: 250%;
-  width: fit-content;
-  object-fit: contain;
+  width: min-content;
+  object-fit: cover;
   cursor: zoom-out;
 }
+
 
 /*****************************************************************
 ------------------------- Style Selector -------------------------
