@@ -2,7 +2,7 @@
 import React from 'react';
 import Review from './review.jsx';
 import NewReview from './newReview.jsx';
-import './style.css';
+import './reviews.css';
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -10,13 +10,15 @@ class ReviewList extends React.Component {
     this.state = {
       reviewNum: 2,
       showModal: false,
-      moreReviews: true
+      moreReviews: true,
+      sort: 'helpful'
     }
 
     this.addReviews = this.addReviews.bind(this);
     this.hideReviews = this.hideReviews.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.sort = this.sort.bind(this);
+    this.report = this.report.bind(this);
   }
 
   addReviews() {
@@ -50,10 +52,19 @@ class ReviewList extends React.Component {
   }
 
   sort(e) {
+    this.setState({
+      sort: e.target.value
+    });
     this.props.sort(e.target.value);
   }
 
+  report(review_id) {
+    this.props.reportReview(review_id);
+    this.props.sort(this.state.sort);
+  }
+
   render() {
+    // var count = parseInt(this.props.reviewMeta.recommended.false) + parseInt(this.props.reviewMeta.recommended.true);
     var length = this.props.reviews.length;
     var renders = this.props.reviews.slice(0, this.state.reviewNum);
     var moreReviews = true;
@@ -83,7 +94,7 @@ class ReviewList extends React.Component {
               key={review.review_id}
               data={review}
               markReviewHelpful={this.props.markReviewHelpful}
-              reportReview={this.props.reportReview}
+              reportReview={this.report}
             />
         ))
       }
@@ -91,7 +102,7 @@ class ReviewList extends React.Component {
       <div id='buttons'>
         {button}
         <button className='button' onClick={this.toggleModal}> {`ADD A REVIEW \u002b`} </button>
-        <NewReview showModal={this.state.showModal} closeModal={this.toggleModal} postReview={this.props.postReview} currProd={this.props.currProd}/>
+        <NewReview showModal={this.state.showModal} closeModal={this.toggleModal} postReview={this.props.postReview} currProd={this.props.currProd} meta={this.props.reviewMeta}/>
       </div>
       </div>
     );
