@@ -50,11 +50,22 @@ async function getCardInfo(productArr) {
 function handleAddProduct() {
   let storage = [];
   let merged = {};
-  // merged.value = {...this.props.currProd}
-  // merged.value.styles = {...this.props.selectedStyle}
   merged.value = {...this.state.currProd}
   merged.value.styles = {...this.state.selectedStyle}
-  let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
+
+  let {ratings} = this.state.reviewMeta
+
+  var average = 0;
+  var totalReviews = 0;
+  let totalRating = 0;
+  for(let rating in ratings) {
+    totalRating += Number(rating) * Number(ratings[rating])
+    totalReviews += Number(ratings[rating])
+  }
+  average = totalRating / totalReviews
+
+  merged.rating = average;
+  let storedOutfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
   // if your outfits is empty
   if(storedOutfits?.length > 3) {
     $(`#right-outfit`).show()
@@ -63,9 +74,8 @@ function handleAddProduct() {
     storage.push(merged);
     sessionStorage.setItem('outfits', JSON.stringify(storage));
     this.setState({outfits: storage})
-    // this.props.outfitUpdater(storage)
+
   } else {
-    // const yourOutfits = [...this.props.outfits]
     const yourOutfits = [...this.state.outfits]
     const currentOutfit = merged;
     let duplicate = false;
@@ -77,15 +87,15 @@ function handleAddProduct() {
     if(!duplicate) {
       yourOutfits.unshift(currentOutfit);
       this.setState({outfits: yourOutfits})
-      // this.props.outfitUpdater(yourOutfits)
       sessionStorage.setItem('outfits', JSON.stringify(yourOutfits));
     }
   }
 }
 
-function handleRemoveOutfit(styleID) {
+function handleRemoveOutfit(styleID,e) {
+
+  e.stopPropagation();
   let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
-  console.log(storedOutfits)
   let index = storedOutfits.findIndex(outfit => {
     return outfit.value.styles.style_id === styleID
   });
@@ -97,8 +107,6 @@ function handleRemoveOutfit(styleID) {
     $(`#right-outfit`).hide()
     $(`#left-outfit`).hide()
   }
-  this.setState({outfits: yourOutfits})
-  // this.props.outfitUpdater(storedOutfits)
 }
 
 var relatedHandlers = {
