@@ -151,9 +151,10 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  z-index: 4;
+  z-index: auto;
   font-size: 14px;
-  pointer-events: stroke;
+  pointer-events: visibleStroke;
+  pointer-events: auto;
 
  }
 
@@ -169,7 +170,7 @@
   border: none;
   cursor: pointer;
   font-size: 20px;
-  z-index: 4;
+  z-index: auto;
 }
 
 .compare-button:hover {

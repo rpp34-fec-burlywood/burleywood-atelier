@@ -115,7 +115,8 @@ handleAddProduct() {
   }
 }
 
-handleRemoveOutfit(styleID) {
+handleRemoveOutfit(styleID, e) {
+  e.stopPropagation();
   let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
   let index = storedOutfits.findIndex(outfit => {
     return outfit.value.styles.style_id === styleID
