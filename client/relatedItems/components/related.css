@@ -96,13 +96,14 @@
   border: 1px solid rgb(59, 59, 59);
   border-radius: 2px;
   word-wrap: break-all;
+
 }
 .img{
   object-fit: cover;
 }
 
 .card:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.25), 0 5px 5px rgba(0, 0, 0, 0.015);
 }
 
 .card-category{
@@ -140,7 +141,7 @@
 }
 
 #outfit-add:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.25), 0 5px 5px rgba(0, 0, 0, 0.015);
 }
 
 .delete-outfit {
@@ -161,7 +162,7 @@
 .compare-button {
   position: absolute;
   background: transparent;
-  color: rgb(255, 255, 255， 0.774);
+  color: rgba(255, 255, 255, 0.774);
   right: 0;
   background-color: transparent;
   border: none;
@@ -171,7 +172,7 @@
 }
 
 .compare-button:hover {
-  color: #00000066;
+  color: #000000a1;
 }
 
 .compareModal {
