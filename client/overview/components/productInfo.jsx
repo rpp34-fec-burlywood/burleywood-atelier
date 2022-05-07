@@ -8,7 +8,6 @@ class ProductInfo extends React.Component {
 
     this.state = {
       average: 0,
-      numReview: 0,
     }
 
     this.renderReview = this.renderReview.bind(this);
@@ -48,7 +47,6 @@ class ProductInfo extends React.Component {
 
     this.setState({
       average,
-      numReview,
     });
   }
 
@@ -64,7 +62,7 @@ class ProductInfo extends React.Component {
         <div id="productInfo">
           <a id="jump2Review" href="#reviews">
             <span id='currProdRating'><Stars stars={this.state.average} /></span>
-            {`Read All ${this.state.numReview} Reviews`}</a>
+            {`Read All ${this.props.numReviews} Reviews`}</a>
           <div className="productCategory">{`Category: ${this.props.productInfo.category}`}</div>
           <div className="currProductTitle">{this.props.productInfo.name}</div>
           {this.renderPrice(this.props.selectedStyle)}

@@ -22,13 +22,12 @@
 }
 
 .overviewLeft {
-  min-width: 600px;
+  max-width: 640px;
 }
 
 
 .overviewRight {
-  /* width: 380px; */
-  width: max-content;
+  max-width: 360px;
   padding-left: 20px;
   min-height: 550px;
 }
@@ -291,6 +290,7 @@
   flex-shrink: 0;
   border: 2px solid rgb(80, 80, 80, 0.8);
 }
+
 .carouselItem:last-child {
   margin: 0;
 }
@@ -357,10 +357,11 @@
   left: -50%;
   z-index: 3;
   height: 250%;
-  width: fit-content;
-  object-fit: contain;
+  width: min-content;
+  object-fit: cover;
   cursor: zoom-out;
 }
+
 
 /*****************************************************************
 ------------------------- Style Selector -------------------------
@@ -513,14 +514,13 @@
   justify-content: space-between;
   height: auto;
   flex: 1 1 auto;
-  width: max-content;
+  max-width: 340px;
 }
 
 
 #addToCart {
   display: flex;
-  max-width: fit-content;
-  min-width: 340px;
+  max-width: 340px;
   flex-wrap: wrap;
   height: auto;
 }

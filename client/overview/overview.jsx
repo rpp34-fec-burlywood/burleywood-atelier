@@ -28,6 +28,7 @@ class Overview extends React.Component {
           <div className="overviewRight">
             <ProductInfo
               reviews={this.props.reviews}
+              numReviews={this.props.numReviews}
               productInfo={this.props.currProd}
               selectedStyle={this.props.selectedStyle}
             />
