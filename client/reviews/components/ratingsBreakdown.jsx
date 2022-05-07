@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './style.css';
+import Stars from '../../stars.jsx'
+import Bar from './bar.jsx'
 
 class RatingsBreakdown extends React.Component {
   constructor(props) {
@@ -14,18 +16,20 @@ class RatingsBreakdown extends React.Component {
     var counts = this.props.reviewMeta.ratings;
 
     if (counts) {
+      div = parseInt(rec.true) + parseInt(rec.false);
       for (var i = 1; i <= 5; i++) {
         if (i in counts) {
           sum += i * counts[i];
-          div += 1;
         } else {
           counts[i] = 0;
         }
       }
 
       var average = sum / div;
+      console.log('Ave', average);
       average = average.toFixed(2);
-      var recommendation = rec.true / div * 100;
+      var recommendation = (rec.true / div) * 100;
+      console.log('Recs', rec.true, div);
       recommendation = recommendation.toFixed(2);
       // console.log('review Meta', this.props.reviewMeta);
 
@@ -38,14 +42,21 @@ class RatingsBreakdown extends React.Component {
 
       return (
         <div id='breakdown'>
-          <div id='average'> {average} </div>
+          <div id='overall'>
+            <span className='meta' id='average'>
+              {average}
+            </span>
+            <span className='meta' id='avestars'>
+              <Stars stars={average}/>
+            </span>
+          </div>
           <div id='recommend'> {`${recommendation}% of reviews recommend this product`} </div>
           <div className='stars'>
-            <div id='five'> {`5 stars: ${counts[5]}`} </div>
-            <div id='four'> {`4 stars: ${counts[4]}`}  </div>
-            <div id='three'> {`3 stars: ${counts[3]}`}  </div>
-            <div id='two'> {`2 stars: ${counts[2]}`}  </div>
-            <div id='one'> {`1 stars: ${counts[1]}`}  </div>
+            <div id='five' className='num_stars'> {`5 stars`} <Bar count={counts[5]} total={div}/> </div>
+            <div id='four' className='num_stars'> {`4 stars`} <Bar count={counts[4]} total={div}/> </div>
+            <div id='three' className='num_stars'> {`3 stars`} <Bar count={counts[3]} total={div}/> </div>
+            <div id='two' className='num_stars'> {`2 stars`} <Bar count={counts[2]} total={div}/> </div>
+            <div id='one' className='num_stars'> {`1 stars`} <Bar count={counts[1]} total={div}/> </div>
           </div>
           <br></br>
           <div className='characteristics'>
