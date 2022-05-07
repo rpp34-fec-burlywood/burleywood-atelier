@@ -33,14 +33,6 @@ class QuantitySelect extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   var e = {
-  //     target: { value: 1 },
-  //     preventDefault: function () { }
-  //   }
-  //   this.props.selectQuanityHandler(e);
-  // }
-
   dropdownClickHandler() {
     if (this.props.currSize)
     this.setState({
@@ -78,10 +70,3 @@ render() {
 }
 
 export default QuantitySelect;
-
-{/* <div id="quantitySelect">
-  <select onChange={this.props.selectQuanityHandler}>
-    <option value="">-QTY-</option>
-    {this.renderQuantity(this.props.currSize, this.props.currSizeStock)}
-  </select>
-</div> */}
