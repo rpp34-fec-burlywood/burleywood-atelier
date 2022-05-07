@@ -175,7 +175,7 @@ class MainImage extends React.Component {
             <img id="superZoom"
               onClick={this.toggleZoom}
               src={this.imageHref(this.props.selectedStyle)}
-              style={this.zoomWidthGen()}
+              // style={this.zoomWidthGen()}
               />
             : null
           }
