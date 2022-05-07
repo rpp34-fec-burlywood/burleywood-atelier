@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  devtool: 'eval-source-map',
+  // devtool: 'eval-source-map',
   // mode: 'production',
   // devtool: 'source-map',
 
