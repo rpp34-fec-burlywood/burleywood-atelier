@@ -95,7 +95,7 @@ const getReviewMeta = (product_id) => {
     }
   })
     .then((response) => {
-      console.log('Accessed');
+      // console.log('Accessed');
       // console.log('-- Get Review Meta OK ', response.data);
       return response.data;
     })
