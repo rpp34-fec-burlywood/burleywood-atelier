@@ -7,9 +7,6 @@ class RelatedItems extends React.Component {
   constructor(props) {
 
     super(props);
-    this.state = {
-      outfits: []
-    }
     this.slideRight = this.slideRight.bind(this)
     this.slideLeft = this.slideLeft.bind(this)
     this.handleAddProduct = this.handleAddProduct.bind(this)
@@ -30,7 +27,7 @@ class RelatedItems extends React.Component {
   }
   slideRight(id) {
     var num;
-    id === 'related' ? num = 0 : num = 242
+    id === 'related' ? num = 0 : num = 226;
     var element = document.getElementById(`${id}-list`);
     const scrollLength = (element.offsetWidth + num) / 4
     element.scrollLeft += scrollLength;
@@ -51,9 +48,8 @@ class RelatedItems extends React.Component {
  }
 
  slideLeft (id){
-  var num, extraWidth;
-  id === 'related' ? num = 0 : num = 242;
-  id === 'related' ? extraWidth = 0 : extraWidth = -278;
+  var num, extraWidth, offset
+  id === 'related' ? num = 0 : num = 226;
   var element = document.getElementById(`${id}-list`);
   const scrollLength = (element.offsetWidth + num) / 4
   element.scrollLeft -= scrollLength;
@@ -61,8 +57,8 @@ class RelatedItems extends React.Component {
   var scrollLeftValue = $container.scrollLeft(),
       width=$container.width(),
       scrollWidth=$container.get(0).scrollWidth;
-  var offset=278;
-    if (offset + scrollLeftValue + width + extraWidth <= scrollWidth) {
+
+    if (  scrollLeftValue <= 230) {
      {
          $(`#right-${id}`).show()
          $(`#left-${id}`).hide()
@@ -78,8 +74,22 @@ handleAddProduct() {
   let storage = [];
   let merged = {};
   merged.value = {...this.props.currProd}
+  let {ratings} = this.props.reviewMeta
+  //might need this for debug
+  // console.log(ratings)
+  var average = 0;
+  var totalReviews = 0;
+  let totalRating = 0;
+  for(let rating in ratings) {
+    totalRating += Number(rating) * Number(ratings[rating])
+    totalReviews += Number(ratings[rating])
+  }
+  average = totalRating / totalReviews
+  //might need this for debug
+  // console.log(average)
+  merged.rating = average;
   merged.value.styles = {...this.props.selectedStyle}
-  let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
+  let storedOutfits = JSON.parse(sessionStorage.getItem('outfits')) || [];
   // if your outfits is empty
   if(storedOutfits?.length > 3) {
     $(`#right-outfit`).show()
@@ -87,7 +97,6 @@ handleAddProduct() {
   if(!sessionStorage.getItem('outfits')) {
     storage.push(merged);
     sessionStorage.setItem('outfits', JSON.stringify(storage));
-    // this.setState({outfits: storage})
     this.props.outfitUpdater(storage)
   } else {
     const yourOutfits = [...this.props.outfits]
@@ -99,8 +108,7 @@ handleAddProduct() {
       }
     })
     if(!duplicate) {
-      yourOutfits.push(currentOutfit);
-      // this.setState({outfits: yourOutfits})
+      yourOutfits.unshift(currentOutfit);
       this.props.outfitUpdater(yourOutfits)
       sessionStorage.setItem('outfits', JSON.stringify(yourOutfits));
     }
@@ -109,7 +117,6 @@ handleAddProduct() {
 
 handleRemoveOutfit(styleID) {
   let storedOutfits = JSON.parse(sessionStorage.getItem('outfits'));
-  console.log(storedOutfits)
   let index = storedOutfits.findIndex(outfit => {
     return outfit.value.styles.style_id === styleID
   });
@@ -127,10 +134,10 @@ handleRemoveOutfit(styleID) {
     return (
       <div>
         <div className='related-main-container' data-testid="related-main-container">
-          RELATED PRODUCTS
+          <p className='related-titles'>RELATED PRODUCTS</p>
           <ProductCard selectNewProduct ={this.props.selectNewProduct} relatedArr={this.props.relatedArr} slideRight={this.slideRight} slideLeft={this.slideLeft} currProd ={this.props.currProd}/>
-          YOUR OUTFITS
-          <YourOutfit outfits={this.props.outfits} slideRight={this.slideRight} slideLeft={this.slideLeft} handleAddProduct={this.handleAddProduct} handleRemoveOutfit={this.handleRemoveOutfit}/>
+          <p className='related-titles'>YOUR OUTFITS</p>
+          <YourOutfit selectNewProduct ={this.props.selectNewProduct}  outfits={this.props.outfits} slideRight={this.slideRight} slideLeft={this.slideLeft} handleAddProduct={this.handleAddProduct} handleRemoveOutfit={this.handleRemoveOutfit} />
         </div>
       </div>
     );

@@ -14,7 +14,7 @@ const CompareModal = (props) => {
             <th>{props.rightName}</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id='table-body'>
         <tr>
           <th></th>
         </tr>
