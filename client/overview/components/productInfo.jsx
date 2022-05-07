@@ -60,7 +60,6 @@ class ProductInfo extends React.Component {
 
   render() {
     if (this.props.productInfo && this.props.selectedStyle) {
-
       return (
         <div id="productInfo">
           <a id="jump2Review" href="#reviews">

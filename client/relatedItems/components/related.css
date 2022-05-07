@@ -5,37 +5,60 @@
   font-size: 2rem;
   display: flex;
   align-items: center;
-  color: rgba(255, 255, 255, 0.726);
+  color: white;
+  text-shadow: black 0 0 5px;
+  font-size: 2rem;
   background-color: transparent;
   transition: color 150ms ease-in-out;
   position: absolute;
 }
-
-#left-related {
-  top: 30%;
+.arrowRight {
+  border: none;
+  z-index: 1;
+  cursor: pointer;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-shadow: black 0 0 5px;
+  font-size: 2rem;
+  background-color: transparent;
+  transition: color 150ms ease-in-out;
   position: absolute;
-  display: none;
-  z-index: 1
 }
-
-#left-outfit {
-  top: 30%;
+#left-related {
+  top: 0%;
   position: absolute;
   display: none;
   z-index: 1;
-  margin-left: 240px;
+  right: 97%;
+  height: 100%;
+}
+
+#left-outfit {
+  top: 0%;
+  position: absolute;
+  display: none;
+  z-index: 1;
+  margin-left: 232px;
+  /* right: 90%; */
+  height: 90%;
 }
 
 #right-related, #right-outfit{
-  top: 30%;
+  top: 0%;
   left: 97%;
+  z-index: 1;
+  height: 90%;
 }
 
-#right-related:hover, #right-outfit:hover, #left-related:hover, #left-outfit:hover {
-  color: rgba(0, 0, 0, 0.455);
-
+#right-related:hover, #right-outfit:hover {
+  /* background-color: rgb(255, 255, 255, 0.3); */
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.8) 0%,rgba(255,255,255,0) 69%);
 }
-
+#left-related:hover, #left-outfit:hover {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.8) 0%,rgba(255,255,255,0) 69%);
+}
 
 .related-add, #outfit-list {
   display: inline-block;
@@ -44,7 +67,7 @@
 
 .related-container, .your-outfits-container{
   display: flex;
-  width: 969px;
+  width: 905px;
   height: 330px;
   position: relative;
 }
@@ -54,19 +77,16 @@
   width: 750px;
   height: 320px;
   display: inline-block;
-  position: relative;
-  overflow:  scroll;
   white-space:nowrap;
   position: relative;
   overflow: hidden;
-  scrollbar-width: none;
   scroll-behavior: smooth;
   vertical-align: top;
 }
 
 .card{
   display: inline-block;
-  width: 230px;
+  width: 214px;
   height: 300px;
   position:relative;
   box-sizing: border-box;
@@ -75,23 +95,48 @@
   margin-right:6px;
   border: 1px solid rgb(59, 59, 59);
   border-radius: 2px;
+  word-wrap: break-all;
+}
+.img{
+  object-fit: cover;
 }
 
 .card:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
+.card-category{
+  margin: 0
+}
+.card-price{
+  margin: 0
+}
+.stars{
+  margin: 0;
+  padding-left: 6px;
+  color: rgb(86, 86, 86);
+}
 #outfit-add{
-  display: inline-block;
+  /* display: inline-block; */
   box-sizing: border-box;
   background: #fff;
   height: 300px;
   margin-left:6px;
   margin-right:6px;
   cursor: pointer;
-  width: 230px;
+  width: 214px;
   border: 1px solid rgb(59, 59, 59);
+  color:rgb(86, 86, 86);
   border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* #child{
+  flex: 0 0 120px;
+} */
+#add-icon{
+  margin-left: 15%;
 }
 
 #outfit-add:hover {
@@ -101,30 +146,34 @@
 .delete-outfit {
   position: absolute;
   background: transparent;
-  color: white;
+  color: rgba(255, 255, 255, 0.774);
   right: 0;
-  color: black;
   background-color: transparent;
   border: none;
   cursor: pointer;
-}
+  z-index: 4;
+  font-size: 14px;
+  pointer-events: stroke;
+
+ }
 
 .delete-outfit:hover {
-  background: #c6c6c5;
+  color: black;
 }
 .compare-button {
   position: absolute;
   background: transparent;
-  color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255， 0.774);
   right: 0;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  size: 23px
+  font-size: 20px;
+  z-index: 4;
 }
 
 .compare-button:hover {
-  background: #c6c6c5;
+  color: #00000066;
 }
 
 .compareModal {
@@ -139,6 +188,7 @@
   border-radius: 2px;
   background-color: white;
   color: rgb(59, 59, 59);
+  font-size: 14px;
 }
 #th-left{
   width: 15%;
@@ -156,14 +206,39 @@
   width: 15%;
   text-align: right;
   padding: 2px;
-
 }
 #table{
   width: 100%;
   height: auto;
 }
-.card-price{
+#table-body{
+  font-weight: lighter;
+  color:rgb(59, 59, 59)
+}
+th{
+  font-weight: lighter;
+}
+.card-name{
   margin-bottom: 6px;
+  padding-left: 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 214px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.card-category{
+  line-height: 50%;
+  font-size: 16px;
+  font-weight: lighter;
+  margin-top: 6px;
+  padding-left: 6px;
+}
+.card-price{
+  font-size: 14px;
+  padding-left: 6px;
+
 }
 #original_price{
   text-decoration: line-through;
@@ -172,4 +247,8 @@
 #sale{
   color: red;
   font-weight: bold;
+}
+.related-titles {
+  padding-left: 1%;
+  font-weight: lighter;
 }
