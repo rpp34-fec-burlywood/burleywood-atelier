@@ -206,8 +206,8 @@
   /* position: relative; */
   object-fit: cover;
   /* object-position: 50% 50%; */
-  height: inherit;
-  width: inherit;
+  height: 100%;
+  width: 100%;
   z-index: 1;
 }
 
@@ -232,7 +232,7 @@
 .imgIndicator {
   visibility: hidden;
   position: fixed;
-  bottom: 30px;
+  bottom: 20px;
 }
 
 .imgIndicator.active {
@@ -581,6 +581,10 @@
 
 .dropdownItem:last-child {
   border-bottom: 0px hidden;
+}
+
+.dropdownItem:hover {
+  background-color: rgb(255, 185, 104);
 }
 
 .outOfStock {
