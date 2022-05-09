@@ -232,7 +232,7 @@
 .imgIndicator {
   visibility: hidden;
   position: fixed;
-  bottom: 30px;
+  bottom: 20px;
 }
 
 .imgIndicator.active {
