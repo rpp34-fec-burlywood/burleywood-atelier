@@ -11,7 +11,6 @@ const Price = (props) => {
     )
   } else {
     return (
-        //todo CSS
       <div className='card-price'>
         <span id='sale'>{`$${props.sale} `}</span>
         <span id='original_price'>{` $${props.original}`}</span>

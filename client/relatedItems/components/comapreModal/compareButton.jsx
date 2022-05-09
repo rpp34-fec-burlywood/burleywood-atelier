@@ -15,8 +15,6 @@ class CompareButton extends React.Component {
     this.buildArrays = this.buildArrays.bind(this)
     this.closeModal = this.closeModal.bind(this)
   }
-  //this.props.currProd is current product's feature
-  //this.props.selectedProd is selected product's feature...
 
   buildArrays (){
     // build array of all the features with duplicates removed.
