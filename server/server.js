@@ -3,7 +3,8 @@ const productRouter = require('./routers/productRouter.js');
 const cartRouter = require('./routers/cartRouter');
 const qAndARouter = require('./routers/qAndARouter');
 const reviewRouter = require('./routers/reviewRouter');
-const path = require('path')
+const path = require('path');
+const compression = require('compression');
 
 require('dotenv').config();
 const PORT = process.env.PORT || 3000;
@@ -12,6 +13,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(compression());
 
 app.use(express.static(__dirname + '/../public'));
 
