@@ -81,8 +81,6 @@ class AddQuestionModal extends React.Component {
         });
         setTimeout(this.props.closeModal, 1000);
       })
-        // add case where it fails and doesn't close
-
     }
 
   }
@@ -145,4 +143,4 @@ class AddQuestionModal extends React.Component {
   }
 }
 
-export default AddQuestionModal
+export default AddQuestionModal;
