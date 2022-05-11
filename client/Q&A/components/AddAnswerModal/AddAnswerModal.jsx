@@ -4,7 +4,7 @@ import './AddAnswerModal.css';
 import API from '../../../utils/APIRequests.js';
 import axios from 'axios';
 import Thumbnail from '../QuestionsList/AnswersList.jsx/Thumbnail/Thumbnail.jsx';
-import { AiFillCheckCircle } from 'react-icons/ai'
+import { AiOutlineCheckCircle } from 'react-icons/ai';
 class AddAnswerModal extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +22,6 @@ class AddAnswerModal extends React.Component {
     this.setAnswerBody = this.setAnswerBody.bind(this);
     this.postAnswer = this.postAnswer.bind(this);
     this.handlePhotoChange = this.handlePhotoChange.bind(this);
-    this.postAnswer = this.postAnswer.bind(this);
   }
 
   closeModalEventHandler(event) {
@@ -110,7 +109,7 @@ class AddAnswerModal extends React.Component {
       <div id='answerModal'>
         <div id='answerModalWindow'>
           {this.state.successful ? 
-            <AiFillCheckCircle size={70}/> :
+            <AiOutlineCheckCircle size={70}/> :
             <>
               <h1 className='modal-top-title'>Post your Answer</h1>
               <label className='modal-title'>What is your nickname*</label>
