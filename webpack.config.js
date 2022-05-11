@@ -2,9 +2,9 @@
 const path = require('path');
 
 module.exports = {
-  // mode: 'development',
-  // devtool: 'eval-source-map',
-  mode: 'production',
+  mode: 'development',
+  devtool: 'eval-source-map',
+  // mode: 'production',
   // devtool: 'source-map',
 
   entry: path.join(__dirname, '/client/index.jsx'),

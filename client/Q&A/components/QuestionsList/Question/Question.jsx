@@ -12,7 +12,8 @@ class Question extends React.Component {
       answerListLength: 2,
       answerListTotalLength: Object.keys(props.question?.answers).length,
       expanded: false,
-      answerModalOpen: false
+      answerModalOpen: false,
+      upvotes: 0
     }
 
     this.returnAnswerObject = this.returnAnswerObject.bind(this);
@@ -80,7 +81,11 @@ class Question extends React.Component {
 
   upvoteQuestion() {
     API.upvoteQuestion(this.props.question?.question_id)
-      .then(res => {console.log(res)})
+      .then(res => {
+        console.log(res)
+        const currUpvotes = this.state.upvotes;
+        this.setState({upvotes: currUpvotes + 1})
+      });
   }
 
   render() {
@@ -104,7 +109,7 @@ class Question extends React.Component {
             Helpful?
           </div>
           <div className='question-helpful' onClick={this.upvoteQuestion}>
-            Yes ({this.props.question?.question_helpfulness})
+            Yes ({this.props.question?.question_helpfulness + this.state.upvotes})
           </div>
           <div>
             |

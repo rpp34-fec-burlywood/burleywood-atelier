@@ -7,7 +7,9 @@ import './Answer.css';
 class Answer extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      upvotes: 0
+    }
     this.reportAnswer = this.reportAnswer.bind(this);
     this.upvoteAnswer = this.upvoteAnswer.bind(this);
   }
@@ -19,7 +21,11 @@ class Answer extends React.Component {
 
   upvoteAnswer() {
     API.upvoteAnswer(this.props.answer?.id)
-      .then(res => {console.log(res)});
+      .then(res => {
+        console.log(res)
+        const currUpvotes = this.state.upvotes;
+        this.setState({upvotes: currUpvotes + 1})
+      });
   }
 
   render() {
@@ -43,7 +49,7 @@ class Answer extends React.Component {
     const month = months[parseInt(time[1]) - 1]
     const day = time[2]
     const user = this.props.answer?.answerer_name
-    const helpful = this.props.answer?.helpfulness
+    const helpful = this.props.answer?.helpfulness + this.state.upvotes
     // <Thumbnail thumbnailLink={link} key={index}/>
     return(
       <>
