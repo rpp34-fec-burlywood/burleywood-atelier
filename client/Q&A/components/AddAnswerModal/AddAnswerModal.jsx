@@ -64,24 +64,36 @@ class AddAnswerModal extends React.Component {
 
 
   postAnswer() {
-    const formData = new FormData();
-    for (const photo of this.state.photos) {
-      formData.append('photos', photo)
+    const data = {
+      name: this.state.name,
+      email: this.state.email,
+      body: this.state.answerBody,
     }
 
-    axios.post('/uploadPhotos', formData)
-      .then((da) => {
-        const data = {
-          name: this.state.name,
-          email: this.state.email,
-          body: this.state.answerBody,
+    if (data['name'] === '' || data['email'] === '' || data['body'] === '') {
+      let inputArray = []
+      for (const key in data) {
+        if (data[key] === '') {
+          let inputName = '#' + key + '-' + 'input'
+          inputArray.push(document.querySelector(inputName))
         }
-        
-        API.postAnswer(this.props.question_id, data)
-          .then(res => console.log(res))
-        // add case where it fails and doesn't close
-        this.props.closeModal();
-      })
+      }
+      for (const ele of inputArray) {
+        ele.reportValidity()
+      }
+    } else {
+      const formData = new FormData();
+      for (const photo of this.state.photos) {
+        formData.append('photos', photo)
+      }
+  
+      axios.post('/uploadPhotos', formData)
+        .then((urls) => {
+          API.postAnswer(this.props.question_id, data)
+            .then(res => console.log(res))
+          this.props.closeModal();
+        })
+    }
 
   }
 
