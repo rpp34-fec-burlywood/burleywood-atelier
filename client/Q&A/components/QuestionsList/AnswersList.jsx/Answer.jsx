@@ -16,7 +16,11 @@ class Answer extends React.Component {
 
   reportAnswer() {
     API.reportAnswer(this.props.answer?.id)
-      .then(res => {console.log(res)});
+      .then(res => {
+        let split = res.data.split('/');
+        let reportAnswerId = split[split.length - 2];
+        this.props.setAnswerList(reportAnswerId);
+      });
   }
 
   upvoteAnswer() {
@@ -29,6 +33,7 @@ class Answer extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     const months = [
       "January", 
       "February",

@@ -11,6 +11,7 @@ class Question extends React.Component {
     this.state = {
       answerListLength: 2,
       answerListTotalLength: Object.keys(props.question?.answers).length,
+      answers: props.question?.answers,
       expanded: false,
       answerModalOpen: false,
       upvotes: 0
@@ -22,6 +23,7 @@ class Question extends React.Component {
     this.closeAnswerModal = this.closeAnswerModal.bind(this);
     this.openAnswerModal = this.openAnswerModal.bind(this);
     this.upvoteQuestion = this.upvoteQuestion.bind(this);
+    this.filterAnswerList = this.filterAnswerList.bind(this);
   }
 
   componentDidMount() {
@@ -32,9 +34,21 @@ class Question extends React.Component {
     }
   }
 
+  filterAnswerList(answerId) {
+    answerId = +answerId;
+    let newAnswerList = this.state.answers.filter((ele) => {
+      return ele.id !== answerId
+    })
+    let currAnswerListTotalLength = this.state.answerListTotalLength;
+    this.setState({
+      answers: newAnswerList,
+      answerListTotalLength: currAnswerListTotalLength - 1
+    })
+  }
+
   returnAnswerObject() {
     let answerObject = {};
-    let answers = this.props.question?.answers;
+    let answers = this.state.answers;
     let index = 0;
 
     for (let answer in answers) {
@@ -124,6 +138,7 @@ class Question extends React.Component {
           </div>
           <div className='answers-list'>
             <AnswersList
+              setAnswerList={this.filterAnswerList}
               answers={this.returnAnswerObject()}
             />
             {
