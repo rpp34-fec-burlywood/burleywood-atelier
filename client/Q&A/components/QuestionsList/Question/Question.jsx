@@ -94,12 +94,17 @@ class Question extends React.Component {
   }
 
   upvoteQuestion() {
-    API.upvoteQuestion(this.props.question?.question_id)
+    let upvotedQuestionsArray = JSON.parse(sessionStorage.getItem('upvotedQuestions')) || [];
+    if (!upvotedQuestionsArray.includes(this.props.question?.question_id)) {
+      API.upvoteQuestion(this.props.question?.question_id)
       .then(res => {
         console.log(res)
         const currUpvotes = this.state.upvotes;
         this.setState({upvotes: currUpvotes + 1})
+        upvotedQuestionsArray.push(this.props.question?.question_id)
+        sessionStorage.setItem('upvotedQuestions', JSON.stringify(upvotedQuestionsArray))
       });
+    }
   }
 
   render() {

@@ -24,12 +24,18 @@ class Answer extends React.Component {
   }
 
   upvoteAnswer() {
-    API.upvoteAnswer(this.props.answer?.id)
+    let upvotedAnswersArray = JSON.parse(sessionStorage.getItem('upvotedAnswers')) || [];
+    if (!upvotedAnswersArray.includes(this.props.answer?.id)) {
+      API.upvoteAnswer(this.props.answer?.id)
       .then(res => {
-        console.log(res)
+        console.log(res);
         const currUpvotes = this.state.upvotes;
         this.setState({upvotes: currUpvotes + 1})
+        upvotedAnswersArray.push(this.props.answer?.id)
+        sessionStorage.setItem('upvotedAnswers', JSON.stringify(upvotedAnswersArray))
       });
+    }
+
   }
 
   render() {
