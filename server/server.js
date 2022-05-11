@@ -4,7 +4,10 @@ const cartRouter = require('./routers/cartRouter');
 const qAndARouter = require('./routers/qAndARouter');
 const reviewRouter = require('./routers/reviewRouter');
 const path = require('path');
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' });
 const compression = require('compression');
+const cloudinaryUploadImage = require('./cloudinaryHelper.js');
 
 require('dotenv').config();
 const PORT = process.env.PORT || 3000;
@@ -32,6 +35,13 @@ const logger = (req, res, next) => {
   // }
   next();
 }
+
+app.post('/uploadPhotos', upload.array('photos', 5), (req, res) => {
+  cloudinaryUploadImage(req.files)
+    .then(urls => {
+      res.status(201).json({ urls });
+    })
+});
 
 //Mount the routers to their routes
 app.use('/products', productRouter);

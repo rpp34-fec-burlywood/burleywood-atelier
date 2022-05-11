@@ -30,7 +30,7 @@ class Thumbnail extends React.Component {
   render() {
     return(
       <>
-        {this.state.thumbnailModalOpen ? 
+        {this.state.thumbnailModalOpen && !this.props.noModal ? 
           <ThumbnailModal closeThumbnailModal={this.closeThumbnailModal} thumbnailLink={this.props.thumbnailLink}/> :
           null  
         }

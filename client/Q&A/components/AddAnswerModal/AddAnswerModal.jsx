@@ -2,14 +2,16 @@
 import React from 'react';
 import './AddAnswerModal.css';
 import API from '../../../utils/APIRequests.js';
-
+import axios from 'axios';
+import Thumbnail from '../QuestionsList/AnswersList.jsx/Thumbnail/Thumbnail.jsx';
 class AddAnswerModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
       email: '',
-      answerBody: ''
+      answerBody: '',
+      photos: []
     }
 
     this.closeModalEventHandler = this.closeModalEventHandler.bind(this);
@@ -17,6 +19,7 @@ class AddAnswerModal extends React.Component {
     this.setEmail = this.setEmail.bind(this);
     this.setAnswerBody = this.setAnswerBody.bind(this);
     this.postAnswer = this.postAnswer.bind(this);
+    this.handlePhotoChange = this.handlePhotoChange.bind(this);
   }
 
   closeModalEventHandler(event) {
@@ -52,17 +55,34 @@ class AddAnswerModal extends React.Component {
     })
   }
 
+  handlePhotoChange(e) {
+    let newPhotoState = [...this.state.photos, e.target.files[0]]
+    this.setState({
+      photos: newPhotoState
+    })
+  }
+
+
   postAnswer() {
-    const data = {
-      name: this.state.name,
-      email: this.state.email,
-      body: this.state.answerBody,
+    const formData = new FormData();
+    for (const photo of this.state.photos) {
+      formData.append('photos', photo)
     }
-    
-    API.postAnswer(this.props.question_id, data)
-      .then(res => console.log(res))
-    // add case where it fails and doesn't close
-    this.props.closeModal();
+
+    axios.post('/uploadPhotos', formData)
+      .then((da) => {
+        const data = {
+          name: this.state.name,
+          email: this.state.email,
+          body: this.state.answerBody,
+        }
+        
+        API.postAnswer(this.props.question_id, data)
+          .then(res => console.log(res))
+        // add case where it fails and doesn't close
+        this.props.closeModal();
+      })
+
   }
 
   render() {
@@ -95,6 +115,22 @@ class AddAnswerModal extends React.Component {
             placeholder="Why did you like the product or not?" 
             onChange={(e) => this.setAnswerBody(e.target.value)}>
           </textarea >
+          <label className='modal-title'>Upload your photos</label>
+          {this.state.photos.length >= 5 ? 
+            null : 
+            <div>
+              <input 
+                type="file"
+                onChange= {(e) => this.handlePhotoChange(e)}
+                multiple
+              />
+            </div>
+          }
+          <div className='qa-thumbnail-icon-list'>
+            {this.state.photos.map((photo, index) => 
+                <Thumbnail thumbnailLink={URL.createObjectURL(photo)} key={index} noModal={true}/>
+              )}
+          </div>
           <label className='modal-footnote'>
             For authentication reasons, you will not be emailed
           </label>
