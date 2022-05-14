@@ -6,7 +6,6 @@ const getProduct = function (numProd = 1, productId = undefined) {
   if (productId !== undefined) {
     return API.getProductById(productId)
       .then(selectProd => {
-        console.log ('still gonna set state?!!!',selectProd)
         this.setState({
           currProd: selectProd
         });
