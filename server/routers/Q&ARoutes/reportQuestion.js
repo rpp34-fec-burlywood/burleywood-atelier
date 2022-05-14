@@ -12,6 +12,7 @@ const reportQuestion = (req, res) => {
   })
     .then((response) => {
       console.log('-- Report Question OK\n', response);
+      res.send(response.path)
     })
     .catch((err) => {
       console.log('-- Report Question FAILED:', err.response.data);
