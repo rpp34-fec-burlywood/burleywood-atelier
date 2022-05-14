@@ -6,6 +6,7 @@ const getProduct = function (numProd = 1, productId = undefined) {
   if (productId !== undefined) {
     return API.getProductById(productId)
       .then(selectProd => {
+        console.log ('still gonna set state?!!!',selectProd)
         this.setState({
           currProd: selectProd
         });
@@ -13,7 +14,25 @@ const getProduct = function (numProd = 1, productId = undefined) {
       })
       .catch(err => {
         console.log('Fetch Product By Product FAILED', err);
+        debugger;
+        API.getProducts(numProd)
+          .then(itemsList => {
+            var selectProd = itemsList[Math.floor(Math.random() * numProd)];
 
+            API.getProductById(selectProd.id)
+              // API.getProductById(64627) // TESTING PRODUCTS
+              // API.getProductById(64625) // TESTING PRODUCTS
+              .then(selectProd => {
+                this.setState({
+                  currProd: selectProd
+                });
+                this.getProductStyleById(selectProd.id)
+              })
+            return selectProd;
+          })
+          .catch(err => {
+            console.log('Fetch Featured Product FAILED', err);
+          });
       });
   }
 

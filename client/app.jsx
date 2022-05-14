@@ -77,7 +77,7 @@ class App extends React.Component {
       var num = Number(id);
 
       //Will need away to return Page not found!
-      if (!isNaN(id) && num > 64619 && num < 65631) {
+      if (!isNaN(id)) {
         return id;
       }
     }
