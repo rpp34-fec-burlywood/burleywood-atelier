@@ -14,6 +14,15 @@ npm run build
 npm start
 ```
 
+## .env File Setup:
+```
+API_KEY= String
+PORT= Number
+CLOUDINARY_CLOUD_NAME= String
+CLOUDINARY_API_KEY= String
+CLOUDINARY_API_SECRECT= String
+```
+
 # FEC Burleywood Atelier
 
 This is our team's Front End Capstone project. As part of the senior phase to test and grow our Front End Engineering skills. Each of our members worked on specific widgets to create an webstore application. The project includes React, Node, Axios, Express, Javascript, CSS, and Jest.

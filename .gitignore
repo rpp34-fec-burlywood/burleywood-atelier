@@ -4,3 +4,4 @@ public/dist
 coverage/
 *.pem
 *.sh
+/uploads

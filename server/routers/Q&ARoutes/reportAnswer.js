@@ -11,7 +11,8 @@ const reportAnswer = (req, res) => {
     headers: {'Authorization': API_KEY},
   })
     .then((response) => {
-      console.log('-- Report Answer OK\n', response);
+      console.log('-- Report Answer OK\n', response.config.url);
+      res.send(response.config.url)
     })
     .catch((err) => {
       console.log('-- Report Answer FAILED:', err.response.data);

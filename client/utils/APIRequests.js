@@ -222,9 +222,9 @@ const reportAnswer = (answer_id) => {
     method: 'PUT',
     url: `/qa/answers/report/${answer_id}`,
   })
-  .then((response) => {
-      console.log('-- Report Answer OK ', response.data);
-      return response.data;
+  .then((res) => {
+      console.log('-- Report Answer OK');
+      return res;
     })
     .catch((err) => {
       console.log('-- Report Answer FAILED ', err.response.data);

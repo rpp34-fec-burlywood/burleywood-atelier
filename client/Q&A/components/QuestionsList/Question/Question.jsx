@@ -11,8 +11,10 @@ class Question extends React.Component {
     this.state = {
       answerListLength: 2,
       answerListTotalLength: Object.keys(props.question?.answers).length,
+      answers: props.question?.answers,
       expanded: false,
-      answerModalOpen: false
+      answerModalOpen: false,
+      upvotes: 0
     }
 
     this.returnAnswerObject = this.returnAnswerObject.bind(this);
@@ -21,6 +23,7 @@ class Question extends React.Component {
     this.closeAnswerModal = this.closeAnswerModal.bind(this);
     this.openAnswerModal = this.openAnswerModal.bind(this);
     this.upvoteQuestion = this.upvoteQuestion.bind(this);
+    this.filterAnswerList = this.filterAnswerList.bind(this);
   }
 
   componentDidMount() {
@@ -31,9 +34,21 @@ class Question extends React.Component {
     }
   }
 
+  filterAnswerList(answerId) {
+    answerId = +answerId;
+    let newAnswerList = this.state.answers.filter((ele) => {
+      return ele.id !== answerId
+    })
+    let currAnswerListTotalLength = this.state.answerListTotalLength;
+    this.setState({
+      answers: newAnswerList,
+      answerListTotalLength: currAnswerListTotalLength - 1
+    })
+  }
+
   returnAnswerObject() {
     let answerObject = {};
-    let answers = this.props.question?.answers;
+    let answers = this.state.answers;
     let index = 0;
 
     for (let answer in answers) {
@@ -79,8 +94,17 @@ class Question extends React.Component {
   }
 
   upvoteQuestion() {
-    API.upvoteQuestion(this.props.question?.question_id)
-      .then(res => {console.log(res)})
+    let upvotedQuestionsArray = JSON.parse(sessionStorage.getItem('upvotedQuestions')) || [];
+    if (!upvotedQuestionsArray.includes(this.props.question?.question_id)) {
+      API.upvoteQuestion(this.props.question?.question_id)
+      .then(res => {
+        console.log(res)
+        const currUpvotes = this.state.upvotes;
+        this.setState({upvotes: currUpvotes + 1})
+        upvotedQuestionsArray.push(this.props.question?.question_id)
+        sessionStorage.setItem('upvotedQuestions', JSON.stringify(upvotedQuestionsArray))
+      });
+    }
   }
 
   render() {
@@ -104,7 +128,7 @@ class Question extends React.Component {
             Helpful?
           </div>
           <div className='question-helpful' onClick={this.upvoteQuestion}>
-            Yes ({this.props.question?.question_helpfulness})
+            Yes ({this.props.question?.question_helpfulness + this.state.upvotes})
           </div>
           <div>
             |
@@ -119,6 +143,7 @@ class Question extends React.Component {
           </div>
           <div className='answers-list'>
             <AnswersList
+              setAnswerList={this.filterAnswerList}
               answers={this.returnAnswerObject()}
             />
             {

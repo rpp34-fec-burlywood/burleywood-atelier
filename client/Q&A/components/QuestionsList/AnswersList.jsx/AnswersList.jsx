@@ -10,7 +10,11 @@ class AnswersList extends React.Component {
     return(
       <div>
         {this.props.answers ? Object.keys(this.props.answers).map((key, i) => (
-            <Answer key={i + 524} answer={this.props.answers[key]}/>
+            <Answer 
+              key={i + 524} 
+              answer={this.props.answers[key]}
+              setAnswerList={this.props.setAnswerList}
+            />
         )) : ''}
       </div>
     );
