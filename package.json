@@ -7,7 +7,7 @@
     "start": "node server/server.js",
     "build": "npx webpack",
     "server-dev": "npx nodemon server/server.js",
-    "react-dev": "npx webpack --watch",
+    "react-dev": "npx webpack --watch --mode development --devtool eval-source-map",
     "test": "jest",
     "coverage": "jest --coverage",
     "coverage-related": "jest related.test.js --coverage --collectCoverageFrom=client/relatedItems/**",
