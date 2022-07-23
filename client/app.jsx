@@ -141,16 +141,6 @@ class App extends React.Component {
           originalQuestionsList={this.state.questionsList}
           refetch={this.getQuestions}
         />
-        <ReviewsWidget
-          currProd={this.state.currProd}
-          reviews={this.state.reviews}
-          getReviewsById={this.getReviewsById}
-          markReviewHelpful={this.markReviewHelpful}
-          reportReview={this.reportReview}
-          getReviewMeta={this.getReviewMeta}
-          reviewMeta={this.state.reviewMeta}
-          postReview={this.postReview}
-        />
       </div>
     )
   }
