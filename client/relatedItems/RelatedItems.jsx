@@ -9,7 +9,6 @@ class RelatedItems extends React.Component {
     super(props);
     this.slideRight = this.slideRight.bind(this)
     this.slideLeft = this.slideLeft.bind(this)
-    this.handleAddProduct = this.handleAddProduct.bind(this)
     this.handleRemoveOutfit = this.handleRemoveOutfit.bind(this)
   }
 
